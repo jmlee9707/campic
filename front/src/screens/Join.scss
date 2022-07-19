@@ -1,0 +1,109 @@
+.container {
+  justify-content: center;
+}
+  .join {
+    width : vw(350px);
+    align-items: center;
+    flex-direction: column;
+    // background-color: violet;
+    .divide {
+      width: 100%;
+      height: vw(1px);
+      background-color: $GRAY-F3;
+      margin-bottom: vw(14px);
+    }
+    &_head {
+      margin: vw(128px) 0 vw(32px) 0;
+      height: vw(42px);
+      width: vw(166px);
+      justify-content: space-between;
+      &_logo {
+        height: vw(42px);
+        width: vw(42px);
+      }
+    }
+    &_social {
+      &_txt {
+        color: $GRAY-67;
+      }
+      &_icon_naver,
+      &_icon_kakao,
+      &_icon_google {
+        margin: vw(20px) vw(8px) vw(32px) vw(8px);
+        img {
+          width: vw(48px);
+          height: vw(48px);
+        }
+      }
+    }
+    &_input {
+      width: vw(300px);
+      &_email, &_pw, &_pw2, &_nickname, &_phone {
+        &_title {
+          margin: vw(14px) 0 vw(12px);
+          color: $GRAY-67;
+        }
+        input {
+          width: vw(300px);
+          height: vw(44px);
+          border-radius: vw(6px);
+          border: 1px solid $MAIN;
+          color: $GRAY-40;
+          padding-left: vw(16px);
+          margin-bottom: vw(6px);
+        }
+        input:focus {
+          border: 1px solid $MAIN;
+          box-shadow: 0 0 5px $MAIN;
+        }
+        &_check {
+          height: vw(18px);
+          color: $RED;
+        }
+      }
+      &_email {
+        &_btn {
+          width: vw(300px);
+          height: vw(44px);
+          color: $WHITE;
+          background-color: $GRAY-DB;
+          margin: vw(4px) 0 vw(6px);
+          border-radius: vw(6px);
+        }
+        &_cert {
+          width: vw(300px);
+          height: vw(110px);
+          margin: vw(14px) 0 vw(14px);
+          padding: vw(14px);
+          color: $GRAY-67;
+          background-color: $GRAY-DB;
+          border-radius: vw(4px);
+          input {
+            width: vw(272px);
+            margin: vw(6px) 0 vw(6px);
+            border-radius: vw(4px);
+            background-color: $WHITE;
+            color: $GRAY-40;
+          }
+          &_resend {
+            color: $GRAY-67;
+            &_btn {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+    &_btn {
+      width: vw(300px);
+      height: vw(52px);
+      color: $WHITE;
+      background-color: $MAIN;
+      margin: vw(24px) 0 vw(24px);
+      border-radius: vw(6px);
+    }
+    &_ask {
+      color: $GRAY-76;
+      width: vw(160px);
+    }
+  }

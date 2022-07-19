@@ -33,7 +33,7 @@ function Login() {
 
         <div className="login_text notoReg fs-14 flex justify-space-between">
           <Link to="/">ID 찾기</Link>
-          <Link to="/">회원가입</Link>
+          <Link to="/join">회원가입</Link>
         </div>
         <div className="divide" />
         <div className="login_social_txt notoMid fs-12 flex align-center justify-center">
