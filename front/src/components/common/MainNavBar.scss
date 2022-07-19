@@ -1,45 +1,39 @@
-// #MainNavBar{
-//     // width : 100%;
-//     width: 1440px;
-//     height : vw(100px);
-//     justify-content: space-between;
-
-
-//     .container{
-//         // width :
-//         color : $GRAY-67;
-
-//         .left_nav{
-//             a{
-//                 margin-right : vw(40px);
-//             }
-
-//         } 
-//     }
-
-// }
 .wrapper {
-    justify-content: center;
+  justify-content: center;
 }
 
 #MainNavBar {
-    width: 1440px;
-    background-color: red;
-    justify-content: space-between;
-    padding : 0 vw(135px);
-    align-items: center;
+  width: 1440px;
+  height: vw(100px);
+  padding: 0 vw(135px);
+  box-shadow: 0 vw(2px) 0 rgba(211, 211, 211, 0.25);
+  justify-content: space-between;
+  color: $GRAY-67;
 
-    .left_nav {
-        &__link {
-            width: 100px;
-            height: 100px;
+  .logo {
+    width: vw(129px);
+    height: vw(30px);
+    margin-right: vw(56px);
+  }
 
-            .logo {
-                width: vw(129px);
-                height: vw(30px);
-                margin : 0 vw(56px) 0 vw(4px);
-            }
-        }
+  .left_nav {
+    &__link + .left_nav__link {
+      //   align-items: center;
+      margin-right: vw(40px);
     }
 
+    .btn--active {
+      color: $MAIN;
+    }
+
+    .btn--unactive {
+      color: $GRAY-67;
+    }
+  }
+
+  .right_nav {
+    &__link {
+      margin-left: vw(24px);
+    }
+  }
 }

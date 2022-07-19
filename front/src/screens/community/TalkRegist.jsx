@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./TalkRegist.scss";
 import camera from "@images/logo/logo_icon_green.svg";
+// import CommunityNavBar from "@components/community/CommunityNavBar";
 
 function TalkRegist() {
   const nameCount = "0/30";
   return (
     <div className="container flex">
+      {/* <CommunityNavBar /> */}
       <div className="regist">
         <div className="regist_title notoBold fs-32">글 등록하기</div>
         <div className="regist_img flex justify-center">
