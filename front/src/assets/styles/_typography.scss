@@ -18,6 +18,7 @@
 }
 .fs-16 {
   font-size: vw(16px);
+  line-height: vw(23px);
 }
 .fs-17 {
   font-size: vw(17px);
@@ -27,6 +28,7 @@
 }
 .fs-20 {
   font-size: vw(20px);
+  line-height: vw(29px);
 }
 .fs-22 {
   font-size: vw(22px);
@@ -37,6 +39,10 @@
 .fs-28 {
   font-size: vw(28px);
 }
+.fs-30 {
+  font-size: vw(30px);
+  line-height: vw(43px);
+}
 .fs-32 {
   font-size: vw(32px);
 }
@@ -45,6 +51,10 @@
 }
 .fs-40 {
   font-size: vw(40px);
+}
+.fs-52 {
+  font-size: vw(52px);
+  line-height: vw(75px);
 }
 .fs-60 {
   font-size: vw(60px);
@@ -115,6 +125,7 @@
   }
   .fs-16 {
     font-size: vw-t(16px);
+    line-height: vw-t(23px);
   }
   .fs-17 {
     font-size: vw-t(17px);
@@ -124,6 +135,7 @@
   }
   .fs-20 {
     font-size: vw-t(20px);
+    line-height: vw(29px);
   }
   .fs-22 {
     font-size: vw-t(22px);
@@ -134,6 +146,10 @@
   .fs-28 {
     font-size: vw-t(28px);
   }
+  .fs-30 {
+    font-size: vw(30px);
+    line-height: vw(43px);
+  }
   .fs-32 {
     font-size: vw-t(32px);
   }
@@ -142,6 +158,10 @@
   }
   .fs-40 {
     font-size: vw-t(40px);
+  }
+  .fs-52 {
+    font-size: vw(52px);
+    line-height: vw(75px);
   }
   .fs-60 {
     font-size: vw-t(60px);
@@ -168,6 +188,7 @@
   }
   .fs-16 {
     font-size: vw-p(16px);
+    line-height: vw-p(23px);
   }
   .fs-17 {
     font-size: vw-p(17px);
@@ -177,6 +198,7 @@
   }
   .fs-20 {
     font-size: vw-p(20px);
+    line-height: vw(29px);
   }
   .fs-22 {
     font-size: vw-p(22px);
@@ -187,6 +209,10 @@
   .fs-28 {
     font-size: vw-p(28px);
   }
+  .fs-30 {
+    font-size: vw(30px);
+    line-height: vw(43px);
+  }
   .fs-32 {
     font-size: vw-p(32px);
   }
@@ -195,6 +221,10 @@
   }
   .fs-40 {
     font-size: vw-p(40px);
+  }
+  .fs-52 {
+    font-size: vw(52px);
+    line-height: vw(75px);
   }
   .fs-60 {
     font-size: vw-p(60px);
