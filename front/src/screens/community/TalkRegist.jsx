@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
-function TalkRegist (){
-    return (
-        <>TalkRegist PUBLISHING</>
-    )
+function TalkRegist() {
+  return <>TalkRegist PUBLISHING</>;
 }
 
 export default TalkRegist;
