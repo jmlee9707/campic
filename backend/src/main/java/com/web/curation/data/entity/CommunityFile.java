@@ -29,4 +29,7 @@ public class CommunityFile {
 
     @Column(nullable = false)
     private String fileSize;
+
+    @Column(nullable = false)
+    private String saveName;
 }
