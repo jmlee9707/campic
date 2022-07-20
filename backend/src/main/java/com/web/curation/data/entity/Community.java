@@ -12,7 +12,9 @@ import java.time.LocalDateTime;
 public class Community {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int boardId;
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
     private LocalDateTime uploadDate;
 
     @Column(nullable = false)
@@ -23,4 +25,7 @@ public class Community {
     private int click;
     @Column(nullable = false)
     private int dType;
+
+
+
 }

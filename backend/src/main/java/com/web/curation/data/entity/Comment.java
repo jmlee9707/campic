@@ -14,9 +14,13 @@ public class Comment {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int commentId;
 
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
-    private int boardId;
+    @ManyToOne
+    @JoinColumn(name = "boardId")
+    private Community community;
 
     @Column(nullable = false)
     private LocalDateTime uploadDate;
@@ -29,4 +33,6 @@ public class Comment {
 
     @Column(nullable = false)
     private int bundle;
+
+
 }

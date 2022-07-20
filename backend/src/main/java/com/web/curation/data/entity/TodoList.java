@@ -11,11 +11,16 @@ import javax.persistence.*;
 public class TodoList {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int todoId;
-    private int saveId;
-    private int userId;
+
+    @ManyToOne
+    @JoinColumn(name = "saveId")
+    private LikedCampList likedCampList;
+
     @Column(nullable = false)
     private String task;
 
     @Column(nullable = false)
     private boolean done;
+
+
 }

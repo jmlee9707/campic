@@ -14,9 +14,9 @@ public class CommunityFile {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int fileId;
 
-    private int boardId;
-
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "boardId")
+    private Community community;
 
     @Column(nullable = false)
     private String name;
@@ -32,4 +32,6 @@ public class CommunityFile {
 
     @Column(nullable = false)
     private String saveName;
+
+
 }

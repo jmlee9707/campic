@@ -8,17 +8,13 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class CampTag {
+public class CommunityTag {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int tagId;
 
-//    private int campId;
     @ManyToOne
-    @JoinColumn(name = "campId")
-    private TotalCampList totalCampList;
+    @JoinColumn(name = "boardId")
+    private Community community;
 
-    @Column(nullable = false)
-    private String hashtag;
-
-
+    private String tagWord;
 }
