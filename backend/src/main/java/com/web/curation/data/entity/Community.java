@@ -21,5 +21,6 @@ public class Community {
     @Column(nullable = false)
     private String content;
     private int click;
+    @Column(nullable = false)
     private int dType;
 }
