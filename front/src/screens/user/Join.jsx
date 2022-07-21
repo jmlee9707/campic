@@ -126,7 +126,9 @@ function Join() {
         </button>
         <div className="join_ask notoMid fs-12 flex justify-space-between">
           이미 계정이 있으신가요?
-          <Link to="/login">로그인</Link>
+          <div className="join_ask_login">
+            <Link to="/login">로그인</Link>
+          </div>
         </div>
       </div>
     </div>

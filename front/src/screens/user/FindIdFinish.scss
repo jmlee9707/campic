@@ -1,0 +1,43 @@
+.container {
+  justify-content: center;
+}
+
+.findidfin {
+  width: vw(350px);
+  //   background-color: $KAKAO-YELLOW;
+  align-items: center;
+  flex-direction: column;
+  &_img {
+    margin: vw(212px) 0 vw(28px) 0;
+    &_checkbox {
+      height: vw(48px);
+      width: vw(48px);
+    }
+  }
+  &_remind {
+    height: vw(40px);
+    padding: vw(6px);
+    color: $GRAY-40;
+  }
+  &_info {
+    margin: vw(46px) 0 vw(46px) 0;
+    color: $GRAY-76;
+    width: vw(240px);
+    height: vw(70px);
+    flex-direction: column;
+    &_email {
+      color: $GRAY-4A;
+    }
+  }
+  &_pw_btn {
+    width: vw(300px);
+    height: vw(52px);
+    color: $WHITE;
+    background-color: $MAIN;
+    border-radius: vw(4px);
+  }
+
+  &_pw_btn:hover {
+    box-shadow: 0px 0px 5px $MAIN;
+  }
+}
