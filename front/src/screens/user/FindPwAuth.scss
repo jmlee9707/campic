@@ -1,0 +1,70 @@
+.container {
+  justify-content: center;
+}
+.findpwauth {
+  width: vw(300px);
+  flex-direction: column;
+  .divide {
+    width: 100%;
+    height: vw(1px);
+    background-color: $GRAY-F3;
+    margin-bottom: vw(40px);
+  }
+  &_title {
+    color: $GRAY-40;
+    margin: vw(176px) 0 vw(16px);
+  }
+  &_sub1,
+  &_sub2 {
+    color: $GRAY-67;
+    margin-bottom: vw(4px);
+  }
+  &_email {
+    &_title,
+    input {
+      margin-bottom: vw(12px);
+    }
+    &_title {
+      color: $GRAY-67;
+      margin-top: vw(42px);
+    }
+    input {
+      width: vw(300px);
+      height: vw(44px);
+      border-radius: vw(6px);
+      border: 1px solid $MAIN;
+      color: $GRAY-40;
+      padding-left: vw(16px);
+    }
+    input:focus {
+      border: 1px solid $MAIN;
+      box-shadow: 0 0 5px $MAIN;
+    }
+  }
+  &_btn {
+    width: vw(300px);
+    height: vw(52px);
+    color: $WHITE;
+    background-color: $MAIN;
+    margin: vw(43px) 0 vw(24px);
+    border-radius: vw(6px);
+  }
+  &_btn:hover {
+    box-shadow: 0px 0px 5px $MAIN;
+  }
+  &_ask {
+    color: $GRAY-67;
+    margin-bottom: vw(32px);
+    &_resend {
+      text-decoration: underline;
+      height: vw(18px);
+    }
+  }
+  &_alert {
+    color: $GRAY-76;
+    &_sub2, &_sub3 {
+      margin-top: vw(20px);
+    }
+  }
+
+}

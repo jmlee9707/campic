@@ -1,0 +1,83 @@
+.container {
+  justify-content: center;
+  // align-items: center;
+}
+.login {
+  width: vw(350px);
+  // background-color: $KAKAO-YELLOW;
+  align-items: center;
+  flex-direction: column;
+
+  .divide {
+    width: 100%;
+    height: vw(1px);
+    background-color: $GRAY-E4;
+  }
+
+  &_title {
+    margin: vw(187px) 0 vw(44px) 0;
+    &_logo {
+      height: vw(45px);
+      width: vw(196px);
+    }
+  }
+  &_input {
+    flex-direction: column;
+    input {
+      width: vw(300px);
+      height: vw(48px);
+      border-radius: vw(6px);
+      border: 1px solid $MAIN;
+      color: $GRAY-40;
+      margin-bottom: vw(12px);
+      padding-left: vw(20px);
+    }
+    input:focus {
+      border: 1px solid $MAIN;
+      box-shadow: 0 0 5px $MAIN;
+    }
+  }
+  &_btn {
+    width: vw(300px);
+    height: vw(52px);
+    color: $WHITE;
+    background-color: $MAIN;
+    margin: vw(23px) 0 vw(25px);
+    border-radius: vw(4px);
+  }
+  &_text {
+    width: vw(132px);
+    height: vw(20px);
+    color: $GRAY-76;
+    margin-bottom: vw(38px);
+    text-decoration: underline;
+  }
+  &_social {
+    &_line {
+      height: vw(1px);
+      color: $GRAY-F3;
+      width: vw(350px);
+      margin-bottom: vw(28px);
+    }
+    &_txt {
+      height: vw(20px);
+      color: $GRAY-67;
+      width: vw(180px);
+      margin: vw(28px) 0 vw(24px) 0;
+    }
+
+    &_icon_naver,
+    &_icon_kakao,
+    &_icon_google {
+      margin: 0 vw(8px) 0 vw(8px);
+      img {
+        width: vw(48px);
+        height: vw(48px);
+      }
+    }
+
+    &_icons {
+      justify-content: space-between;
+    }
+  }
+}

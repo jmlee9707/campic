@@ -3,9 +3,20 @@ import { Route, Routes } from "react-router-dom";
 import MainNavBar from "@components/common/MainNavBar";
 
 import Home from "@screens/Home";
-import Login from "@screens/Login";
-import Join from "@screens/Join";
-import JoinFinish from "@screens/JoinFinish";
+
+// user
+import Login from "@screens/user/Login";
+import Join from "@screens/user/Join";
+import JoinFinish from "@screens/user/JoinFinish";
+import FindId from "@screens/user/FindId";
+import FindIdFinish from "@screens/user/FindIdFinish";
+import FindPw from "@screens/user/FindPw";
+import FindPwAuth from "@screens/user/FindPwAuth";
+import FindPwCh from "@screens/user/FindPwCh";
+
+// mypage
+import Drop from "@screens/mypage/Drop";
+import DropFinish from "@screens/mypage/DropFinish";
 
 // community
 import CommunityMain from "@screens/community/CommunityMain";
@@ -28,6 +39,23 @@ function Router() {
         <Route path="/join/*">
           <Route index element={<Join />} />
           <Route path="finish" element={<JoinFinish />} />
+        </Route>
+
+        {/* find ID/PW  */}
+        <Route path="/findid/*">
+          <Route index element={<FindId />} />
+          <Route path="finish" element={<FindIdFinish />} />
+        </Route>
+        <Route path="/findpw/*">
+          <Route index element={<FindPw />} />
+          <Route path="auth" element={<FindPwAuth />} />
+          <Route path="ch" element={<FindPwCh />} />
+        </Route>
+
+        {/* Drop */}
+        <Route path="/drop/*">
+          <Route index element={<Drop />} />
+          <Route path="finish" element={<DropFinish />} />
         </Route>
 
         {/* community */}

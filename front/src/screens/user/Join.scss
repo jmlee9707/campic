@@ -106,8 +106,15 @@
     margin: vw(24px) 0 vw(24px);
     border-radius: vw(6px);
   }
+  &_btn:hover {
+    box-shadow: 0px 0px 5px $MAIN;
+  }
   &_ask {
     color: $GRAY-76;
     width: vw(160px);
+    margin-bottom: vw(20px);
+    &_login {
+      text-decoration: underline;
+    }
   }
 }
