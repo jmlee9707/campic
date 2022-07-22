@@ -10,9 +10,12 @@ public interface MemberService {
 
     UserDto userInfo(String email);
 
-    boolean updateUser(UserDto userDto);
     boolean deleteUser(String email);
 
+    boolean updateUser(UserDto userDto);
+
     boolean updatePsssword(String email, String password);
+
+    boolean checkPassword(String email, String password);
 
 }
