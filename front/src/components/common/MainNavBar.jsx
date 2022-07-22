@@ -20,7 +20,7 @@ function MainNavBar() {
           </Link>
           <NavLink
             className={({ isActive }) => activeClassName(isActive)}
-            to="/login"
+            to="/camping"
           >
             캠핑장
           </NavLink>

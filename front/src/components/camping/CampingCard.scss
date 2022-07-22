@@ -1,0 +1,228 @@
+.card {
+  margin-top: (48px);
+  width: (1170px);
+
+  &_img {
+    margin-bottom: (40px);
+    width: (1170px);
+    height: (483px);
+    &_cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: (20px);
+      border: none;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &_info {
+    justify-content: space-between;
+    padding-bottom: (53px);
+
+    &_txt {
+      &_name {
+        color: $GRAY-40;
+        margin-bottom: (12px);
+      }
+
+      &_place {
+        &_icon {
+          margin-right: (8px);
+
+          width: (30px);
+          height: (30px);
+        }
+        &_text {
+          color: $GRAY-67;
+        }
+      }
+    }
+
+    &_btn {
+      &_plan,
+      &_move {
+        width: (182px);
+        height: (50px);
+        border-radius: (15px);
+        border: (1px) solid $MAIN;
+        margin-left: (20px);
+        box-shadow: 0 0 (5px) $MAIN;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      &_plan {
+        color: $MAIN;
+      }
+      &_move {
+        background-color: $MAIN;
+        color: $WHITE;
+      }
+    }
+  }
+
+  .divide {
+    width: 100%;
+    height: (1px);
+    background-color: $GRAY-E4;
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .card {
+    margin-top: vw(48px);
+    width: vw(1170px);
+
+    &_img {
+      margin-bottom: vw(40px);
+      width: vw(1170px);
+      height: vw(483px);
+      &_cover {
+        border-radius: vw(20px);
+      }
+    }
+
+    &_info {
+      padding-bottom: vw(53px);
+
+      &_txt {
+        &_name {
+          margin-bottom: vw(12px);
+        }
+
+        &_place {
+          &_icon {
+            margin-right: vw(8px);
+
+            width: vw(30px);
+            height: vw(30px);
+          }
+        }
+      }
+
+      &_btn {
+        &_plan,
+        &_move {
+          width: vw(182px);
+          height: vw(50px);
+          border-radius: vw(15px);
+          border: vw(1px) solid $MAIN;
+          margin-left: vw(20px);
+          box-shadow: 0 0 vw(5px) $MAIN;
+        }
+      }
+    }
+
+    .divide {
+      width: 100%;
+      height: vw(1px);
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .card {
+    margin-top: vw-t(48px);
+    width: vw-t(1170px);
+
+    &_img {
+      margin-bottom: vw-t(40px);
+      width: vw-t(1170px);
+      height: vw-t(483px);
+      &_cover {
+        border-radius: vw-t(20px);
+      }
+    }
+
+    &_info {
+      padding-bottom: vw-t(53px);
+
+      &_txt {
+        &_name {
+          margin-bottom: vw-t(12px);
+        }
+
+        &_place {
+          &_icon {
+            margin-right: vw-t(8px);
+
+            width: vw-t(30px);
+            height: vw-t(30px);
+          }
+        }
+      }
+
+      &_btn {
+        &_plan,
+        &_move {
+          width: vw-t(182px);
+          height: vw-t(50px);
+          border-radius: vw-t(15px);
+          border: vw-t(1px) solid $MAIN;
+          margin-left: vw-t(20px);
+          box-shadow: 0 0 vw-t(5px) $MAIN;
+        }
+      }
+    }
+
+    .divide {
+      width: 100%;
+      height: vw-t(1px);
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .card {
+    margin-top: vw-p(48px);
+    width: vw-p(1170px);
+
+    &_img {
+      margin-bottom: vw-p(40px);
+      width: vw-p(1170px);
+      height: vw-p(483px);
+      &_cover {
+        border-radius: vw-p(20px);
+      }
+    }
+
+    &_info {
+      padding-bottom: vw-p(53px);
+
+      &_txt {
+        &_name {
+          margin-bottom: vw-p(12px);
+        }
+
+        &_place {
+          &_icon {
+            margin-right: vw-p(8px);
+
+            width: vw-p(30px);
+            height: vw-p(30px);
+          }
+        }
+      }
+
+      &_btn {
+        &_plan,
+        &_move {
+          width: vw-p(182px);
+          height: vw-p(50px);
+          border-radius: vw-p(15px);
+          border: vw-p(1px) solid $MAIN;
+          margin-left: vw-p(20px);
+          box-shadow: 0 0 vw-p(5px) $MAIN;
+        }
+      }
+
+      .divide {
+        height: vw-p(1px);
+      }
+    }
+  }
+}
