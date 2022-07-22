@@ -40,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
         User user = new User();
 
         if (role.equalsIgnoreCase("admin")) {
-            user.setUserName(registerUser.getUserName());
+            user.setName(registerUser.getUserName());
             user.setEmail(registerUser.getEmail());
             user.setNickname(registerUser.getNickname());
             user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
@@ -50,7 +50,7 @@ public class MemberServiceImpl implements MemberService {
             user.setJoinDate(LocalDateTime.now());
             user.setRoleType(RoleType.ADMIN);
         } else {
-            user.setUserName(registerUser.getUserName());
+            user.setName(registerUser.getUserName());
             user.setEmail(registerUser.getEmail());
             user.setNickname(registerUser.getNickname());
             user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
@@ -80,7 +80,7 @@ public class MemberServiceImpl implements MemberService {
 
         User user = userRepository.getByEmail(loginUser.getEmail());
         LOGGER.info("[getSignInResult] Id : {}", loginUser.getEmail());
-
+        
         LOGGER.info("[getSignInResult] 패스워드 비교 수행");
         if (!passwordEncoder.matches(loginUser.getPassword(), user.getPassword())) {
             throw new RuntimeException();
@@ -104,7 +104,7 @@ public class MemberServiceImpl implements MemberService {
         userDto.setUserName(user.getUsername());
         userDto.setEmail(user.getEmail());
         userDto.setNickname(user.getNickname());
-//        userDto.setPassword(user.getPassword()); ==> 이 값은 여기서 안줘되 될거 같음
+//        userDto.setPassword(user.getPassword()); ==> 이 값은 여기서 안줘도 될거 같음
         userDto.setTel(user.getTel());
         userDto.setBirth(user.getBirth());
         userDto.setProfileImg(user.getProfileImg());
@@ -114,21 +114,57 @@ public class MemberServiceImpl implements MemberService {
         return userDto;
     }
 
-    // 회원정보 수정
-    @Override
-   public boolean updateUser(UserDto userDto) {
-        return false;
-    }
-
     // 회원 탈퇴
     @Override
     public boolean deleteUser(String email) {
+
+        User user = userRepository.getByEmail(email);
+        userRepository.delete(user);
+
+        User check = userRepository.getByEmail(email);
+        if(check == null) return true;
+        else return false;
+
+    }
+
+    // 회원정보 수정
+    @Override
+   public boolean updateUser(UserDto userDto) {
+
+        User user = userRepository.getByEmail(userDto.getEmail());
+
+        user.setNickname(userDto.getNickname());
+        user.setTel(userDto.getTel());
+        user.setBirth(userDto.getBirth());
+        user.setProfileImg(userDto.getProfileImg());
+
+        userRepository.save(user);
+
+        if(user.getNickname() == userDto.getNickname() && user.getTel() == userDto.getTel()
+                && user.getBirth() == userDto.getBirth() && user.getProfileImg() == userDto.getProfileImg()){
+            return true;
+        }
         return false;
+
     }
 
     // 비밀번호 변경
     @Override
     public boolean updatePsssword(String email, String password) {
-        return false;
+        User user = userRepository.getByEmail(email);
+        user.setPassword(passwordEncoder.encode(password));
+
+        userRepository.save(user);
+        if(passwordEncoder.matches(password, user.getPassword())) return true;
+        else return false;
+    }
+
+    // 비밀번호 맞는지 확인
+    @Override
+    public boolean checkPassword(String email, String password) {
+        User user = userRepository.getByEmail(email);
+
+        if(passwordEncoder.matches(password, user.getPassword())) return true;
+        else return false;
     }
 }
