@@ -2,61 +2,244 @@
   justify-content: center;
 }
 .findid {
-  width: vw(300px);
+  width: (300px);
   flex-direction: column;
   &_title {
     color: $GRAY-40;
-    margin: vw(176px) 0 vw(16px);
+    margin: (176px) 0 (16px);
   }
   &_sub1,
   &_sub2 {
     color: $GRAY-67;
-    margin-bottom: vw(4px);
+    margin-bottom: (4px);
   }
   &_phone {
     &_title,
     &_check,
     input {
-      margin-bottom: vw(12px);
+      margin-bottom: (12px);
     }
     &_title {
       color: $GRAY-67;
-      margin-top: vw(42px);
+      margin-top: (42px);
     }
     input {
-      width: vw(300px);
-      height: vw(44px);
-      border-radius: vw(6px);
-      border: 1px solid $MAIN;
+      width: (300px);
+      height: (44px);
+      border-radius: (6px);
+      border: (1px) solid $MAIN;
       color: $GRAY-40;
-      padding-left: vw(16px);
-      margin-bottom: vw(6px);
+      padding-left: (16px);
+      margin-bottom: (6px);
     }
     input:focus {
-      border: 1px solid $MAIN;
-      box-shadow: 0 0 5px $MAIN;
+      border: (1px) solid $MAIN;
+      box-shadow: 0 0 (5px) $MAIN;
     }
     &_check {
       color: $RED;
     }
   }
   &_btn {
-    width: vw(300px);
-    height: vw(52px);
+    width: (300px);
+    height: (52px);
     color: $WHITE;
     background-color: $MAIN;
-    margin: vw(14px) 0 vw(24px);
-    border-radius: vw(6px);
+    margin: (14px) 0 (24px);
+    border-radius: (6px);
   }
   &_btn:hover {
-    box-shadow: 0px 0px 5px $MAIN;
+    box-shadow: 0 0 (5px) $MAIN;
   }
   &_ask {
     color: $GRAY-67;
-    margin-bottom: vw(20px);
+    margin-bottom: (20px);
     &_login {
-      margin-left: vw(6px);
+      margin-left: (6px);
       text-decoration: underline;
     }
   }
+}
+@media screen and (max-width: $DESKTOP-VW) {
+  .findid {
+    width: vw(300px);
+    flex-direction: column;
+    &_title {
+      color: $GRAY-40;
+      margin: vw(176px) 0 vw(16px);
+    }
+    &_sub1,
+    &_sub2 {
+      color: $GRAY-67;
+      margin-bottom: vw(4px);
+    }
+    &_phone {
+      &_title,
+      &_check,
+      input {
+        margin-bottom: vw(12px);
+      }
+      &_title {
+        color: $GRAY-67;
+        margin-top: vw(42px);
+      }
+      input {
+        width: vw(300px);
+        height: vw(44px);
+        border-radius: vw(6px);
+        border: vw(1px) solid $MAIN;
+        color: $GRAY-40;
+        padding-left: vw(16px);
+        margin-bottom: vw(6px);
+      }
+      input:focus {
+        border: vw(1px) solid $MAIN;
+        box-shadow: 0 0 vw(5px) $MAIN;
+      }
+      &_check {
+        color: $RED;
+      }
+    }
+    &_btn {
+      width: vw(300px);
+      height: vw(52px);
+      color: $WHITE;
+      background-color: $MAIN;
+      margin: vw(14px) 0 vw(24px);
+      border-radius: vw(6px);
+    }
+    &_btn:hover {
+      box-shadow: 0 0 vw(5px) $MAIN;
+    }
+    &_ask {
+      color: $GRAY-67;
+      margin-bottom: vw(20px);
+      &_login {
+        margin-left: vw(6px);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+@media screen and (max-width: $TABLET-VW) {
+  .findid {
+    width: vw-t(300px);
+    flex-direction: column;
+    &_title {
+      color: $GRAY-40;
+      margin: vw-t(176px) 0 vw-t(16px);
+    }
+    &_sub1,
+    &_sub2 {
+      color: $GRAY-67;
+      margin-bottom: vw-t(4px);
+    }
+    &_phone {
+      &_title,
+      &_check,
+      input {
+        margin-bottom: vw-t(12px);
+      }
+      &_title {
+        color: $GRAY-67;
+        margin-top: vw-t(42px);
+      }
+      input {
+        width: vw-t(300px);
+        height: vw-t(44px);
+        border-radius: vw-t(6px);
+        border: vw-t(1px) solid $MAIN;
+        color: $GRAY-40;
+        padding-left: vw-t(16px);
+        margin-bottom: vw-t(6px);
+      }
+      input:focus {
+        border: vw-t(1px) solid $MAIN;
+        box-shadow: 0 0 vw-t(5px) $MAIN;
+      }
+      &_check {
+        color: $RED;
+      }
+    }
+    &_btn {
+      width: vw-t(300px);
+      height: vw-t(52px);
+      color: $WHITE;
+      background-color: $MAIN;
+      margin: vw-t(14px) 0 vw-t(24px);
+      border-radius: vw-t(6px);
+    }
+    &_btn:hover {
+      box-shadow: 0 0 vw-t(5px) $MAIN;
+    }
+    &_ask {
+      color: $GRAY-67;
+      margin-bottom: vw-t(20px);
+      &_login {
+        margin-left: vw-t(6px);
+        text-decoration: underline;
+      }
+    }
+  }  
+}
+@media screen and (max-width: $PHONE-VW) {
+  .findid {
+    width: vw-p(300px);
+    flex-direction: column;
+    &_title {
+      color: $GRAY-40;
+      margin: vw-p(176px) 0 vw-p(16px);
+    }
+    &_sub1,
+    &_sub2 {
+      color: $GRAY-67;
+      margin-bottom: vw-p(4px);
+    }
+    &_phone {
+      &_title,
+      &_check,
+      input {
+        margin-bottom: vw-p(12px);
+      }
+      &_title {
+        color: $GRAY-67;
+        margin-top: vw-p(42px);
+      }
+      input {
+        width: vw-p(300px);
+        height: vw-p(44px);
+        border-radius: vw-p(6px);
+        border: vw-p(1px) solid $MAIN;
+        color: $GRAY-40;
+        padding-left: vw-p(16px);
+        margin-bottom: vw-p(6px);
+      }
+      input:focus {
+        border: vw-p(1px) solid $MAIN;
+        box-shadow: 0 0 vw-p(5px) $MAIN;
+      }
+      &_check {
+        color: $RED;
+      }
+    }
+    &_btn {
+      width: vw-p(300px);
+      height: vw-p(52px);
+      color: $WHITE;
+      background-color: $MAIN;
+      margin: vw-p(14px) 0 vw-p(24px);
+      border-radius: vw-p(6px);
+    }
+    &_btn:hover {
+      box-shadow: 0 0 vw-p(5px) $MAIN;
+    }
+    &_ask {
+      color: $GRAY-67;
+      margin-bottom: vw-p(20px);
+      &_login {
+        margin-left: vw-p(6px);
+        text-decoration: underline;
+      }
+    }
+  }  
 }
