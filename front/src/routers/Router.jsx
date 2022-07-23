@@ -17,6 +17,9 @@ import FindPwCh from "@screens/user/FindPwCh";
 // mypage
 import Drop from "@screens/mypage/Drop";
 import DropFinish from "@screens/mypage/DropFinish";
+import InfoEdit from "@screens/mypage/InfoEdit";
+import PwCh from "@screens/mypage/PwCh";
+import PwEdit from "@screens/mypage/PwEdit";
 
 // community
 import CommunityMain from "@screens/community/CommunityMain";
@@ -56,6 +59,13 @@ function Router() {
           <Route index element={<FindPw />} />
           <Route path="auth" element={<FindPwAuth />} />
           <Route path="ch" element={<FindPwCh />} />
+        </Route>
+
+        {/* info edit */}
+        <Route path="/infoedit/*">
+          <Route index element={<InfoEdit />} />
+          <Route path="pwch" element={<PwCh />} />
+          <Route path="pwedit" element={<PwEdit />} />
         </Route>
 
         {/* Drop */}
