@@ -20,36 +20,39 @@ function CampingCard() {
   };
 
   return (
-    <div className="card flex column">
-      <div className="card_img">
-        <img className="card_img_cover" src={coverImg} alt="coverImg" />
+    <div className="camping_card flex column">
+      <div className="camping_card_img">
+        <img className="camping_card_img_cover" src={coverImg} alt="coverImg" />
       </div>
 
-      <div className="card_info flex align-center">
-        <div className="card_info_txt">
-          <p className="card_info_txt_name notoBold fs-30">{name}</p>
-          <div className="card_info_txt_place flex align-center">
+      <div className="camping_card_info flex align-center">
+        <div className="camping_card_info_txt">
+          <p className="camping_card_info_txt_name notoBold fs-30">{name}</p>
+          <div className="camping_card_info_txt_place flex align-center">
             <Link to="/">
               <img
                 src={placeIcon}
                 alt="icon"
-                className="card_info_txt_place_icon"
+                className="camping_card_info_txt_place_icon"
                 type="button"
               />
             </Link>
-            <div className="card_info_txt_place_text notoMid fs-22">
+            <div className="camping_card_info_txt_place_text notoMid fs-22">
               {place}
             </div>
           </div>
         </div>
 
-        <div className="card_info_btn">
-          <button type="button" className="card_info_btn_plan notoBold fs-20">
+        <div className="camping_card_info_btn">
+          <button
+            type="button"
+            className="camping_card_info_btn_plan notoBold fs-20"
+          >
             일정에 추가하기
           </button>
           <button
             type="button"
-            className="card_info_btn_move notoBold fs-20"
+            className="camping_card_info_btn_move notoBold fs-20"
             onClick={moveSite}
           >
             사이트 바로가기
@@ -62,7 +65,7 @@ function CampingCard() {
   );
 }
 
-// CampingCard.propTypes = {
+// Campingcamping_Card.propTypes = {
 //   data: PropTypes.obectOf(PropTypes.string).isRequired
 // };
 
