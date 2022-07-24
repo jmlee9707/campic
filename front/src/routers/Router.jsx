@@ -32,6 +32,10 @@ import TalkDetail from "@screens/community/TalkDetail";
 import CampingMain from "@screens/camping/CampingMain";
 import CampingDetail from "@screens/camping/CampingDetail";
 
+// plan
+import PlanMain from "@screens/plan/PlanMain";
+import PlanDetail from "@screens/plan/PlanDetail";
+
 function Router() {
   return (
     <>
@@ -86,6 +90,11 @@ function Router() {
         <Route path="/camping/*">
           <Route index element={<CampingMain />} />
           <Route path="detail" element={<CampingDetail />} />
+        </Route>
+
+        <Route path="/plan/*">
+          <Route index element={<PlanMain />} />
+          <Route path="detail" element={<PlanDetail />} />
         </Route>
       </Routes>
     </>

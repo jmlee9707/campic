@@ -4,7 +4,7 @@ import CampingCard from "./CampingCard";
 
 function CampingList() {
   return (
-    <div className="flex justify-center align-center column">
+    <div className="">
       <CampingCard />
       <CampingCard />
       <CampingCard />

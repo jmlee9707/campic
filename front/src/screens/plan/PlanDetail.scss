@@ -1,0 +1,385 @@
+.container {
+  justify-content: center;
+  //   background-color: red;
+}
+
+.plan_detail {
+  width: (1170px);
+  .divide {
+    width: 100%;
+    height: (1px);
+    background-color: $GRAY-E4;
+  }
+  &_title {
+    margin-top: (60px);
+    color: $GRAY-40;
+  }
+  &_days {
+    color: $GRAY-67;
+    background-color: $GRAY-F3;
+    border-radius: (27px);
+    padding: (9px) (28px);
+    margin: (20px) 0 (44px);
+    width: (300px);
+  }
+  &_box {
+    &_right {
+      width: (600px);
+      &_img {
+        width: (570px);
+        height: (480px);
+        overflow: hidden;
+        margin-bottom: (40px);
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      &_campName {
+        margin-bottom: (32px);
+        color: $GRAY-40;
+      }
+      &_address,
+      &_phone {
+        margin-bottom: (12px);
+        color: $GRAY-67;
+      }
+    }
+    &_left {
+      margin-left: (24px);
+      &_title {
+        color: $GRAY-40;
+        margin-bottom: (40px);
+      }
+      &_input {
+        margin-bottom: (44px);
+        input {
+          width: (477px);
+          height: (52px);
+          padding: (14px) (20px);
+          border: (1.5px) solid $MAIN;
+          border-radius: (15px);
+          color: $GRAY-67;
+          margin-right: (16px);
+          &:hover,
+          &:focus {
+            box-shadow: 0px 0px 5px $MAIN;
+          }
+        }
+        button {
+          width: (52px);
+          height: (52px);
+          background-color: $MAIN;
+          border-radius: (15px);
+          img {
+            width: (40px);
+            height: (40px);
+          }
+          &:hover {
+            box-shadow: 0px 0px 5px $MAIN;
+          }
+        }
+      }
+    }
+  }
+}
+
+.todo_box {
+  margin-bottom: (20px);
+  button {
+    width: (42px);
+    height: (42px);
+    border: (2px) solid $GRAY-E4;
+    border-radius: (15px);
+    margin-right: (20px);
+    img {
+      width: (28px);
+      height: (28px);
+    }
+    &:hover {
+      box-shadow: 0px 0px 5px $MAIN;
+    }
+  }
+  div {
+    background-color: $GRAY-F3;
+    border-radius: (12px);
+    padding: (11px) (18px);
+    width: (483px);
+    p {
+      color: $GRAY-61;
+    }
+  }
+}
+@media screen and (max-width: $DESKTOP-VW) {
+  .plan_detail {
+    width: vw(1170px);
+    .divide {
+      height: vw(1px);
+    }
+    &_title {
+      margin-top: vw(60px);
+    }
+    &_days {
+      border-radius: vw(27px);
+      padding: vw(9px) vw(28px);
+      margin: vw(20px) 0 vw(44px);
+      width: vw(300px);
+    }
+    &_box {
+      &_right {
+        width: vw(600px);
+        &_img {
+          width: vw(570px);
+          height: vw(480px);
+          margin-bottom: vw(40px);
+        }
+        &_campName {
+          margin-bottom: vw(32px);
+        }
+        &_address,
+        &_phone {
+          margin-bottom: vw(12px);
+        }
+      }
+      &_left {
+        margin-left: vw(24px);
+        &_title {
+          margin-bottom: vw(40px);
+        }
+        &_input {
+          margin-bottom: vw(44px);
+          input {
+            width: vw(477px);
+            height: vw(52px);
+            padding: vw(14px) vw(20px);
+            border: vw(1.5px) solid $MAIN;
+            border-radius: vw(15px);
+            margin-right: vw(16px);
+            &:hover,
+            &:focus {
+              box-shadow: 0px 0px 5px $MAIN;
+            }
+          }
+          button {
+            width: vw(52px);
+            height: vw(52px);
+            border-radius: vw(15px);
+            img {
+              width: vw(40px);
+              height: vw(40px);
+            }
+            &:hover {
+              box-shadow: 0px 0px 5px $MAIN;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .todo_box {
+    margin-bottom: vw(20px);
+    button {
+      width: vw(42px);
+      height: vw(42px);
+      border: vw(2px) solid $GRAY-E4;
+      border-radius: vw(15px);
+      margin-right: vw(20px);
+      img {
+        width: vw(28px);
+        height: vw(28px);
+      }
+      &:hover {
+        box-shadow: 0px 0px 5px $MAIN;
+      }
+    }
+    div {
+      border-radius: vw(12px);
+      padding: vw(11px) vw(18px);
+      width: vw(483px);
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .plan_detail {
+    width: vw-t(1170px);
+    .divide {
+      height: vw-t(1px);
+    }
+    &_title {
+      margin-top: vw-t(60px);
+    }
+    &_days {
+      border-radius: vw-t(27px);
+      padding: vw-t(9px) vw-t(28px);
+      margin: vw-t(20px) 0 vw-t(44px);
+      width: vw-t(300px);
+    }
+    &_box {
+      &_right {
+        width: vw-t(600px);
+        &_img {
+          width: vw-t(570px);
+          height: vw-t(480px);
+          margin-bottom: vw-t(40px);
+        }
+        &_campName {
+          margin-bottom: vw-t(32px);
+        }
+        &_address,
+        &_phone {
+          margin-bottom: vw-t(12px);
+        }
+      }
+      &_left {
+        margin-left: vw-t(24px);
+        &_title {
+          margin-bottom: vw-t(40px);
+        }
+        &_input {
+          margin-bottom: vw-t(44px);
+          input {
+            width: vw-t(477px);
+            height: vw-t(52px);
+            padding: vw-t(14px) vw-t(20px);
+            border: vw-t(1.5px) solid $MAIN;
+            border-radius: vw-t(15px);
+            margin-right: vw-t(16px);
+            &:hover,
+            &:focus {
+              box-shadow: 0px 0px 5px $MAIN;
+            }
+          }
+          button {
+            width: vw-t(52px);
+            height: vw-t(52px);
+            border-radius: vw-t(15px);
+            img {
+              width: vw-t(40px);
+              height: vw-t(40px);
+            }
+            &:hover {
+              box-shadow: 0px 0px 5px $MAIN;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .todo_box {
+    margin-bottom: vw-t(20px);
+    button {
+      width: vw-t(42px);
+      height: vw-t(42px);
+      border: vw-t(2px) solid $GRAY-E4;
+      border-radius: vw-t(15px);
+      margin-right: vw-t(20px);
+      img {
+        width: vw-t(28px);
+        height: vw-t(28px);
+      }
+      &:hover {
+        box-shadow: 0px 0px 5px $MAIN;
+      }
+    }
+    div {
+      border-radius: vw-t(12px);
+      padding: vw-t(11px) vw-t(18px);
+      width: vw-t(483px);
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .plan_detail {
+    width: vw-p(1170px);
+    .divide {
+      height: vw-p(1px);
+    }
+    &_title {
+      margin-top: vw-p(60px);
+    }
+    &_days {
+      border-radius: vw-p(27px);
+      padding: vw-p(9px) vw-p(28px);
+      margin: vw-p(20px) 0 vw-p(44px);
+      width: vw-p(300px);
+    }
+    &_box {
+      &_right {
+        width: vw-p(600px);
+        &_img {
+          width: vw-p(570px);
+          height: vw-p(480px);
+          margin-bottom: vw-p(40px);
+        }
+        &_campName {
+          margin-bottom: vw-p(32px);
+        }
+        &_address,
+        &_phone {
+          margin-bottom: vw-p(12px);
+        }
+      }
+      &_left {
+        margin-left: vw-p(24px);
+        &_title {
+          margin-bottom: vw-p(40px);
+        }
+        &_input {
+          margin-bottom: vw-p(44px);
+          input {
+            width: vw-p(477px);
+            height: vw-p(52px);
+            padding: vw-p(14px) vw-p(20px);
+            border: vw-p(1.5px) solid $MAIN;
+            border-radius: vw-p(15px);
+            margin-right: vw-p(16px);
+            &:hover,
+            &:focus {
+              box-shadow: 0px 0px 5px $MAIN;
+            }
+          }
+          button {
+            width: vw-p(52px);
+            height: vw-p(52px);
+            border-radius: vw-p(15px);
+            img {
+              width: vw-p(40px);
+              height: vw-p(40px);
+            }
+            &:hover {
+              box-shadow: 0px 0px 5px $MAIN;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .todo_box {
+    margin-bottom: vw-p(20px);
+    button {
+      width: vw-p(42px);
+      height: vw-p(42px);
+      border: vw-p(2px) solid $GRAY-E4;
+      border-radius: vw-p(15px);
+      margin-right: vw-p(20px);
+      img {
+        width: vw-p(28px);
+        height: vw-p(28px);
+      }
+      &:hover {
+        box-shadow: 0px 0px 5px $MAIN;
+      }
+    }
+    div {
+      border-radius: vw-p(12px);
+      padding: vw-p(11px) vw-p(18px);
+      width: vw-p(483px);
+    }
+  }
+}

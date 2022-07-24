@@ -26,7 +26,7 @@ function MainNavBar() {
           </NavLink>
           <NavLink
             className={({ isActive }) => activeClassName(isActive)}
-            to="/board/talk/regist"
+            to="/plan"
           >
             계획하기
           </NavLink>
