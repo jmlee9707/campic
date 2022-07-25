@@ -23,9 +23,15 @@
       border-radius: vw(15px);
       flex-direction: column;
 
-      img {
-        width: vw(70px);
-        height: vw(65px);
+      // img {
+      //   width: vw(70px);
+      //   height: vw(65px);
+        
+      // }
+      .camera{
+        width: vw(84px);
+        height: vw(77px);
+        fill: $GRAY-DB;
       }
 
       &_sub {
@@ -47,6 +53,7 @@
       margin-bottom: vw(6px);
       &_input {
         width: 85%;
+        color: $GRAY-67;
       }
 
       &_count {

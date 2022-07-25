@@ -9,10 +9,16 @@ function CommunityNavBar() {
         <NavLink className="commu_nav__link notoBold fs-16" to="/board">
           커뮤니티홈
         </NavLink>
-        <NavLink className="commu_nav__link notoBold fs-16" to="/photo">
+        <NavLink
+          className="commu_nav__link notoBold fs-16"
+          to="/board/photo/home"
+        >
           PHOTO
         </NavLink>
-        <NavLink className="commu_nav__link notoBold fs-16" to="/talk">
+        <NavLink
+          className="commu_nav__link notoBold fs-16"
+          to="/board/talk/home"
+        >
           TALK
         </NavLink>
       </nav>

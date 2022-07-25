@@ -1,0 +1,75 @@
+.container {
+  justify-content: center;
+}
+
+.picture {
+  // justify-content: center;
+  flex-direction: column;
+  // align-items: center;
+  width: vw(1173px);
+  // height: vw(2153px);
+
+  &_best {
+    margin-top: vw(60px);
+    margin-bottom: vw(90px);
+
+    &_week {
+      color: $GRAY-40;
+      margin-bottom: vw(8px);
+    }
+
+    &_title {
+      color: $GRAY-67;
+      margin-bottom: vw(40px);
+    }
+
+    &_pic {
+      width: vw(1173px);
+      // justify-content: space-between;
+    }
+
+    //   &_img {
+    //     width: vw(270px);
+    //     height: vw(270px);
+
+    //     img {
+    //       border-radius: vw(15px);
+    //       width: 100%;
+    //       height: 100%;
+    //     }
+    //   }
+    // }
+  }
+
+  &_camp {
+    width: vw(1170px);
+
+    &_title {
+      margin-bottom: vw(60px);
+      justify-content: space-between;
+      flex-direction: row;
+
+      &_text {
+        color: $GRAY-40;
+      }
+
+      &_btn {
+        // width: vw(106px);
+        // height: vw(40px);
+        padding: vw(7px) vw(28px);
+        color: $WHITE;
+        background-color: $MAIN;
+        border-radius: vw(17px);
+      }
+    }
+  }
+}
+
+.comp {
+  width: vw(1170px);
+  flex-direction: column;
+  &_thr {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}

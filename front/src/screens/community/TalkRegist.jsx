@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./TalkRegist.scss";
-import camera from "@images/logo/logo_icon_green.svg";
+// import camera from "@images/logo/logo_photo_black.svg";
+import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
 // import CommunityNavBar from "@components/community/CommunityNavBar";
 
 function TalkRegist() {
@@ -14,7 +15,9 @@ function TalkRegist() {
         <div className="regist_img flex justify-center">
           {/* 사진 업로드 박스 */}
           <div className="regist_img_cover flex align-center justify-center">
-            <img src={camera} alt="test" />
+            {/* <img src={camera} alt="camera" /> */}
+            {/* 카메라 로고 컴포넌트화 */}
+            <Camera className="camera" />
             <div className="regist_img_cover_sub fs-20 notoBold">
               커버 사진 업로드
             </div>
@@ -42,7 +45,7 @@ function TalkRegist() {
           />
           <input
             type="text"
-            placeholder="# 태그 입력"
+            placeholder="# 태그입력"
             className="regist_text_content_tag notoReg fs-16"
           />
           <div className="divide" />
