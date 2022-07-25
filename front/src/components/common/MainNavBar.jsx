@@ -20,19 +20,19 @@ function MainNavBar() {
           </Link>
           <NavLink
             className={({ isActive }) => activeClassName(isActive)}
-            to="/login"
+            to="/camping"
           >
             캠핑장
           </NavLink>
           <NavLink
             className={({ isActive }) => activeClassName(isActive)}
-            to="/board/talk/regist"
+            to="/plan"
           >
             계획하기
           </NavLink>
           <NavLink
             className={({ isActive }) => activeClassName(isActive)}
-            to="/board/photo/regist"
+            to="/board"
           >
             커뮤니티
           </NavLink>
@@ -41,7 +41,7 @@ function MainNavBar() {
           <NavLink className="right_nav__link fs-16" to="/login">
             로그인
           </NavLink>
-          <NavLink className="right_nav__link fs-16" to="/join/finish">
+          <NavLink className="right_nav__link fs-16" to="/join">
             회원가입
           </NavLink>
         </nav>
