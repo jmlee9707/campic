@@ -20,12 +20,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    // 암호화에 필요한 PasswordEncoder 를 Bean 등록합니다.
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
-
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.httpBasic().disable() // REST API는 UI를 사용하지 않으므로 기본설정을 비활성화
@@ -38,8 +32,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests() //요청에 대한 권한 체크
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                //.antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/**").permitAll() //그외 나머지 요청은 누구나 접근 가능
 
                 .and()

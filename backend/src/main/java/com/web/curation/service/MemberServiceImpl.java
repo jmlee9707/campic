@@ -19,9 +19,9 @@ public class MemberServiceImpl implements MemberService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(MemberServiceImpl.class);
 
-    public UserRepository userRepository;
-    public JwtTokenProvider jwtTokenProvider;
-    public PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public MemberServiceImpl(UserRepository userRepository, JwtTokenProvider jwtTokenProvider,
@@ -101,7 +101,7 @@ public class MemberServiceImpl implements MemberService {
         UserDto userDto = new UserDto();
         User user = userRepository.getByEmail(email);
 
-        userDto.setUserName(user.getUsername());
+        userDto.setUserName(user.getName());
         userDto.setEmail(user.getEmail());
         userDto.setNickname(user.getNickname());
 //        userDto.setPassword(user.getPassword()); ==> 이 값은 여기서 안줘도 될거 같음
