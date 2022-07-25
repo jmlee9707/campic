@@ -2,7 +2,7 @@ import React from "react";
 import kakao from "@images/icon/kakao.svg";
 import naver from "@images/icon/naver.svg";
 import google from "@images/icon/google.svg";
-import logo from "@images/logo/loco_icon_green.svg";
+import logo from "@images/logo/logo_icon_green.svg";
 import "./Join.scss";
 import { Link } from "react-router-dom";
 
@@ -62,7 +62,12 @@ function Join() {
                   placeholder="인증코드 6자리 입력"
                 />
               </div>
-              <div className="join_input_email_cert_btn fs-14 notoBold flex justify-center align-center" type="button">인증코드 확인</div>
+              <div
+                className="join_input_email_cert_btn fs-14 notoBold flex justify-center align-center"
+                type="button"
+              >
+                인증코드 확인
+              </div>
               <div className="join_input_email_cert_check notoMid fs-12">
                 인증번호가 일치하지 않습니다
               </div>
@@ -128,7 +133,11 @@ function Join() {
             </div>
           </div>
         </div>
-        <button className="join_btn fs-18 notoBold" type="button" onClick={ joinFinish }>
+        <button
+          className="join_btn fs-18 notoBold"
+          type="button"
+          onClick={joinFinish}
+        >
           회원가입 하기
         </button>
         <div className="join_ask notoMid fs-12 flex justify-space-between">

@@ -20,6 +20,7 @@ import DropFinish from "@screens/mypage/DropFinish";
 import InfoEdit from "@screens/mypage/InfoEdit";
 import PwCh from "@screens/mypage/PwCh";
 import PwEdit from "@screens/mypage/PwEdit";
+import MyFeed from "@screens/mypage/MyFeed";
 
 // community
 import CommunityMain from "@screens/community/CommunityMain";

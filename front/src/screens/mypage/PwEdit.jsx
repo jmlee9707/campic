@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "@images/logo/loco_icon_green.svg";
+import logo from "@images/logo/logo_icon_green.svg";
 import "./PwEdit.scss";
 
 function PwEdit() {
@@ -23,13 +23,21 @@ function PwEdit() {
           />
         </div>
         <div id="pwedit3" className="pwedit3">
-          <div className="pwedit3_title notoBold fs-15">새로운 비밀번호 확인</div>
+          <div className="pwedit3_title notoBold fs-15">
+            새로운 비밀번호 확인
+          </div>
           <input
             type="text"
             className="pwedit3_input notoMid fs-14"
             placeholder="비밀번호를 한번더 입력해주세요"
           />
-          <button className="pwedit3_btn notoBold fs-18" type="button" onClick={ pwEdit }>수정 완료</button>
+          <button
+            className="pwedit3_btn notoBold fs-18"
+            type="button"
+            onClick={pwEdit}
+          >
+            수정 완료
+          </button>
         </div>
       </div>
     </div>

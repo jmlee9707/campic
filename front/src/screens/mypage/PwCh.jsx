@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "@images/logo/loco_icon_green.svg";
+import logo from "@images/logo/logo_icon_green.svg";
 import "./PwCh.scss";
 
 function PwCh() {
@@ -21,7 +21,13 @@ function PwCh() {
             className="pwch2_input notoMid fs-14"
             placeholder="본인확인을 위해 비밀번호를 입력하세요"
           />
-          <button className="pwch2_btn notoBold fs-18" type="button" onClick={ pwCh }>확인</button>
+          <button
+            className="pwch2_btn notoBold fs-18"
+            type="button"
+            onClick={pwCh}
+          >
+            확인
+          </button>
         </div>
       </div>
     </div>

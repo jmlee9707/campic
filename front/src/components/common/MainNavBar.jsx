@@ -32,7 +32,7 @@ function MainNavBar() {
           </NavLink>
           <NavLink
             className={({ isActive }) => activeClassName(isActive)}
-            to="/board/photo/regist"
+            to="/board"
           >
             커뮤니티
           </NavLink>

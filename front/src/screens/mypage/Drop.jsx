@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "@images/logo/loco_icon_green.svg";
+import logo from "@images/logo/logo_icon_green.svg";
 import "./Drop.scss";
 
 function Drop() {
@@ -18,7 +18,9 @@ function Drop() {
             className="drop2_input notoMid fs-14"
             placeholder="탈퇴를 위해선 비밀번호를 입력하세요"
           />
-          <button className="drop2_btn notoBold fs-18" type="button">탈퇴하기</button>
+          <button className="drop2_btn notoBold fs-18" type="button">
+            탈퇴하기
+          </button>
         </div>
       </div>
     </div>
