@@ -27,6 +27,7 @@ import PhotoRegist from "@screens/community/PhotoRegist";
 import TalkRegist from "@screens/community/TalkRegist";
 import PhotoDetail from "@screens/community/PhotoDetail";
 import TalkDetail from "@screens/community/TalkDetail";
+// import
 
 // camping
 import CampingMain from "@screens/camping/CampingMain";
@@ -86,6 +87,8 @@ function Router() {
           <Route path="talk/regist" element={<TalkRegist />} />
           <Route path="photo/detail/:id" element={<PhotoDetail />} />
           <Route path="talk/detail/:id" element={<TalkDetail />} />
+          {/* <Route path="photo/home" element={<PhotoHome />} /> */}
+          {/* <Route path="talk/home" element={<TalkHome />} /> */}
         </Route>
 
         <Route path="/camping/*">
@@ -96,6 +99,11 @@ function Router() {
         <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail" element={<PlanDetail />} />
+        </Route>
+
+        {/* mypage */}
+        <Route path="/mypage/*">
+          <Route path="myfeed" element={<MyFeed />} />
         </Route>
       </Routes>
     </>
