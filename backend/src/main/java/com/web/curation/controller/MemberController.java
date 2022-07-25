@@ -34,14 +34,14 @@ public class MemberController {
 
     // 회원가입
     @PostMapping("/register")
-    public ResponseEntity<String> registerMember(@RequestBody UserDto registerDto) throws Exception {
+    public ResponseEntity<String> registerMember(@RequestBody UserDto registerDto) {
         LOGGER.debug("registerMember - 호출");
         LOGGER.debug("registerDto.getUsername() : {}", registerDto.getUserName());
 
         if (memberService.register(registerDto)) {
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+            return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
         }
-        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(FAIL, HttpStatus.NO_CONTENT);
     }
 
     // 로그인
@@ -66,7 +66,7 @@ public class MemberController {
             } else {
 
                 resultMap.put("message", FAIL);
-                status = HttpStatus.ACCEPTED;
+                status = HttpStatus.NO_CONTENT;
             }
         } catch (Exception e) {
 
@@ -75,7 +75,7 @@ public class MemberController {
             status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
 
-        return new ResponseEntity<Map<String, Object>>(resultMap, status);
+        return new ResponseEntity<>(resultMap, status);
     }
 
     // 회원정보 가져오기
@@ -106,17 +106,17 @@ public class MemberController {
             status = HttpStatus.ACCEPTED;
         }
 
-        return new ResponseEntity<Map<String, Object>>(resultMap, status);
+        return new ResponseEntity<>(resultMap, status);
     }
     // 회원 탈퇴
     @DeleteMapping("{email}")
-    public ResponseEntity<String> deleteMember(@PathVariable("email") String email) throws Exception {
+    public ResponseEntity<String> deleteMember(@PathVariable("email") String email) {
         LOGGER.debug("deleteUser - 호출");
 
         if (memberService.deleteUser(email)) {
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+            return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
         }
-        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(FAIL, HttpStatus.BAD_REQUEST);
     }
 
     // 회원정보 수정
@@ -125,21 +125,21 @@ public class MemberController {
         LOGGER.debug("updateUser - 호출");
 
         if (memberService.updateUser(userDto)) {
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+            return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
         }
-        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(FAIL, HttpStatus.NO_CONTENT);
     }
 
     // 비밀번호 변경
     // 비밀번호가 포함되어 있어서 body로 받을 것임
-    @PutMapping({"{email}"})
+    @PutMapping({"/pw"})
     public ResponseEntity<String> updatePassword(@RequestBody UserDto userDto) {
         LOGGER.info("updatePassword 호출");
 
         if(memberService.updatePsssword(userDto.getEmail(), userDto.getPassword())){
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+            return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
         }
-        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(FAIL, HttpStatus.NO_CONTENT);
     }
 
     // 비밀번호 확인
@@ -148,9 +148,11 @@ public class MemberController {
         LOGGER.info("checkPassword 호출");
 
         if(memberService.checkPassword(userDto.getEmail(), userDto.getPassword())){
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+            return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
+        } else{
+            return new ResponseEntity<>("fail", HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+
     }
 
 }

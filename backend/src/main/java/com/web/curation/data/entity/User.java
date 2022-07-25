@@ -64,7 +64,13 @@ public class User implements UserDetails {
     // 권한 목록 가져오기
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for(RoleType env : RoleType.values())
+        {
+            authorities.add(new SimpleGrantedAuthority(env.name()));
+        }
+        return authorities;
     }
     // 로그인한 아이디를 알려줘~
     @JsonProperty(access = Access.WRITE_ONLY)
