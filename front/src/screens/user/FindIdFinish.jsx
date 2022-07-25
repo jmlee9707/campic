@@ -28,6 +28,14 @@ function FindIdFinish() {
             비밀번호 찾기
           </Link>
         </div>
+        <div className="findidfin_login">
+          <Link
+            className="findidfin_login_btn flex align-center justify-center notoBold fs-18"
+            to="/login"
+          >
+            로그인하러 가기
+          </Link>
+        </div>
       </div>
     </div>
   );

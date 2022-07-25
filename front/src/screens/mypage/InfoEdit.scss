@@ -26,6 +26,7 @@
   &_btn {
     color: $GRAY-67;
     margin-top: (24px);
+    text-decoration: underline;
   }
 }
 .infoedit2, .infoedit3, .infoedit4, .infoedit5 {
@@ -56,7 +57,7 @@
 }
 .infoedit2, .infoedit5 {
   input {
-    background-color: $GRAY-DB;
+    background-color: $GRAY-E4;
     color: $GRAY-61;
   }
 }
@@ -68,16 +69,19 @@
     width: (300px);
     height: (52px);
     color: $WHITE;
-    background-color: $GRAY-E4;
+    background-color: $GRAY-DB;
     border-radius: (6px);
     margin: (11px)0 (5px);
   }
   &_btn1:hover, &_btn2:hover {
-    box-shadow: 0px 0px 5px $MAIN;
+    color: $WHITE;
+    background-color: $MAIN;
+    box-shadow: 0 0 (5px) $MAIN;
   }
   &_drop {
     margin-top: (27px);
     color: $GRAY-DB;
+    text-decoration: underline;
   }
 }
 @media screen and (max-width: $DESKTOP-VW) {
@@ -106,6 +110,7 @@
     &_btn {
       color: $GRAY-67;
       margin-top: vw(24px);
+      text-decoration: underline;
     }
   }
   .infoedit2, .infoedit3, .infoedit4, .infoedit5 {
@@ -136,7 +141,7 @@
   }
   .infoedit2, .infoedit5 {
     input {
-      background-color: $GRAY-DB;
+      background-color: $GRAY-E4;
       color: $GRAY-61;
     }
   }
@@ -148,16 +153,19 @@
       width: vw(300px);
       height: vw(52px);
       color: $WHITE;
-      background-color: $GRAY-E4;
+      background-color: $GRAY-DB;
       border-radius: vw(6px);
       margin: vw(11px)0 vw(5px);
     }
     &_btn1:hover, &_btn2:hover {
-      box-shadow: 0px 0px vw(5px) $MAIN;
+      color: $WHITE;
+      background-color: $MAIN;
+      box-shadow: 0 0 vw(5px) $MAIN;
     }
     &_drop {
       margin-top: vw(27px);
       color: $GRAY-DB;
+      text-decoration: underline;
     }
   }
 }
@@ -187,6 +195,7 @@
     &_btn {
       color: $GRAY-67;
       margin-top: vw-t(24px);
+      text-decoration: underline;
     }
   }
   .infoedit2, .infoedit3, .infoedit4, .infoedit5 {
@@ -217,7 +226,7 @@
   }
   .infoedit2, .infoedit5 {
     input {
-      background-color: $GRAY-DB;
+      background-color: $GRAY-E4;
       color: $GRAY-61;
     }
   }
@@ -229,16 +238,19 @@
       width: vw-t(300px);
       height: vw-t(52px);
       color: $WHITE;
-      background-color: $GRAY-E4;
+      background-color: $GRAY-DB;
       border-radius: vw-t(6px);
       margin: vw-t(11px)0 vw-t(5px);
     }
     &_btn1:hover, &_btn2:hover {
-      box-shadow: 0px 0px vw-t(5px) $MAIN;
+      color: $WHITE;
+      background-color: $MAIN;
+      box-shadow: 0 0 vw-t(5px) $MAIN;
     }
     &_drop {
       margin-top: vw-t(27px);
       color: $GRAY-DB;
+      text-decoration: underline;
     }
   }
 }
@@ -268,6 +280,7 @@
     &_btn {
       color: $GRAY-67;
       margin-top: vw-p(24px);
+      text-decoration: underline;
     }
   }
   .infoedit2, .infoedit3, .infoedit4, .infoedit5 {
@@ -298,7 +311,7 @@
   }
   .infoedit2, .infoedit5 {
     input {
-      background-color: $GRAY-DB;
+      background-color: $GRAY-E4;
       color: $GRAY-61;
     }
   }
@@ -310,16 +323,19 @@
       width: vw-p(300px);
       height: vw-p(52px);
       color: $WHITE;
-      background-color: $GRAY-E4;
+      background-color: $GRAY-DB;
       border-radius: vw-p(6px);
       margin: vw-p(11px)0 vw-p(5px);
     }
     &_btn1:hover, &_btn2:hover {
-      box-shadow: 0px 0px vw-p(5px) $MAIN;
+      color: $WHITE;
+      background-color: $MAIN;
+      box-shadow: 0 0 vw-p(5px) $MAIN;
     }
     &_drop {
       margin-top: vw-p(27px);
       color: $GRAY-DB;
+      text-decoration: underline;
     }
   }
 }

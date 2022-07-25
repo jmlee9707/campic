@@ -3,6 +3,9 @@ import logo from "@images/logo/loco_icon_green.svg";
 import "./PwEdit.scss";
 
 function PwEdit() {
+  const pwEdit = () => {
+    window.location.href = "/infoedit";
+  };
   return (
     <div className="container flex justify-center">
       <div id="pwedit" className="pwedit">
@@ -26,7 +29,7 @@ function PwEdit() {
             className="pwedit3_input notoMid fs-14"
             placeholder="비밀번호를 한번더 입력해주세요"
           />
-          <button className="pwedit3_btn notoBold fs-18" type="button">수정 완료</button>
+          <button className="pwedit3_btn notoBold fs-18" type="button" onClick={ pwEdit }>수정 완료</button>
         </div>
       </div>
     </div>

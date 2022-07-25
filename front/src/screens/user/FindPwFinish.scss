@@ -1,7 +1,7 @@
 .container {
   justify-content: center;
 }
-.findidfin {
+.findpwfin {
   width: (350px);
   align-items: center;
   flex-direction: column;
@@ -23,11 +23,8 @@
     width: (240px);
     height: (70px);
     flex-direction: column;
-    &_email {
-      color: $GRAY-4A;
-    }
   }
-  &_pw_btn, &_login_btn {
+  &_home_btn, &_login_btn {
     width: (300px);
     height: (52px);
     color: $WHITE;
@@ -35,12 +32,12 @@
     border-radius: (4px);
     margin-top: (24px);
   }
-  &_pw_btn:hover, &_login_btn:hover {
+  &_home_btn:hover, &_login_btn:hover {
     box-shadow: 0 0 (5px) $MAIN;
   }
 }
 @media screen and (max-width: $DESKTOP-VW) {
-  .findidfin {
+  .findpwfin {
     width: vw(350px);
     align-items: center;
     flex-direction: column;
@@ -62,11 +59,8 @@
       width: vw(240px);
       height: vw(70px);
       flex-direction: column;
-      &_email {
-        color: $GRAY-4A;
-      }
     }
-    &_pw_btn, &_login_btn {
+    &_home_btn, &_login_btn {
       width: vw(300px);
       height: vw(52px);
       color: $WHITE;
@@ -74,13 +68,13 @@
       border-radius: vw(4px);
       margin-top: vw(24px);
     }
-    &_pw_btn:hover, &_login_btn:hover {
+    &_home_btn:hover, &_login_btn:hover {
       box-shadow: 0px 0px vw(5px) $MAIN;
     }
   }
 }
 @media screen and (max-width: $TABLET-VW) {
-  .findidfin {
+  .findpwfin {
     width: vw-t(350px);
     align-items: center;
     flex-direction: column;
@@ -102,11 +96,8 @@
       width: vw-t(240px);
       height: vw-t(70px);
       flex-direction: column;
-      &_email {
-        color: $GRAY-4A;
-      }
     }
-    &_pw_btn, &_login_btn {
+    &_home_btn, &_login_btn {
       width: vw-t(300px);
       height: vw-t(52px);
       color: $WHITE;
@@ -114,13 +105,13 @@
       border-radius: vw-t(4px);
       margin-top: vw-t(24px);
     }
-    &_pw_btn:hover, &_login_btn:hover {
+    &_home_btn:hover, &_login_btn:hover {
       box-shadow: 0px 0px vw-t(5px) $MAIN;
     }
   }
 }
 @media screen and (max-width: $PHONE-VW) {
-  .findidfin {
+  .findpwfin {
     width: vw-p(350px);
     align-items: center;
     flex-direction: column;
@@ -142,11 +133,8 @@
       width: vw-p(240px);
       height: vw-p(70px);
       flex-direction: column;
-      &_email {
-        color: $GRAY-4A;
-      }
     }
-    &_pw_btn, &_login_btn {
+    &_home_btn, &_login_btn {
       width: vw-p(300px);
       height: vw-p(52px);
       color: $WHITE;
@@ -154,7 +142,7 @@
       border-radius: vw-p(4px);
       margin-top: vw-p(24px);
     }
-    &_pw_btn:hover, &_login_btn:hover {
+    &_home_btn:hover, &_login_btn:hover {
       box-shadow: 0px 0px vw-p(5px) $MAIN;
     }
   }

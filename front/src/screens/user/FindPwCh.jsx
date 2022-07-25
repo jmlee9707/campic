@@ -2,6 +2,9 @@ import React from "react";
 import "./FindPwCh.scss";
 
 function FindPwCh() {
+  const findPwCh = () => {
+    window.location.href = "/findpw/finish";
+  };
   return (
     <div className="container flex">
       <div className="findpwch">
@@ -31,7 +34,7 @@ function FindPwCh() {
             비밀번호가 일치하지 않습니다.
           </div>
         </div>
-        <button className="findpwch_btn notoBold fs-18" type="button">확인</button>
+        <button className="findpwch_btn notoBold fs-18" type="button" onClick={ findPwCh }>확인</button>
       </div>
     </div>
   );

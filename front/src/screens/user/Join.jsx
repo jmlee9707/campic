@@ -7,6 +7,9 @@ import "./Join.scss";
 import { Link } from "react-router-dom";
 
 function Join() {
+  const joinFinish = () => {
+    window.location.href = "/join/finish";
+  };
   return (
     <div className="container flex">
       <div id="join" className="join flex justify-center">
@@ -59,10 +62,14 @@ function Join() {
                   placeholder="인증코드 6자리 입력"
                 />
               </div>
+              <div className="join_input_email_cert_btn fs-14 notoBold flex justify-center align-center" type="button">인증코드 확인</div>
+              <div className="join_input_email_cert_check notoMid fs-12">
+                인증번호가 일치하지 않습니다
+              </div>
               <div className="join_input_email_cert_resend notoMid fs-10">
                 이메일을 받지 못하셨나요?
                 <button
-                  className="join_input_email_cert_resend_btn notoMid fs-10"
+                  className="join_input_email_cert_resend_btn notoMid fs-10 "
                   type="button"
                 >
                   이메일 재전송하기
@@ -121,7 +128,7 @@ function Join() {
             </div>
           </div>
         </div>
-        <button className="join_btn fs-18 notoBold" type="button">
+        <button className="join_btn fs-18 notoBold" type="button" onClick={ joinFinish }>
           회원가입 하기
         </button>
         <div className="join_ask notoMid fs-12 flex justify-space-between">

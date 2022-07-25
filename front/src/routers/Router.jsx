@@ -13,7 +13,7 @@ import FindIdFinish from "@screens/user/FindIdFinish";
 import FindPw from "@screens/user/FindPw";
 import FindPwAuth from "@screens/user/FindPwAuth";
 import FindPwCh from "@screens/user/FindPwCh";
-
+import FindPwFinish from "@screens/user/FindPwFinish";
 // mypage
 import Drop from "@screens/mypage/Drop";
 import DropFinish from "@screens/mypage/DropFinish";
@@ -63,6 +63,7 @@ function Router() {
           <Route index element={<FindPw />} />
           <Route path="auth" element={<FindPwAuth />} />
           <Route path="ch" element={<FindPwCh />} />
+          <Route path="finish" element={<FindPwFinish />} />
         </Route>
 
         {/* info edit */}
