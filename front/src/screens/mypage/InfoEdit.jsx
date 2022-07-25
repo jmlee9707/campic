@@ -4,6 +4,12 @@ import logo from "@images/logo/loco_icon_green.svg";
 import "./InfoEdit.scss";
 
 function InfoEdit() {
+  const infoEdit = () => {
+    window.location.href = "/infoedit";
+  };
+  const infoToPw = () => {
+    window.location.href = "/infoedit/pwch";
+  };
   return (
     <div className="container flex justify-center">
       <div id="infoedit" className="infoedit">
@@ -46,8 +52,8 @@ function InfoEdit() {
           />
         </div>
         <div id="infoedit6" className="infoedit6 flex justify-center">
-          <button className="infoedit6_btn1 notoBold fs-18" type="button">수정 완료</button>
-          <button className="infoedit6_btn2 notoBold fs-18" type="button">비밀번호 수정</button>
+          <button className="infoedit6_btn1 notoBold fs-18" type="button" onClick={ infoEdit }>수정 완료</button>
+          <button className="infoedit6_btn2 notoBold fs-18" type="button" onClick={ infoToPw }>비밀번호 수정</button>
           <div className="infoedit6_drop notnoMid fs-12"><Link to="/drop">탈퇴하기</Link></div>
         </div>
       </div>

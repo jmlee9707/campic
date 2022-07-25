@@ -2,6 +2,9 @@ import React from "react";
 import "./FindPwAuth.scss";
 
 function FindPwAuth() {
+  const findPwAuth = () => {
+    window.location.href = "/findpw/ch";
+  };
   return (
     <div className="container flex">
       <div className="findpwauth">
@@ -20,7 +23,7 @@ function FindPwAuth() {
             placeholder="인증번호를 입력해주세요"
           />
         </div>
-        <button className="findpwauth_btn notoBold fs-18" type="button">
+        <button className="findpwauth_btn notoBold fs-18" type="button" onClick={ findPwAuth }>
           확인
         </button>
         <div className="findpwauth_ask notoMid fs-12 flex justify-center align-center">

@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "./FindPw.scss";
 
 function FindPw() {
+  const findPw = () => {
+    window.location.href = "/findpw/auth";
+  };
   return (
     <div className="container flex">
       <div className="findpw">
@@ -24,7 +27,7 @@ function FindPw() {
             이메일 형식으로 입력해주세요
           </div>
         </div>
-        <button className="findpw_btn notoBold fs-18" type="button">
+        <button className="findpw_btn notoBold fs-18" type="button" onClick={ findPw }>
           인증번호 보내기
         </button>
         <div className="findpw_ask notoMid fs-12 flex justify-center">

@@ -73,20 +73,41 @@
         margin: (4px) 0 (6px);
         border-radius: (6px);
       }
+      &_btn:hover {
+        color: $WHITE;
+        background-color: $MAIN;
+        box-shadow: 0 0 (5px) $MAIN;
+      }
       &_cert {
         width: (300px);
-        height: (110px);
         margin: (14px) 0 (14px);
         padding: (14px);
         color: $GRAY-67;
-        background-color: $GRAY-DB;
+        background-color: $GRAY-F3;
         border-radius: (4px);
         input {
           width: (272px);
-          margin: (6px) 0 (6px);
+          margin: (10px) 0 (10px);
           border-radius: (4px);
           background-color: $WHITE;
           color: $GRAY-40;
+        }
+        &_btn {
+          width: (272px);
+          height: (36px);
+          color: $WHITE;
+          background-color: $GRAY-DB;
+          border-radius: (6px);
+          margin-bottom: (6px);
+        }
+        &_btn:hover {
+          color: $WHITE;
+          background-color: $MAIN;
+          box-shadow: 0 0 (5px) $MAIN;
+        }
+        &_check {
+          height: (18px);
+          color: $RED;
         }
         &_resend {
           color: $GRAY-67;
@@ -190,20 +211,41 @@
           margin: vw(4px) 0 vw(6px);
           border-radius: vw(6px);
         }
+        &_btn:hover {
+          color: $WHITE;
+          background-color: $MAIN;
+          box-shadow: 0 0 vw(5px) $MAIN;
+        }
         &_cert {
           width: vw(300px);
-          height: vw(110px);
           margin: vw(14px) 0 vw(14px);
           padding: vw(14px);
           color: $GRAY-67;
-          background-color: $GRAY-DB;
+          background-color: $GRAY-F3;
           border-radius: vw(4px);
           input {
             width: vw(272px);
-            margin: vw(6px) 0 vw(6px);
+            margin: vw(10px) 0 vw(10px);
             border-radius: vw(4px);
             background-color: $WHITE;
             color: $GRAY-40;
+            margin-bottom: vw(6px);
+          }
+          &_btn {
+            width: vw(272px);
+            height: vw(36px);
+            color: $WHITE;
+            background-color: $GRAY-DB;
+            border-radius: vw(6px);
+          }
+          &_btn:hover {
+            color: $WHITE;
+            background-color: $MAIN;
+            box-shadow: 0 0 vw(5px) $MAIN;
+          }
+          &_check {
+            height: vw(18px);
+            color: $RED;
           }
           &_resend {
             color: $GRAY-67;
@@ -308,20 +350,41 @@
           margin: vw-t(4px) 0 vw-t(6px);
           border-radius: vw-t(6px);
         }
+        &_btn:hover {
+          color: $WHITE;
+          background-color: $MAIN;
+          box-shadow: 0 0 vw-t(5px) $MAIN;
+        }
         &_cert {
           width: vw-t(300px);
-          height: vw-t(110px);
           margin: vw-t(14px) 0 vw-t(14px);
           padding: vw-t(14px);
           color: $GRAY-67;
-          background-color: $GRAY-DB;
+          background-color: $GRAY-F3;
           border-radius: vw-t(4px);
           input {
             width: vw-t(272px);
-            margin: vw-t(6px) 0 vw-t(6px);
+            margin: vw-t(10px) 0 vw-t(10px);
             border-radius: vw-t(4px);
             background-color: $WHITE;
             color: $GRAY-40;
+            margin-bottom: vw-t(6px);
+          }
+          &_btn {
+            width: vw-t(272px);
+            height: vw-t(36px);
+            color: $WHITE;
+            background-color: $GRAY-DB;
+            border-radius: vw-t(6px);
+          }
+          &_btn:hover {
+            color: $WHITE;
+            background-color: $MAIN;
+            box-shadow: 0 0 vw-t(5px) $MAIN;
+          }
+          &_check {
+            height: vw-t(18px);
+            color: $RED;
           }
           &_resend {
             color: $GRAY-67;
@@ -426,20 +489,41 @@
           margin: vw-p(4px) 0 vw-p(6px);
           border-radius: vw-p(6px);
         }
+        &_btn:hover {
+          color: $WHITE;
+          background-color: $MAIN;
+          box-shadow: 0 0 (5px) $MAIN;
+        }
         &_cert {
           width: vw-p(300px);
-          height: vw-p(110px);
           margin: vw-p(14px) 0 vw-p(14px);
           padding: vw-p(14px);
           color: $GRAY-67;
-          background-color: $GRAY-DB;
+          background-color: $GRAY-F3;
           border-radius: vw-p(4px);
           input {
             width: vw-p(272px);
-            margin: vw-p(6px) 0 vw-p(6px);
+            margin: vw-p(10px) 0 vw-p(10px);
             border-radius: vw-p(4px);
             background-color: $WHITE;
             color: $GRAY-40;
+          }
+          &_btn {
+            width: vw-p(272px);
+            height: vw-p(36px);
+            color: $WHITE;
+            background-color: $GRAY-DB;
+            border-radius: vw-p(6px);
+            margin-bottom: vw-p(6px);
+          }
+          &_btn:hover {
+            color: $WHITE;
+            background-color: $MAIN;
+            box-shadow: 0 0 (5px) $MAIN;
+          }
+          &_check {
+            height: vw-p(18px);
+            color: $RED;
           }
           &_resend {
             color: $GRAY-67;
