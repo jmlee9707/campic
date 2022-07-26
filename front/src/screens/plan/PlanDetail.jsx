@@ -3,6 +3,7 @@ import "./PlanDetail.scss";
 // import PlanCard from "@components/plan/PlanCard";
 import mainImg from "@images/temp_1.jpeg";
 import TodoItemList from "@components/plan/TodoItemList";
+import Location from "@components/common/Location";
 
 function PlanDetail() {
   const name = "9조 체고 파이팅";
@@ -37,6 +38,9 @@ function PlanDetail() {
           <div className="plan_detail_box_left">
             <TodoItemList />
           </div>
+        </div>
+        <div className="plan_detail_map">
+          <Location />
         </div>
       </div>
     </div>
