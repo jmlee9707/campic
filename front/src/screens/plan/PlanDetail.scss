@@ -87,27 +87,44 @@
 
 .todo_box {
   margin-bottom: (20px);
+
   button {
     width: (42px);
     height: (42px);
-    border: (2px) solid $GRAY-E4;
     border-radius: (15px);
     margin-right: (20px);
+
     img {
       width: (28px);
       height: (28px);
     }
+  }
+
+  &_done {
+    border: 2px solid $MAIN;
+    background-color: $MAIN;
+    opacity: 0.8;
     &:hover {
       box-shadow: 0px 0px 5px $MAIN;
     }
   }
-  div {
+  &_yet {
+    border: 2px solid $GRAY-E4;
+    &:hover {
+      box-shadow: 0px 0px 5px $GRAY-E4;
+    }
+  }
+
+  &_text {
     background-color: $GRAY-F3;
     border-radius: (12px);
     padding: (11px) (18px);
     width: (483px);
     p {
       color: $GRAY-61;
+    }
+    &_done {
+      text-decoration: line-through;
     }
   }
 }
