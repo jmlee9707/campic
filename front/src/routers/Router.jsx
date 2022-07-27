@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainNavBar from "@components/common/MainNavBar";
-
+// import CommunityNavBar from "@components/community/CommunityNavBar"
 import Home from "@screens/Home";
 
 // user
@@ -22,12 +22,7 @@ import PwCh from "@screens/mypage/PwCh";
 import PwEdit from "@screens/mypage/PwEdit";
 import MyFeed from "@screens/mypage/MyFeed";
 
-// community
-import CommunityMain from "@screens/community/CommunityMain";
-import PhotoRegist from "@screens/community/PhotoRegist";
-import TalkRegist from "@screens/community/TalkRegist";
-import PhotoDetail from "@screens/community/PhotoDetail";
-import TalkDetail from "@screens/community/TalkDetail";
+
 // import
 
 // camping
@@ -37,6 +32,9 @@ import CampingDetail from "@screens/camping/CampingDetail";
 // plan
 import PlanMain from "@screens/plan/PlanMain";
 import PlanDetail from "@screens/plan/PlanDetail";
+
+// Community
+import Community from "./Community";
 
 function Router() {
   return (
@@ -82,15 +80,10 @@ function Router() {
         </Route>
 
         {/* community */}
-        <Route path="/board/*">
-          <Route index element={<CommunityMain />} />
-          <Route path="photo/regist" element={<PhotoRegist />} />
-          <Route path="talk/regist" element={<TalkRegist />} />
-          <Route path="photo/detail/:id" element={<PhotoDetail />} />
-          <Route path="talk/detail/:id" element={<TalkDetail />} />
-          {/* <Route path="photo/home" element={<PhotoHome />} /> */}
-          {/* <Route path="talk/home" element={<TalkHome />} /> */}
-        </Route>
+        {/* <CommunityNavBar /> */}
+        <Route path="/board/*" element={<Community />} />
+          
+          
 
         <Route path="/camping/*">
           <Route index element={<CampingMain />} />
