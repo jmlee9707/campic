@@ -9,12 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/user")
 public class MemberController {
 
@@ -36,7 +43,7 @@ public class MemberController {
     @PostMapping("/register")
     public ResponseEntity<String> registerMember(@RequestBody UserDto registerDto) {
         LOGGER.debug("registerMember - 호출");
-        LOGGER.debug("registerDto.getUsername() : {}", registerDto.getUserName());
+//        LOGGER.debug("registerDto.getUsername() : {}", registerDto.getUserName());
 
         if (memberService.register(registerDto)) {
             return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
@@ -129,6 +136,44 @@ public class MemberController {
         }
         return new ResponseEntity<>(FAIL, HttpStatus.NO_CONTENT);
     }
+    private String uploadPath = "/home/ubuntu/app/profile/";
+    @PutMapping("/info/profile")
+    public ResponseEntity<String> updateMemberProfile(UserDto userDto, MultipartFile file) {
+        LOGGER.debug("updateUserProfile - 호출");
+
+        if(file.getContentType().startsWith("image") == false){
+            LOGGER.warn("this file is not image type");
+            return new ResponseEntity<String>(FAIL, HttpStatus.BAD_REQUEST);
+        }
+
+        String originalName = file.getOriginalFilename();//파일명:모든 경로를 포함한 파일이름
+        String fileName = originalName.substring(originalName.lastIndexOf("//") + 1);
+
+        LOGGER.info("fileName" + fileName);
+
+        //UUID
+        String uuid = UUID.randomUUID().toString();
+        //저장할 파일 이름 중간에 "_"를 이용하여 구분
+        String saveName = uploadPath + File.separator + File.separator + uuid + "_" + fileName + userDto.getEmail();
+
+        Path savePath = Paths.get(saveName);
+        //Paths.get() 메서드는 특정 경로의 파일 정보를 가져옵니다.(경로 정의하기)
+
+        try {
+            file.transferTo(savePath);
+            //uploadFile에 파일을 업로드 하는 메서드 transferTo(file)
+        } catch (IOException e) {
+            e.printStackTrace();
+            //printStackTrace()를 호출하면 로그에 Stack trace가 출력됩니다.
+        }
+
+        userDto.setProfileImg(savePath.toString());
+
+        if (memberService.updateUserProfile(userDto)) {
+            return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(FAIL, HttpStatus.NO_CONTENT);
+    }
 
     // 비밀번호 변경
     // 비밀번호가 포함되어 있어서 body로 받을 것임
@@ -152,7 +197,5 @@ public class MemberController {
         } else{
             return new ResponseEntity<>("fail", HttpStatus.BAD_REQUEST);
         }
-
     }
-
 }
