@@ -34,19 +34,19 @@ public class CampController {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
+    /* campList READ */
     @GetMapping()
     public List<TotalCampList> getAllCamps(){
         return campService.getAllCamps();
     }
 
+    /* campDetail READ */
     @GetMapping("/{campId}")
-    public TotalCampList getCampById(@PathVariable("campId") int campId){
-        TotalCampList camp = campService.findById(campId)
-                .orElseThrow(()->new CampNotFoundException("Student with "+campId+" is Not Found!"));
-        return camp;
+    public ResponseEntity<CampDto.CampDetail> campDetailRead(@PathVariable("campId") int campId){
+        LOGGER.info("campDetailRead - 호출");
+        return new ResponseEntity<CampDto.CampDetail>(campService.campDetailRead(campId),HttpStatus.OK);
+
     }
-
-
     /*
     likedCampList(schedule) CREATE
     로그인한 user id 필요함.
