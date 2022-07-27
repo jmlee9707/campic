@@ -172,4 +172,14 @@ public class MemberServiceImpl implements MemberService {
         if(passwordEncoder.matches(password, user.getPassword())) return true;
         else return false;
     }
+
+    @Override
+    public String findId(String tel) {
+
+        if(userRepository.existsByTel(tel)) {
+            String email = userRepository.getByTel(tel).getEmail();
+            return email;
+        }
+        return "fail";
+    }
 }
