@@ -22,7 +22,7 @@ public class MailService {
     }
 
     // 메일 보내기
-    public String senEmail(String email){
+    public String sendEmail(String email, String emailCode){
         // 메일 중복 체크
         if(userRepository.existsByEmail(email)){
 //            System.out.println("메일 중복 "+email);
@@ -33,11 +33,23 @@ public class MailService {
             simpleMailMessage.setTo(email);
 
             simpleMailMessage.setSubject("백야호 회원가입 인증 메일");
-            simpleMailMessage.setText(makeRand());
+            simpleMailMessage.setText(emailCode);
 
             javaMailSender.send(simpleMailMessage);
             return "success";
         }
+    }
+
+    public String reSendEmail(String email, String emailCode){
+        // 메일 보내기
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setTo(email);
+
+        simpleMailMessage.setSubject("백야호 회원가입 인증 메일");
+        simpleMailMessage.setText(emailCode);
+
+        javaMailSender.send(simpleMailMessage);
+        return "success";
     }
 
     //난수 만들기

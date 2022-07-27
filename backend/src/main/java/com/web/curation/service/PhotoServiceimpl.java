@@ -87,7 +87,7 @@ public class PhotoServiceimpl implements PhotoService {
 
             listPhoto.add(photoDto);
         }
-
+        
         return listPhoto;
     }
 

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/email")
 public class MailController {
 
@@ -38,7 +39,7 @@ public class MailController {
         HttpStatus status = HttpStatus.OK;
         try{
             String emailCode = mailService.makeRand();
-            result = mailService.senEmail(email);
+            result = mailService.sendEmail(email, emailCode);
 
             resultMap.put("emailCode", emailCode);
             resultMap.put("message", result);
@@ -51,16 +52,24 @@ public class MailController {
         return new ResponseEntity<>(resultMap, status);
     }
 
-    @GetMapping("/verify/{userCode}")
-    public ResponseEntity<String> verifyEmail(@PathVariable String userCode, HttpServletRequest request) {
-        LOGGER.debug("verifyEmail - 호출");
+    @GetMapping("/resend/{email}")
+    public ResponseEntity<Map<String, Object>> reSendEmail(@PathVariable String email) {
+        LOGGER.debug("reSendEmail - 호출");
+        Map<String, Object> resultMap = new HashMap<>();
 
-        String value = request.getHeader("emailCode");
+        HttpStatus status = HttpStatus.OK;
+        try{
+            String emailCode = mailService.makeRand();
+            mailService.reSendEmail(email, emailCode);
 
-        if(MailService.verifyEmail(userCode, value)){
-            return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
+            resultMap.put("emailCode", emailCode);
+            resultMap.put("success", SUCCESS);
+
+        } catch (Exception e){
+            resultMap.put("message", FAIL);
+            status = HttpStatus.BAD_REQUEST;
         }
 
-        return new ResponseEntity<>(FAIL, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(resultMap, status);
     }
 }

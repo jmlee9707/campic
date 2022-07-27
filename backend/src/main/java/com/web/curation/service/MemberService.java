@@ -14,6 +14,8 @@ public interface MemberService {
 
     boolean updateUser(UserDto userDto);
 
+    boolean updateUserProfile(UserDto userDto);
+
     boolean updatePsssword(String email, String password);
 
     boolean checkPassword(String email, String password);

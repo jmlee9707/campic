@@ -35,29 +35,21 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public boolean register(UserDto registerUser) {
         LOGGER.info("[getSignUpResult] 회원 가입 정보 전달");
-        LOGGER.info(registerUser.getUserName());
+//        LOGGER.info(registerUser.getUserName());
         String role = registerUser.getAuth();
         User user = new User();
+//        user.setName(registerUser.getUserName());
+        user.setEmail(registerUser.getEmail());
+        user.setNickname(registerUser.getNickname());
+        user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
+        user.setTel(registerUser.getTel());
+        user.setBirth("");
+        user.setProfileImg("img");
+        user.setJoinDate(LocalDateTime.now());
 
         if (role.equalsIgnoreCase("admin")) {
-            user.setName(registerUser.getUserName());
-            user.setEmail(registerUser.getEmail());
-            user.setNickname(registerUser.getNickname());
-            user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
-            user.setTel(registerUser.getTel());
-            user.setBirth(registerUser.getBirth());
-            user.setProfileImg(registerUser.getProfileImg());
-            user.setJoinDate(LocalDateTime.now());
             user.setRoleType(RoleType.ADMIN);
         } else {
-            user.setName(registerUser.getUserName());
-            user.setEmail(registerUser.getEmail());
-            user.setNickname(registerUser.getNickname());
-            user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
-            user.setTel(registerUser.getTel());
-            user.setBirth(registerUser.getBirth());
-            user.setProfileImg(registerUser.getProfileImg());
-            user.setJoinDate(LocalDateTime.now());
             user.setRoleType(RoleType.USER);
         }
 
@@ -101,7 +93,7 @@ public class MemberServiceImpl implements MemberService {
         UserDto userDto = new UserDto();
         User user = userRepository.getByEmail(email);
 
-        userDto.setUserName(user.getName());
+//        userDto.setUserName(user.getName());
         userDto.setEmail(user.getEmail());
         userDto.setNickname(user.getNickname());
 //        userDto.setPassword(user.getPassword()); ==> 이 값은 여기서 안줘도 될거 같음
@@ -136,16 +128,29 @@ public class MemberServiceImpl implements MemberService {
         user.setNickname(userDto.getNickname());
         user.setTel(userDto.getTel());
         user.setBirth(userDto.getBirth());
-        user.setProfileImg(userDto.getProfileImg());
 
         userRepository.save(user);
 
-        if(user.getNickname() == userDto.getNickname() && user.getTel() == userDto.getTel()
-                && user.getBirth() == userDto.getBirth() && user.getProfileImg() == userDto.getProfileImg()){
+        if(user.getNickname().equals(userDto.getNickname()) && user.getTel().equals(userDto.getTel())
+                && user.getBirth().equals(userDto.getBirth())){
             return true;
         }
         return false;
 
+    }
+
+    @Override
+    public boolean updateUserProfile(UserDto userDto) {
+        User user = userRepository.getByEmail(userDto.getEmail());
+
+        user.setProfileImg(userDto.getProfileImg());
+
+        userRepository.save(user);
+
+        if(user.getProfileImg().equals(userDto.getProfileImg())){
+            return true;
+        }
+        return false;
     }
 
     // 비밀번호 변경
