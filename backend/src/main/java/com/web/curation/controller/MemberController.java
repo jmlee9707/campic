@@ -198,4 +198,23 @@ public class MemberController {
             return new ResponseEntity<>("fail", HttpStatus.BAD_REQUEST);
         }
     }
+
+    // 이메일 찾기
+    @GetMapping("/findId/{tel}")
+    public ResponseEntity<Map<String, Object>> findId(@PathVariable("tel") String tel){
+        Map<String, Object> resultMap = new HashMap<>();
+        HttpStatus status = HttpStatus.OK;
+
+        LOGGER.info("findId 호출");
+        String result = memberService.findId(tel);
+
+        if(result.equals("fail")){
+            resultMap.put("message", FAIL);
+            status = HttpStatus.BAD_REQUEST;
+        } else{
+            resultMap.put("message", SUCCESS);
+            resultMap.put("email", result);
+        }
+        return new ResponseEntity<>(resultMap, status);
+    }
 }

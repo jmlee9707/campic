@@ -20,4 +20,6 @@ public interface MemberService {
 
     boolean checkPassword(String email, String password);
 
+    String findId(String tel);
+
 }
