@@ -11,7 +11,6 @@ import JoinFinish from "@screens/user/JoinFinish";
 import FindId from "@screens/user/FindId";
 import FindIdFinish from "@screens/user/FindIdFinish";
 import FindPw from "@screens/user/FindPw";
-import FindPwAuth from "@screens/user/FindPwAuth";
 import FindPwCh from "@screens/user/FindPwCh";
 import FindPwFinish from "@screens/user/FindPwFinish";
 // mypage
@@ -63,8 +62,7 @@ function Router() {
         </Route>
         <Route path="/findpw/*">
           <Route index element={<FindPw />} />
-          <Route path="auth" element={<FindPwAuth />} />
-          <Route path="ch" element={<FindPwCh />} />
+          <Route path="change" element={<FindPwCh />} />
           <Route path="finish" element={<FindPwFinish />} />
         </Route>
 
