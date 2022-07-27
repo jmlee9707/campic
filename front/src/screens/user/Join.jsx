@@ -22,7 +22,7 @@ function Join() {
   const [emailMess, setEmailMess] = useState("");
   const [codeMess, setCodeMess] = useState("");
   const [passMess, setPassMess] = useState("");
-  const [passSameMess, setpassSameMess] = useState("");
+  const [passSameMess, setPassSameMess] = useState("");
   const [nickMess, setNickMess] = useState("");
   const [phoneMess, setPhoneMess] = useState("");
 
@@ -66,10 +66,10 @@ function Join() {
   // 비밀번호 일치여부 확인
   const checkPassSame = () => {
     if (passRef.current.value !== passSameRef.current.value) {
-      setpassSameMess("비밀번호가 일치하지 않습니다");
+      setPassSameMess("비밀번호가 일치하지 않습니다");
       setPassSameError(true);
     } else {
-      setpassSameMess(" ");
+      setPassSameMess(" ");
       setPassSameError(false);
     }
   };

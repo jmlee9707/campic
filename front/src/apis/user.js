@@ -17,8 +17,17 @@ export const findId = async phone => {
   return res.data;
 };
 
-export const sendCode = async body => {
-  const res = await API.post("/user/register", body);
+// // 코드 전송하기
+// export const sendCode = async body => {
+//   const res = await API.post("/user/register", body);
+//   return res.data;
+// };
+
+// 비밀번호 변경하기
+export const changePw = async body => {
+  const res = await API.put("user/pw", body);
+  console.log(res.data);
   return res.data;
 };
+
 export const ex = () => {};

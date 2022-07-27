@@ -1,12 +1,13 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { findPw } from "../../apis/user";
 import "./FindPw.scss";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { findPw as find } from "../../store/user";
+import { findPw } from "../../apis/user";
 
 function FindPw() {
   const navigate = useNavigate();
-  // const dispatch = useDispatch(); // action 보내기
+  const dispatch = useDispatch(); // action 보내기
 
   // message setting
   const [subTitle, setSubTitle] = useState("이메일을 입력해주세요!");
@@ -57,7 +58,7 @@ function FindPw() {
 
   const checkCode = () => {
     if (code === codeRef.current.value) {
-      // dispatch();
+      dispatch(find({ email: userId }));
       navigate("/findpw/change");
     } else {
       setCodeMess("잘못된 인증번호 입니다");
