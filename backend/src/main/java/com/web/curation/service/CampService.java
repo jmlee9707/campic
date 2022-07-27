@@ -1,5 +1,6 @@
 package com.web.curation.service;
 
+import com.web.curation.data.dto.CampDto;
 import com.web.curation.data.dto.ScheduleDto;
 import com.web.curation.data.entity.LikedCampList;
 import com.web.curation.data.entity.TotalCampList;
@@ -26,11 +27,19 @@ public class CampService{
         this.likedCampRepository = likedCampRepository;
         this.userRepository = userRepository;
     }
-
-
-
+    /* campList READ */
+    @Transactional(readOnly = true)
     public List<TotalCampList> getAllCamps() {
         return campRepository.findAll();
+    }
+
+    /* campDetail READ */
+    @Transactional(readOnly = true)
+    public CampDto.CampDetail campDetailRead(int campId) {
+        TotalCampList totalCampList = campRepository.findById(campId).orElseThrow(() ->
+                new IllegalArgumentException("해당 캠핑장이 존재하지 않습니다. id: " + campId));
+
+        return new CampDto.CampDetail(totalCampList);
     }
 
     public Optional<TotalCampList> findById(int camp_id){

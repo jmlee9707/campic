@@ -18,7 +18,7 @@ public class TotalCampList {
 
     private String facltNm;
     private String lineIntro;
-    @Column(length=1000)
+    @Column(length=4000)
     private String intro;
     private String bizrno;
     private String doNm;
@@ -32,5 +32,7 @@ public class TotalCampList {
     private String resveUrl;
     private String resveCl;
     private String firstImageUrl;
+    private String sbrsCl;
+    private String posblFcltyCl;
 
 }
