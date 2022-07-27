@@ -1,5 +1,17 @@
 import API from "./index";
 
+export const login = async body => {
+  const res = await API.post("user/login", body);
+  return res.data;
+};
+
+// 아이디 찾기
+export const findId = async phone => {
+  const res = await API.get(`user/findId/${phone}`);
+  console.log(res.data);
+  return res.data;
+};
+// 비밀번호 찾기
 export const findPw = async userId => {
   const res = await API.get(`email/findPw/${userId}`);
   console.log(res.data);
@@ -10,9 +22,9 @@ export const findPw = async userId => {
 //     const res = await API.get()
 // }
 
-// 아이디 찾기
-export const findId = async phone => {
-  const res = await API.get(`user/findId/${phone}`);
+// 비밀번호 변경하기
+export const changePw = async body => {
+  const res = await API.put("user/pw", body);
   console.log(res.data);
   return res.data;
 };
@@ -22,12 +34,5 @@ export const findId = async phone => {
 //   const res = await API.post("/user/register", body);
 //   return res.data;
 // };
-
-// 비밀번호 변경하기
-export const changePw = async body => {
-  const res = await API.put("user/pw", body);
-  console.log(res.data);
-  return res.data;
-};
 
 export const ex = () => {};
