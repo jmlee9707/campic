@@ -21,7 +21,6 @@ public class LikedCampList {
 
     @ManyToOne
     @JoinColumn(name = "campId")
-
     private TotalCampList totalCampList;
     private java.util.Date startDate;
     private java.util.Date endDate;

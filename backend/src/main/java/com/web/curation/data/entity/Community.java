@@ -10,11 +10,14 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 public class Community {
+
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int boardId;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
     private LocalDateTime uploadDate;
 
     @Column(nullable = false)
@@ -22,7 +25,11 @@ public class Community {
 
     @Column(nullable = false)
     private String content;
+
+    private String hashtag;
+
     private int click;
+
     @Column(nullable = false)
     private int dType;
 

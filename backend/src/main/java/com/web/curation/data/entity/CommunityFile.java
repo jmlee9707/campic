@@ -24,13 +24,10 @@ public class CommunityFile {
     @Column(nullable = false)
     private String filePath;
 
-    @Column(nullable = false)
     private String fileType;
 
-    @Column(nullable = false)
     private String fileSize;
 
-    @Column(nullable = false)
     private String saveName;
 
 
