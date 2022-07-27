@@ -23,21 +23,27 @@
       border-radius: vw(15px);
       flex-direction: column;
 
-      // img {
-      //   width: vw(70px);
-      //   height: vw(65px);
-        
-      // }
       .camera{
         width: vw(84px);
         height: vw(77px);
         fill: $GRAY-DB;
       }
-
-      &_sub {
+      &_sub{
         color: $GRAY-DB;
-        margin-top: vw(16px);
       }
+      &_priv{
+        width: vw(480px);
+        height: vw(320px);
+        border-radius: vw(15px);
+        overflow: hidden;
+
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
     }
   }
 
@@ -60,6 +66,7 @@
         color: $GRAY-DB;
       }
     }
+
 
     &_content_input {
       justify-content: flex-start;

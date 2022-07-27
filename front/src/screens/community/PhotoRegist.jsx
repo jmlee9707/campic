@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./PhotoRegist.scss";
 
+
 import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
+// import { useEffect } from "react";
 
 function PhotoRegist() {
+  // 카메라 이미지에 파일 인풋 달기
+  const photoInput = useRef();
+  const handleclick = () => {
+    photoInput.current.click();
+  };
+  // 사진 미리보기
+
+  const [fileImage, setFileImage] = useState("");
+  const saveFileImage = (event) =>{
+    // @ts-ignore
+    setFileImage(URL.createObjectURL(event.target.files[0]));
+  };
+
+  // 이미지 리사이징
+
+
   return (
     <div className="container flex">
       {/* 커뮤니티 네브바 들어가야 함 */}
@@ -12,9 +30,23 @@ function PhotoRegist() {
         <div className="regist_content flex">
           {/* 사진 업로드 박스 */}
           <div className="regist_content_img flex align-center justify-center">
-            <Camera className="camera" fill="#DBDBDB" />
-            <div className="regist_content_img_sub fs-28 notoBold">Upload</div>
+            {!fileImage &&<Camera className="camera" fill="#DBDBDB" onClick={handleclick} />}
+            {!fileImage && <div className="regist_content_img_sub fs-28 notoBold">Upload</div> }
+            {fileImage && (<div className="regist_content_img_priv">
+              <img alt="sample" src={fileImage}/>
+            </div> )}
+            <input
+              type="file"
+              accept="image/jpg, image.jpeg, image.png"
+              ref={photoInput}
+              style={{ display: "none" }}
+              name="imgFile"
+              id="imgFile"
+              onChange={saveFileImage}
+            />
           </div>
+          
+
           <div className="regist_content_text">
             {/* 사진 설명 박스 */}
 

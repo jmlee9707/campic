@@ -22,6 +22,7 @@
       border-radius: vw(15px);
       flex-direction: column;
 
+
       &_sub {
         color: $GRAY-DB;
         margin-top: vw(12px);
@@ -30,6 +31,19 @@
       .camera {
         width: vw(88px);
         height: vw(77px);
+      }
+
+      &_priv {
+        width: vw(570px);
+        border-radius: vw(15px);
+        overflow: hidden;
+        
+        
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
     }
 
