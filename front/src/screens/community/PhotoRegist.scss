@@ -22,7 +22,6 @@
       border-radius: vw(15px);
       flex-direction: column;
 
-
       &_sub {
         color: $GRAY-DB;
         margin-top: vw(12px);
@@ -35,11 +34,11 @@
 
       &_priv {
         width: vw(570px);
+        height: vw(480px);
         border-radius: vw(15px);
         overflow: hidden;
-        
-        
-        img{
+
+        img {
           width: 100%;
           height: 100%;
           object-fit: cover;

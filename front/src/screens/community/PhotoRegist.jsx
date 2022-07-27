@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useRef, useState } from "react";
 import "./PhotoRegist.scss";
-
 
 import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
 // import { useEffect } from "react";
@@ -11,16 +12,20 @@ function PhotoRegist() {
   const handleclick = () => {
     photoInput.current.click();
   };
+
+// 사진 변경
+
   // 사진 미리보기
 
   const [fileImage, setFileImage] = useState("");
-  const saveFileImage = (event) =>{
+  const saveFileImage = event => {
     // @ts-ignore
     setFileImage(URL.createObjectURL(event.target.files[0]));
   };
 
   // 이미지 리사이징
 
+  const textRef = useRef();
 
   return (
     <div className="container flex">
@@ -29,12 +34,29 @@ function PhotoRegist() {
         <div className="regist_title notoBold fs-32">사진 등록하기</div>
         <div className="regist_content flex">
           {/* 사진 업로드 박스 */}
-          <div className="regist_content_img flex align-center justify-center">
-            {!fileImage &&<Camera className="camera" fill="#DBDBDB" onClick={handleclick} />}
-            {!fileImage && <div className="regist_content_img_sub fs-28 notoBold">Upload</div> }
-            {fileImage && (<div className="regist_content_img_priv">
-              <img alt="sample" src={fileImage}/>
-            </div> )}
+          <div className="regist_content_img flex align-center justify-center"onClick={handleclick}>
+            {!fileImage && (
+              <Camera className="camera" fill="#DBDBDB" />
+            )}
+            {!fileImage && (
+              <div className="regist_content_img_sub fs-28 notoBold">
+                Upload
+              </div>
+            )}
+            {fileImage && (
+              <div className="regist_content_img_priv">
+                <img alt="sample" src={fileImage}/>
+                {/* <input
+                  type="file"
+                  accept="image/jpg, image.jpeg, image.png"
+                  ref={photoInput}
+                  style={{ display: "none" }}
+                  name="imgFile"
+                  id="imgFile"
+                  onChange={saveFileImage}
+                /> */}
+              </div>
+            )}
             <input
               type="file"
               accept="image/jpg, image.jpeg, image.png"
@@ -45,7 +67,6 @@ function PhotoRegist() {
               onChange={saveFileImage}
             />
           </div>
-          
 
           <div className="regist_content_text">
             {/* 사진 설명 박스 */}
@@ -59,6 +80,7 @@ function PhotoRegist() {
             {/* 태그 입력 박스 */}
 
             <input
+              ref={textRef}
               type="text"
               placeholder="#태그입력"
               className="regist_content_text_tag flex notoMid fs-20"
