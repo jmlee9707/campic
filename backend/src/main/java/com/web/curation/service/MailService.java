@@ -40,6 +40,25 @@ public class MailService {
         }
     }
 
+    // 메일 보내기
+    public String sendEmailForPw(String email, String emailCode){
+        // 메일 중복 체크
+        if(userRepository.existsByEmail(email)){
+            // 메일 보내기
+            SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+            simpleMailMessage.setTo(email);
+
+            simpleMailMessage.setSubject("백야호 비밀번호 찾기 인증 메일");
+            simpleMailMessage.setText(emailCode);
+
+            javaMailSender.send(simpleMailMessage);
+            return "success";
+        } else {
+
+            return "notUser";
+        }
+    }
+
     public String reSendEmail(String email, String emailCode){
         // 메일 보내기
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();

@@ -72,4 +72,26 @@ public class MailController {
 
         return new ResponseEntity<>(resultMap, status);
     }
+
+    @GetMapping("/findPw/{email}")
+    public ResponseEntity<Map<String, Object>> findPw(@PathVariable String email) {
+        LOGGER.debug("findPw - 호출");
+        Map<String, Object> resultMap = new HashMap<>();
+
+        String result = null;
+        HttpStatus status = HttpStatus.OK;
+        try{
+            String emailCode = mailService.makeRand();
+            result = mailService.sendEmailForPw(email, emailCode);
+
+            resultMap.put("emailCode", emailCode);
+            resultMap.put("message", result);
+
+        } catch (Exception e){
+            resultMap.put("message", FAIL);
+            status = HttpStatus.BAD_REQUEST;
+        }
+
+        return new ResponseEntity<>(resultMap, status);
+    }
 }
