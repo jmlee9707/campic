@@ -70,7 +70,7 @@
         height: (44px);
         color: $WHITE;
         background-color: $GRAY-DB;
-        margin: (4px) 0 (6px);
+        margin: (4px) 0 (4px);
         border-radius: (6px);
       }
       &_btn:hover {
@@ -80,25 +80,28 @@
       }
       &_cert {
         width: (300px);
-        margin: (14px) 0 (14px);
-        padding: (14px);
+        margin: (10px) 0 (30px);
+        padding: (16px);
         color: $GRAY-67;
         background-color: $GRAY-F3;
         border-radius: (4px);
+        &_message {
+          align-items: flex-start;
+        }
         input {
           width: (272px);
-          margin: (10px) 0 (10px);
+          margin: (16px) 0 (16px);
           border-radius: (4px);
           background-color: $WHITE;
           color: $GRAY-40;
         }
         &_btn {
           width: (272px);
-          height: (36px);
+          height: (40px);
           color: $WHITE;
           background-color: $GRAY-DB;
-          border-radius: (6px);
-          margin-bottom: (6px);
+          border-radius: (4px);
+          margin-bottom: (4px);
         }
         &_btn:hover {
           color: $WHITE;
@@ -106,7 +109,8 @@
           box-shadow: 0 0 (5px) $MAIN;
         }
         &_check {
-          height: (18px);
+          margin-top: (4px);
+          height: (14px);
           color: $RED;
         }
         &_resend {
