@@ -1,11 +1,18 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+
 import "./PhotoDetail.scss";
 
 import navLogo from "@images/logo/logo_icon_green.svg";
-import coverImg from "@images/cute.jpeg";
+// import coverImg from "@images/cute.jpeg";
 
 function PhotoDetail() {
+  const image = useSelector(state => state.photos.value.img);
+  const text = useSelector(state => state.photos.value.content);
+  const tag = useSelector(state => state.photos.value.tag);
+  // const dispatch = useDispatch()
+
   return (
     <div className="container flex">
       <div className="campPhoto">
@@ -30,7 +37,7 @@ function PhotoDetail() {
         </div>
         {/* 커버사진 */}
         <div className="campPhoto_cover flex">
-          <img src={coverImg} alt="커버이미지" />
+          <img src={image} alt="커버이미지" />
         </div>
         {/* 조회수, 좋아요 박스 */}
         <div className="campPhoto_count flex">
@@ -47,12 +54,11 @@ function PhotoDetail() {
         </div>
         {/* 본문박스 */}
         <div className="campPhoto_text notoMid fs-24">
-          어제 밤에 했어야 됐는데 왜 잤을까 흑흑 미안의 쏘리쏘리 땐쓰~ 끝을
-          보려면 글을 조금 더 써야 하는구나
+          {text}
         </div>
         {/* 태그박스 */}
         <div className="campPhoto_tag notoMid fs-24">
-          #태그 #일단 #써두면 #되는 #걸까 #?
+          {tag}
         </div>
       </div>
     </div>
