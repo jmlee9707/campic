@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,10 +28,17 @@ public class CampService{
         this.likedCampRepository = likedCampRepository;
         this.userRepository = userRepository;
     }
+
     /* campList READ */
     @Transactional(readOnly = true)
-    public List<TotalCampList> getAllCamps() {
-        return campRepository.findAll();
+    public List<CampDto.CampList> getAllCamps() {
+        List<TotalCampList> totalCampList = campRepository.findAll();
+        List<CampDto.CampList> rttotalCampList = new ArrayList<>();
+        for(TotalCampList tcl : totalCampList){
+            CampDto.CampList cl = new CampDto.CampList(tcl);
+            rttotalCampList.add(cl);
+        }
+        return rttotalCampList;
     }
 
     /* campDetail READ */

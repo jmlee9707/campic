@@ -51,21 +51,24 @@ public class CampDto {
     }
 
     @Getter
+    @Setter
     public static class CampList {
         private final int campId;
         private final String facltNm;
         private final String add1;
-        private final String add2;
-        private final String resveUrl;
         private final String firstImageUrl;
+        private final String homepage;
+        private final String mapX;
+        private final String mapY;
 
         public CampList(TotalCampList totalCampList) {
             this.campId = totalCampList.getCampId();
             this.facltNm = totalCampList.getFacltNm();
             this.add1 = totalCampList.getAddr1();
-            this.add2 = totalCampList.getAddr2();
-            this.resveUrl = totalCampList.getResveUrl();
             this.firstImageUrl = totalCampList.getFirstImageUrl();
+            this.homepage = totalCampList.getHomepage();
+            this.mapX = totalCampList.getMapX();
+            this.mapY = totalCampList.getMapY();
         }
     }
 
