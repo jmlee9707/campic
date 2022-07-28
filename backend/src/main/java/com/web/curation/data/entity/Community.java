@@ -20,8 +20,8 @@ public class Community {
 
     private LocalDateTime uploadDate;
 
-    @Column(nullable = false)
-    private String title;
+//    @Column(nullable = false)
+//    private String title;
 
     @Column(nullable = false)
     private String content;
@@ -30,9 +30,7 @@ public class Community {
 
     private int click;
 
-    @Column(nullable = false)
-    private int dType;
-
-
+//    @Column(nullable = false)
+//    private int dType;
 
 }
