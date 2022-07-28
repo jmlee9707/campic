@@ -37,7 +37,7 @@ public class CampController {
 
     /* campList READ */
     @GetMapping()
-    public List<TotalCampList> getAllCamps(){
+    public List<CampDto.CampList> getAllCamps(){
         return campService.getAllCamps();
     }
 
