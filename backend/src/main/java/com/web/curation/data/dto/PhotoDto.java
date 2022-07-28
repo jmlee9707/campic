@@ -16,13 +16,13 @@ public class PhotoDto {
 
     private int boardId;
     private String nickname;
-    private String title;
+//    private String title;
     private String content;
     private String hashtag;
     private LocalDateTime uploadDate;
     private int click;
     private long like;
-    private int dType;
+//    private int dType;
 
     private String fileName;
     private String filePath;

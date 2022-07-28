@@ -56,6 +56,33 @@ public class PhotoServiceimpl implements PhotoService {
         return getPhotoDtos(listCommunity);
     }
 
+    @Override
+    public PhotoDto detailPhoto(int boardId) {
+        Community community = communityRepository.findByBoardId(boardId);
+        PhotoDto photoDto = new PhotoDto();
+
+        photoDto.setProfileImgPath(community.getUser().getProfileImg());
+
+        photoDto.setBoardId(community.getBoardId());
+        photoDto.setNickname(community.getUser().getNickname());
+        photoDto.setContent(community.getContent());
+        photoDto.setHashtag(community.getHashtag());
+        photoDto.setUploadDate(community.getUploadDate());
+
+        // 좋아요 수
+        Long countLike = communityLikeRepository.countByCommunity(community);
+        photoDto.setLike(countLike);
+
+        // 조회수
+        photoDto.setClick(community.getClick());
+
+        CommunityFile communityFile = communityFileRepository.findByCommunity(community);
+        photoDto.setFileName(communityFile.getName());
+        photoDto.setFilePath(communityFile.getFilePath());
+
+        return photoDto;
+    }
+
     private List<PhotoDto> getPhotoDtos(List<Community> listCommunity) {
         List<PhotoDto> listPhoto = new ArrayList<>();
 
@@ -65,7 +92,6 @@ public class PhotoServiceimpl implements PhotoService {
             photoDto.setProfileImgPath(community.getUser().getProfileImg());
 
             photoDto.setBoardId(community.getBoardId());
-            photoDto.setTitle(community.getTitle());
             photoDto.setNickname(community.getUser().getNickname());
             photoDto.setContent(community.getContent());
             photoDto.setHashtag(community.getHashtag());
@@ -77,8 +103,6 @@ public class PhotoServiceimpl implements PhotoService {
             
             // 조회수
             photoDto.setClick(community.getClick());
-            // photo인지 talk인지
-            photoDto.setDType(community.getDType());
 
 
             CommunityFile communityFile = communityFileRepository.findByCommunity(community);
@@ -92,12 +116,11 @@ public class PhotoServiceimpl implements PhotoService {
     }
 
     @Override
-    public boolean writePhoto(PhotoDto photoDto) {
-        LOGGER.info("[photo 게시글 등록] 게시글 제목 : {}", photoDto.getTitle());
+    public int writePhoto(PhotoDto photoDto) {
+        LOGGER.info("[photo 게시글 등록] 게시글 ");
         // community 저장
         Community community = new Community();
 
-        community.setTitle(photoDto.getTitle());
         community.setContent(photoDto.getContent());
         community.setHashtag(photoDto.getHashtag());
         User user = userRepository.getByNickname(photoDto.getNickname());
@@ -105,7 +128,6 @@ public class PhotoServiceimpl implements PhotoService {
         community.setUser(user);
         community.setUploadDate(LocalDateTime.now());
         community.setClick(0);
-        community.setDType(2);
 
         Community savedCommunity = communityRepository.save(community);
 
@@ -118,12 +140,15 @@ public class PhotoServiceimpl implements PhotoService {
         communityFileRepository.save(communityFile);
 
         LOGGER.info("[getSignUpResult] userEntity 값이 들어왔는지 확인 후 결과값 주입");
+
+
         if (savedCommunity != null) {
             LOGGER.info("photo 게시글 저장 완료");
-            return true;
+            int boardId = savedCommunity.getBoardId();
+            return boardId;
         } else {
             LOGGER.info("photo 게시글 저장 실패");
-            return false;
+            return 0;
         }
     }
 
@@ -132,7 +157,6 @@ public class PhotoServiceimpl implements PhotoService {
 
         Community community = communityRepository.findByBoardId(photoDto.getBoardId());
 
-        community.setTitle(photoDto.getTitle());
         community.setContent(photoDto.getContent());
         community.setHashtag(photoDto.getHashtag());
 
@@ -147,8 +171,7 @@ public class PhotoServiceimpl implements PhotoService {
 
         communityFileRepository.save(communityFile);
 
-        if(community.getTitle().equals(photoDto.getTitle()) && community.getContent().equals(photoDto.getContent())
-        && community.getHashtag().equals(photoDto.getHashtag())){
+        if(community.getContent().equals(photoDto.getContent()) && community.getHashtag().equals(photoDto.getHashtag())){
             return true;
         }
         return false;

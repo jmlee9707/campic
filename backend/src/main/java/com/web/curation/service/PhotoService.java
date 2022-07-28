@@ -11,7 +11,9 @@ public interface PhotoService {
 
     List<PhotoDto> userPhoto(String email);
 
-    boolean writePhoto(PhotoDto photoDto);
+    PhotoDto detailPhoto(int boardId);
+
+    int writePhoto(PhotoDto photoDto);
     boolean updatePhoto(PhotoDto photoDto);
     boolean deletePhoto(int boardId);
 
