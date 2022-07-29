@@ -56,7 +56,13 @@ public class CampController {
         return campService.keywordSearchCampList(keyword);
     }
 
-//    /* camp 지역 검색 결과 리스트 READ */
+    /* camp 지역 검색 결과 리스트 READ */
+    @GetMapping("/search/{doname}/{sigungu}")
+    public List<CampDto.CampList> regionSearchCampList(@PathVariable("doname") String doname, @PathVariable("sigungu") String sigungu){
+        return campService.regionSearchCampList(doname, sigungu);
+    }
+
+    /* camp tag 검색 결과 리스트 READ */
 //    @GetMapping("/search/{keyword}")
 //    public List<CampDto.CampList> keywordSearchCampList(@PathVariable("keyword") String keyword){
 //        System.out.println(keyword);

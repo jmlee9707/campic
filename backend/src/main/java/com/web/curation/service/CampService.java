@@ -57,6 +57,13 @@ public class CampService{
         return kwSearchCampList;
     }
 
+    /* camp 지역 검색 결과 리스트 READ */
+    @Transactional(readOnly = true)
+    public List<CampDto.CampList> regionSearchCampList(String doname, String sigungu){
+        List<CampDto.CampList> regionSearchCampList = campRepository.findByDoNmAndSigunguNm(doname,sigungu);
+        return regionSearchCampList;
+    }
+
 
     /* CREATE */
     @Transactional

@@ -62,6 +62,7 @@ public class CampDto {
         private final String mapX;
         private final String mapY;
 
+
         public CampList(TotalCampList totalCampList) {
             this.campId = totalCampList.getCampId();
             this.facltNm = totalCampList.getFacltNm();
