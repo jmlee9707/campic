@@ -59,6 +59,11 @@ public class PhotoServiceimpl implements PhotoService {
     @Override
     public PhotoDto detailPhoto(int boardId) {
         Community community = communityRepository.findByBoardId(boardId);
+        // 상세 조회 시 조회 수 증가
+        int cnt = community.getClick();
+        community.setClick(cnt+1);
+        communityRepository.save(community);
+
         PhotoDto photoDto = new PhotoDto();
 
         photoDto.setProfileImgPath(community.getUser().getProfileImg());
@@ -70,7 +75,7 @@ public class PhotoServiceimpl implements PhotoService {
         photoDto.setUploadDate(community.getUploadDate());
 
         // 좋아요 수
-        Long countLike = communityLikeRepository.countByCommunity(community);
+        int countLike = communityLikeRepository.countByCommunity(community);
         photoDto.setLike(countLike);
 
         // 조회수
@@ -98,7 +103,7 @@ public class PhotoServiceimpl implements PhotoService {
             photoDto.setUploadDate(community.getUploadDate());
             
             // 좋아요 수
-            Long countLike = communityLikeRepository.countByCommunity(community);
+            int countLike = communityLikeRepository.countByCommunity(community);
             photoDto.setLike(countLike);
             
             // 조회수
@@ -193,10 +198,12 @@ public class PhotoServiceimpl implements PhotoService {
     }
 
     @Override
-    public boolean pushLike(int boardId, String email) {
+    public int pushLike(int boardId, String email) {
         Community community = communityRepository.findByBoardId(boardId);
-
         User user = userRepository.getByEmail(email);
+
+        // 좋아요를 두번 누르면 fail
+        if(communityLikeRepository.existsByUserAndCommunity(user, community)) return -1;
 
         CommunityLike communityLike = new CommunityLike();
         communityLike.setCommunity(community);
@@ -204,29 +211,36 @@ public class PhotoServiceimpl implements PhotoService {
 
         communityLikeRepository.save(communityLike);
 
-        CommunityLike savedCommunityLike = communityLikeRepository.findByLikeId(communityLike.getLikeId());
+//        CommunityLike savedCommunityLike = communityLikeRepository.findByLikeId(communityLike.getLikeId());
+        // 좋아요 수
+        int countLike = communityLikeRepository.countByCommunity(community);
 
-        if (savedCommunityLike != null) {
+        if (communityLikeRepository.existsByLikeId(communityLike.getLikeId())) {
             LOGGER.info("push like 완료");
-            return true;
+            return countLike;
         } else {
             LOGGER.info("push like 실패");
-            return false;
+            return -1;
         }
     }
 
     @Override
-    public boolean cancelLike(int boardId, String email) {
+    public int cancelLike(int boardId, String email) {
 
         Community community = communityRepository.findByBoardId(boardId);
         User user = userRepository.getByEmail(email);
 
         CommunityLike communityLike = communityLikeRepository.findByCommunityAndUser(community, user);
+        // 좋아요 수
+        int countLike = communityLikeRepository.countByCommunity(community);
+
+        // 좋아요 수가 1이면 fail
+        if(countLike == 0) return -1;
 
         communityLikeRepository.delete(communityLike);
 
-        if(!communityLikeRepository.existsByLikeId(communityLike.getLikeId())) return true;
-        return false;
+        if(!communityLikeRepository.existsByLikeId(communityLike.getLikeId())) return countLike-1;
+        return -1;
     }
 
 }

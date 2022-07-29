@@ -17,6 +17,6 @@ public interface PhotoService {
     boolean updatePhoto(PhotoDto photoDto);
     boolean deletePhoto(int boardId);
 
-    boolean pushLike(int boardId, String email);
-    boolean cancelLike(int boardId, String email);
+    int pushLike(int boardId, String email);
+    int cancelLike(int boardId, String email);
 }
