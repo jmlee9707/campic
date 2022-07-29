@@ -48,6 +48,21 @@ public class CampController {
         return new ResponseEntity<CampDto.CampDetail>(campService.campDetailRead(campId),HttpStatus.OK);
 
     }
+
+    /* camp 키워드 검색 결과 리스트 READ */
+    @GetMapping("/search/{keyword}")
+    public List<CampDto.CampList> keywordSearchCampList(@PathVariable("keyword") String keyword){
+        System.out.println(keyword);
+        return campService.keywordSearchCampList(keyword);
+    }
+
+//    /* camp 지역 검색 결과 리스트 READ */
+//    @GetMapping("/search/{keyword}")
+//    public List<CampDto.CampList> keywordSearchCampList(@PathVariable("keyword") String keyword){
+//        System.out.println(keyword);
+//        return campService.keywordSearchCampList(keyword);
+//    }
+
     /*
     likedCampList(schedule) CREATE
     로그인한 user id 필요함.

@@ -52,6 +52,7 @@ public class CampDto {
 
     @Getter
     @Setter
+    @RequiredArgsConstructor
     public static class CampList {
         private final int campId;
         private final String facltNm;
