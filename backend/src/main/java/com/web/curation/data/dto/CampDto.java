@@ -56,7 +56,7 @@ public class CampDto {
     public static class CampList {
         private final int campId;
         private final String facltNm;
-        private final String add1;
+        private final String addr1;
         private final String firstImageUrl;
         private final String homepage;
         private final String mapX;
@@ -65,7 +65,7 @@ public class CampDto {
         public CampList(TotalCampList totalCampList) {
             this.campId = totalCampList.getCampId();
             this.facltNm = totalCampList.getFacltNm();
-            this.add1 = totalCampList.getAddr1();
+            this.addr1 = totalCampList.getAddr1();
             this.firstImageUrl = totalCampList.getFirstImageUrl();
             this.homepage = totalCampList.getHomepage();
             this.mapX = totalCampList.getMapX();
