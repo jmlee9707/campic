@@ -7,11 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CommunityLikeRepository extends JpaRepository<CommunityLike, Integer> {
 
-    long countByCommunity(Community community);
+    int countByCommunity(Community community);
 
     CommunityLike findByLikeId(int id);
 
     CommunityLike findByCommunityAndUser(Community community, User user);
 
     boolean existsByLikeId(int likeId);
+
+    boolean existsByUserAndCommunity(User user, Community community);
 }

@@ -142,21 +142,38 @@ public class PhotoController {
     }
 
     @PostMapping("/like")
-    public ResponseEntity<String> pushLike(@RequestParam int boardId, @RequestParam String email) {
+    public ResponseEntity<Map<String,Object>> pushLike(@RequestParam int boardId, @RequestParam String email) {
+        Map<String, Object> resultMap = new HashMap<>();
         LOGGER.info("pushLike - 호출");
 //        int intOfBoardId = Integer.parseInt(boardId);
-        if (photoService.pushLike(boardId, email)) {
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+        int likeCount = photoService.pushLike(boardId, email);
+
+        if (likeCount != -1) {
+
+            resultMap.put("like", likeCount);
+            resultMap.put("message", SUCCESS);
+
+            return new ResponseEntity<>(resultMap, HttpStatus.OK);
         }
-        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+
+        resultMap.put("message", FAIL);
+        return new ResponseEntity<>(resultMap, HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/like")
-    public ResponseEntity<String> cancelLike(@RequestParam int boardId, @RequestParam String email) {
+    public ResponseEntity<Map<String,Object>> cancelLike(@RequestParam int boardId, @RequestParam String email) {
+        Map<String, Object> resultMap = new HashMap<>();
         LOGGER.info("cancelLike - 호출");
-        if (photoService.cancelLike(boardId, email)) {
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+
+        int likeCount = photoService.cancelLike(boardId, email);
+        if (likeCount != -1) {
+
+            resultMap.put("like", likeCount);
+            resultMap.put("message", SUCCESS);
+
+            return new ResponseEntity<>(resultMap, HttpStatus.OK);
         }
-        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+        resultMap.put("message", FAIL);
+        return new ResponseEntity<>(resultMap, HttpStatus.BAD_REQUEST);
     }
 }
