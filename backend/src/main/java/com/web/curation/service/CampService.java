@@ -50,8 +50,11 @@ public class CampService{
         return new CampDto.CampDetail(totalCampList);
     }
 
-    public Optional<TotalCampList> findById(int camp_id){
-        return campRepository.findById(camp_id);
+    /* camp 키워드 검색 결과 리스트 READ */
+    @Transactional(readOnly = true)
+    public List<CampDto.CampList> keywordSearchCampList(String keyword){
+        List<CampDto.CampList> kwSearchCampList = campRepository.findByFacltNmContains(keyword);
+        return kwSearchCampList;
     }
 
 
