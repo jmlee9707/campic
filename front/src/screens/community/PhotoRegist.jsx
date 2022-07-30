@@ -45,7 +45,7 @@ function PhotoRegist() {
     formData.append("content", textareaRef.current.value)
     formData.append("hashtag", tagRef.current.value)
     formData.append("fileName", "baek")
-    formData.append("file", photoInput.current.value);
+    formData.append("file", photoInput.current.files[0]);
     
     // eslint-disable-next-line no-restricted-syntax
     for (const key of formData.keys()) {
@@ -58,12 +58,12 @@ function PhotoRegist() {
     }
     // formData.append("files", fileImage)
 
-    const res = await writePhoto({
-      data: formData,
-    });
+    const res = await writePhoto(
+      formData
+    );
     console.log("22222");
     if (res.message === "sucess") {
-      console.log("4444444");
+      console.log("4444444");}
       // dispatch(
       //   write({
       //     content: textareaRef.current.value,
@@ -71,8 +71,8 @@ function PhotoRegist() {
       //     tag: tagRef.current.value
       //   })
       // );
-      navigate("/board/photo/detail");
-    }
+    navigate("/board/photo/detail");
+    
   };
 
   return (
