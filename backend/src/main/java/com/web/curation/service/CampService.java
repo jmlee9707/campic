@@ -9,6 +9,8 @@ import com.web.curation.data.repository.CampRepository;
 import com.web.curation.data.repository.LikedCampRepository;
 import com.web.curation.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,8 +33,9 @@ public class CampService{
 
     /* campList READ */
     @Transactional(readOnly = true)
-    public List<CampDto.CampList> getAllCamps() {
-        List<TotalCampList> totalCampList = campRepository.findAll();
+    public List<CampDto.CampList> getAllCamps(int page) {
+        PageRequest pageRequest = PageRequest.of(page, 10);
+        Page<TotalCampList> totalCampList = campRepository.findAll(pageRequest);
         List<CampDto.CampList> rttotalCampList = new ArrayList<>();
         for(TotalCampList tcl : totalCampList){
             CampDto.CampList cl = new CampDto.CampList(tcl);

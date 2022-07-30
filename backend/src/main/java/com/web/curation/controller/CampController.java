@@ -11,7 +11,9 @@ import com.web.curation.service.CampService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -35,11 +37,19 @@ public class CampController {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
+//    /* campList READ */
+//    @GetMapping()
+//    public List<CampDto.CampList> getAllCamps(){
+//        return campService.getAllCamps();
+//    }
     /* campList READ */
     @GetMapping()
-    public List<CampDto.CampList> getAllCamps(){
-        return campService.getAllCamps();
+    public List<CampDto.CampList> getAllCamps(@RequestParam int page){
+        System.out.println(page);
+        return campService.getAllCamps(page);
     }
+
+
 
     /* campDetail READ */
     @GetMapping("/{campId}")
