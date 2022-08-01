@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -119,7 +120,7 @@ public class PhotoServiceimpl implements PhotoService {
         
         return listPhoto;
     }
-
+    @Transactional
     @Override
     public int writePhoto(PhotoDto photoDto) {
         LOGGER.info("[photo 게시글 등록] 게시글 ");
@@ -140,6 +141,7 @@ public class PhotoServiceimpl implements PhotoService {
         CommunityFile communityFile = new CommunityFile();
         communityFile.setCommunity(community);
         communityFile.setFilePath(photoDto.getFilePath());
+        LOGGER.info("photoDto FIleName() : ", photoDto.getFileName());
         communityFile.setName(photoDto.getFileName());
 
         communityFileRepository.save(communityFile);
