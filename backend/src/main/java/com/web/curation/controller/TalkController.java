@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RequestMapping("/talk")
 public class TalkController {
     private final Logger LOGGER = LoggerFactory.getLogger(PhotoController.class);
