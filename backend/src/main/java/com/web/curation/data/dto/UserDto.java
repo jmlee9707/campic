@@ -27,5 +27,7 @@ public class UserDto {
 
     private String auth;
 
-    private String token;
+    private String accessToken;
+
+    private String refreshToken;
 }
