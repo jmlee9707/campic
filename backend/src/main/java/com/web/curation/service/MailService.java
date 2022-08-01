@@ -65,6 +65,18 @@ public class MailService {
         return "success";
     }
 
+    public String sendEmailForPw(String email, String emailCode) throws Exception{
+        // 메일 중복 체크
+        if(userRepository.existsByEmail(email)){
+            // 메일 보내기
+            reSendEmail(email, emailCode);
+            return "success";
+        } else {
+
+            return "fail";
+        }
+    }
+
     //난수 만들기
     public static String makeRand() {
         String code = Integer.toString(ThreadLocalRandom.current().nextInt(100000, 1000000));
