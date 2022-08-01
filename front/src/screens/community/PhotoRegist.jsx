@@ -27,15 +27,15 @@ function PhotoRegist() {
     setFileImage(URL.createObjectURL(event.target.files[0]));
   };
 
-  // 이미지 리사이징
+
 
   const textareaRef = useRef(); // 본문 ref
   const tagRef = useRef(); // 태그 ref
 
+
   
   const submit = async () => {
   
-    console.log('5555')
 
     // eslint-disable-next-line prefer-destructuring
     // const files = e.target.fileImage;
@@ -61,17 +61,11 @@ function PhotoRegist() {
     const res = await writePhoto(
       formData
     );
-    console.log("22222");
+
     if (res.message === "sucess") {
-      console.log("4444444");}
-      // dispatch(
-      //   write({
-      //     content: textareaRef.current.value,
-      //     img: fileImage.value,
-      //     tag: tagRef.current.value
-      //   })
-      // );
-    navigate("/board/photo/detail");
+      console.log("4444444");
+    }
+    navigate(`/board/photo/detail/${res.boardId}`);
     
   };
 
