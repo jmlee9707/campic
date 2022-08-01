@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RequestMapping("/camp")
 public class CampController {
     private final Logger LOGGER = LoggerFactory.getLogger(ScheduleController.class);

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RequestMapping("/schedule")
 public class ScheduleController {
     private final Logger LOGGER = LoggerFactory.getLogger(ScheduleController.class);

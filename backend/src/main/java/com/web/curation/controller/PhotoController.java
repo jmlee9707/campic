@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RequestMapping("/photo")
 public class PhotoController {
     private final Logger LOGGER = LoggerFactory.getLogger(PhotoController.class);
