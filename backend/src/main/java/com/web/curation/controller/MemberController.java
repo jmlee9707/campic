@@ -230,7 +230,7 @@ public class MemberController {
     }
 
     // 비밀번호 확인
-    @GetMapping("info/check")
+    @PostMapping("info/check")
     public ResponseEntity<String> checkPassword(@RequestBody UserDto userDto){
         LOGGER.info("checkPassword 호출");
 
