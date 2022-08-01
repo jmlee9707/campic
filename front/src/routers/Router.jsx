@@ -103,6 +103,11 @@ function Router() {
         {/* mypage */}
         <Route path="/mypage/*">
           <Route path="myfeed" element={<MyFeed />} />
+          <Route path="drop" element={<Drop />} />
+          <Route path="drop/finish" element={<DropFinish />} />
+          <Route path="pwch" element={<PwCh />} />
+          <Route path="pwch/edit" element={<PwEdit />} />
+          <Route path="info/edit" element={<InfoEdit />} />
         </Route>
       </Routes>
     </>

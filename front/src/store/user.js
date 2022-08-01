@@ -11,7 +11,7 @@ export const initialUserState = {
     profileImg: "img",
     joinDate: "",
     auth: "USER",
-    token: null
+    accessToken: null
   }
 };
 
@@ -23,8 +23,8 @@ export const userSlice = createSlice({
       state.value = action.payload;
     },
     reset: state => {
-      //   state.value = initialUserState;
-      Object.assign(state, initialUserState);
+      state.value = initialUserState.value;
+      // Object.assign(state, initialUserState);
     },
     findId: (state, action) => {
       state.value = action.payload;

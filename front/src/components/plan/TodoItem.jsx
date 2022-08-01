@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import check from "@images/icon/done_black.svg";
 import checkGray from "@images/icon/done_gray.svg";
 
-function TodoItem({ text }) {
+function TodoItem() {
   const [finished, setFinished] = useState(false);
 
   const clicked = () => {
@@ -32,7 +32,7 @@ function TodoItem({ text }) {
               : "fs-14 notoMid todo_text_yet"
           }
         >
-          {text}
+          {/* {text} */}
         </p>
       </div>
     </div>
