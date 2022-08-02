@@ -5,5 +5,5 @@ import com.web.curation.data.entity.ThumbnailFile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ThumbnailFileRepository extends JpaRepository<ThumbnailFile, Integer> {
-//    ThumbnailFile findBy(Talk talk);
+    ThumbnailFile findByTalk(Talk talk);
 }
