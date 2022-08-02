@@ -57,14 +57,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 if(newRefresh != null){
 
-                    // 리프레시 토큰 쿠키에 저장하기
-                    Cookie cookie = new Cookie("refreshToken", newRefresh);
-                    cookie.setMaxAge(7 * 24 * 60 * 60);
-//                    cookie.setSecure(true);
-//                    cookie.setHttpOnly(true);
-                    cookie.setPath("/");
-
-                    servletResponse.addCookie(cookie);
+                    // 리프레시 토큰 헤더에 저장하기
+                    servletResponse.setHeader("refreshToken", newRefresh);
+//                    Cookie cookie = new Cookie("refreshToken", newRefresh);
+//                    cookie.setMaxAge(7 * 24 * 60 * 60);
+////                    cookie.setSecure(true);
+////                    cookie.setHttpOnly(true);
+//                    cookie.setPath("/");
+//
+//                    servletResponse.addCookie(cookie);
 
                     // accessToken 다시 발급
                     String email = jwtTokenProvider.getUsername(newRefresh);
