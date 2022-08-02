@@ -16,7 +16,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -42,27 +44,39 @@ public class TalkController {
 
     @GetMapping("/best")
     public ResponseEntity<List<TalkDto>> bestTalk() {
-        LOGGER.info("bestPhoto - 호출");
+        LOGGER.info("bestTalk - 호출");
         return new ResponseEntity<List<TalkDto>>(talkService.bestTalk(), HttpStatus.OK);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<TalkDto>> userTalk(@PathVariable int userId) {
-        LOGGER.info("bestPhoto - 호출");
-        return new ResponseEntity<List<TalkDto>>(talkService.userTalk(userId), HttpStatus.OK);
+    @GetMapping("/{email}")
+    public ResponseEntity<List<TalkDto>> userTalk(@PathVariable String email) {
+        LOGGER.info("특정 user 게시물 - 호출");
+        return new ResponseEntity<List<TalkDto>>(talkService.userTalk(email), HttpStatus.OK);
+    }
+
+    @GetMapping("/{talkId}")
+    public ResponseEntity<TalkDto> detailTalk(@PathVariable int talkId) {
+        LOGGER.info("detailPhoto 호출");
+        return new ResponseEntity<>(talkService.detailTalk(talkId), HttpStatus.OK);
     }
 
 
-    private String uploadPath = "C:/Users/ssubin/Desktop/camping/tmpimg";
+    private String uploadPath = "/home/ubuntu/app/photo/";
 
     @PostMapping
-    public ResponseEntity<String> writeTalk(TalkDto talkDto, MultipartFile file) {
-        LOGGER.info("writeTalk - 호출");
+    public ResponseEntity<Map<String, Object>> writeTalk(TalkDto talkDto, MultipartFile file) {
+        Map<String, Object> resultMap = new HashMap<>();
+        HttpStatus status = HttpStatus.OK;
+
+        LOGGER.info("writePhoto - 호출");
 
         // 이미지 파일이 아닐 때
         if(file.getContentType().startsWith("image") == false){
             LOGGER.warn("this file is not image type");
-            return new ResponseEntity<String>(FAIL, HttpStatus.BAD_REQUEST);
+            resultMap.put("message", FAIL);
+            status = HttpStatus.BAD_REQUEST;
+
+            return new ResponseEntity<>(resultMap, status);
         }
 
         //브라우저에 따라 업로드하는 파일의 이름은 전체경로일 수도 있고(Internet Explorer),
@@ -89,47 +103,76 @@ public class TalkController {
         }
 
         talkDto.setThumbnailFilePath(savePath.toString());
-        if (talkService.writeTalk(talkDto)) {
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+
+        int result = talkService.writeTalk(talkDto);
+
+        if (result != 0) {
+            resultMap.put("message", SUCCESS);
+            resultMap.put("boardId", result);
+            return new ResponseEntity<>(resultMap, status);
         }
-        if (talkService.writeTalk(talkDto)){
+
+        resultMap.put("message", FAIL);
+        status = HttpStatus.BAD_REQUEST;
+
+        return new ResponseEntity<>(resultMap, status);
+    }
+
+
+    @PutMapping
+    public ResponseEntity<String> updateTalk(TalkDto talkDto, MultipartFile file) {
+        LOGGER.info("updateTalk - 호출");
+
+        talkDto.setThumbnailFileName(file.getOriginalFilename());
+        if (talkService.updateTalk(talkDto)) {
             return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
         }
         return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
     }
 
-//    @PutMapping
-//    public ResponseEntity<String> updateTalk(TalkDto talkDto, MultipartFile file) {
-//        LOGGER.info("updateTalk - 호출");
-//
-//        talkDto.setThumbnailFileName(file.getOriginalFilename());
-//        if (talkService.updateTalk(talkDto)) {
-//            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
-//        }
-//        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
-//    }
-
-
-
+    @DeleteMapping("{talkId}")
+    public ResponseEntity<String> deletePhoto(@PathVariable int talkId) {
+        LOGGER.info("deleteTalk - 호출");
+        if (talkService.deleteTalk(talkId)) {
+            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+        }
+        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+    }
 
 
     @PostMapping("/like")
-    public ResponseEntity<String> pushLike(@RequestParam int talkId, @RequestParam String email) {
+    public ResponseEntity<Map<String,Object>> pushLike(@RequestParam int talkId, @RequestParam String email) {
+        Map<String, Object> resultMap = new HashMap<>();
         LOGGER.info("pushLike - 호출");
-//        int intOfBoardId = Integer.parseInt(boardId);
-        if (talkService.pushLike(talkId, email)) {
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+        int likeCount = talkService.pushLike(talkId, email);
+        if (likeCount != -1) {
+
+            resultMap.put("like", likeCount);
+            resultMap.put("message", SUCCESS);
+
+            return new ResponseEntity<>(resultMap, HttpStatus.OK);
         }
-        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+
+        resultMap.put("message", FAIL);
+        return new ResponseEntity<>(resultMap, HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/like")
-    public ResponseEntity<String> cancelLike(@RequestParam int talkId, @RequestParam String email) {
+    public ResponseEntity<Map<String,Object>> cancelLike(@RequestParam int talkId, @RequestParam String email) {
+        Map<String, Object> resultMap = new HashMap<>();
         LOGGER.info("cancelLike - 호출");
-        if (talkService.cancelLike(talkId, email)) {
-            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+        int likeCount = talkService.cancelLike(talkId, email);
+
+        if (likeCount != -1) {
+
+            resultMap.put("like", likeCount);
+            resultMap.put("message", SUCCESS);
+
+            return new ResponseEntity<>(resultMap, HttpStatus.OK);
         }
-        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+
+        resultMap.put("message", FAIL);
+        return new ResponseEntity<>(resultMap, HttpStatus.BAD_REQUEST);
     }
 
 

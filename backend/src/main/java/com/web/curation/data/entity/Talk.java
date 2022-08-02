@@ -24,13 +24,14 @@ public class Talk {
     private String title;
     private String hashtag;
 
-    @OneToOne
-    @JoinColumn(name = "thumbnailId")
-    private ThumbnailFile thumbnailFile;
+//    @OneToOne
+//    @JoinColumn(name = "thumbnailId")
+//    private ThumbnailFile thumbnailFile;
 
-    @OneToMany(mappedBy = "talk", cascade = CascadeType.ALL)
-    private List<TalkContent> talkContents;
+    @Lob
+    private String contents;
 
+    @Column(columnDefinition = "integer default 0", nullable = false)
     private int click;
 
     @OneToMany(mappedBy = "talk", cascade = CascadeType.ALL)

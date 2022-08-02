@@ -18,6 +18,10 @@ public class ThumbnailFile {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int thumbnailId;
 
+    @ManyToOne
+    @JoinColumn(name = "talkId")
+    private Talk talk;
+
     @Column(nullable = false)
     private String name;
 
