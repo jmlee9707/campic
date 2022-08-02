@@ -116,16 +116,23 @@ public class JwtTokenProvider {
      * @param request Http Request Header
      * @return String type Token 값
      */
-    public String resolveToken(HttpServletRequest request) {
-        LOGGER.info("[resolveToken] HTTP 헤더에서 accessToken 값 추출");
-        return request.getHeader("accessToken");
+    public String resolveToken(HttpServletRequest request, String header) {
+        String bearerToken = request.getHeader(header);
+        if (bearerToken != null && bearerToken.startsWith("Bearer-")) {
+            return bearerToken.substring(7);
+        }
+        return null;
     }
-    // 리프레시 토큰은 쿠키에서 가져와야 됨!!
-    public String resolveRefreshToken(HttpServletRequest request) throws Exception {
-//        String refreshToken = getCookie(request, "refreshToken");
-        LOGGER.info("[resolveRefreshToken] HTTP 헤더에서 refreshToken 값 추출");
-        return request.getHeader("refreshToken");
-    }
+//    public String resolveToken(HttpServletRequest request) {
+//        LOGGER.info("[resolveToken] HTTP 헤더에서 accessToken 값 추출");
+//        return request.getHeader("accessToken");
+//    }
+//    // 리프레시 토큰은 쿠키에서 가져와야 됨!!
+//    public String resolveRefreshToken(HttpServletRequest request) throws Exception {
+////        String refreshToken = getCookie(request, "refreshToken");
+//        LOGGER.info("[resolveRefreshToken] HTTP 헤더에서 refreshToken 값 추출");
+//        return request.getHeader("refreshToken");
+//    }
 
 //    // 쿠키에 있는 값 가져오기
 //    public String getCookie(HttpServletRequest request, String key) throws Exception {
