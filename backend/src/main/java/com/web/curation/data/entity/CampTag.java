@@ -20,5 +20,7 @@ public class CampTag {
     @Column(nullable = false)
     private String hashtag;
 
+    @Column
+    private int tagGroup;
 
 }

@@ -67,6 +67,26 @@ public class CampService{
         return regionSearchCampList;
     }
 
+    /* camp 지역 검색 결과 리스트 READ */
+    @Transactional(readOnly = true)
+    public List<CampDto.CampList> tagSearchCampList(List<String> taglist){
+
+
+
+
+
+
+//        List<CampDto.CampList> tagSearchCampList = new ArrayList<>();
+//
+//        for (String tag : taglist){
+//
+//        }
+
+
+        return regionSearchCampList;
+    }
+
+
 
     /* CREATE */
     @Transactional
