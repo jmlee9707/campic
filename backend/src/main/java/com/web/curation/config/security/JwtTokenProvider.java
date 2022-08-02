@@ -157,7 +157,7 @@ public class JwtTokenProvider {
 
     // 리프레시 토큰 재발급하기
     @Transactional
-    public String reissueRefreshToken(HttpServletResponse response,String refreshToken) throws RuntimeException{
+    public String reissueRefreshToken(String refreshToken) throws RuntimeException{
         // refresh token을 디비에 있는 값과 비교해보기
         Authentication authentication = getAuthentication(refreshToken);
         RefreshToken findRefreshToken = refreshTokenRepository.findByUserId(authentication.getName())
