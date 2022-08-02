@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.web.curation.data.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseCookie;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -62,13 +63,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                     // 리프레시 토큰 헤더에 저장하기
 //                    servletResponse.setHeader("Refresh", newRefresh);
-                    Cookie cookie = new Cookie("refreshToken", newRefresh);
-                    cookie.setMaxAge(7 * 24 * 60 * 60);
-//                    cookie.setSecure(true);
-//                    cookie.setHttpOnly(true);
-                    cookie.setPath("/");
+//                    Cookie cookie = new Cookie("refreshToken", newRefresh);
+//                    cookie.setMaxAge(7 * 24 * 60 * 60);
+////                    cookie.setSecure(true);
+////                    cookie.setHttpOnly(true);
+//                    cookie.setPath("/");
+//
+//                    servletResponse.addCookie(cookie);
+                    ResponseCookie cookie = ResponseCookie.from("refreshToken", newRefresh)
+                            .path("/")
+//                        .secure(true)
+                            .sameSite("None")
+                            .httpOnly(false)
+                            .domain("localhost")
+                            .build();
 
-                    servletResponse.addCookie(cookie);
+                    servletResponse.setHeader("Set-Cookie", cookie.toString());
 
                     // accessToken 다시 발급
                     String email = jwtTokenProvider.getUsername(newRefresh);

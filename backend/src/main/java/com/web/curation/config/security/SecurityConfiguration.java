@@ -20,17 +20,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public SecurityConfiguration(JwtTokenProvider jwtTokenProvider) {
         this.jwtTokenProvider = jwtTokenProvider;
     }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-                .antMatchers(HttpMethod.OPTIONS,"**/")
-                .antMatchers(
-                        "/",
-                        "/*.html",
-                        "/favicon.ico"
-                );
-    }
+//
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring()
+//                .antMatchers(HttpMethod.OPTIONS,"**/")
+//                .antMatchers(
+//                        "/",
+//                        "/*.html",
+//                        "/favicon.ico"
+//                );
+//    }
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests() //요청에 대한 권한 체크
+                .antMatchers(HttpMethod.OPTIONS, "**/").permitAll()
                 .antMatchers("/user/info/**").authenticated()
                 .antMatchers("/**").permitAll() //그외 나머지 요청은 누구나 접근 가능
 

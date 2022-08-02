@@ -84,13 +84,23 @@ public class MemberController {
 
                 // 리프레시 토큰 쿠키에 저장하기
                 resultMap.put("refreshToken", loginUser.getRefreshToken());
-                Cookie cookie = new Cookie("refreshToken", loginUser.getRefreshToken());
-                cookie.setMaxAge(7 * 24 * 60 * 60);
-//                cookie.setSecure(true);
-//                cookie.setHttpOnly(true);
-                cookie.setPath("/");
+                ResponseCookie cookie = ResponseCookie.from("refreshToken", loginUser.getRefreshToken())
+                        .path("/")
+//                        .secure(true)
+                        .sameSite("None")
+                        .httpOnly(false)
+                        .domain("localhost")
+                        .build();
 
-                response.addCookie(cookie);
+                response.setHeader("Set-Cookie", cookie.toString());
+
+//                Cookie cookie = new Cookie("refreshToken", loginUser.getRefreshToken());
+//                cookie.setMaxAge(7 * 24 * 60 * 60);
+////                cookie.setSecure(true);
+////                cookie.setHttpOnly(true);
+//                cookie.setPath("/");
+//
+//                response.addCookie(cookie);
 
             } else {
 
