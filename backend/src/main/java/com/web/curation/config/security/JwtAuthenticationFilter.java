@@ -53,7 +53,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             // refreshToken 확인해서 재발급 해준다.
             if(refresh != null && jwtTokenProvider.validateToken(refresh).equals("ACCESS")){
-                String newRefresh = jwtTokenProvider.reissueRefreshToken(servletResponse, refresh);
+                String newRefresh = jwtTokenProvider.reissueRefreshToken(refresh);
 
                 if(newRefresh != null){
 
