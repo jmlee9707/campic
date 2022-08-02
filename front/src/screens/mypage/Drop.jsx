@@ -14,6 +14,7 @@ function Drop() {
     const pw = pwRef.current.value;
     const email = sessionStorage.getItem("email");
     const res = await checkPw({ email, password: pw });
+    console.log("1111");
     if (res === "success") {
       sessionStorage.clear();
       dispatch(reset());

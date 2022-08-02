@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 // style import
@@ -6,6 +6,7 @@ import "./MainNavBar.scss";
 import navLogo from "@images/logo/logo_text_green.svg";
 import temp from "@images/coco.jpeg";
 import { reset } from "../../store/user";
+import "./NavTooltip.scss";
 
 function MainNavBar() {
   const navigate = useNavigate();
@@ -23,6 +24,24 @@ function MainNavBar() {
     dispatch(reset());
     navigate("/"); // 홈으로 이동
   };
+
+  const [openTool, setOpenTool] = useState(false);
+  const openTooltip = () => {
+    setOpenTool(!openTool);
+  };
+  const moveEdit = () => {
+    navigate("/infoedit");
+    setOpenTool(!openTool);
+  };
+  const moveInfo = () => {
+    navigate("/infoedit");
+    setOpenTool(!openTool);
+  };
+  const moveMyFeed = () => {
+    navigate("/mypage/myfeed");
+    setOpenTool(!openTool);
+  };
+
   return (
     <div className="wrapper flex align-center">
       <nav id="MainNavBar" className="flex align-center">
@@ -71,7 +90,11 @@ function MainNavBar() {
               >
                 로그아웃
               </button>
-              <button type="button" className="right_nav__link_user_img fs-16">
+              <button
+                type="button"
+                className="right_nav__link_user_img fs-16"
+                onClick={openTooltip}
+              >
                 {/* <img src={userInfo.profileImg} alt="userProfile" /> */}
                 <img src={temp} alt="userProfile" />
               </button>
@@ -79,6 +102,36 @@ function MainNavBar() {
           )}
         </nav>
       </nav>
+      {openTool && (
+        <div className="my_tool">
+          <div className="my_tool_box flex justify-center column">
+            <button
+              type="button"
+              to="/mypage/myfeed"
+              className="my_tool_info flex align-center fs-13"
+              onClick={moveMyFeed}
+            >
+              내 계정
+            </button>
+            <button
+              type="button"
+              to="/infoedit"
+              className="my_tool_edit flex align-center fs-13"
+              onClick={moveEdit}
+            >
+              개인정보 수정
+            </button>
+            <button
+              type="button"
+              to="/myfeed"
+              className="my_tool_about flex align-center fs-13"
+              onClick={moveInfo}
+            >
+              사이트 정보
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -5,12 +5,12 @@ import naver from "@images/icon/naver.svg";
 import google from "@images/icon/google.svg";
 import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../../apis/user"; // login api
-// import { login as log } from "../../store/user";
+import { login as log } from "../../store/user";
 
 function Login() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { sessionStorage } = window;
 
@@ -21,14 +21,16 @@ function Login() {
       email: emailRef.current.value,
       password: passRef.current.value
     });
+
     // console.log(res);
+
     if (res.message === "success") {
-      // dispatch(
-      //   log({
-      //     email: emailRef.current.value,
-      //     accessToken: res.accessToken
-      //   })
-      // );
+      dispatch(
+        log({
+          email: emailRef.current.value,
+          accessToken: res.accessToken
+        })
+      );
       sessionStorage.setItem("email", emailRef.current.value);
       sessionStorage.setItem("accessToken", res.accessToken); // 수정하기
       navigate("/");
