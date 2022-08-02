@@ -20,6 +20,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final Logger LOGGER = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
     private final JwtTokenProvider jwtTokenProvider;
 
+    public static final String AUTHORIZATION_HEADER = "Authorization";
+    public static final String REFRESH_HEADER = "Refresh";
+
     public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider) {
         this.jwtTokenProvider = jwtTokenProvider;
     }
@@ -28,7 +31,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest servletRequest,
                                     HttpServletResponse servletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
-        String token = jwtTokenProvider.resolveToken(servletRequest);
+        String token = jwtTokenProvider.resolveToken(servletRequest, AUTHORIZATION_HEADER);
         LOGGER.info("[doFilterInternal] token 값 추출 완료. token : {}", token);
 
         LOGGER.info("[doFilterInternal] token 값 유효성 체크 시작");
@@ -46,7 +49,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             // 쿠키에서 리프레시 토큰 가져오기
             String refresh = null;
             try {
-                refresh = jwtTokenProvider.resolveRefreshToken(servletRequest);
+                refresh = jwtTokenProvider.resolveToken(servletRequest,REFRESH_HEADER);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -58,7 +61,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 if(newRefresh != null){
 
                     // 리프레시 토큰 헤더에 저장하기
-                    servletResponse.setHeader("refreshToken", newRefresh);
+                    servletResponse.setHeader("Refresh", newRefresh);
 //                    Cookie cookie = new Cookie("refreshToken", newRefresh);
 //                    cookie.setMaxAge(7 * 24 * 60 * 60);
 ////                    cookie.setSecure(true);
@@ -72,7 +75,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                     String newAccess = jwtTokenProvider.createAccessToken(email);
 
-                    servletResponse.setHeader("accessToken", newAccess);
+                    servletResponse.setHeader("Authorization", newAccess);
 
                     Authentication authentication = jwtTokenProvider.getAuthentication(newAccess);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
