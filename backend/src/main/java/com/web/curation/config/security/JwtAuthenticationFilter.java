@@ -31,7 +31,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest servletRequest,
                                     HttpServletResponse servletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
-        String token = jwtTokenProvider.resolveToken(servletRequest, AUTHORIZATION_HEADER);
+        String token = jwtTokenProvider.resolveToken(servletRequest);
         LOGGER.info("[doFilterInternal] token 값 추출 완료. token : {}", token);
 
         LOGGER.info("[doFilterInternal] token 값 유효성 체크 시작");
@@ -49,7 +49,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             // 쿠키에서 리프레시 토큰 가져오기
             String refresh = null;
             try {
-                refresh = jwtTokenProvider.resolveToken(servletRequest,REFRESH_HEADER);
+                refresh = jwtTokenProvider.resolveRefreshToken(servletRequest);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -61,21 +61,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 if(newRefresh != null){
 
                     // 리프레시 토큰 헤더에 저장하기
-                    servletResponse.setHeader("Refresh", newRefresh);
-//                    Cookie cookie = new Cookie("refreshToken", newRefresh);
-//                    cookie.setMaxAge(7 * 24 * 60 * 60);
-////                    cookie.setSecure(true);
-////                    cookie.setHttpOnly(true);
-//                    cookie.setPath("/");
-//
-//                    servletResponse.addCookie(cookie);
+//                    servletResponse.setHeader("Refresh", newRefresh);
+                    Cookie cookie = new Cookie("refreshToken", newRefresh);
+                    cookie.setMaxAge(7 * 24 * 60 * 60);
+//                    cookie.setSecure(true);
+//                    cookie.setHttpOnly(true);
+                    cookie.setPath("/");
+
+                    servletResponse.addCookie(cookie);
 
                     // accessToken 다시 발급
                     String email = jwtTokenProvider.getUsername(newRefresh);
 
                     String newAccess = jwtTokenProvider.createAccessToken(email);
 
-                    servletResponse.setHeader("Authorization", newAccess);
+                    servletResponse.setHeader("accessToken", newAccess);
 
                     Authentication authentication = jwtTokenProvider.getAuthentication(newAccess);
                     SecurityContextHolder.getContext().setAuthentication(authentication);

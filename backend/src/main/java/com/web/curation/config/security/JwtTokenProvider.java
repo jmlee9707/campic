@@ -116,51 +116,53 @@ public class JwtTokenProvider {
      * @param request Http Request Header
      * @return String type Token 값
      */
-    public String resolveToken(HttpServletRequest request, String header) {
-        String bearerToken = request.getHeader(header);
-        if (bearerToken != null && bearerToken.startsWith("Bearer-")) {
-            return bearerToken.substring(7);
-        }
-        return null;
-    }
-//    public String resolveToken(HttpServletRequest request) {
-//        LOGGER.info("[resolveToken] HTTP 헤더에서 accessToken 값 추출");
-//        return request.getHeader("accessToken");
-//    }
-//    // 리프레시 토큰은 쿠키에서 가져와야 됨!!
-//    public String resolveRefreshToken(HttpServletRequest request) throws Exception {
-////        String refreshToken = getCookie(request, "refreshToken");
-//        LOGGER.info("[resolveRefreshToken] HTTP 헤더에서 refreshToken 값 추출");
-//        return request.getHeader("refreshToken");
-//    }
-
-//    // 쿠키에 있는 값 가져오기
-//    public String getCookie(HttpServletRequest request, String key) throws Exception {
-//        LOGGER.info("쿠키에 있는 값 가져오겠다..");
-//        Cookie[] cookies = request.getCookies();
-//        if(key == null) return null;
-//        String value = "";
-//        if(cookies != null){
-//            LOGGER.info("쿠키가 있니?");
-//            for(int i=0;i<cookies.length;i++){
-//                if(key.equals(cookies[i].getName())){
-//                    value = java.net.URLDecoder.decode(cookies[i].getValue(), "UTF-8");
-//                    break;
-//                }
-//            }
+//    public String resolveToken(HttpServletRequest request, String header) {
+//        String bearerToken = request.getHeader(header);
+//        if (bearerToken != null && bearerToken.startsWith("Bearer-")) {
+//            return bearerToken.substring(7);
 //        }
-//
-//        return value;
+//        return null;
 //    }
-//    // 쿠키 삭제하기
-//    public void delCookie(HttpServletResponse response, String key) throws Exception {
-////		Cookie cookie = new Cookie("cookie"+key, java.net.URLEncoder.encode(value.toString(), "UTF-8"));
-//
-//        Cookie cookie = new Cookie(key, "0");
-//        cookie.setMaxAge(0);
-////		cookie.setPath("/");
-//        response.addCookie(cookie);
-//    }
+    public String resolveToken(HttpServletRequest request) {
+        LOGGER.info("[resolveToken] HTTP 헤더에서 accessToken 값 추출");
+
+        return request.getHeader("accessToken");
+    }
+    // 리프레시 토큰은 쿠키에서 가져와야 됨!!
+    public String resolveRefreshToken(HttpServletRequest request) throws Exception {
+        LOGGER.info("[resolveRefreshToken] 쿠키에서 refreshToken 값 추출");
+        String refreshToken = getCookie(request, "refreshToken");
+
+        return refreshToken;
+    }
+
+    // 쿠키에 있는 값 가져오기
+    public String getCookie(HttpServletRequest request, String key) throws Exception {
+        LOGGER.info("쿠키에 있는 값 가져오겠다..");
+        Cookie[] cookies = request.getCookies();
+        if(key == null) return null;
+        String value = "";
+        if(cookies != null){
+            LOGGER.info("쿠키가 있니?");
+            for(int i=0;i<cookies.length;i++){
+                if(key.equals(cookies[i].getName())){
+                    value = java.net.URLDecoder.decode(cookies[i].getValue(), "UTF-8");
+                    break;
+                }
+            }
+        }
+
+        return value;
+    }
+    // 쿠키 삭제하기
+    public void delCookie(HttpServletResponse response, String key) throws Exception {
+//		Cookie cookie = new Cookie("cookie"+key, java.net.URLEncoder.encode(value.toString(), "UTF-8"));
+
+        Cookie cookie = new Cookie(key, "0");
+        cookie.setMaxAge(0);
+//		cookie.setPath("/");
+        response.addCookie(cookie);
+    }
 
     // 리프레시 토큰 재발급하기
     @Transactional
