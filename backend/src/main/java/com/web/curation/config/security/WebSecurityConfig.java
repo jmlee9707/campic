@@ -17,6 +17,8 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .allowedOrigins("http://localhost:3000")
                 .allowedMethods("*")
                 .allowedHeaders("*")
+                .exposedHeaders("Authorization")
+                .exposedHeaders("Refresh")
                 .allowCredentials(true);
     }
 }
