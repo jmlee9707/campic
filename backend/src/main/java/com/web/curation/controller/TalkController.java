@@ -102,13 +102,13 @@ public class TalkController {
             //printStackTrace()를 호출하면 로그에 Stack trace가 출력됩니다.
         }
 
-        talkDto.setThumbnailFilePath(savePath.toString());
+        talkDto.setFilePath(savePath.toString());
 
         int result = talkService.writeTalk(talkDto);
 
         if (result != 0) {
             resultMap.put("message", SUCCESS);
-            resultMap.put("boardId", result);
+            resultMap.put("talkId", result);
             return new ResponseEntity<>(resultMap, status);
         }
 
@@ -123,7 +123,7 @@ public class TalkController {
     public ResponseEntity<String> updateTalk(TalkDto talkDto, MultipartFile file) {
         LOGGER.info("updateTalk - 호출");
 
-        talkDto.setThumbnailFileName(file.getOriginalFilename());
+        talkDto.setFilePath(file.getOriginalFilename());
         if (talkService.updateTalk(talkDto)) {
             return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
         }
