@@ -2,6 +2,7 @@ package com.web.curation.data.dto;
 
 import lombok.*;
 
+import java.sql.Blob;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class PhotoDto {
 //    private int dType;
 
     private String fileName;
-    private String filePath;
+    private byte[] file;
+    private String blobFile;
 
 }

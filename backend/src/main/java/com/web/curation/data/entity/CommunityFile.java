@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.time.LocalDateTime;
 
 @Getter
@@ -18,11 +19,11 @@ public class CommunityFile {
     @JoinColumn(name = "boardId")
     private Community community;
 
-    @Column(nullable = false)
+
     private String name;
 
     @Column(nullable = false)
-    private String filePath;
+    private byte[] file;
 
     private String fileType;
 
