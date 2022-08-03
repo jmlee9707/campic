@@ -140,6 +140,7 @@ public class TalkService {
         LOGGER.info("talkDto FIleName() : ", talkDto.getFileName());
 
         thumbnailFile.setName(talkDto.getFileName());
+        thumbnailFile.setTalk(talk);
 
         thumbnailFileRepository.save(thumbnailFile);
         LOGGER.info("[getSignUpResult] userEntity 값이 들어왔는지 확인 후 결과값 주입");
@@ -172,11 +173,11 @@ public class TalkService {
 
         thumbnailFileRepository.save(thumbnailFile);
 
-//        if(talk.getTitle().equals(talkDto.getTitle()) && talk.getHashtag().equals(talkDto.getHashtag())){
-//            return true;
-//        }
-//        return false;
-        return true;
+        if(talk.getTitle().equals(talkDto.getTitle()) && talk.getHashtag().equals(talkDto.getHashtag())){
+            return true;
+        }
+        return false;
+//        return true;
     }
 
     public boolean deleteTalk(int talkId) {
