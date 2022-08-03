@@ -24,6 +24,7 @@ import java.util.UUID;
 @RestController
 //@CrossOrigin("*")
 @RequestMapping("/talk")
+
 public class TalkController {
     private final Logger LOGGER = LoggerFactory.getLogger(PhotoController.class);
     private static final String SUCCESS = "success";
@@ -56,7 +57,7 @@ public class TalkController {
 
     @GetMapping("/detail/{talkId}")
     public ResponseEntity<TalkDto> detailTalk(@PathVariable int talkId) {
-        LOGGER.info("detailPhoto 호출");
+        LOGGER.info("detailPhoto 호출 {}", talkId);
         return new ResponseEntity<>(talkService.detailTalk(talkId), HttpStatus.OK);
     }
 
