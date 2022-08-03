@@ -41,12 +41,12 @@ public class TokenController {
         LOGGER.info("[silentRefresh] 실행");
         Map<String, Object> resultMap = new HashMap<>();
         HttpStatus status = HttpStatus.OK;
-        String refresh = refreshToken.get("refreshtoken");
+        String refresh = refreshToken.get("refreshToken");
         LOGGER.info("refreshtoken 맞아? {}", refresh);
 
 //        String refreshToken = jwtTokenProvider.resolveToken(request, "refreshToken");
         String sliceRefresh = null;
-        if (refreshToken != null && refresh.startsWith("Bearer-")) {
+        if (refresh != null && refresh.startsWith("Bearer-")) {
             sliceRefresh = refresh.substring(7);
 
         } else {
@@ -57,19 +57,21 @@ public class TokenController {
 
         // 리프레시 토큰이 유효하면
         if(jwtTokenProvider.validateToken(sliceRefresh).equals("ACCESS")){
+            LOGGER.info("refreshToken 유효하니");
             // 새로운 refreshToken과 accessToken을 리턴한다.
             String newRefresh = jwtTokenProvider.reissueRefreshToken(sliceRefresh);
+            LOGGER.info("refreshToken {}", newRefresh);
 
             String email = jwtTokenProvider.getUsername(newRefresh);
             User user = userRepository.getByEmail(email);
             String newAccess = jwtTokenProvider.createAccessToken(email, user.getRoleType());
+            LOGGER.info("new access & refresh 재발급 완료");
 
             Authentication authentication = jwtTokenProvider.getAuthentication(newAccess);
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            LOGGER.info("new access & refresh 재발급 완료");
             LOGGER.info("accessToken {}", newAccess);
-            LOGGER.info("refreshToken {}", newRefresh);
+
             resultMap.put("accessToken", newAccess);
             resultMap.put("refreshToken", newRefresh);
             resultMap.put("message", SUCCESS);
