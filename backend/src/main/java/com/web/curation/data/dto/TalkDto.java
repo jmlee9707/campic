@@ -17,14 +17,20 @@ public class TalkDto {
     private String profileImgPath;
     private int talkId;
     private String nickname;
-    private LocalDateTime uploadDate;
+
     private String title;
     private String hashtag;
-    private String thumbnailFileName;
-    private String thumbnailFilePath;
     private String contents;
+    private LocalDateTime uploadDate;
+
     private int click;
     private long like;
+
+//    private String thumbnailFileName;
+//    private String thumbnailFilePath;
+    private String fileName;
+    private String filePath;
+
 
 }
 

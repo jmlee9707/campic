@@ -76,8 +76,8 @@ public class TalkService {
         talkDto.setClick(talk.getClick());
 
         ThumbnailFile thumbnailFile = thumbnailFileRepository.findByTalk(talk);
-        talkDto.setThumbnailFileName(thumbnailFile.getName());
-        talkDto.setThumbnailFilePath(thumbnailFile.getFilePath());
+        talkDto.setFileName(thumbnailFile.getName());
+        talkDto.setFilePath(thumbnailFile.getFilePath());
 
         return talkDto;
     }
@@ -89,13 +89,12 @@ public class TalkService {
         for(Talk talk : talks){
 
             TalkDto talkDto = new TalkDto();
+
             talkDto.setProfileImgPath(talk.getUser().getProfileImg());
             talkDto.setTalkId(talk.getTalkId());
             talkDto.setNickname(talk.getUser().getNickname());
             talkDto.setUploadDate(talk.getUploadDate());
             talkDto.setTitle(talk.getTitle());
-//            talkDto.setThumbnailFileName(talk.get().getName());
-//            talkDto.setThumbnailFilePath(talk.getThumbnailFile().getFilePath());
             talkDto.setHashtag(talk.getHashtag());
 
             // 좋아요 수
@@ -108,8 +107,8 @@ public class TalkService {
             talkDto.setContents(talk.getContents());
 
             ThumbnailFile thumbnailFile = thumbnailFileRepository.findByTalk(talk);
-            talkDto.setThumbnailFilePath(thumbnailFile.getFilePath());
-            talkDto.setThumbnailFileName(thumbnailFile.getName());
+            talkDto.setFilePath(thumbnailFile.getFilePath());
+            talkDto.setFileName(thumbnailFile.getName());
 
             listTalk.add(talkDto);
         }
@@ -135,13 +134,12 @@ public class TalkService {
 
         // thumbnailFile 저장
         ThumbnailFile thumbnailFile = new ThumbnailFile();
-        thumbnailFile.setFilePath(talkDto.getThumbnailFilePath());
-        thumbnailFile.setName(talkDto.getThumbnailFileName());
+        thumbnailFile.setFilePath(talkDto.getFilePath());
+        LOGGER.info("talkDto FIleName() : ", talkDto.getFileName());
+
+        thumbnailFile.setName(talkDto.getFileName());
 
         thumbnailFileRepository.save(thumbnailFile);
-
-
-
         LOGGER.info("[getSignUpResult] userEntity 값이 들어왔는지 확인 후 결과값 주입");
         if (savedTalk != null) {
             LOGGER.info("talk 게시글 저장 완료");
@@ -167,8 +165,8 @@ public class TalkService {
         ThumbnailFile thumbnailFile = thumbnailFileRepository.findByTalk(talk);
 
         thumbnailFile.setTalk(talk);
-        thumbnailFile.setName(talkDto.getThumbnailFileName());
-        thumbnailFile.setFilePath(talkDto.getThumbnailFilePath());
+        thumbnailFile.setName(talkDto.getFileName());
+        thumbnailFile.setFilePath(talkDto.getFilePath());
 
         thumbnailFileRepository.save(thumbnailFile);
 

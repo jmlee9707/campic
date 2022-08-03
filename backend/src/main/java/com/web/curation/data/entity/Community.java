@@ -25,7 +25,6 @@ public class Community {
 
     @Column(nullable = false)
     private String content;
-
     private String hashtag;
 
     private int click;
