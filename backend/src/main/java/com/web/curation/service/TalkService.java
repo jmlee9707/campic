@@ -140,7 +140,7 @@ public class TalkService {
         LOGGER.info("talkDto FIleName() : ", talkDto.getFileName());
 
         thumbnailFile.setName(talkDto.getFileName());
-        thumbnailFile.setTalk(talk);
+//        thumbnailFile.setTalk(talk);
 
         thumbnailFileRepository.save(thumbnailFile);
         LOGGER.info("[getSignUpResult] userEntity 값이 들어왔는지 확인 후 결과값 주입");
