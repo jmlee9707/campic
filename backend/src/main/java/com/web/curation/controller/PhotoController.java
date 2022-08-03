@@ -67,7 +67,7 @@ public class PhotoController {
     private String uploadPath = "/home/ubuntu/app/photo/";
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> writePhoto(PhotoDto photoDto) {
+    public ResponseEntity<Map<String, Object>> writePhoto(PhotoDto photoDto, MultipartFile file) {
         Map<String, Object> resultMap = new HashMap<>();
         HttpStatus status = HttpStatus.OK;
 
@@ -138,7 +138,7 @@ public class PhotoController {
 
 
     @PutMapping
-    public ResponseEntity<String> updatePhoto(PhotoDto photoDto) {
+    public ResponseEntity<String> updatePhoto(PhotoDto photoDto, MultipartFile file) {
         LOGGER.info("updatePhoto - 호출");
 //        LOGGER.info(photoDto.getTitle());
 
