@@ -47,11 +47,11 @@ public class JwtTokenProvider {
     }
 
     //JWT access-token 생성
-    public String createAccessToken(String email){
+    public String createAccessToken(String email, RoleType roleType){
         LOGGER.info("[createToken] 토큰 생성 시작");
         Claims claims = Jwts.claims().setSubject(email);
 
-//        claims.put("role", roleType);
+        claims.put("role", roleType);
         Date now = new Date();
 
         String token = Jwts.builder()
@@ -125,42 +125,44 @@ public class JwtTokenProvider {
     }
 //    public String resolveToken(HttpServletRequest request) {
 //        LOGGER.info("[resolveToken] HTTP 헤더에서 accessToken 값 추출");
+//
 //        return request.getHeader("accessToken");
 //    }
 //    // 리프레시 토큰은 쿠키에서 가져와야 됨!!
 //    public String resolveRefreshToken(HttpServletRequest request) throws Exception {
-////        String refreshToken = getCookie(request, "refreshToken");
-//        LOGGER.info("[resolveRefreshToken] HTTP 헤더에서 refreshToken 값 추출");
-//        return request.getHeader("refreshToken");
+//        LOGGER.info("[resolveRefreshToken] 쿠키에서 refreshToken 값 추출");
+//        String refreshToken = getCookie(request, "refreshToken");
+//
+//        return refreshToken;
 //    }
 
-//    // 쿠키에 있는 값 가져오기
-//    public String getCookie(HttpServletRequest request, String key) throws Exception {
-//        LOGGER.info("쿠키에 있는 값 가져오겠다..");
-//        Cookie[] cookies = request.getCookies();
-//        if(key == null) return null;
-//        String value = "";
-//        if(cookies != null){
-//            LOGGER.info("쿠키가 있니?");
-//            for(int i=0;i<cookies.length;i++){
-//                if(key.equals(cookies[i].getName())){
-//                    value = java.net.URLDecoder.decode(cookies[i].getValue(), "UTF-8");
-//                    break;
-//                }
-//            }
-//        }
-//
-//        return value;
-//    }
-//    // 쿠키 삭제하기
-//    public void delCookie(HttpServletResponse response, String key) throws Exception {
-////		Cookie cookie = new Cookie("cookie"+key, java.net.URLEncoder.encode(value.toString(), "UTF-8"));
-//
-//        Cookie cookie = new Cookie(key, "0");
-//        cookie.setMaxAge(0);
-////		cookie.setPath("/");
-//        response.addCookie(cookie);
-//    }
+    // 쿠키에 있는 값 가져오기
+    public String getCookie(HttpServletRequest request, String key) throws Exception {
+        LOGGER.info("쿠키에 있는 값 가져오겠다..");
+        Cookie[] cookies = request.getCookies();
+        if(key == null) return null;
+        String value = "";
+        if(cookies != null){
+            LOGGER.info("쿠키가 있니?");
+            for(int i=0;i<cookies.length;i++){
+                if(key.equals(cookies[i].getName())){
+                    value = java.net.URLDecoder.decode(cookies[i].getValue(), "UTF-8");
+                    break;
+                }
+            }
+        }
+
+        return value;
+    }
+    // 쿠키 삭제하기
+    public void delCookie(HttpServletResponse response, String key) throws Exception {
+//		Cookie cookie = new Cookie("cookie"+key, java.net.URLEncoder.encode(value.toString(), "UTF-8"));
+
+        Cookie cookie = new Cookie(key, "0");
+        cookie.setMaxAge(0);
+//		cookie.setPath("/");
+        response.addCookie(cookie);
+    }
 
     // 리프레시 토큰 재발급하기
     @Transactional
