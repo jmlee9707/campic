@@ -54,7 +54,7 @@ public class TalkController {
         return new ResponseEntity<List<TalkDto>>(talkService.userTalk(email), HttpStatus.OK);
     }
 
-    @GetMapping("/{talkId}")
+    @GetMapping("/detail/{talkId}")
     public ResponseEntity<TalkDto> detailTalk(@PathVariable int talkId) {
         LOGGER.info("detailPhoto 호출");
         return new ResponseEntity<>(talkService.detailTalk(talkId), HttpStatus.OK);
