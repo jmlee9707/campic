@@ -1,9 +1,8 @@
 package com.web.curation.controller;
 
-import com.web.curation.data.dto.PhotoDto;
 import com.web.curation.data.dto.TalkDto;
-import com.web.curation.service.PhotoService;
 import com.web.curation.service.TalkService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,10 @@ public class TalkController {
     private final TalkService talkService;
 
     @Autowired
-    public TalkController(TalkService talkService) {
+    private TalkController(TalkService talkService){
         this.talkService = talkService;
     }
+
 
     @GetMapping
     public ResponseEntity<List<TalkDto>> listTalk() {
