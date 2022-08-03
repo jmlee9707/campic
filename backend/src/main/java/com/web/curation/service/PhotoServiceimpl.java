@@ -186,12 +186,15 @@ public class PhotoServiceimpl implements PhotoService {
 
     @Override
     public boolean deletePhoto(int boardId) {
-        // 게시글 삭제
+
+        // 게시글 불러오고나서
         Community community = communityRepository.findByBoardId(boardId);
-        communityRepository.delete(community);
-        // 사진 삭제
+        // 사진 삭제한 다음에
         CommunityFile communityFile = communityFileRepository.findByCommunity(community);
         communityFileRepository.delete(communityFile);
+
+        // 게시글 삭제
+        communityRepository.delete(community);
 
         Community verify = communityRepository.findByBoardId(boardId);
 
