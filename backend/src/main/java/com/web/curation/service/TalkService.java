@@ -170,10 +170,11 @@ public class TalkService {
 
         thumbnailFileRepository.save(thumbnailFile);
 
-        if(talk.getTitle().equals(talkDto.getTitle()) && talk.getHashtag().equals(talkDto.getHashtag())){
-            return true;
-        }
-        return false;
+//        if(talk.getTitle().equals(talkDto.getTitle()) && talk.getHashtag().equals(talkDto.getHashtag())){
+//            return true;
+//        }
+//        return false;
+        return true;
     }
 
     public boolean deleteTalk(int talkId) {
