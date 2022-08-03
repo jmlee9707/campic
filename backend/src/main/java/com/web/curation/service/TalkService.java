@@ -129,6 +129,7 @@ public class TalkService {
         talk.setUser(user);
         talk.setUploadDate(LocalDateTime.now());
         talk.setClick(0);
+        talk.setContents(talkDto.getContents());
 
         Talk savedTalk = talkRepository.save(talk);
 
@@ -139,7 +140,7 @@ public class TalkService {
 
         thumbnailFileRepository.save(thumbnailFile);
 
-        talk.setContents(talkDto.getContents());
+
 
         LOGGER.info("[getSignUpResult] userEntity 값이 들어왔는지 확인 후 결과값 주입");
         if (savedTalk != null) {
