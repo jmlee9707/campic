@@ -10,10 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.sql.rowset.serial.SerialException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -69,6 +72,20 @@ public class PhotoController {
         HttpStatus status = HttpStatus.OK;
 
         LOGGER.info("writePhoto - 호출");
+
+        String fileName = file.getOriginalFilename();
+        photoDto.setFileName(fileName);
+
+        byte[] bytes;
+
+        try{
+            bytes = file.getBytes();
+            photoDto.setFile(bytes);
+            LOGGER.info("bytes 파일 {}", bytes.toString());
+        }  catch (IOException e2){
+            e2.printStackTrace();
+        }
+
 
         // 이미지 파일이 아닐 때
 //        if(file.getContentType().startsWith("image") == false){
@@ -148,6 +165,18 @@ public class PhotoController {
 //        }
 //
 //        photoDto.setFilePath(savePath.toString());
+
+        String fileName = file.getOriginalFilename();
+        photoDto.setFileName(fileName);
+        byte[] bytes;
+
+        try{
+            bytes = file.getBytes();
+            photoDto.setFile(bytes);
+            LOGGER.info("bytes 파일 {}", bytes.toString());
+        }  catch (IOException e2){
+            e2.printStackTrace();
+        }
 
         if (photoService.updatePhoto(photoDto)) {
             return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);

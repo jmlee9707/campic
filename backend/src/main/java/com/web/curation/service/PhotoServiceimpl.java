@@ -84,7 +84,13 @@ public class PhotoServiceimpl implements PhotoService {
 
         CommunityFile communityFile = communityFileRepository.findByCommunity(community);
         photoDto.setFileName(communityFile.getName());
-        photoDto.setFilePath(communityFile.getFilePath());
+
+        String blobFile = encodeBlobToBase64(communityFile.getFile());
+        LOGGER.info("blobFile", blobFile);
+        photoDto.setFile(communityFile.getFile());
+        photoDto.setBlobFile(blobFile);
+
+        photoDto.setFile(communityFile.getFile());
 
         return photoDto;
     }
@@ -110,15 +116,26 @@ public class PhotoServiceimpl implements PhotoService {
             // 조회수
             photoDto.setClick(community.getClick());
 
-
+            // 사진 넣기
             CommunityFile communityFile = communityFileRepository.findByCommunity(community);
             photoDto.setFileName(communityFile.getName());
-            photoDto.setFilePath(communityFile.getFilePath());
+
+            String blobFile = encodeBlobToBase64(communityFile.getFile());
+
+            photoDto.setFile(communityFile.getFile());
+            photoDto.setBlobFile(blobFile);
 
             listPhoto.add(photoDto);
         }
         
         return listPhoto;
+    }
+    public static String encodeBlobToBase64(byte[] data){
+        final String BASE_64_PREFIX = "data:image/png;base64,";
+        String base64Str = "";
+        base64Str = data.toString().substring(BASE_64_PREFIX.length());
+
+        return base64Str;
     }
     @Transactional
     @Override
@@ -140,7 +157,7 @@ public class PhotoServiceimpl implements PhotoService {
         // communityFile 저장
         CommunityFile communityFile = new CommunityFile();
         communityFile.setCommunity(community);
-        communityFile.setFilePath(photoDto.getFilePath());
+        communityFile.setFile(photoDto.getFile());
         LOGGER.info("photoDto FIleName() : ", photoDto.getFileName());
         communityFile.setName(photoDto.getFileName());
 
@@ -174,7 +191,7 @@ public class PhotoServiceimpl implements PhotoService {
 
         communityFile.setCommunity(community);
         communityFile.setName(photoDto.getFileName());
-        communityFile.setFilePath(photoDto.getFilePath());
+        communityFile.setFile(photoDto.getFile());
 
         communityFileRepository.save(communityFile);
 
