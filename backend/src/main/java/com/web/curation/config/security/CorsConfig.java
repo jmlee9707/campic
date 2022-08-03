@@ -28,7 +28,7 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedOriginPatterns("http://localhost:3000")
                 .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE", "HEAD")
                 .allowedHeaders("*")
-                .exposedHeaders("Set-Cookie")
+//                .exposedHeaders("Set-Cookie")
                 .allowCredentials(true);
     }
 }

@@ -53,9 +53,9 @@ public class MemberServiceImpl implements MemberService {
         user.setJoinDate(LocalDateTime.now());
 
         if (role.equalsIgnoreCase("admin")) {
-            user.setRoleType(RoleType.ADMIN);
+            user.setRoleType(RoleType.ROLE_ADMIN);
         } else {
-            user.setRoleType(RoleType.USER);
+            user.setRoleType(RoleType.ROLE_USER);
         }
 
         User savedUser = userRepository.save(user);
@@ -87,7 +87,7 @@ public class MemberServiceImpl implements MemberService {
 
         UserDto userDto = new UserDto();
 
-        String access = jwtTokenProvider.createAccessToken(String.valueOf(user.getEmail()));
+        String access = jwtTokenProvider.createAccessToken(String.valueOf(user.getEmail()), user.getRoleType());
         String refresh = jwtTokenProvider.createRefreshToken(String.valueOf(user.getEmail()));
 
         userDto.setAccessToken(access);

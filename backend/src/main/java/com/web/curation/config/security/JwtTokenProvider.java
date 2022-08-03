@@ -47,11 +47,11 @@ public class JwtTokenProvider {
     }
 
     //JWT access-token 생성
-    public String createAccessToken(String email){
+    public String createAccessToken(String email, RoleType roleType){
         LOGGER.info("[createToken] 토큰 생성 시작");
         Claims claims = Jwts.claims().setSubject(email);
 
-//        claims.put("role", roleType);
+        claims.put("role", roleType);
         Date now = new Date();
 
         String token = Jwts.builder()
@@ -116,25 +116,25 @@ public class JwtTokenProvider {
      * @param request Http Request Header
      * @return String type Token 값
      */
-//    public String resolveToken(HttpServletRequest request, String header) {
-//        String bearerToken = request.getHeader(header);
-//        if (bearerToken != null && bearerToken.startsWith("Bearer-")) {
-//            return bearerToken.substring(7);
-//        }
-//        return null;
+    public String resolveToken(HttpServletRequest request, String header) {
+        String bearerToken = request.getHeader(header);
+        if (bearerToken != null && bearerToken.startsWith("Bearer-")) {
+            return bearerToken.substring(7);
+        }
+        return null;
+    }
+//    public String resolveToken(HttpServletRequest request) {
+//        LOGGER.info("[resolveToken] HTTP 헤더에서 accessToken 값 추출");
+//
+//        return request.getHeader("accessToken");
 //    }
-    public String resolveToken(HttpServletRequest request) {
-        LOGGER.info("[resolveToken] HTTP 헤더에서 accessToken 값 추출");
-
-        return request.getHeader("accessToken");
-    }
-    // 리프레시 토큰은 쿠키에서 가져와야 됨!!
-    public String resolveRefreshToken(HttpServletRequest request) throws Exception {
-        LOGGER.info("[resolveRefreshToken] 쿠키에서 refreshToken 값 추출");
-        String refreshToken = getCookie(request, "refreshToken");
-
-        return refreshToken;
-    }
+//    // 리프레시 토큰은 쿠키에서 가져와야 됨!!
+//    public String resolveRefreshToken(HttpServletRequest request) throws Exception {
+//        LOGGER.info("[resolveRefreshToken] 쿠키에서 refreshToken 값 추출");
+//        String refreshToken = getCookie(request, "refreshToken");
+//
+//        return refreshToken;
+//    }
 
     // 쿠키에 있는 값 가져오기
     public String getCookie(HttpServletRequest request, String key) throws Exception {

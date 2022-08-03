@@ -68,7 +68,7 @@ public class MemberController {
 
                 LOGGER.info("[signIn] 정상적으로 로그인되었습니다. id : {}, token : {}", userDto.getEmail(), loginUser.getAccessToken());
 
-                resultMap.put("accessToken", loginUser.getAccessToken());
+                resultMap.put("Authorization", loginUser.getAccessToken());
                 resultMap.put("message", SUCCESS);
                 status = HttpStatus.ACCEPTED;
 
@@ -84,15 +84,15 @@ public class MemberController {
 
                 // 리프레시 토큰 쿠키에 저장하기
                 resultMap.put("refreshToken", loginUser.getRefreshToken());
-                ResponseCookie cookie = ResponseCookie.from("refreshToken", loginUser.getRefreshToken())
-                        .path("/")
-//                        .secure(true)
-                        .sameSite("None")
-                        .httpOnly(false)
-                        .domain("localhost")
-                        .build();
-
-                response.setHeader("Set-Cookie", cookie.toString());
+//                ResponseCookie cookie = ResponseCookie.from("refreshToken", loginUser.getRefreshToken())
+//                        .path("/")
+////                        .secure(true)
+//                        .sameSite("None")
+//                        .httpOnly(false)
+//                        .domain("localhost")
+//                        .build();
+//
+//                response.setHeader("Set-Cookie", cookie.toString());
 
 //                Cookie cookie = new Cookie("refreshToken", loginUser.getRefreshToken());
 //                cookie.setMaxAge(7 * 24 * 60 * 60);

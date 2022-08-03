@@ -1,13 +1,17 @@
 package com.web.curation.controller;
 
 import com.web.curation.config.security.JwtTokenProvider;
+import com.web.curation.data.entity.User;
+import com.web.curation.data.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,40 +28,55 @@ public class TokenController {
     private static final String FAIL = "fail";
 
     private final JwtTokenProvider jwtTokenProvider;
+    private final UserRepository userRepository;
 
-    public TokenController(JwtTokenProvider jwtTokenProvider) {
+    @Autowired
+    public TokenController(JwtTokenProvider jwtTokenProvider, UserRepository userRepository) {
         this.jwtTokenProvider = jwtTokenProvider;
+        this.userRepository = userRepository;
     }
 
     @PostMapping("/silentRefresh")
-    public ResponseEntity<Map<String, Object>> login(HttpServletRequest request) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody HashMap<String, String> refreshToken) {
+        LOGGER.info("[silentRefresh] 실행");
         Map<String, Object> resultMap = new HashMap<>();
-        HttpStatus status = null;
+        HttpStatus status = HttpStatus.OK;
+        String refresh = refreshToken.get("refreshtoken");
+        LOGGER.info("refreshtoken 맞아? {}", refresh);
 
-        String refreshToken = request.getHeader("refreshToken");
+//        String refreshToken = jwtTokenProvider.resolveToken(request, "refreshToken");
+        String sliceRefresh = null;
+        if (refreshToken != null && refresh.startsWith("Bearer-")) {
+            sliceRefresh = refresh.substring(7);
+
+        } else {
+            status = HttpStatus.UNAUTHORIZED;
+            resultMap.put("message", FAIL);
+            return new ResponseEntity<>(resultMap, status);
+        }
 
         // 리프레시 토큰이 유효하면
-        if(jwtTokenProvider.validateToken(refreshToken).equals("ACCESS")){
+        if(jwtTokenProvider.validateToken(sliceRefresh).equals("ACCESS")){
             // 새로운 refreshToken과 accessToken을 리턴한다.
-            String newRefresh = jwtTokenProvider.reissueRefreshToken(refreshToken);
+            String newRefresh = jwtTokenProvider.reissueRefreshToken(sliceRefresh);
 
             String email = jwtTokenProvider.getUsername(newRefresh);
-            String newAccess = jwtTokenProvider.createAccessToken(email);
+            User user = userRepository.getByEmail(email);
+            String newAccess = jwtTokenProvider.createAccessToken(email, user.getRoleType());
 
             Authentication authentication = jwtTokenProvider.getAuthentication(newAccess);
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
+            LOGGER.info("new access & refresh 재발급 완료");
+            LOGGER.info("accessToken {}", newAccess);
+            LOGGER.info("refreshToken {}", newRefresh);
             resultMap.put("accessToken", newAccess);
             resultMap.put("refreshToken", newRefresh);
             resultMap.put("message", SUCCESS);
 
-//            resultMap.put("accessToken", request.getHeader("accessToken"));
-//            resultMap.put("accessToken", request.getHeader("refreshToken"));
-//            resultMap.put("message", SUCCESS);
-
             return new ResponseEntity<>(resultMap, status);
         }
-
+        status = HttpStatus.UNAUTHORIZED;
         resultMap.put("message", FAIL);
 
         return new ResponseEntity<>(resultMap, status);
