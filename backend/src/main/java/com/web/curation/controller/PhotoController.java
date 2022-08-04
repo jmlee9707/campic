@@ -81,7 +81,7 @@ public class PhotoController {
         try{
             bytes = file.getBytes();
             photoDto.setSaveFile(bytes);
-            LOGGER.info("bytes 파일 {}", bytes.toString());
+            LOGGER.info("bytes 파일 {}", bytes.toString().substring(0,11));
         }  catch (IOException e2){
             e2.printStackTrace();
         }
@@ -173,7 +173,7 @@ public class PhotoController {
         try{
             bytes = file.getBytes();
             photoDto.setSaveFile(bytes);
-            LOGGER.info("bytes 파일 {}", bytes.toString());
+            LOGGER.info("bytes 파일 {}", bytes.toString().substring(0,11));
         }  catch (IOException e2){
             e2.printStackTrace();
         }
