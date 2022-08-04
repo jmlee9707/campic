@@ -87,10 +87,8 @@ public class PhotoServiceimpl implements PhotoService {
 
         String blobFile = encodeBlobToBase64(communityFile.getFile());
         LOGGER.info("blobFile", blobFile);
-        photoDto.setFile(communityFile.getFile());
+        photoDto.setSaveFile(communityFile.getFile());
         photoDto.setBlobFile(blobFile);
-
-        photoDto.setFile(communityFile.getFile());
 
         return photoDto;
     }
@@ -122,7 +120,7 @@ public class PhotoServiceimpl implements PhotoService {
 
             String blobFile = encodeBlobToBase64(communityFile.getFile());
 
-            photoDto.setFile(communityFile.getFile());
+            photoDto.setSaveFile(communityFile.getFile());
             photoDto.setBlobFile(blobFile);
 
             listPhoto.add(photoDto);
@@ -157,7 +155,7 @@ public class PhotoServiceimpl implements PhotoService {
         // communityFile 저장
         CommunityFile communityFile = new CommunityFile();
         communityFile.setCommunity(community);
-        communityFile.setFile(photoDto.getFile());
+        communityFile.setFile(photoDto.getSaveFile());
         LOGGER.info("photoDto FIleName() : ", photoDto.getFileName());
         communityFile.setName(photoDto.getFileName());
 
@@ -191,7 +189,7 @@ public class PhotoServiceimpl implements PhotoService {
 
         communityFile.setCommunity(community);
         communityFile.setName(photoDto.getFileName());
-        communityFile.setFile(photoDto.getFile());
+        communityFile.setFile(photoDto.getSaveFile());
 
         communityFileRepository.save(communityFile);
 
