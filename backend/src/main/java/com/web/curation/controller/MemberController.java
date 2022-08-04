@@ -236,6 +236,17 @@ public class MemberController {
         }
         return new ResponseEntity<>(FAIL, HttpStatus.NO_CONTENT);
     }
+    
+    // 비밀번호 잊었을 때 변경
+    @PutMapping({"/pw"})
+    public ResponseEntity<String> forgetPassword(@RequestBody UserDto userDto, HttpServletRequest request) {
+        LOGGER.info("forgetPassword 호출");
+
+        if(memberService.updatePsssword(userDto.getEmail(), userDto.getPassword())){
+            return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(FAIL, HttpStatus.NO_CONTENT);
+    }
 
     // 비밀번호 확인
     @PostMapping("info/check")
