@@ -1,0 +1,113 @@
+.container {
+  justify-content: center;
+  //   flex-direction: column;
+}
+.divide {
+  height: vw(1px);
+  width: vw(800px);
+  background-color: $GRAY-DB;
+}
+.regist {
+  width: vw(1200px);
+  margin-bottom: vw(300px); // 나중에 수정하기
+
+  &_title {
+    margin: vw(60px) 0 vw(46px) 0;
+  }
+
+  &_img {
+    &_cover {
+      width: vw(480px);
+      height: vw(320px);
+      background-color: $GRAY-679;
+      border-radius: vw(15px);
+      flex-direction: column;
+
+      // img {
+      //   width: vw(70px);
+      //   height: vw(65px);
+        
+      // }
+      .camera{
+        width: vw(84px);
+        height: vw(77px);
+        fill: $GRAY-DB;
+      }
+
+      &_sub {
+        color: $GRAY-DB;
+        margin-top: vw(16px);
+      }
+    }
+  }
+
+  &_text {
+    margin: vw(100px) 0 vw(80px) 0;
+    flex-direction: column;
+    // background-color: red;
+
+    &_name {
+      width: vw(800px);
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: vw(6px);
+      &_input {
+        width: 85%;
+        color: $GRAY-67;
+      }
+
+      &_count {
+        color: $GRAY-DB;
+      }
+    }
+
+    &_content_input {
+      justify-content: flex-start;
+      width: vw(800px);
+      align-items: center;
+      margin-top: vw(48px);
+
+      // background-color: blue;
+      width: vw(800px);
+      overflow-x: hidden;
+      height: vw(500px);
+      color: $GRAY-67;
+
+      border: none;
+      resize: none;
+    }
+
+    &_content_input:focus {
+      outline: none;
+    }
+
+    &_content_tag {
+      justify-content: flex-start;
+      width: vw(800px);
+      align-items: center;
+      color: $GRAY-76;
+      margin-bottom: vw(20px);
+    }
+  }
+
+  &_btn {
+    &_back,
+    &_ok {
+      border-radius: vw(15px);
+      color: $WHITE;
+      width: vw(180px);
+      height: vw(64px);
+      margin: 0 vw(34px) 0 vw(34px);
+    }
+
+    &_back {
+      background-color: $GRAY-DB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &_ok {
+      background-color: $MAIN;
+    }
+  }
+}
