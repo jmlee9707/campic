@@ -39,21 +39,26 @@ public class SocialController {
     public ResponseEntity<Map<String, Object>> kakaoUser(@RequestBody Map<String, String> token) {
         LOGGER.debug("kakaoUser - 호출");
         Map<String, Object> resultMap = new HashMap<>();
-//        UserDto userDto = null;
+        UserDto loginUser = null;
         
         try{
-            socialService.kakaoUser(token.get("Authorization"));
+            loginUser = socialService.kakaoUser(token.get("Authorization"));
         } catch (Exception e){
             resultMap.put("message", FAIL);
             return new ResponseEntity<>(resultMap, HttpStatus.NO_CONTENT);
         }
 
-//        if (userDto !=null) {
-            resultMap.put("message", SUCCESS);
-//            resultMap.put("userDto", userDto);
-            return new ResponseEntity<>(resultMap, HttpStatus.OK);
-//        }
+        if (loginUser !=null) {
 
+            resultMap.put("Authorization", loginUser.getAccessToken());
+            resultMap.put("refreshToken", loginUser.getRefreshToken());
+            resultMap.put("message", SUCCESS);
+
+            return new ResponseEntity<>(resultMap, HttpStatus.ACCEPTED);
+        }
+
+        resultMap.put("message", FAIL);
+        return new ResponseEntity<>(resultMap, HttpStatus.BAD_REQUEST);
     }
 
 }
