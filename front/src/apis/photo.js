@@ -10,7 +10,6 @@ export const writePhoto = async body => {
 
 // 포토상세
 export const getPhotoDetail = async boardId => {
-  console.log("1111");
   const res = await API.get(`/photo/detail/${boardId}`);
   console.log(res.data);
   return res.data;
@@ -18,7 +17,6 @@ export const getPhotoDetail = async boardId => {
 
 // 좋아요
 export const photoLike = async params => {
-  console.log("22222");
   console.log(params);
   const res = await API.post(
     `/photo/like?boardId=${params.boardId}&email=${params.email}`
@@ -43,5 +41,22 @@ export const getPhoto = async () => {
 // 포토 메인페이지 베스트포토 컴포넌트
 export const getBestPhoto = async () => {
   const res = await API.get("/photo/best");
+  console.log('22222')
+  return res.data;
+};
+
+// 포토 수정
+export const updatePhoto = async body => {
+  const res = await API.put("/photo", body); // POST날릴거임
+  console.log('11111')
+  console.log(res.data);
+  return res.data;
+};
+
+// 포토 삭제
+export const photoDelete = async params => {
+  const res = await API.delete(
+    `/photo/${params.boardId}`
+  );
   return res.data;
 };
