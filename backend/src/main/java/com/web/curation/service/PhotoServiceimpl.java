@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -129,9 +130,9 @@ public class PhotoServiceimpl implements PhotoService {
         return listPhoto;
     }
     public static String encodeBlobToBase64(byte[] data){
-        final String BASE_64_PREFIX = "data:image/png;base64,";
-        String base64Str = "";
-        base64Str = data.toString().substring(BASE_64_PREFIX.length());
+
+//        final String BASE_64_PREFIX = "data:image/png;base64,";
+        String base64Str = Base64Utils.encodeToString(data);
 
         return base64Str;
     }
