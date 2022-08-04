@@ -131,10 +131,10 @@ public class PhotoServiceimpl implements PhotoService {
     }
     public static String encodeBlobToBase64(byte[] data){
 
-//        final String BASE_64_PREFIX = "data:image/png;base64,";
+        final String BASE_64_PREFIX = "data:image/png;base64,";
         String base64Str = Base64Utils.encodeToString(data);
 
-        return base64Str;
+        return BASE_64_PREFIX+base64Str;
     }
     @Transactional
     @Override
