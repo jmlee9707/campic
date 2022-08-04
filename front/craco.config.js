@@ -24,6 +24,8 @@ module.exports = {
           "@styles": "./src/assets/styles",
           "@images": "./src/assets/images",
           "@utils": "./src/utils",
+          "@store": "./src/store",
+          "@apis": "./src/apis"
           // "@routers": "./src/routers"
         }
       }
