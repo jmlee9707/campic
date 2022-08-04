@@ -18,7 +18,7 @@ export const API_USER = axios.create({
     // 자신이 매번 전달해야하는 객체가 자동으로 삽입
     "Access-Control-Allow-Origin": "http://localhost:8081",
     "Content-Type": "application/json",
-    accessToken: sessionStorage.getItem("accessToken"),
+    Authorization: `Bearer-${sessionStorage.getItem("accessToken")}`,
     withCredentials: true
   }
 });

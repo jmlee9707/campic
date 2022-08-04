@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 // style import
 import "./MainNavBar.scss";
 import navLogo from "@images/logo/logo_text_green.svg";
-import temp from "@images/coco.jpeg";
+import temp from "@images/cute.jpeg";
 import { reset } from "../../store/user";
 import "./NavTooltip.scss";
 
@@ -80,9 +80,6 @@ function MainNavBar() {
             </>
           ) : (
             <>
-              <NavLink className="right_nav__link_none fs-16" to="/mypage/Drop">
-                마이페이지
-              </NavLink>
               <button
                 type="button"
                 className="right_nav__link_user fs-16"

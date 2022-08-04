@@ -31,41 +31,49 @@
 
   &_box {
     width: (300px);
-    margin: 0 (25px) 0 (25px);
+    // margin: 0 (25px) 0 (px);
     &_title {
       color: $GRAY-67;
+      margin: (14px) 0 (12px);
     }
     &_input {
       width: (300px);
       height: (44px);
       border-radius: (6px);
       padding-left: (16px);
-      margin: (12px) 0 (37px) 0;
+      margin-bottom: (6px);
+      // margin: (12px) 0 (37px) 0;
       border: 1px solid $MAIN;
       color: $GRAY-40;
       &:focus {
         border: 1px solid $MAIN;
         box-shadow: 0 0 5px $MAIN;
       }
+      &_check {
+        height: (18px);
+        color: $RED;
+      }
     }
   }
 
   &_btn {
+    margin-top: vw(40px);
     width: 100%;
     align-items: center;
     flex-direction: column;
-    button {
+    &_fini,
+    &_chpw {
       width: (300px);
       height: (52px);
       color: $WHITE;
       background-color: $GRAY-DB;
       border-radius: (6px);
       margin: (11px) 0 (5px);
-    }
-    button:hover {
-      color: $WHITE;
-      background-color: $MAIN;
-      box-shadow: 0 0 (5px) $MAIN;
+      &:hover {
+        color: $WHITE;
+        background-color: $MAIN;
+        box-shadow: 0 0 (5px) $MAIN;
+      }
     }
     &_drop {
       margin-top: (27px);
