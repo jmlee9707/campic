@@ -1,0 +1,16 @@
+.wrapper {
+  justify-content: center;
+}
+
+.commu_nav {
+  height: vw(55px);
+  width: 1440px;
+  background-color: $WHITE;
+  padding-left: vw(135px);
+  box-shadow: 0 vw(2px) 0 rgba(211, 211, 211, 0.25);
+  color: $GRAY-76;
+
+  &__link {
+    margin-right: vw(40px);
+  }
+}

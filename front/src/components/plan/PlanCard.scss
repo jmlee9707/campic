@@ -1,0 +1,106 @@
+.card {
+  margin: 0 (32px) (52px) 0;
+  width: (370px);
+  &_img {
+    margin-bottom: (20px);
+    width: (370px);
+    height: (370px);
+    img {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      object-fit: cover;
+      border-radius: (5px);
+      border: none;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &_txt {
+    &_place {
+      color: $GRAY-67;
+      margin-bottom: (4px);
+    }
+    &_name {
+      color: $GRAY-40;
+      margin-bottom: (12px);
+    }
+    &_day {
+      color: $GRAY-67;
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .card {
+    margin: 0 vw(32px) vw(52px) 0;
+    width: vw(370px);
+    &_img {
+      margin-bottom: vw(20px);
+      width: vw(370px);
+      height: vw(370px);
+      img {
+        border-radius: vw(5px);
+      }
+    }
+
+    &_txt {
+      &_place {
+        margin-bottom: vw(4px);
+      }
+      &_name {
+        margin-bottom: vw(12px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .card {
+    margin: 0 vw-t(32px) vw-t(52px) 0;
+    width: vw-t(370px);
+    &_img {
+      margin-bottom: vw-t(20px);
+      width: vw-t(370px);
+      height: vw-t(370px);
+      img {
+        border-radius: vw-t(5px);
+      }
+    }
+
+    &_txt {
+      &_place {
+        margin-bottom: vw-t(4px);
+      }
+      &_name {
+        margin-bottom: vw-t(12px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .card {
+    margin: 0 vw-p(32px) vw-p(52px) 0;
+    width: vw-p(370px);
+    &_img {
+      margin-bottom: vw-p(20px);
+      width: vw-p(370px);
+      height: vw-p(370px);
+      img {
+        border-radius: vw-p(5px);
+      }
+    }
+
+    &_txt {
+      &_place {
+        margin-bottom: vw-p(4px);
+      }
+      &_name {
+        margin-bottom: vw-p(12px);
+      }
+    }
+  }
+}

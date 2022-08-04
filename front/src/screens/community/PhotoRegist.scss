@@ -1,0 +1,87 @@
+.container {
+  justify-content: center;
+}
+
+.regist {
+  width: vw(1170px);
+  height: vw(737px);
+
+  &_title {
+    margin: vw(60px) 0 vw(60px);
+  }
+
+  &_content {
+    width: vw(1170px);
+    height: vw(611px);
+    justify-content: space-between;
+
+    &_img {
+      width: vw(570px);
+      height: vw(480px);
+      background-color: $GRAY-679;
+      border-radius: vw(15px);
+      flex-direction: column;
+
+      &_sub {
+        color: $GRAY-DB;
+        margin-top: vw(12px);
+      }
+
+      .camera {
+        width: vw(88px);
+        height: vw(77px);
+      }
+    }
+
+    &_text {
+      width: vw(532px);
+      height: vw(611px);
+      flex-direction: column;
+
+      &_input_box {
+        width: vw(532px);
+        height: vw(401px);
+        color: $GRAY-76;
+        margin-bottom: vw(13px);
+        padding-left: vw(28px);
+        padding-top: vw(41px);
+        background-color: $GRAY-679;
+        border: none;
+        border-radius: vw(15px);
+        resize: none;
+        overflow-x: hidden;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &_tag {
+        width: vw(532px);
+        height: vw(53px);
+        margin-top: vw(13px);
+        background-color: $GRAY-679;
+        border-radius: vw(15px);
+        padding: vw(12px) vw(24px);
+        color: $GRAY-76;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &_box {
+        justify-content: flex-end;
+      }
+
+      &_btn {
+        width: vw(180px);
+        height: vw(64px);
+        border-radius: vw(15px);
+        background-color: $MAIN;
+        margin: vw(67px) 0 vw(72px) 0;
+        color: $WHITE;
+      }
+    }
+  }
+}
