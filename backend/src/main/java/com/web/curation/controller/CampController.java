@@ -87,8 +87,8 @@ public class CampController {
 //    public ResponseEntity save(@RequestBody ScheduleDto.Request dto, @LoginUser UserDto.Response user ) {
 //        return ResponseEntity.ok(postsService.save(dto, user.getNickname()));
 //    }
-    public ResponseEntity save(@RequestBody ScheduleDto.Request dto, @PathVariable("campId") int campId) {
-        return ResponseEntity.ok(campService.save(dto,1,campId));
+    public ResponseEntity save(@RequestBody ScheduleDto.Request dto,@RequestParam String email,@PathVariable("campId") int campId) {
+        return ResponseEntity.ok(campService.save(dto,email,campId));
     }
 
 

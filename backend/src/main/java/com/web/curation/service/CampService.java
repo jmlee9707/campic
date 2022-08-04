@@ -90,9 +90,9 @@ public class CampService{
 
     /* CREATE */
     @Transactional
-    public int save(ScheduleDto.Request dto, int userId, int campId) {
+    public int save(ScheduleDto.Request dto, String email, int campId) {
         /* User 정보를 가져와 dto에 담아준다. */
-        User user = userRepository.getById(userId); // email로?
+        User user = userRepository.getByEmail(email); // email로?
         dto.setUserId(user);
         TotalCampList camp = campRepository.getById(campId);
         dto.setCampId(camp);
