@@ -23,7 +23,7 @@ import java.util.Map;
 @RequestMapping("/token")
 public class TokenController {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(MemberController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(TokenController.class);
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
 
