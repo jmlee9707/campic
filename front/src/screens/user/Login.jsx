@@ -12,6 +12,7 @@ import { login, getUserInfo } from "../../apis/user"; // login api
 // import { login } from "../../apis/user"; // login api
 
 function Login() {
+  const kauthUrl='https://kauth.kakao.com/oauth/authorize?client_id=ecf0cdf8c6d0f9625b2d33d19a397c94&redirect_uri=http://localhost:3000/login/kakao&response_type=code';
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { sessionStorage } = window;
@@ -84,7 +85,9 @@ function Login() {
         </div>
         <div className="login_social_icons flex">
           <button className="login_social_icon_kakao" type="button">
-            <img src={kakao} alt="kakao" />
+          <a href={kauthUrl}>
+            <img src={kakao} alt='kakao'/>
+           </a>
           </button>
           <button className="login_social_icon_naver" type="button">
             <img src={naver} alt="naver" />
