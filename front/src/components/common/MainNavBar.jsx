@@ -1,6 +1,7 @@
+// import React, { useState, useEffect } from "react";
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // style import
 import "./MainNavBar.scss";
 import navLogo from "@images/logo/logo_text_green.svg";
@@ -11,16 +12,17 @@ import "./NavTooltip.scss";
 function MainNavBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userId = sessionStorage.getItem("email");
+  const userId = useSelector(state => state.user.email);
+
   const activeClassName = active => {
     const prefix = "left_nav__link fs-16 btn--";
     return active ? `${prefix}active` : `${prefix}unactive`;
   };
 
   const logoutClick = () => {
-    sessionStorage.clear(); // 세션 스토리지에 저장된 값 지우기
-    // console.log(sessionStorage.getItem("email"));
-    // state에 저장된 값 지우기
+    // 토큰 삭제를 위해서 클리어
+    sessionStorage.clear(); 
+    // 리덕스 유저 스토어 초기화
     dispatch(reset());
     navigate("/"); // 홈으로 이동
   };

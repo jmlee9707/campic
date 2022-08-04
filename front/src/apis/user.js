@@ -35,7 +35,7 @@ export const changePw = async body => {
 
 // 비밀번호 일치 여부 확인하기
 export const checkPw = async body => {
-  console.log(API_USER.post());
+  // console.log(API_USER.post());
   const res = await API_USER.post("user/info/check", body);
   return res.data;
 };
@@ -59,6 +59,7 @@ export const dropUser = async userId => {
 // 마이페이지 회원정보 조회
 export const getUserInfo = async userId => {
   const res = await API_USER.get(`user/info/${userId}`);
+  // console.log(`user/info/${userId}`)
   return res.data;
 };
 

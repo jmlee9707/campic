@@ -3,12 +3,15 @@ import "./MyFeed.scss";
 import MyPhotoList from "@components/mypage/MyPhotoCardList";
 import MyTalkList from "@components/mypage/MyTalkCardList";
 
-import navLogo from "@images/logo/logo_icon_green.svg";
+// import navLogo from "@images/logo/logo_icon_green.svg";
+
+import { useSelector } from "react-redux";
+import { selectProfile } from '../../store/user';
 
 function MyFeed() {
   const [photoClick, setPhotoClick] = useState(true);
   const [talkClick, setTalkClick] = useState(false);
-
+  const Profile = useSelector(selectProfile);
   const onPhoto = () => {
     setPhotoClick(true);
     setTalkClick(false);
@@ -22,14 +25,14 @@ function MyFeed() {
       <div className="myfeed flex">
         <div className="myfeed_profile flex">
           <div className="myfeed_profile_pic">
-            <img src={navLogo} alt="프로필이미지" />
+            <img src={ Profile.profileImg } alt="프로필이미지" />
           </div>
           <div className="myfeed_profile_content">
             <div className="myfeed_profile_content_name notoBold fs-32">
-              미핑
+              { Profile.nickname }
             </div>
             <div className="myfeed_profile_content_email notoBold fs-22">
-              aklsjd7380@naver.com
+            { Profile.email }
             </div>
             <div className="myfeed_profile_content_extra flex">
               <div className="myfeed_profile_content_extra_poname notoMid fs-16">

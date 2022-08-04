@@ -1,20 +1,22 @@
 import React, { useRef } from "react";
 import logo from "@images/logo/logo_icon_green.svg";
 import "./Drop.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reset } from "../../store/user";
+import { reset, selectEmail } from "../../store/user";
 import { checkPw } from "../../apis/user";
 
 function Drop() {
   const pwRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const storeEmail = useSelector(selectEmail);
+  
   const checkDrop = async () => {
     const pw = pwRef.current.value;
-    const email = sessionStorage.getItem("email");
-    const res = await checkPw({ email, password: pw });
-    console.log("1111");
+    // console.log(storeEmail)
+    const res = await checkPw({ email: storeEmail, password: pw });
+    // 비밀번호 일치 여부
     if (res === "success") {
       sessionStorage.clear();
       dispatch(reset());
