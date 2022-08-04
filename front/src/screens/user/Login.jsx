@@ -38,7 +38,7 @@ function Login() {
       // 유저 정보 가져오기
         // console.log("유저 정보 가져오기")
         const userRes = await getUserInfo(userEmail);
-        console.log(userRes.userInfo);
+        // console.log(userRes.userInfo);
         // 유저 정보 스토어에 저장
         dispatch(setUserInfo(userRes.userInfo))
       navigate("/");

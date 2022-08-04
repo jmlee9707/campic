@@ -1,44 +1,42 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "@images/logo/logo_icon_green.svg";
+// import logo from "@images/logo/logo_icon_green.svg";
 import "./InfoEdit.scss";
-import { modifyUserInfo, getUserInfo } from "../../apis/user";
+import { useSelector, useDispatch } from "react-redux";
+
+import { modifyUserInfo } from "../../apis/user";
+import { selectProfile, updateUserInfo } from '../../store/user';
+
 
 function InfoEdit() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const nickRef = useRef();
   const phoneRef = useRef();
   const birthRef = useRef();
-  const [info, setInfo] = useState("");
+
+  const Profile = useSelector(selectProfile);
+
   const [nickError, setNickError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [nickMess, setNickMess] = useState("");
   const [phoneMess, setPhoneMess] = useState("");
 
-  useEffect(() => {
-    const userId = sessionStorage.getItem("email");
-    // const accessToken = sessionStorage.getItem("accessToken");
-
-    async function getUser() {
-      const res = await getUserInfo(userId);
-      setInfo(res);
-    }
-    getUser();
-    console.log(info);
-  });
 
   const canEdit = async () => {
     if (!nickError && !phoneError) {
-      // const useId = sessionStorage.getItem("email");
-      const res = await modifyUserInfo({
-        email: info.email,
+      const userInfo = {
+        birth: birthRef.current.value,
+        email: Profile.email,
         nickname: nickRef.current.value,
+        // profileImg: 
         tel: phoneRef.current.value,
-        birth: birthRef.current.value
-      });
-
+      }
+      const res = await modifyUserInfo(userInfo);
+      
       if (res === "success") {
-        navigate("/infoedit"); // 다음페이지로 이동xw
+        dispatch(updateUserInfo(userInfo))
+        navigate("/mypage/myfeed"); // 다음페이지로 이동xw
       }
     } else {
       alert("입력된 값을 다시 한번 확인해주세요");
@@ -75,7 +73,7 @@ function InfoEdit() {
       <div className="infoedit ">
         <div className="infoedit_top flex justify-center">
           <div className="infoedit_top_title notoBold fs-28">개인정보 수정</div>
-          <img src={logo} alt="Profile_Image" />
+          <img src={ Profile.profileImg } alt="Profile_Image" />
           <button className="infoedit_top_btn notoBold fs-15" type="button">
             프로필 사진 변경
           </button>
@@ -87,7 +85,7 @@ function InfoEdit() {
             <input
               type="email"
               className="infoedit_box_input  notoMid fs-14"
-              value={info.email}
+              value={ Profile.email }
               readOnly
             />
           </div>
@@ -98,7 +96,7 @@ function InfoEdit() {
               onChange={checkNick}
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              placeholder={info.nickname}
+              placeholder={ Profile.nickname }
             />
             <div
               className={
@@ -117,7 +115,7 @@ function InfoEdit() {
               onChange={checkPhone}
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              placeholder={info.tel}
+              placeholder={ Profile.tel }
             />
             <div
               className={
@@ -135,7 +133,7 @@ function InfoEdit() {
               ref={birthRef}
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              placeholder={info.birth}
+              placeholder={ Profile.birth }
             />
           </div>
           <div className="infoedit_box">
@@ -145,7 +143,7 @@ function InfoEdit() {
             <input
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              placeholder={info.joinDate}
+              placeholder={ Profile.joinDate }
               readOnly
             />
           </div>
@@ -156,7 +154,7 @@ function InfoEdit() {
             <input
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              value={info.auth}
+              value={ Profile.auth }
               readOnly
             />
           </div>

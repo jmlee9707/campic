@@ -2,11 +2,18 @@ import React, { useState, useRef } from "react";
 import logo from "@images/logo/logo_icon_green.svg";
 import "./PwEdit.scss";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { changePw } from "../../apis/user";
+
+import { selectProfile } from '../../store/user';
 
 function PwEdit() {
   const navigate = useNavigate();
   const passRef = useRef();
   const passSameRef = useRef();
+
+  const Profile = useSelector(selectProfile);
+
   const [passMess, setPassMess] = useState("");
   const [passSameMess, setPassSameMess] = useState("");
   const [passError, setPassError] = useState(false);
@@ -25,7 +32,7 @@ function PwEdit() {
   };
 
   // 비밀번호 일치여부 확인
-  const checkPassSame = () => {
+  const checkPassSame =  () => {
     if (passRef.current.value !== passSameRef.current.value) {
       setPassSameMess("비밀번호가 일치하지 않습니다");
       setPassSameError(true);
@@ -35,11 +42,21 @@ function PwEdit() {
     }
   };
 
-  const canEdit = () => {
+  const canEdit = async () => {
     if (!passError && !passSameError) {
-      navigate("/infoedit");
+      try {
+        const res = await changePw({ email: Profile.email, password: passRef.current.value });
+        navigate("/infoedit/pwedit");
+        if (res !=='success') {
+          throw new Error('canEdit err')
+        }
+      } catch {
+        setPassMess("관리자에게 문의하세요");
+        setPassError(true);
+      }
     }
   };
+  
   return (
     <div className="container column flex align-center justify-center">
       <div className="pwedit">
@@ -58,7 +75,7 @@ function PwEdit() {
               <input
                 type="password"
                 className="pwedit_content_input notoMid fs-14"
-                placeholder="10~11자리의 숫자로 입력해주세요"
+                placeholder="영문, 숫자를 혼합하여 8~16자로 입력해주세요"
                 onChange={checkPass}
                 ref={passRef}
               />

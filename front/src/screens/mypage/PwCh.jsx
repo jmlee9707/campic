@@ -2,9 +2,14 @@ import React, { useRef, useState } from "react";
 import logo from "@images/logo/logo_icon_green.svg";
 import "./PwCh.scss";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectProfile } from '../../store/user';
+import { checkPw } from "../../apis/user";
 
 function PwCh() {
   const navigate = useNavigate();
+
+  const Profile = useSelector(selectProfile);
 
   const [passError, setPassError] = useState(false);
   const [passMess, setPassMess] = useState("");
@@ -22,8 +27,20 @@ function PwCh() {
     }
   };
 
-  const checkPw = () => {
-    navigate("/infoedit/pwedit");
+  const canEditPw = async () => {
+    // if (!passError) {
+      try {
+        const res = await checkPw({ email: Profile.email, password: passRef.current.value });
+        navigate("/infoedit/pwedit");
+        if (res !=='success') {
+          throw new Error('caEditPw err')
+        }
+      } catch {
+        setPassMess("비밀번호가 일치하지 않습니다");
+        setPassError(true);
+      }
+
+    // }
   };
   return (
     <div className="container flex justify-center">
@@ -56,7 +73,7 @@ function PwCh() {
             <button
               className="pwch_content_btn notoBold fs-18"
               type="button"
-              onClick={checkPw}
+              onClick={canEditPw}
             >
               확인
             </button>

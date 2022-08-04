@@ -18,7 +18,7 @@ export const findId = async phone => {
 // 비밀번호 찾기
 export const findPw = async userId => {
   const res = await API.get(`email/findPw/${userId}`);
-  console.log(res.data);
+  // console.log(res.data);
   return res.data;
 };
 
@@ -29,7 +29,7 @@ export const findPw = async userId => {
 // 비밀번호 변경하기
 export const changePw = async body => {
   const res = await API_USER.put("user/info/pw", body);
-  console.log(res.data);
+  // console.log(res.data);
   return res.data;
 };
 
