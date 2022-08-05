@@ -1,10 +1,8 @@
 package com.web.curation.service;
 
+import com.web.curation.data.dto.CampDto;
 import com.web.curation.data.dto.PhotoDto;
-import com.web.curation.data.entity.Community;
-import com.web.curation.data.entity.CommunityFile;
-import com.web.curation.data.entity.CommunityLike;
-import com.web.curation.data.entity.User;
+import com.web.curation.data.entity.*;
 import com.web.curation.data.repository.CommunityFileRepository;
 import com.web.curation.data.repository.CommunityLikeRepository;
 import com.web.curation.data.repository.CommunityRepository;
@@ -12,6 +10,10 @@ import com.web.curation.data.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Base64Utils;
 
@@ -39,8 +41,16 @@ public class PhotoServiceimpl implements PhotoService {
     }
 
     @Override
-    public List<PhotoDto> listPhoto() {
-        List<Community> listCommunity = communityRepository.findAll();
+    public List<PhotoDto> listPhoto(int page) {
+        Pageable sortedByPriceDesc =
+                PageRequest.of(page, 15, Sort.by("uploadDate").descending());
+
+        Page<Community> pageCommunity = communityRepository.findAll(sortedByPriceDesc);
+        List<Community> listCommunity = new ArrayList<>();
+
+        for(Community comm : pageCommunity){
+              listCommunity.add(comm);
+        }
 
         return getPhotoDtos(listCommunity);
     }

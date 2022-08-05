@@ -39,10 +39,10 @@ public class PhotoController {
         this.photoService = photoService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<PhotoDto>> listPhoto() {
+    @GetMapping()
+    public ResponseEntity<List<PhotoDto>> listPhoto(@RequestParam int page) {
         LOGGER.info("listPhoto - 호출");
-        return new ResponseEntity<List<PhotoDto>>(photoService.listPhoto(), HttpStatus.OK);
+        return new ResponseEntity<List<PhotoDto>>(photoService.listPhoto(page), HttpStatus.OK);
     }
 
     @GetMapping("/best")
