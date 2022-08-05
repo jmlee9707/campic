@@ -31,7 +31,7 @@ public class RegionService {
     /* gungu list */
     @Transactional(readOnly = true)
     public List<Guguncode> getAllGungu(String sidocode){
-        List<Guguncode> getAllGungu = gunguRepository.findAllByGunguCodeContains(sidocode);
+        List<Guguncode> getAllGungu = gunguRepository.findAllByGunguCodeStartsWith(sidocode);
         return getAllGungu;
     }
 

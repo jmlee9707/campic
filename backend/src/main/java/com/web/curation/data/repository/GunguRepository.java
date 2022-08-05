@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface GunguRepository extends JpaRepository<Guguncode, Integer> {
-    List<Guguncode> findAllByGunguCodeContains(String sidocode);
+    List<Guguncode> findAllByGunguCodeStartsWith(String sidocode);
 }
