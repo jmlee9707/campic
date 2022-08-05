@@ -2,12 +2,15 @@ package com.web.curation.service;
 
 import com.web.curation.data.dto.CampDto;
 import com.web.curation.data.dto.ScheduleDto;
+import com.web.curation.data.dto.TagDto;
 import com.web.curation.data.entity.LikedCampList;
 import com.web.curation.data.entity.TotalCampList;
 import com.web.curation.data.entity.User;
 import com.web.curation.data.repository.CampRepository;
 import com.web.curation.data.repository.LikedCampRepository;
+import com.web.curation.data.repository.TagRepository;
 import com.web.curation.data.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,17 +21,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class CampService{
     private final CampRepository campRepository;
     private final LikedCampRepository likedCampRepository;
     private final UserRepository userRepository;
+    private final TagRepository tagRepository;
 
     @Autowired
-    public CampService(CampRepository campRepository, LikedCampRepository likedCampRepository, UserRepository userRepository) {
+    public CampService(CampRepository campRepository, LikedCampRepository likedCampRepository, UserRepository userRepository, TagRepository tagRepository) {
         this.campRepository = campRepository;
         this.likedCampRepository = likedCampRepository;
         this.userRepository = userRepository;
+        this.tagRepository = tagRepository;
     }
 
     /* campList READ */
@@ -67,24 +73,19 @@ public class CampService{
         return regionSearchCampList;
     }
 
-//    /* camp 지역 검색 결과 리스트 READ */
-//    @Transactional(readOnly = true)
-//    public List<CampDto.CampList> tagSearchCampList(List<String> taglist){
-//
-//
-//
-//
-//
-//
-////        List<CampDto.CampList> tagSearchCampList = new ArrayList<>();
-////
-////        for (String tag : taglist){
-////
-////        }
-//
-//
-//        return regionSearchCampList;
-//    }
+    /* camp 태그 검색 결과 리스트 READ */
+    @Transactional(readOnly = true)
+    public List<CampDto.CampList> tagSearchCampList(List<String> taglist){
+        List<TagDto.SearchedTag> selecteds = tagRepository.findDistinctByAndHashtagIn(taglist);
+        List<CampDto.CampList> tagSearchCampList = new ArrayList<>();;
+        for (TagDto.SearchedTag s : selecteds){
+            CampDto.CampList camp = campRepository.getByCampId(s.getCampId());
+            System.out.println(camp.getCampId());
+            tagSearchCampList.add(camp);
+        }
+
+        return tagSearchCampList;
+    }
 
 
 
