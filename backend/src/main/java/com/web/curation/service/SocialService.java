@@ -142,14 +142,20 @@ public class SocialService {
 
         // access_token을 이용하여 사용자 정보 조회
         try{
+
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setRequestMethod("GET");
+            conn.setDoOutput(true);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
             conn.setRequestProperty("Authorization", "Bearer " + token); //전송할 header 작성, access_token전송
 
             int responseCode = conn.getResponseCode();
+            String response = conn.getResponseMessage();
             LOGGER.info("responsecode, {}", responseCode);
+            LOGGER.info("response, {}", response);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
