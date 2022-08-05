@@ -137,16 +137,15 @@ public class SocialService {
         String id = null;
 //        String email = null;
         String nickname =null;
-        String reqURL = "https://oauth2.googleapis.com/tokeninfo";
-        reqURL += "?id_token="+token;
+        String reqURL = "https://www.googleapis.com/drive/v2/files?access_token=";
+        reqURL += token;
 
         // access_token을 이용하여 사용자 정보 조회
         try{
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
+            conn.setRequestMethod("GET");
             conn.setRequestProperty("Authorization", "Bearer " + token); //전송할 header 작성, access_token전송
 
             int responseCode = conn.getResponseCode();
