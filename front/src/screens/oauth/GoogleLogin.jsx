@@ -31,7 +31,7 @@ function GoogleLogin () {
     })
     .then((res) => {
       console.log(res.data)
-      axios.post('http://i7C109.p.ssafy.io:8081/social/naver', {Authorization: res.data.access_token})
+      axios.post('http://i7C109.p.ssafy.io:8081/social/google', {Authorization: res.data.access_token})
       .then(res1 => {
         console.log(res1);
         // 로그인 작업
