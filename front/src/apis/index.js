@@ -2,30 +2,23 @@ import axios from "axios";
 // import { useDispatch } from "react-redux";
 // axios instance 생성
 const BASE_URL = "http://i7C109.p.ssafy.io:8081/";
+const BASE_KAKAKO_URL = "https://kauth.kakao.com/";
 
 export const API = axios.create({
   baseURL: BASE_URL, // 기본 서버 url
   headers: {
-    // 자신이 매번 전달해야하는 객체가 자동으로 삽입
-    // "Content-Type": "application/json"
   }
 });
-
-// const silentRefresh = async () => {
-//   const res = await API.post("token/silentRefresh", { headers: {}, withCredentials: true });
-//   return res.data;
-// };
 
 export const API_USER = axios.create({
   baseURL: BASE_URL, // 기본 서버 url
   headers: {
     "Access-Control-Allow-Origin": "http://localhost:8081",
-    // "Content-Type": "application/json",
     "Authorization": `Bearer-${sessionStorage.getItem("accessToken")}`,
     // "withCredentials": true
   }
 });
-// const dispatch = useDispatch();
+
 API_USER.interceptors.response.use(
   response => response,
   async (error) => {
@@ -64,4 +57,10 @@ API_USER.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const API_KAKAO = axios.create({
+  baseURL: BASE_KAKAKO_URL,
+  headers: {
+  }
+});
 export const ex = () => {};

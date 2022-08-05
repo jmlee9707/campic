@@ -1,10 +1,20 @@
-import { API, API_USER } from "./index";
+import { API, API_KAKAO, API_USER } from "./index";
 
 export const login = async body => {
   const res = await API.post("user/login", body, { headers: {} });
   // setImeout 걸어서 refreshtoken 처리
   //
   return res.data;
+};
+export const getKakaoToken = async body => {
+  const res = await API_KAKAO.post("oauth/token", body, { headers: {        'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'} });
+  return res;
+};
+export const loginKakao = async body => {
+  const res = await API.post("social/kakao", body, { headers: {} });
+  // setImeout 걸어서 refreshtoken 처리
+  //
+  return res;
 };
 
 // 아이디 찾기

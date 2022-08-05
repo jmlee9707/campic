@@ -10,27 +10,28 @@ import { setEmail, setUserInfo } from '../../store/user';
 // import { getUserInfo, getKakaoToken, kakaoLogin } from "../../apis/user";
 import { getUserInfo } from "../../apis/user";
 
-function KakaoLogin () {
+function GoogleLogin () {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const query = queryString.parse(window.location.search);
- 
+
   const getKakaoTokenHandler = async (code1) => {
     const data = {    
       grant_type: "authorization_code",
-      client_id: 'ecf0cdf8c6d0f9625b2d33d19a397c94',
-      redirect_uri: "http://localhost:3000/kakao",
+      client_id: '20844847177-q0d7adnlu1gf7kbjis3boe6olme5c8pv.apps.googleusercontent.com',
+      redirect_uri: "http://localhost:3000/google",
       code: code1,
-      client_secret: "g7n0SEsnPEWUjIUCMdUMzBPPZlbhW0Vo"
+      client_secret: "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"
     };
     const qString = Object.keys(data).map((k)=> `${encodeURIComponent(k)}=${encodeURIComponent(data[k])}`).join('&');
-    axios.post('https://kauth.kakao.com/oauth/token', qString, {
+    axios.post('https://accounts.google.com/o/oauth2/token', qString, {
       headers: {
         'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
-    }).then((res) => {
-      console.log(res.data.access_token)
-      axios.post('http://i7C109.p.ssafy.io:8081/social/kakao', {Authorization: res.data.access_token})
+    })
+    .then((res) => {
+      console.log(res.data)
+      axios.post('http://i7C109.p.ssafy.io:8081/social/naver', {Authorization: res.data.access_token})
       .then(res1 => {
         console.log(res1);
         // 로그인 작업
@@ -58,7 +59,8 @@ function KakaoLogin () {
     });
   };
 
-  React.useEffect(() => {  
+  React.useEffect(() => { 
+     
     if (query.code) {
       getKakaoTokenHandler(query.code.toString());
     }
@@ -70,4 +72,4 @@ function KakaoLogin () {
     </div>
   );
 };
-export default KakaoLogin;
+export default GoogleLogin;
