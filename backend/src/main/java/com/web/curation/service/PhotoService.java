@@ -6,7 +6,7 @@ import com.web.curation.data.entity.Community;
 import java.util.List;
 
 public interface PhotoService {
-    List<PhotoDto> listPhoto();
+    List<PhotoDto> listPhoto(int page);
     List<PhotoDto> bestPhoto();
 
     List<PhotoDto> userPhoto(String email);
