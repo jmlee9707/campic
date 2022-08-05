@@ -42,8 +42,8 @@ public class SocialService {
 
     // 카카오 유저 정보 들고오기 서비스
     public UserDto kakaoUser(String token){
-        int id;
-        String email = "ssafy@kakao.com";
+        String id = null;
+//        String email = "ssafy@kakao.com";
         String nickname =null;
         String reqURL = "https://kapi.kakao.com/v2/user/me";
 
@@ -71,7 +71,7 @@ public class SocialService {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(result);
 
-//            id = jsonNode.get("id").asInt();
+            id = jsonNode.get("id").asText();
 //            email = jsonNode.get("kakao_account").get("email").asText();
             nickname = jsonNode.get("properties")
                     .get("nickname").asText();
@@ -85,7 +85,7 @@ public class SocialService {
         // 회원가입 또는 로그인 시키기
 
         // DB에 중복되는 email 있는지 확인
-        boolean isUser = userRepository.existsByEmail(email);
+        boolean isUser = userRepository.existsByEmail(id);
 
         // 회원아니면 회원가입 시키기
         if(!isUser){
@@ -96,7 +96,7 @@ public class SocialService {
             String encodedPassword = passwordEncoder.encode(password);
 
             User kakaoUser = new User();
-            kakaoUser.setEmail(email); // 지금 이메일 임의로 넣어준거임!!!!
+            kakaoUser.setEmail(id);
             kakaoUser.setNickname(nickname);
             kakaoUser.setPassword(encodedPassword);
             kakaoUser.setRoleType(RoleType.ROLE_USER);
@@ -111,14 +111,15 @@ public class SocialService {
         // 로그인 시키기
         UserDto userDto = new UserDto();
 
-        String access = jwtTokenProvider.createAccessToken(email, RoleType.ROLE_USER);
+        String access = jwtTokenProvider.createAccessToken(id, RoleType.ROLE_USER);
 
         Authentication authentication = jwtTokenProvider.getAuthentication(access);
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String refresh = jwtTokenProvider.createRefreshToken(email);
+        String refresh = jwtTokenProvider.createRefreshToken(id);
 
         userDto.setAccessToken(access);
         userDto.setRefreshToken(refresh);
+        userDto.setEmail(id);
 
         return userDto;
     }

@@ -52,6 +52,7 @@ public class SocialController {
 
             resultMap.put("Authorization", loginUser.getAccessToken());
             resultMap.put("refreshToken", loginUser.getRefreshToken());
+            resultMap.put("email", loginUser.getEmail());
             resultMap.put("message", SUCCESS);
 
             return new ResponseEntity<>(resultMap, HttpStatus.ACCEPTED);
