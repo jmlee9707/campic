@@ -14,7 +14,7 @@ import java.util.List;
 public interface CampRepository extends JpaRepository<TotalCampList, Integer> {
     TotalCampList getById(int campId);
     List<CampDto.CampList> findByFacltNmContains(String keyword);
-    List<CampDto.CampList> findByDoNmAndSigunguNm(String doNm, String sigunguNm);
+    List<CampDto.CampList> findByDoNmAndSigunguNmStartsWith(String doNm, String sigunguNm);
     CampDto.CampList getByCampId(int campId);
 
 }
