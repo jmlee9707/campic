@@ -69,7 +69,7 @@ public class CampService{
     /* camp 지역 검색 결과 리스트 READ */
     @Transactional(readOnly = true)
     public List<CampDto.CampList> regionSearchCampList(String doname, String sigungu){
-        List<CampDto.CampList> regionSearchCampList = campRepository.findByDoNmAndSigunguNm(doname,sigungu);
+        List<CampDto.CampList> regionSearchCampList = campRepository.findByDoNmAndSigunguNmStartsWith(doname,sigungu);
         return regionSearchCampList;
     }
 
