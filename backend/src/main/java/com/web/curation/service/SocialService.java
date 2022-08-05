@@ -137,7 +137,7 @@ public class SocialService {
         String id = null;
 //        String email = null;
         String nickname =null;
-        String reqURL = "https://www.googleapis.com/drive/v2/files?access_token=";
+        String reqURL = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=";
         reqURL += token;
 
         // access_token을 이용하여 사용자 정보 조회
@@ -148,9 +148,8 @@ public class SocialService {
 
             conn.setRequestMethod("GET");
             conn.setDoOutput(true);
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
-            conn.setRequestProperty("Authorization", "Bearer " + token); //전송할 header 작성, access_token전송
+//            conn.setRequestProperty("Authorization", "Bearer " + token); //전송할 header 작성, access_token전송
 
             int responseCode = conn.getResponseCode();
             String response = conn.getResponseMessage();
