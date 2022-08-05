@@ -62,4 +62,58 @@ public class SocialController {
         return new ResponseEntity<>(resultMap, HttpStatus.BAD_REQUEST);
     }
 
+    @PostMapping("/naver")
+    public ResponseEntity<Map<String, Object>> naverUser(@RequestBody Map<String, String> token) {
+        LOGGER.debug("naverUser - 호출");
+        Map<String, Object> resultMap = new HashMap<>();
+        UserDto loginUser = null;
+
+        try{
+            loginUser = socialService.naverUser(token.get("Authorization"));
+        } catch (Exception e){
+            resultMap.put("message", FAIL);
+            return new ResponseEntity<>(resultMap, HttpStatus.NO_CONTENT);
+        }
+
+        if (loginUser !=null) {
+
+            resultMap.put("Authorization", loginUser.getAccessToken());
+            resultMap.put("refreshToken", loginUser.getRefreshToken());
+            resultMap.put("email", loginUser.getEmail());
+            resultMap.put("message", SUCCESS);
+
+            return new ResponseEntity<>(resultMap, HttpStatus.ACCEPTED);
+        }
+
+        resultMap.put("message", FAIL);
+        return new ResponseEntity<>(resultMap, HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/google")
+    public ResponseEntity<Map<String, Object>> googleUser(@RequestBody Map<String, String> token) {
+        LOGGER.debug("googleUser - 호출");
+        Map<String, Object> resultMap = new HashMap<>();
+        UserDto loginUser = null;
+
+        try{
+            loginUser = socialService.googleUser(token.get("Authorization"));
+        } catch (Exception e){
+            resultMap.put("message", FAIL);
+            return new ResponseEntity<>(resultMap, HttpStatus.NO_CONTENT);
+        }
+
+        if (loginUser !=null) {
+
+            resultMap.put("Authorization", loginUser.getAccessToken());
+            resultMap.put("refreshToken", loginUser.getRefreshToken());
+            resultMap.put("email", loginUser.getEmail());
+            resultMap.put("message", SUCCESS);
+
+            return new ResponseEntity<>(resultMap, HttpStatus.ACCEPTED);
+        }
+
+        resultMap.put("message", FAIL);
+        return new ResponseEntity<>(resultMap, HttpStatus.BAD_REQUEST);
+    }
+
 }

@@ -82,6 +82,98 @@ public class SocialService {
             e.printStackTrace();
         }
 
+        UserDto userDto = registerOrLogin(id, nickname);
+
+        return userDto;
+    }
+    public UserDto naverUser(String token){
+        String id = null;
+        String email = null;
+        String nickname =null;
+        String reqURL = "https://openapi.naver.com/v1/nid/me";
+
+        // access_token을 이용하여 사용자 정보 조회
+        try{
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Authorization", "Bearer " + token); //전송할 header 작성, access_token전송
+
+            int responseCode = conn.getResponseCode();
+            LOGGER.info("responsecode, {}", responseCode);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line = "";
+            String result = "";
+
+            while((line = br.readLine()) != null){
+                result += line;
+            }
+            LOGGER.info("response body : {}", result);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(result);
+
+            id = jsonNode.get("id").asText();
+            email = jsonNode.get("email").asText();
+            nickname = jsonNode.get("name").asText();
+            br.close();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        UserDto userDto = registerOrLogin(id, nickname);
+
+        return userDto;
+    }
+    public UserDto googleUser(String token){
+        String id = null;
+        String email = null;
+        String nickname =null;
+        String reqURL = "https://oauth2.googleapis.com/tokeninfo";
+        reqURL += "?id_token="+token;
+
+        // access_token을 이용하여 사용자 정보 조회
+        try{
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setRequestProperty("Authorization", "Bearer " + token); //전송할 header 작성, access_token전송
+
+            int responseCode = conn.getResponseCode();
+            LOGGER.info("responsecode, {}", responseCode);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line = "";
+            String result = "";
+
+            while((line = br.readLine()) != null){
+                result += line;
+            }
+            LOGGER.info("response body : {}", result);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(result);
+
+            id = jsonNode.get("id").asText();
+            email = jsonNode.get("email").asText();
+            nickname = jsonNode.get("name").asText();
+            br.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        UserDto userDto = registerOrLogin(id, nickname);
+
+        return userDto;
+    }
+
+    private UserDto registerOrLogin(String id, String nickname){
         // 회원가입 또는 로그인 시키기
 
         // DB에 중복되는 email 있는지 확인
@@ -95,17 +187,17 @@ public class SocialService {
             String password = UUID.randomUUID().toString();
             String encodedPassword = passwordEncoder.encode(password);
 
-            User kakaoUser = new User();
-            kakaoUser.setEmail(id);
-            kakaoUser.setNickname(nickname);
-            kakaoUser.setPassword(encodedPassword);
-            kakaoUser.setRoleType(RoleType.ROLE_USER);
-            kakaoUser.setTel("");
-            kakaoUser.setBirth("");
-            kakaoUser.setProfileImg("img");
-            kakaoUser.setJoinDate(LocalDateTime.now());
+            User user = new User();
+            user.setEmail(id);
+            user.setNickname(nickname);
+            user.setPassword(encodedPassword);
+            user.setRoleType(RoleType.ROLE_USER);
+            user.setTel("");
+            user.setBirth("");
+            user.setProfileImg("img");
+            user.setJoinDate(LocalDateTime.now());
 
-            userRepository.save(kakaoUser);
+            userRepository.save(user);
         }
 
         // 로그인 시키기
