@@ -75,8 +75,10 @@ public class CampService{
 
     /* camp 태그 검색 결과 리스트 READ */
     @Transactional(readOnly = true)
-    public List<CampDto.CampList> tagSearchCampList(List<String> taglist){
-        List<TagDto.SearchedTag> selecteds = tagRepository.findDistinctByAndHashtagIn(taglist);
+    public List<CampDto.CampList> tagSearchCampList(List<String> taglist, int page){
+        PageRequest pageRequest = PageRequest.of(page, 10);
+        Page<TagDto.SearchedTag> selecteds = tagRepository.findDistinctByAndHashtagIn(taglist, pageRequest);
+
         List<CampDto.CampList> tagSearchCampList = new ArrayList<>();;
         for (TagDto.SearchedTag s : selecteds){
             CampDto.CampList camp = campRepository.getByCampId(s.getCampId());

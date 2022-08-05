@@ -4,6 +4,8 @@ import com.web.curation.data.dto.CampDto;
 import com.web.curation.data.dto.TagDto;
 import com.web.curation.data.entity.CampTag;
 import com.web.curation.data.entity.TotalCampList;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -31,6 +33,6 @@ public interface TagRepository  extends JpaRepository<CampTag, Integer> {
             "where t.hashtag in :taglist " //+
 //            "group by t.tagGroup "
     )
-    List<TagDto.SearchedTag> findDistinctByAndHashtagIn(List<String> taglist);
+    Page<TagDto.SearchedTag> findDistinctByAndHashtagIn( List<String> taglist, PageRequest pageRequest);
 
 }
