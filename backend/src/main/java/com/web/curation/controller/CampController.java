@@ -68,8 +68,8 @@ public class CampController {
 
     /* camp tag 검색 결과 리스트 READ */
     @GetMapping("/search/tagsearch")
-    public List<CampDto.CampList> tagSearchCampList(@RequestParam List<String> taglist){
-        return campService.tagSearchCampList(taglist);
+    public List<CampDto.CampList> tagSearchCampList(@RequestParam List<String> taglist, @RequestParam int page){
+        return campService.tagSearchCampList(taglist, page);
     }
 
     /*
