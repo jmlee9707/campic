@@ -88,7 +88,7 @@ public class SocialService {
     }
     public UserDto naverUser(String token){
         String id = null;
-        String email = null;
+//        String email = null;
         String nickname =null;
         String reqURL = "https://openapi.naver.com/v1/nid/me";
 
@@ -116,7 +116,7 @@ public class SocialService {
             JsonNode jsonNode = objectMapper.readTree(result);
 
             id = jsonNode.get("id").asText();
-            email = jsonNode.get("email").asText();
+//            email = jsonNode.get("email").asText();
             nickname = jsonNode.get("name").asText();
             br.close();
 
@@ -131,7 +131,7 @@ public class SocialService {
     }
     public UserDto googleUser(String token){
         String id = null;
-        String email = null;
+//        String email = null;
         String nickname =null;
         String reqURL = "https://oauth2.googleapis.com/tokeninfo";
         reqURL += "?id_token="+token;
@@ -161,7 +161,7 @@ public class SocialService {
             JsonNode jsonNode = objectMapper.readTree(result);
 
             id = jsonNode.get("id").asText();
-            email = jsonNode.get("email").asText();
+//            email = jsonNode.get("email").asText();
             nickname = jsonNode.get("name").asText();
             br.close();
 
