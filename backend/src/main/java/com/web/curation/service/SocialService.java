@@ -8,6 +8,7 @@ import com.web.curation.data.entity.RoleType;
 import com.web.curation.data.entity.User;
 import com.web.curation.data.repository.RefreshTokenRepository;
 import com.web.curation.data.repository.UserRepository;
+import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,7 +98,8 @@ public class SocialService {
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-            conn.setRequestMethod("GET");
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
             conn.setRequestProperty("Authorization", "Bearer " + token); //전송할 header 작성, access_token전송
 
             int responseCode = conn.getResponseCode();
@@ -115,9 +117,11 @@ public class SocialService {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(result);
 
-            id = jsonNode.get("id").asText();
+            id = jsonNode.get("response").get("id").asText();
 //            email = jsonNode.get("email").asText();
-            nickname = jsonNode.get("name").asText();
+            nickname = jsonNode.get("response").get("name").asText();
+
+            LOGGER.info("id : {}, name : {}", id, nickname);
             br.close();
 
 
