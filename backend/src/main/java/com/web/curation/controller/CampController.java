@@ -37,18 +37,12 @@ public class CampController {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-//    /* campList READ */
-//    @GetMapping()
-//    public List<CampDto.CampList> getAllCamps(){
-//        return campService.getAllCamps();
-//    }
     /* campList READ */
     @GetMapping()
     public List<CampDto.CampList> getAllCamps(@RequestParam int page){
         System.out.println(page);
         return campService.getAllCamps(page);
     }
-
 
 
     /* campDetail READ */
@@ -72,12 +66,11 @@ public class CampController {
         return campService.regionSearchCampList(doname, sigungu);
     }
 
-//    /* camp tag 검색 결과 리스트 READ */
-//    @GetMapping("/search/tagsearch")
-//    public List<CampDto.CampList> tagSearchCampList(@RequestParam List<String> taglist){
-////        System.out.println(keyword);
-////        return campService.keywordSearchCampList(keyword);
-//    }
+    /* camp tag 검색 결과 리스트 READ */
+    @GetMapping("/search/tagsearch")
+    public List<CampDto.CampList> tagSearchCampList(@RequestParam List<String> taglist){
+        return campService.tagSearchCampList(taglist);
+    }
 
     /*
     likedCampList(schedule) CREATE
