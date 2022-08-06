@@ -12,9 +12,6 @@ import { login, getUserInfo } from "../../apis/user"; // login api
 // import { login } from "../../apis/user"; // login api
 
 function Login() {
-  const kauthUrl='https://kauth.kakao.com/oauth/authorize?client_id=ecf0cdf8c6d0f9625b2d33d19a397c94&redirect_uri=http://localhost:3000/kakao&response_type=code';
-  const nauthUrl='https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=fZskdl4WGlcbiRs_kN0o&state=nvYVNJlSXj&redirect_uri=http://localhost:3000/naver';
-  const gauthUrl='https://accounts.google.com/o/oauth2/v2/auth?client_id=20844847177-q0d7adnlu1gf7kbjis3boe6olme5c8pv.apps.googleusercontent.com&redirect_uri=http://localhost:3000/google&response_type=code&scope=profile';
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { sessionStorage } = window;
@@ -87,16 +84,16 @@ function Login() {
         </div>
         <div className="login_social_icons flex">
           <button className="login_social_icon_kakao" type="button">
-          <a href={kauthUrl}>
+          <a href={`${process.env.REACT_APP_KAKAO_AUTH_URL}`}>
             <img src={kakao} alt='kakao'/>
            </a>
           </button>
           <button className="login_social_icon_naver" type="button">
-            <a href={nauthUrl}>
+            <a href={`${process.env.REACT_APP_NAVER_AUTH_URL}`}>
               <img src={naver} alt="naver" />
             </a>
           </button>
-          <a href={gauthUrl}>
+          <a href={`${process.env.REACT_APP_GOOGLE_AUTH_URL}`}>
             <button className="login_social_icon_google" type="button">
               <img src={google} alt="google" />
             </button>

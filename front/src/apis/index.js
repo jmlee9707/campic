@@ -2,7 +2,6 @@ import axios from "axios";
 // import { useDispatch } from "react-redux";
 // axios instance 생성
 const BASE_URL = "http://i7C109.p.ssafy.io:8081/";
-const BASE_KAKAKO_URL = "https://kauth.kakao.com/";
 
 export const API = axios.create({
   baseURL: BASE_URL, // 기본 서버 url
@@ -57,10 +56,4 @@ API_USER.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export const API_KAKAO = axios.create({
-  baseURL: BASE_KAKAKO_URL,
-  headers: {
-  }
-});
 export const ex = () => {};

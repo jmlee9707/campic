@@ -15,9 +15,13 @@ function NaverLogin () {
   const navigate = useNavigate();
   const query = queryString.parse(window.location.search);
  
-  const getKakaoTokenHandler = async (code1) => {
+  const getNaverTokenHandler = async (code1) => {
 
-    axios.get(`https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=fZskdl4WGlcbiRs_kN0o&client_secret=nvYVNJlSXj&code=${code1[0]}&state=${code1[1]}`)
+    axios.get(`https://nid.naver.com/oauth2.0/token?
+      grant_type=${process.env.REACT_APP_GRANT_TYPE}&
+      client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&
+      code=${code1[0]}&
+      state=${code1[1]}`)
     .then((res) => {
       console.log(res.data)
       axios.post('http://i7C109.p.ssafy.io:8081/social/naver', {Authorization: res.data.access_token})
@@ -50,7 +54,7 @@ function NaverLogin () {
 
   React.useEffect(() => {  
     if (query.code) {
-      getKakaoTokenHandler([query.code.toString(), query.state.toString()]);
+      getNaverTokenHandler([query.code.toString(), query.state.toString()]);
     }
   }, []);
 

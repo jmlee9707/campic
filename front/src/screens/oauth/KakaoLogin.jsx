@@ -15,13 +15,13 @@ function KakaoLogin () {
   const navigate = useNavigate();
   const query = queryString.parse(window.location.search);
  
-  const getKakaoTokenHandler = async (code1) => {
+  const getKakaoTokenHandler = async (stringCode) => {
     const data = {    
-      grant_type: "authorization_code",
-      client_id: 'ecf0cdf8c6d0f9625b2d33d19a397c94',
-      redirect_uri: "http://localhost:3000/kakao",
-      code: code1,
-      client_secret: "g7n0SEsnPEWUjIUCMdUMzBPPZlbhW0Vo"
+      grant_type: `${process.env.REACT_APP_GRANT_TYPE}`,
+      client_id: `${process.env.REACT_APP_KAKAO_CLIENT_ID}`,
+      redirect_uri: `${process.env.REACT_APP_KAKAO_REDIRECT_URL}`,
+      code: stringCode,
+      client_secret: `${process.env.REACT_APP_KAKAO_CLIENT_SECRET}`
     };
     const qString = Object.keys(data).map((k)=> `${encodeURIComponent(k)}=${encodeURIComponent(data[k])}`).join('&');
     axios.post('https://kauth.kakao.com/oauth/token', qString, {

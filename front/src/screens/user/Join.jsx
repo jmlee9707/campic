@@ -167,13 +167,19 @@ function Join() {
         </div>
         <div className="join_social_icons flex">
           <button className="join_social_icon_kakao" type="button">
-            <img src={kakao} alt="kakao" />
+            <a href={`${process.env.REACT_APP_KAKAO_AUTH_URL}`}>
+              <img src={kakao} alt='kakao'/>
+           </a>
           </button>
           <button className="join_social_icon_naver" type="button">
-            <img src={naver} alt="naver" />
+          <a href={`${process.env.REACT_APP_NAVER_AUTH_URL}`}>
+              <img src={naver} alt='naver'/>
+           </a>
           </button>
           <button className="join_social_icon_google" type="button">
-            <img src={google} alt="google" />
+          <a href={`${process.env.REACT_APP_GOOGLE_AUTH_URL}`}>
+              <img src={google} alt='google'/>
+           </a>
           </button>
         </div>
         <div className="divide" />
