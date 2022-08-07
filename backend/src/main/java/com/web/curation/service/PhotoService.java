@@ -19,4 +19,6 @@ public interface PhotoService {
 
     int pushLike(int boardId, String email);
     int cancelLike(int boardId, String email);
+
+    int isUserLikedPhoto(int boardId, String email);
 }

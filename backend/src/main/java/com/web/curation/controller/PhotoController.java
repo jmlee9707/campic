@@ -228,4 +228,21 @@ public class PhotoController {
         resultMap.put("message", FAIL);
         return new ResponseEntity<>(resultMap, HttpStatus.BAD_REQUEST);
     }
+
+    @GetMapping("/detail/isLiked")
+    public ResponseEntity<Map<String, Object>> isUserLikedPhoto(@RequestParam int boardId, @RequestParam String email) {
+
+        Map<String, Object> resultMap = new HashMap<>();
+        HttpStatus status = HttpStatus.OK;
+
+        LOGGER.info("isUserLikedPhoto 호출");
+
+        int isLiked = photoService.isUserLikedPhoto(boardId, email);
+
+        resultMap.put("isLike", isLiked);
+        resultMap.put("message", SUCCESS);
+
+        return new ResponseEntity<>(resultMap, status);
+    }
+
 }

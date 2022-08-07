@@ -274,4 +274,15 @@ public class PhotoServiceimpl implements PhotoService {
         return -1;
     }
 
+    @Override
+    public int isUserLikedPhoto(int boardId, String email) {
+        Community community = communityRepository.findByBoardId(boardId);
+        User user = userRepository.getByEmail(email);
+
+        // 좋아요가 눌러져 있으면 1을 반환
+        if(communityLikeRepository.existsByUserAndCommunity(user, community)) return 1;
+        // 좋아요가 안누러져 있으면 0을 반환
+        return 0;
+    }
+
 }
