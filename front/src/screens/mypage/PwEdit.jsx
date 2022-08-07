@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { changePw } from "../../apis/user";
 
-import { selectProfile } from '../../store/user';
+import { selectProfile } from "../../store/user";
 
 function PwEdit() {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ function PwEdit() {
   };
 
   // 비밀번호 일치여부 확인
-  const checkPassSame =  () => {
+  const checkPassSame = () => {
     if (passRef.current.value !== passSameRef.current.value) {
       setPassSameMess("비밀번호가 일치하지 않습니다");
       setPassSameError(true);
@@ -45,10 +45,13 @@ function PwEdit() {
   const canEdit = async () => {
     if (!passError && !passSameError) {
       try {
-        const res = await changePw({ email: Profile.email, password: passRef.current.value });
+        const res = await changePw({
+          email: Profile.email,
+          password: passRef.current.value
+        });
         navigate("/infoedit/pwedit");
-        if (res !=='success') {
-          throw new Error('canEdit err')
+        if (res !== "success") {
+          throw new Error("canEdit err");
         }
       } catch {
         setPassMess("관리자에게 문의하세요");
@@ -56,7 +59,7 @@ function PwEdit() {
       }
     }
   };
-  
+
   return (
     <div className="container column flex align-center justify-center">
       <div className="pwedit">

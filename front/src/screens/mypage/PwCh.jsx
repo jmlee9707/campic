@@ -3,7 +3,7 @@ import logo from "@images/logo/logo_icon_green.svg";
 import "./PwCh.scss";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectProfile } from '../../store/user';
+import { selectProfile } from "../../store/user";
 import { checkPw } from "../../apis/user";
 
 function PwCh() {
@@ -29,16 +29,19 @@ function PwCh() {
 
   const canEditPw = async () => {
     // if (!passError) {
-      try {
-        const res = await checkPw({ email: Profile.email, password: passRef.current.value });
-        navigate("/infoedit/pwedit");
-        if (res !=='success') {
-          throw new Error('caEditPw err')
-        }
-      } catch {
-        setPassMess("비밀번호가 일치하지 않습니다");
-        setPassError(true);
+    try {
+      const res = await checkPw({
+        email: Profile.email,
+        password: passRef.current.value
+      });
+      navigate("/infoedit/pwedit");
+      if (res !== "success") {
+        throw new Error("caEditPw err");
       }
+    } catch {
+      setPassMess("비밀번호가 일치하지 않습니다");
+      setPassError(true);
+    }
 
     // }
   };

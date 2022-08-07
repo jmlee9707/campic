@@ -5,8 +5,7 @@ import "./InfoEdit.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 import { modifyUserInfo } from "../../apis/user";
-import { selectProfile, updateUserInfo } from '../../store/user';
-
+import { selectProfile, updateUserInfo } from "../../store/user";
 
 function InfoEdit() {
   const dispatch = useDispatch();
@@ -22,20 +21,19 @@ function InfoEdit() {
   const [nickMess, setNickMess] = useState("");
   const [phoneMess, setPhoneMess] = useState("");
 
-
   const canEdit = async () => {
     if (!nickError && !phoneError) {
       const userInfo = {
         birth: birthRef.current.value,
         email: Profile.email,
         nickname: nickRef.current.value,
-        // profileImg: 
-        tel: phoneRef.current.value,
-      }
+        // profileImg:
+        tel: phoneRef.current.value
+      };
       const res = await modifyUserInfo(userInfo);
-      
+
       if (res === "success") {
-        dispatch(updateUserInfo(userInfo))
+        dispatch(updateUserInfo(userInfo));
         navigate("/mypage/myfeed"); // 다음페이지로 이동xw
       }
     } else {
@@ -73,7 +71,7 @@ function InfoEdit() {
       <div className="infoedit ">
         <div className="infoedit_top flex justify-center">
           <div className="infoedit_top_title notoBold fs-28">개인정보 수정</div>
-          <img src={ Profile.profileImg } alt="Profile_Image" />
+          <img src={Profile.profileImg} alt="Profile_Image" />
           <button className="infoedit_top_btn notoBold fs-15" type="button">
             프로필 사진 변경
           </button>
@@ -85,7 +83,7 @@ function InfoEdit() {
             <input
               type="email"
               className="infoedit_box_input  notoMid fs-14"
-              value={ Profile.email }
+              value={Profile.email}
               readOnly
             />
           </div>
@@ -96,7 +94,7 @@ function InfoEdit() {
               onChange={checkNick}
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              placeholder={ Profile.nickname }
+              placeholder={Profile.nickname}
             />
             <div
               className={
@@ -115,7 +113,7 @@ function InfoEdit() {
               onChange={checkPhone}
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              placeholder={ Profile.tel }
+              placeholder={Profile.tel}
             />
             <div
               className={
@@ -133,7 +131,7 @@ function InfoEdit() {
               ref={birthRef}
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              placeholder={ Profile.birth }
+              placeholder={Profile.birth}
             />
           </div>
           <div className="infoedit_box">
@@ -143,7 +141,7 @@ function InfoEdit() {
             <input
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              placeholder={ Profile.joinDate }
+              placeholder={Profile.joinDate}
               readOnly
             />
           </div>
@@ -154,7 +152,7 @@ function InfoEdit() {
             <input
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              value={ Profile.auth }
+              value={Profile.auth}
               readOnly
             />
           </div>

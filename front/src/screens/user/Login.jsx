@@ -6,7 +6,7 @@ import google from "@images/icon/google.svg";
 import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setEmail, setUserInfo } from '@store/user';
+import { setEmail, setUserInfo } from "@store/user";
 import { login, getUserInfo } from "@apis/user"; // login api
 // import { setEmail } from '@store/user';
 // import { login } from "@apis/user"; // login api
@@ -25,26 +25,24 @@ function Login() {
   const emailRef = useRef();
   const passRef = useRef();
   const canLogin = async () => {
-      const userEmail = emailRef.current.value;
-      const res = await login({
-        email: userEmail,
-        password: passRef.current.value
-      });
-      // 리덕스 스토어에 이메일 저장
-      dispatch(setEmail({email: userEmail}))
-      // 세션스토리지에 토큰 저장
-      sessionStorage.setItem("refreshToken", res.refreshToken);
-      sessionStorage.setItem("accessToken", res.Authorization);
-      // 유저 정보 가져오기
-        // console.log("유저 정보 가져오기")
-        const userRes = await getUserInfo(userEmail);
-        // console.log(userRes.userInfo);
-        // 유저 정보 스토어에 저장
-        dispatch(setUserInfo(userRes.userInfo))
-      navigate("/");
-
-    
-    };
+    const userEmail = emailRef.current.value;
+    const res = await login({
+      email: userEmail,
+      password: passRef.current.value
+    });
+    // 리덕스 스토어에 이메일 저장
+    dispatch(setEmail({ email: userEmail }));
+    // 세션스토리지에 토큰 저장
+    sessionStorage.setItem("refreshToken", res.refreshToken);
+    sessionStorage.setItem("accessToken", res.Authorization);
+    // 유저 정보 가져오기
+    // console.log("유저 정보 가져오기")
+    const userRes = await getUserInfo(userEmail);
+    // console.log(userRes.userInfo);
+    // 유저 정보 스토어에 저장
+    dispatch(setUserInfo(userRes.userInfo));
+    navigate("/");
+  };
 
   return (
     <div className="container flex">
@@ -84,9 +82,9 @@ function Login() {
         </div>
         <div className="login_social_icons flex">
           <button className="login_social_icon_kakao" type="button">
-          <a href={`${process.env.REACT_APP_KAKAO_AUTH_URL}`}>
-            <img src={kakao} alt='kakao'/>
-           </a>
+            <a href={`${process.env.REACT_APP_KAKAO_AUTH_URL}`}>
+              <img src={kakao} alt="kakao" />
+            </a>
           </button>
           <button className="login_social_icon_naver" type="button">
             <a href={`${process.env.REACT_APP_NAVER_AUTH_URL}`}>

@@ -27,7 +27,8 @@
       color: $GRAY-4A;
     }
   }
-  &_pw_btn, &_login_btn {
+  &_pw_btn,
+  &_login_btn {
     width: (300px);
     height: (52px);
     color: $WHITE;
@@ -35,7 +36,8 @@
     border-radius: (4px);
     margin-top: (24px);
   }
-  &_pw_btn:hover, &_login_btn:hover {
+  &_pw_btn:hover,
+  &_login_btn:hover {
     box-shadow: 0 0 (5px) $MAIN;
   }
 }
@@ -66,7 +68,8 @@
         color: $GRAY-4A;
       }
     }
-    &_pw_btn, &_login_btn {
+    &_pw_btn,
+    &_login_btn {
       width: vw(300px);
       height: vw(52px);
       color: $WHITE;
@@ -74,7 +77,8 @@
       border-radius: vw(4px);
       margin-top: vw(24px);
     }
-    &_pw_btn:hover, &_login_btn:hover {
+    &_pw_btn:hover,
+    &_login_btn:hover {
       box-shadow: 0px 0px vw(5px) $MAIN;
     }
   }
@@ -106,7 +110,8 @@
         color: $GRAY-4A;
       }
     }
-    &_pw_btn, &_login_btn {
+    &_pw_btn,
+    &_login_btn {
       width: vw-t(300px);
       height: vw-t(52px);
       color: $WHITE;
@@ -114,7 +119,8 @@
       border-radius: vw-t(4px);
       margin-top: vw-t(24px);
     }
-    &_pw_btn:hover, &_login_btn:hover {
+    &_pw_btn:hover,
+    &_login_btn:hover {
       box-shadow: 0px 0px vw-t(5px) $MAIN;
     }
   }
@@ -146,7 +152,8 @@
         color: $GRAY-4A;
       }
     }
-    &_pw_btn, &_login_btn {
+    &_pw_btn,
+    &_login_btn {
       width: vw-p(300px);
       height: vw-p(52px);
       color: $WHITE;
@@ -154,7 +161,8 @@
       border-radius: vw-p(4px);
       margin-top: vw-p(24px);
     }
-    &_pw_btn:hover, &_login_btn:hover {
+    &_pw_btn:hover,
+    &_login_btn:hover {
       box-shadow: 0px 0px vw-p(5px) $MAIN;
     }
   }
