@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,28 @@ public class ScheduleService {
         this.likedCampRepository = likedCampRepository;
         this.userRepository = userRepository;
     }
+
+    @Transactional(readOnly = true)
+    public List<ScheduleDto.Response> upcomingList(String email, String now){
+        User user = userRepository.getByEmail(email);
+        List<ScheduleDto.Response> upcomingList = likedCampRepository.findAllByUserAndAndStartDateAfter(user, now);
+        return upcomingList;
+    }
+
+    @Transactional(readOnly = true)
+    public List<ScheduleDto.Response> ongoingList(String email, String now){
+        User user = userRepository.getByEmail(email);
+        List<ScheduleDto.Response> ongoingList = likedCampRepository.findAllByUserAndAndStartDateBeforeAndEndDateAfter(user, now, now);
+        return ongoingList;
+    }
+
+    @Transactional(readOnly = true)
+    public List<ScheduleDto.Response> endList(String email, String now){
+        User user = userRepository.getByEmail(email);
+        List<ScheduleDto.Response> endList = likedCampRepository.findAllByUserAndAndEndDateBefore(user, now);
+        return endList;
+    }
+
 
     @Transactional(readOnly = true)
     public ScheduleDto.ScheduleDetail scheduleDetailRead(int saveId) {
