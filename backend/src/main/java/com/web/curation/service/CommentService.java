@@ -29,8 +29,8 @@ public class CommentService {
     @Transactional
     // depth -> 댓글인지 대댓글인지 프론트에서 알려주세요 댓글 -> 0, 대댓글 -> 1
     // bundle -> 몇번째 댓글에 대한 대댓글인지 댓글 아이디 넘기기
-    public int save(int talkId, String nickname, CommentDto.Request dto) {
-        User user = userRepository.getByNickname(nickname);
+    public int save(int talkId, String email, CommentDto.Request dto) {
+        User user = userRepository.getByEmail(email);
         Talk talk = talkRepository.findById(talkId).orElseThrow(() ->
                 new IllegalArgumentException("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다. " + talkId));
 
