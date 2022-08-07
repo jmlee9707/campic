@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CampingList from "@components/camping/CampingList";
+// import CampingList from "@components/camping/CampingList";
 import "./CampingMain.scss";
 // import { useSelector } from "react-redux";
 import banner from "@images/temp_1.jpeg"; // banner 이미지
@@ -85,7 +85,7 @@ function CampingMain() {
         </div>
         <div className="divide" />
         {/* {allList && <CampingList />} */}
-        <CampingList />
+        {/* <CampingList /> */}
       </div>
     </div>
   );
