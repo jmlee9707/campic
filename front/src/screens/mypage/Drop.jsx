@@ -3,8 +3,8 @@ import logo from "@images/logo/logo_icon_green.svg";
 import "./Drop.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reset, selectEmail } from "../../store/user";
-import { checkPw } from "../../apis/user";
+import { reset, selectEmail } from "@store/user";
+import { checkPw, dropUser } from "@apis/user";
 
 function Drop() {
   const pwRef = useRef();
@@ -18,6 +18,7 @@ function Drop() {
     const res = await checkPw({ email: storeEmail, password: pw });
     // 비밀번호 일치 여부
     if (res === "success") {
+      await dropUser(storeEmail);
       sessionStorage.clear();
       dispatch(reset());
       navigate("/drop/finish");
