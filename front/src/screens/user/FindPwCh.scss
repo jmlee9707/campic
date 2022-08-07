@@ -1,0 +1,198 @@
+.findpwch {
+  width: (300px);
+  flex-direction: column;
+  &_title {
+    color: $GRAY-40;
+    margin: (176px) 0 (16px);
+  }
+  &_sub {
+    color: $GRAY-67;
+    margin-bottom: (46px);
+  }
+  &_pw, &_pw2 {
+    &_title,
+    &_check,
+    input {
+      margin-bottom: (12px);
+    }
+    &_title {
+      color: $GRAY-67;
+    }
+    input {
+      width: (300px);
+      height: (44px);
+      border-radius: (6px);
+      border: (1px) solid $MAIN;
+      color: $GRAY-40;
+      padding-left: (16px);
+    }
+    input:focus {
+      border: (1px) solid $MAIN;
+      box-shadow: 0 0 (5px) $MAIN;
+    }
+    &_check {
+      color: $RED;
+    }
+  }
+  &_btn {
+    width: (300px);
+    height: (52px);
+    color: $WHITE;
+    background-color: $MAIN;
+    margin-top: (51px);
+    border-radius: (6px);
+  }
+  &_btn:hover {
+    box-shadow: 0 0 (5px) $MAIN;
+  }
+}
+@media screen and (max-width: $DESKTOP-VW) {
+  .findpwch {
+    width: vw(300px);
+    flex-direction: column;
+    &_title {
+      color: $GRAY-40;
+      margin: vw(176px) 0 vw(16px);
+    }
+    &_sub {
+      color: $GRAY-67;
+      margin-bottom: vw(46px);
+    }
+    &_pw, &_pw2 {
+      &_title,
+      &_check,
+      input {
+        margin-bottom: vw(12px);
+      }
+      &_title {
+        color: $GRAY-67;
+      }
+      input {
+        width: vw(300px);
+        height: vw(44px);
+        border-radius: vw(6px);
+        border: vw(1px) solid $MAIN;
+        color: $GRAY-40;
+        padding-left: vw(16px);
+      }
+      input:focus {
+        border: vw(1px) solid $MAIN;
+        box-shadow: 0 0 vw(5px) $MAIN;
+      }
+      &_check {
+        color: $RED;
+      }
+    }
+    &_btn {
+      width: vw(300px);
+      height: vw(52px);
+      color: $WHITE;
+      background-color: $MAIN;
+      margin-top: vw(51px);
+      border-radius: vw(6px);
+    }
+    &_btn:hover {
+      box-shadow: 0 0 vw(5px) $MAIN;
+    }
+  }
+}
+@media screen and (max-width: $TABLET-VW) {
+  .findpwch {
+    width: vw-t(300px);
+    flex-direction: column;
+    &_title {
+      color: $GRAY-40;
+      margin: vw-t(176px) 0 vw-t(16px);
+    }
+    &_sub {
+      color: $GRAY-67;
+      margin-bottom: vw-t(46px);
+    }
+    &_pw, &_pw2 {
+      &_title,
+      &_check,
+      input {
+        margin-bottom: vw-t(12px);
+      }
+      &_title {
+        color: $GRAY-67;
+      }
+      input {
+        width: vw-t(300px);
+        height: vw-t(44px);
+        border-radius: vw-t(6px);
+        border: vw-t(1px) solid $MAIN;
+        color: $GRAY-40;
+        padding-left: vw-t(16px);
+      }
+      input:focus {
+        border: vw-t(1px) solid $MAIN;
+        box-shadow: 0 0 vw-t(5px) $MAIN;
+      }
+      &_check {
+        color: $RED;
+      }
+    }
+    &_btn {
+      width: vw-t(300px);
+      height: vw-t(52px);
+      color: $WHITE;
+      background-color: $MAIN;
+      margin-top: vw-t(51px);
+      border-radius: vw-t(6px);
+    }
+    &_btn:hover {
+      box-shadow: 0 0 vw-t(5px) $MAIN;
+    }
+  }
+}
+@media screen and (max-width: $PHONE-VW) {
+  .findpwch {
+    width: vw-p(300px);
+    flex-direction: column;
+    &_title {
+      color: $GRAY-40;
+      margin: vw-p(176px) 0 vw-p(16px);
+    }
+    &_sub {
+      color: $GRAY-67;
+      margin-bottom: vw-p(46px);
+    }
+    &_pw, &_pw2 {
+      &_title,
+      &_check,
+      input {
+        margin-bottom: vw-p(12px);
+      }
+      &_title {
+        color: $GRAY-67;
+      }
+      input {
+        width: vw-p(300px);
+        height: vw-p(44px);
+        border-radius: vw-p(6px);
+        border: vw-p(1px) solid $MAIN;
+        color: $GRAY-40;
+        padding-left: vw-p(16px);
+      }
+      input:focus {
+        border: vw-p(1px) solid $MAIN;
+        box-shadow: 0 0 vw-p(5px) $MAIN;
+      }
+      &_check {
+        color: $RED;
+      }
+    }
+    &_btn {
+      width: vw-p(300px);
+      height: vw-p(52px);
+      color: $WHITE;
+      background-color: $MAIN;
+      margin-top: vw-p(51px);
+      border-radius: vw-p(6px);
+    }
+    &_btn:hover {
+      box-shadow: 0 0 vw-p(5px) $MAIN;
+    }
+  }
+}
