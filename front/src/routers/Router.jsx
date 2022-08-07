@@ -40,7 +40,6 @@ import CampingDetail from "@screens/camping/CampingDetail";
 import PlanMain from "@screens/plan/PlanMain";
 import PlanDetail from "@screens/plan/PlanDetail";
 
-
 function Router() {
   return (
     <>

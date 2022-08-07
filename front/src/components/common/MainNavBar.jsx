@@ -23,7 +23,7 @@ function MainNavBar() {
 
   const logoutClick = () => {
     // 토큰 삭제를 위해서 클리어
-    sessionStorage.clear(); 
+    sessionStorage.clear();
     // 리덕스 유저 스토어 초기화
     dispatch(reset());
     navigate("/"); // 홈으로 이동

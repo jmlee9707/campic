@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setEmail } from '@store/find';
+import { setEmail } from "@store/find";
 import { findId } from "@apis/user";
 import "./FindId.scss";
 

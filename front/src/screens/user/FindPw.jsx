@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./FindPw.scss";
 import { useDispatch } from "react-redux";
-import { setEmail } from '@store/find';
+import { setEmail } from "@store/find";
 import { findPw } from "@apis/user";
 
 function FindPw() {

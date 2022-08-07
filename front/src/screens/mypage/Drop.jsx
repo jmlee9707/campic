@@ -11,7 +11,7 @@ function Drop() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const storeEmail = useSelector(selectEmail);
-  
+
   const checkDrop = async () => {
     const pw = pwRef.current.value;
     // console.log(storeEmail)
