@@ -23,10 +23,10 @@ function NaverLogin () {
       code=${code1[0]}&
       state=${code1[1]}`)
     .then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       axios.post('http://i7C109.p.ssafy.io:8081/social/naver', {Authorization: res.data.access_token})
       .then(res1 => {
-        console.log(res1);
+        // console.log(res1);
         // 로그인 작업
         // 리덕스 스토어에 이메일 저장
         dispatch(setEmail({email: res1.data.email}))

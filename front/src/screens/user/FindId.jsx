@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { findId as find } from "../../store/user";
-import { findId } from "../../apis/user";
+import { setEmail } from '@store/find';
+import { findId } from "@apis/user";
 import "./FindId.scss";
 
 function FindId() {
@@ -30,7 +30,7 @@ function FindId() {
       const res = await findId(phoneRef.current.value);
       if (res.message === "success") {
         // console.log(`${res.email}이메일!`);
-        dispatch(find({ email: res.email }));
+        dispatch(setEmail({ email: res.email }));
         // console.log("디스패치 가능");
         navigate("/findid/finish");
       }

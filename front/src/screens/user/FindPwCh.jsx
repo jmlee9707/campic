@@ -1,15 +1,15 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { reset } from "../../store/user";
-import { changePw } from "../../apis/user";
+import { reset, selectEmail } from "@store/find";
+import { findChangePw } from "../../apis/user";
 
 import "./FindPwCh.scss";
 
 function FindPwCh() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userId = useSelector(state => state.user.value.email);
+  const userId = useSelector(selectEmail);
 
   const passRef = useRef();
   const passSameRef = useRef();
@@ -45,7 +45,7 @@ function FindPwCh() {
 
   const canChange = async () => {
     if (!passError && !passSameError) {
-      const res = await changePw({
+      const res = await findChangePw({
         email: userId,
         password: passRef.current.value
       });

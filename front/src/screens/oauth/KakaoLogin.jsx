@@ -29,10 +29,10 @@ function KakaoLogin () {
         'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }).then((res) => {
-      console.log(res.data.access_token)
+      // console.log(res.data.access_token)
       axios.post('http://i7C109.p.ssafy.io:8081/social/kakao', {Authorization: res.data.access_token})
       .then(res1 => {
-        console.log(res1);
+        // console.log(res1);
         // 로그인 작업
         // 리덕스 스토어에 이메일 저장
         dispatch(setEmail({email: res1.data.email}))

@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./FindPw.scss";
 import { useDispatch } from "react-redux";
-import { findPw as find } from "../../store/user";
-import { findPw } from "../../apis/user";
+import { setEmail } from '@store/find';
+import { findPw } from "@apis/user";
 
 function FindPw() {
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ function FindPw() {
 
   const checkCode = () => {
     if (code === codeRef.current.value) {
-      dispatch(find({ email: userId }));
+      dispatch(setEmail({ email: userId }));
       navigate("/findpw/change");
     } else {
       setCodeMess("잘못된 인증번호 입니다");

@@ -2,14 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import checkCircle from "@images/icon/check_circle.svg";
 import { useSelector, useDispatch } from "react-redux";
-import { reset } from "../../store/user";
+import { reset, selectEmail } from "@store/find";
 import "./FindIdFinish.scss";
 
 function FindIdFinish() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const userId = useSelector(state => state.user.value.email);
+  const userId = useSelector(selectEmail);
 
   const moveFindPw = () => {
     dispatch(reset());

@@ -20,7 +20,12 @@ export const findPw = async userId => {
   // console.log(res.data);
   return res.data;
 };
-
+// 찾기에서 비밀번호 변경
+export const findChangePw = async body => {
+  const res = await API.put("user/pw", body);
+  // console.log(res.data);
+  return res.data;
+};
 // export const reSendMail  = async body => {
 //     const res = await API.get()
 // }

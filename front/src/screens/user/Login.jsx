@@ -6,10 +6,10 @@ import google from "@images/icon/google.svg";
 import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setEmail, setUserInfo } from '../../store/user';
-import { login, getUserInfo } from "../../apis/user"; // login api
-// import { setEmail } from '../../store/user';
-// import { login } from "../../apis/user"; // login api
+import { setEmail, setUserInfo } from '@store/user';
+import { login, getUserInfo } from "@apis/user"; // login api
+// import { setEmail } from '@store/user';
+// import { login } from "@apis/user"; // login api
 
 function Login() {
   const dispatch = useDispatch();
