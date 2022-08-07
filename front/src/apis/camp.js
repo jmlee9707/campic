@@ -1,4 +1,4 @@
-import API from "./index";
+import { API } from "./index";
 
 // 캠핑장 전체 리스트 불러오기
 export const getCamplist = async page => {

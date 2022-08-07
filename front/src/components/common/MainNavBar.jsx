@@ -4,7 +4,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // style import
 import "./MainNavBar.scss";
-import navLogo from "@images/logo/logo_text_green.svg";
+import logoGreen from "@images/logo/logo_text_green.svg";
+// import logoWhite from "@images/logo/logo_text_white.svg";
 // import temp from "@images/cute.jpeg";
 import { reset, selectProfile } from "../../store/user";
 import "./NavTooltip.scss";
@@ -15,9 +16,22 @@ function MainNavBar() {
   // const userId = useSelector(state => state.user.email);
   // const userId = useSelector(state => state.user.email);
   const Profile = useSelector(selectProfile);
+  // const [home, setHome] = useState(true);
 
   const activeClassName = active => {
-    const prefix = "left_nav__link fs-16 btn--";
+    const prefix = "left_nav__link flex fs-16 btn--";
+    return active ? `${prefix}active` : `${prefix}unactive`;
+  };
+
+  const activeHome = active => {
+    const prefix = "left_nav__link flex";
+    // if (active === true) {
+    //   setHome(true);
+    //   console.log(home);
+    //   return `${prefix}active`;
+    // }
+    // setHome(false);
+    // return `${prefix}unactive`;
     return active ? `${prefix}active` : `${prefix}unactive`;
   };
 
@@ -50,8 +64,13 @@ function MainNavBar() {
     <div className="wrapper flex align-center">
       <nav id="MainNavBar" className="flex align-center">
         <nav className="left_nav notoBold flex align-center">
-          <Link to="/" className="left_nav__link flex">
-            <img className="logo" title="!213" alt="logoImage" src={navLogo} />
+          <Link to="/" className={({ isActive }) => activeHome(isActive)}>
+            <img
+              className="logo"
+              title="!213"
+              alt="logoImage"
+              src={logoGreen}
+            />
           </Link>
           <NavLink
             className={({ isActive }) => activeClassName(isActive)}

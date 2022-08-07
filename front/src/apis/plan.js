@@ -1,4 +1,4 @@
-import API from "./index";
+import { API } from "./index";
 
 // 플랜 추가하기
 export const addPlan = async (

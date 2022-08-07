@@ -16,16 +16,16 @@ function CampingList() {
   const list = useSelector(state => state.campSearch.campList);
   const [ref, inView] = useInView();
   console.log(list, dispatch);
-  useEffect(() => {
+  useEffect(async () => {
     dispatch(setCampList("123"));
     // async function getAndSetCampList() {
-      const res = await getCamplist();
-      dispatch(setCampList([...list,res.list]));
+    const res = await getCamplist();
+    dispatch(setCampList([...list, res.list]));
     //   // setCampList(res.slice(10));
     //   // setCampList([...campList, ...res]);
     //   // dispatch(reset());
     //   // dispatch(
-    //   //   search({ 
+    //   //   search({
     //   //     page,
     //   //     campList
     //   //   })

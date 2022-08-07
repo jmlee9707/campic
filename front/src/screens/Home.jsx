@@ -4,7 +4,7 @@ import "./Home.scss";
 
 function Home() {
   return (
-    <div className="container flex justify-center">
+    <div className="home_back container flex justify-center">
       {/* <img src={mainImg} alt="main"> */}
       <div className="home">
         <div className="home_title fs-60 notoBold">
