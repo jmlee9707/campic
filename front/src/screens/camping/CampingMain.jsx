@@ -1,46 +1,35 @@
 import React, { useState } from "react";
 import CampingList from "@components/camping/CampingList";
 import "./CampingMain.scss";
+// import { useSelector } from "react-redux";
 import banner from "@images/temp_1.jpeg"; // banner 이미지
-import search from "@images/icon/search_black_24dp.svg";
-
 import {
   CampingSearchLoca,
-  CampingSearchTag
+  CampingSearchTag,
+  CampingSearchAll
 } from "@components/camping/CampingSearch";
+// import { click } from "../../store/camp";
 
 function CampingMain() {
+  // const dispatch = useDispatch();
   // const top = "싸피 캠핑장";
+  // dispatch(click( allList: true ));
+  // const allList = useSelector(state => state.campSearch.click.allClick);
+  // const keywordList = useSelector(state => state.campSearch.click.keywordClick);
+  // const [tagList, setTagList] = useState(false);
+  // const [locaList, setLocaList] = useState(false);
   const [visibleTag, setVisibleTag] = useState(true);
   const [visibleLoca, setVisibleLoca] = useState(false);
-  const tops = ["싸피 캠핑장", "연관검색어2", "연관검색어3", "연관검색어4"];
-  const topList = tops.map(top => (
-    <div className="main_title_left_word_detail flex align-center justify-center">
-      {top}
-    </div>
-  ));
+
+  // camplist props
+  // campInfos  = [];
+
   return (
     <div className="container flex justify-center">
       <div className="main">
         <div className="main_title flex notoBold fs-32">
           <div className="main_title_left">
-            <div className="main_title_left_txt">캠핑장 찾고 계신가요?</div>
-            <div className="main_title_left_search flex">
-              <input
-                type="text"
-                className="main_title_left_search_input notoMid fs-16"
-                placeholder="캠핑장을 검색해주세요"
-              />
-              <button
-                type="button"
-                className="main_title_left_search_btn flex align-center justify-center"
-              >
-                <img src={search} alt="button" />
-              </button>
-            </div>
-            <div className="main_title_left_word flex fs-14 notoMid">
-              {topList}
-            </div>
+            <CampingSearchAll />
           </div>
           <div className="main_title_right">
             <img src={banner} alt="banner" title="banner" />
@@ -89,11 +78,13 @@ function CampingMain() {
         <div className="main_list flex align-center">
           <p className="main_list_title fs-32 notoBold">캠핑장 리스트</p>
           <select type="text" className="main_list_sort fs-22 notoMid">
-            <option selected>최신순</option>
-            <option>인기순</option>
+            <option value=" ">거리순</option>
+            <option value="favorite">인기순</option>
+            <option value="word">가나다순</option>
           </select>
         </div>
         <div className="divide" />
+        {/* {allList && <CampingList />} */}
         <CampingList />
       </div>
     </div>

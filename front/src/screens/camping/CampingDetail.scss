@@ -71,8 +71,7 @@
     }
 
     &_text {
-      &_info,
-      &_map {
+      &_info {
         margin: (40px) 0 (36px) 0;
         &_title {
           color: $GRAY-40;
@@ -88,6 +87,16 @@
         }
       }
     }
+    &_map {
+      &_title {
+        margin-bottom: (32px);
+      }
+      margin-bottom: (300px);
+    }
+  }
+  #map {
+    width: (720px);
+    height: (480px);
   }
 }
 
@@ -107,6 +116,12 @@
         width: vw(720px);
         height: vw(480px);
         padding-bottom: vw(36px);
+        overflow: hidden;
+        img {
+          width: 100%; // 원본비율 유지
+          height: 100%;
+          object-fit: cover; // 상위 div 크기에 딱 맞아 들어가도록
+        }
       }
 
       &_intro {
@@ -139,8 +154,7 @@
       }
 
       &_text {
-        &_info,
-        &_map {
+        &_info {
           margin: vw(40px) 0 vw(36px) 0;
           &_title {
             margin-bottom: vw(32px);
@@ -153,10 +167,19 @@
           }
         }
       }
+      &_map {
+        &_title {
+          margin-bottom: vw(32px);
+        }
+        margin-bottom: vw(300px);
+      }
+    }
+    #map {
+      width: vw(720px);
+      height: vw(480px);
     }
   }
 }
-
 @media screen and (max-width: $TABLET-VW) {
   .detail {
     width: vw-t(720px);
@@ -165,6 +188,7 @@
       height: vw-t(1px);
     }
     &_title {
+      // justify-content: flex-start;
       margin: vw-t(84px) 0 vw-t(32px) 0;
     }
     &_camp {
@@ -196,28 +220,37 @@
         &_plan {
           border: vw-t(2px) solid $MAIN;
         }
-      }
 
-      &_plan:hover,
-      &_site:hover {
-        box-shadow: 0px 0px 5px $MAIN;
-      }
-    }
-
-    &_text {
-      &_info,
-      &_map {
-        margin: vw-t(40px) 0 vw-t(36px) 0;
-        &_title {
-          margin-bottom: vw-t(32px);
+        &_plan:hover,
+        &_site:hover {
+          box-shadow: 0px 0px 5px $MAIN;
         }
+      }
 
-        &_sub {
-          &_basic {
-            padding-bottom: vw-t(24px);
+      &_text {
+        &_info {
+          margin: vw-t(40px) 0 vw-t(36px) 0;
+          &_title {
+            margin-bottom: vw-t(32px);
+          }
+
+          &_sub {
+            &_basic {
+              padding-bottom: vw-t(24px);
+            }
           }
         }
       }
+      &_map {
+        &_title {
+          margin-bottom: vw-t(32px);
+        }
+        margin-bottom: vw-t(300px);
+      }
+    }
+    #map {
+      width: vw-t(720px);
+      height: vw-t(480px);
     }
   }
 }
@@ -262,15 +295,15 @@
         &_plan {
           border: vw-p(2px) solid $MAIN;
         }
+
         &_plan:hover,
         &_site:hover {
-          box-shadow: 0px 0px vw-p(5px) $MAIN;
+          box-shadow: 0px 0px 5px $MAIN;
         }
       }
 
       &_text {
-        &_info,
-        &_map {
+        &_info {
           margin: vw-p(40px) 0 vw-p(36px) 0;
           &_title {
             margin-bottom: vw-p(32px);
@@ -283,6 +316,16 @@
           }
         }
       }
+      &_map {
+        &_title {
+          margin-bottom: vw-p(32px);
+        }
+        margin-bottom: vw-p(300px);
+      }
+    }
+    #map {
+      width: vw-p(720px);
+      height: vw-p(480px);
     }
   }
 }
