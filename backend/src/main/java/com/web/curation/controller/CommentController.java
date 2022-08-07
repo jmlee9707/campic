@@ -33,7 +33,7 @@ public class CommentController {
     /* CREATE */
     @PostMapping("/{talkId}")
     public ResponseEntity save(@PathVariable int talkId, @RequestBody CommentDto.Request dto,
-            String email) {
+                               @RequestBody String email) {
         return ResponseEntity.ok(commentService.save(talkId, email, dto));
     }
 
