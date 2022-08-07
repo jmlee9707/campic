@@ -21,9 +21,9 @@ module.exports = {
     "no-param-reassign": [
       "error",
       { props: true, ignorePropertyModificationsFor: ["state"] }
-    ]
-    ,"import/no-unresolved" : 0
-    , 
+    ],
+    "import/no-unresolved": 0,
+    "react/prop-types": 0
   },
   settings: {
     "import/resolver": {
@@ -32,7 +32,7 @@ module.exports = {
           // ["@components", "./src/components"],
           // ["@screens", "./src/screens"],
           ["@styles", "./src/assets/styles"],
-          ["@images", "./src/assets/images"],
+          ["@images", "./src/assets/images"]
           // ["@utils", "./src/utils"]
         ],
         extensions: [".ts", ".js", ".jsx", ".json", ".svg"]

@@ -38,12 +38,12 @@
         padding: (7px) (20px);
         border-radius: (20px);
         margin: 0 (8px) (16px) 0;
-        &:focus {
-          background-color: $MAIN;
-          color: $WHITE;
-          opacity: 0.8;
-          border: (1.5px) solid $MAIN;
-        }
+      }
+      .selected {
+        background-color: $MAIN;
+        color: $WHITE;
+        opacity: 0.8;
+        border: (1.5px) solid $MAIN;
       }
     }
     &_fin {
@@ -95,6 +95,9 @@
             border: vw(1.5px) solid $MAIN;
           }
         }
+        .selected {
+          border: vw(1.5px) solid $MAIN;
+        }
       }
       &_fin {
         button {
@@ -140,9 +143,9 @@
           padding: vw-t(7px) vw-t(20px);
           border-radius: vw-t(20px);
           margin: 0 vw-t(8px) vw-t(16px) 0;
-          &:focus {
-            border: vw-t(1.5px) solid $MAIN;
-          }
+        }
+        .selected {
+          border: vw-t(1.5px) solid $MAIN;
         }
       }
       &_fin {
@@ -189,9 +192,9 @@
           padding: vw-p(7px) vw-p(20px);
           border-radius: vw-p(20px);
           margin: 0 vw-p(8px) vw-p(16px) 0;
-          &:focus {
-            border: vw-p(1.5px) solid $MAIN;
-          }
+        }
+        .selected {
+          border: vw-p(1.5px) solid $MAIN;
         }
       }
       &_fin {

@@ -80,10 +80,10 @@ function Router() {
         </Route>
 
         {/* Drop */}
-        <Route path="/drop/*">
+        {/* <Route path="/drop/*">
           <Route index element={<Drop />} />
           <Route path="finish" element={<DropFinish />} />
-        </Route>
+        </Route> */}
 
         {/* community */}
         <Route path="/board/*">
@@ -98,12 +98,12 @@ function Router() {
 
         <Route path="/camping/*">
           <Route index element={<CampingMain />} />
-          <Route path="detail" element={<CampingDetail />} />
+          <Route path="detail/:id" element={<CampingDetail />} />
         </Route>
 
         <Route path="/plan/*">
           <Route index element={<PlanMain />} />
-          <Route path="detail" element={<PlanDetail />} />
+          <Route path="detail/:id" element={<PlanDetail />} />
         </Route>
 
         {/* mypage */}
