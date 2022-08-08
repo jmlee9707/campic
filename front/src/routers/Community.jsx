@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import CommunityNavBar from "@components/community/CommunityNavBar";
 // community
 import CommunityMain from "@screens/community/CommunityMain";
-import PhotoHome from "@screens/community/PhotoHome"
+import PhotoHome from "@screens/community/PhotoHome";
 // import TalkHome from "@screens/community/TalkHome"
 import PhotoRegist from "@screens/community/PhotoRegist";
 import TalkRegist from "@screens/community/TalkRegist";
@@ -11,7 +11,6 @@ import PhotoDetail from "@screens/community/PhotoDetail";
 import PhotoModify from "@screens/community/PhotoModify";
 // import TalkDetail from "@screens/community/TalkDetail";
 // import PhotoModify from "../screens/community/PhotoModify";
-
 
 function Community() {
   return (

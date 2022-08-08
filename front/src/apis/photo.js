@@ -1,4 +1,4 @@
-import API_PHOTO from "./index";
+import { API_PHOTO } from "./index";
 
 // 포토 등록
 // eslint-disable-next-line import/prefer-default-export
