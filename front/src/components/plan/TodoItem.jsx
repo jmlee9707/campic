@@ -1,38 +1,50 @@
 import React, { useState } from "react";
-// import PropTypes from "prop-types";
 import check from "@images/icon/done_black.svg";
 import checkGray from "@images/icon/done_gray.svg";
 
-function TodoItem() {
-  const [finished, setFinished] = useState(false);
+function TodoItem({ task, done, saveListId, todoId }) {
+  // const task = "todotodotodotodoto";
+  console.log(task);
+  // console.log(done);
+  console.log(saveListId);
+  console.log(todoId);
 
-  const clicked = () => {
-    setFinished(!finished);
+  const [isDone, setIsDone] = useState({ done });
+
+  const changeState = () => {
+    setIsDone(!isDone);
+    // console.log(isDone);
   };
 
   return (
     <div className="todo_box flex align-center ">
-      <button
-        onClick={clicked}
-        type="button"
-        className={
-          finished
-            ? "flex justify-center align-center todo_box_done"
-            : "flex justify-center align-center todo_box_yet"
-        }
-      >
-        {!finished && <img src={checkGray} alt="coverImg" />}
-        {finished && <img src={check} alt="coverImg" />}
-      </button>
-      <div className="todo_box_text">
+      {isDone && (
+        <button
+          onClick={changeState}
+          type="button"
+          className="todo_box_btn_done flex justify-center align-center"
+        >
+          <img src={check} alt="coverImg" />
+        </button>
+      )}
+      {!isDone && (
+        <button
+          onClick={changeState}
+          type="button"
+          className="todo_box_btn_yet flex justify-center align-center"
+        >
+          <img src={checkGray} alt="coverImg" />
+        </button>
+      )}
+      <div className="">
         <p
           className={
-            finished
+            isDone
               ? "fs-14 notoMid todo_box_text_done"
               : "fs-14 notoMid todo_text_yet"
           }
         >
-          {/* {text} */}
+          {task}
         </p>
       </div>
     </div>
