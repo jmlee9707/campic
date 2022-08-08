@@ -43,6 +43,15 @@ export const addTodo = async (todoId, task) => {
   console.log(res.data);
   return res.data;
 };
+
+// todolist 수정하기
+export const modifyTodo = async (todoId, task, done, saveId) => {
+  const res = await API_USER.put(`/schedule/${saveId}/todo/${todoId}`, {
+    task,
+    done
+  });
+  return res.data;
+};
 // 다가올 캠핑 조회하기
 export const getUpcomingPlan = async (email, now) => {
   const res = await API_USER.get(

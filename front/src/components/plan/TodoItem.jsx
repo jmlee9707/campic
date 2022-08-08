@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import check from "@images/icon/done_black.svg";
 import checkGray from "@images/icon/done_gray.svg";
+import { modifyTodo } from "../../apis/plan";
 
-function TodoItem({ task, done, saveListId, todoId }) {
-  // const task = "todotodotodotodoto";
-  console.log(task);
-  // console.log(done);
-  console.log(saveListId);
-  console.log(todoId);
+function TodoItem({ task, done, saveId, todoId }) {
+  // console.log(task);
+  // // console.log(done);
+  // console.log(saveId);
+  // console.log(todoId);
 
-  const [isDone, setIsDone] = useState({ done });
+  const [isDone, setIsDone] = useState(done);
 
-  const changeState = () => {
+  const changeState = async () => {
+    await modifyTodo(todoId, task, isDone, saveId);
     setIsDone(!isDone);
-    // console.log(isDone);
   };
 
   return (
