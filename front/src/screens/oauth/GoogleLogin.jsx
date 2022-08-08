@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { setEmail, setUserInfo } from '../../store/user';
 // import { getUserInfo, getKakaoToken, kakaoLogin } from "../../apis/user";
 import { getUserInfo } from "../../apis/user";
+import "./Spinner.scss";
 
 function GoogleLogin () {
   const dispatch = useDispatch();
@@ -67,8 +68,12 @@ function GoogleLogin () {
   }, []);
 
   return (
-    <div>
-      스피너 모양
+    <div className="container flex align-center justify-center">
+       <div className='spinner'>
+        <span className='spinner-inner-1'> </span>
+        <span className='spinner-inner-2'> </span>
+        <span className='spinner-inner-3'> </span>
+      </div>
     </div>
   );
 };
