@@ -19,8 +19,14 @@
       margin: vw(32px) 0 vw(40px) 0;
     }
   }
+
+  &_past {
+    img {
+      filter: brightness(65%);
+    }
+  }
   &_login {
-    margin-top: vw(150px);
+    margin-top: vw(180px);
     &_txt {
       margin-bottom: vw(60px);
     }

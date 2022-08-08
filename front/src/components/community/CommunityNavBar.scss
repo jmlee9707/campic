@@ -3,11 +3,12 @@
 }
 
 .commu_nav {
+  // z-index: -9;
   height: vw(55px);
   width: 1440px;
   background-color: $WHITE;
   padding-left: vw(135px);
-  box-shadow: 0 vw(2px) 0 rgba(211, 211, 211, 0.25);
+  box-shadow: 0 vw(2px) 0 rgba(211, 211, 211, 0.1);
   color: $GRAY-76;
 
   &__link {
