@@ -15,9 +15,9 @@ function MainNavBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const userId = useSelector(state => state.user.email);
+  // const [home, setHome] = useState(true);
   // const userId = useSelector(state => state.user.email);
   const Profile = useSelector(selectProfile);
-  // const [home, setHome] = useState(true);
 
   const activeClassName = active => {
     const prefix = "left_nav__link flex fs-16 btn--";
@@ -117,7 +117,10 @@ function MainNavBar() {
                 onClick={openTooltip}
               >
                 {/* <img src={userInfo.profileImg} alt="userProfile" /> */}
-                <img src={Profile.profileImg} alt={dummyicon} />
+                {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
+                {Profile && <img src={Profile.profileImg} alt={dummyicon} />}
+                {/* {Profile.profileImg && <img src={dummyicon} alt="" />} */}
+                {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
               </button>
             </>
           )}

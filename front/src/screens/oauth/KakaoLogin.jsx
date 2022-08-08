@@ -36,15 +36,19 @@ function KakaoLogin () {
         // 로그인 작업
         // 리덕스 스토어에 이메일 저장
         dispatch(setEmail({email: res1.data.email}))
+        sessionStorage.setItem("userEmail", res1.data.email);
         // 세션스토리지에 토큰 저장
         sessionStorage.setItem("refreshToken", res1.data.refreshToken);
         sessionStorage.setItem("accessToken", res.data.Authorization);
         // 유저 정보 가져오기
         // console.log("유저 정보 가져오기")
-        const userRes = getUserInfo(res1.data.email);
+        getUserInfo(res1.data.email)
+        .then(userRes => {
+          dispatch(setUserInfo(userRes.userInfo))
+        })
         // console.log(userRes.userInfo);
         // 유저 정보 스토어에 저장
-        dispatch(setUserInfo(userRes.userInfo))
+        
         // navigate("/");
       })
       navigate("/");
