@@ -116,7 +116,7 @@ function MainNavBar() {
                 onClick={openTooltip}
               >
                 {/* <img src={userInfo.profileImg} alt="userProfile" /> */}
-                {Profile.profileImg && <img src={Profile.profileImg} alt="" />}
+                <img src={Profile.profileImg} alt="userProfile" />
               </button>
             </>
           )}

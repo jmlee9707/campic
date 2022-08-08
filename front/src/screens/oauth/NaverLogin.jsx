@@ -6,9 +6,9 @@ import queryString from 'query-string';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { setEmail } from '../../store/user';
-import { setEmail, setUserInfo } from '../../store/user';
+import { setEmail, setUserInfo } from '@store/user';
 // import { getUserInfo, getKakaoToken, kakaoLogin } from "../../apis/user";
-import { getUserInfo } from "../../apis/user";
+import { getUserInfo } from "@apis/user";
 
 function NaverLogin () {
   const dispatch = useDispatch();
