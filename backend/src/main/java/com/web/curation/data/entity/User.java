@@ -45,7 +45,7 @@ public class User implements UserDetails {
     private String birth;
 
     @Column(nullable = false)
-    private String profileImg;
+    private byte[] profileImg;
 
     @Column(nullable = false)
     private LocalDateTime joinDate;

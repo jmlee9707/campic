@@ -191,33 +191,17 @@ public class MemberController {
     public ResponseEntity<String> updateMemberProfile(UserDto userDto, MultipartFile file, HttpServletRequest request) {
         LOGGER.debug("updateUserProfile - 호출");
 
-        if(file.getContentType().startsWith("image") == false){
-            LOGGER.warn("this file is not image type");
-            return new ResponseEntity<String>(FAIL, HttpStatus.BAD_REQUEST);
+        String fileName = file.getOriginalFilename();
+
+        byte[] bytes;
+
+        try{
+            bytes = file.getBytes();
+            userDto.setProfileImg(bytes);
+            LOGGER.info("bytes 파일 {}", bytes.toString().substring(0,11));
+        }  catch (IOException e2){
+            e2.printStackTrace();
         }
-
-        String originalName = file.getOriginalFilename();//파일명:모든 경로를 포함한 파일이름
-        String fileName = originalName.substring(originalName.lastIndexOf("//") + 1);
-
-        LOGGER.info("fileName" + fileName);
-
-        //UUID
-        String uuid = UUID.randomUUID().toString();
-        //저장할 파일 이름 중간에 "_"를 이용하여 구분
-        String saveName = uploadPath + File.separator + File.separator + uuid + "_" + fileName + userDto.getEmail();
-
-        Path savePath = Paths.get(saveName);
-        //Paths.get() 메서드는 특정 경로의 파일 정보를 가져옵니다.(경로 정의하기)
-
-        try {
-            file.transferTo(savePath);
-            //uploadFile에 파일을 업로드 하는 메서드 transferTo(file)
-        } catch (IOException e) {
-            e.printStackTrace();
-            //printStackTrace()를 호출하면 로그에 Stack trace가 출력됩니다.
-        }
-
-        userDto.setProfileImg(savePath.toString());
 
         if (memberService.updateUserProfile(userDto)) {
             return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
