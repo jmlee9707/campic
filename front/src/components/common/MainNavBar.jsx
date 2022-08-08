@@ -118,7 +118,7 @@ function MainNavBar() {
               >
                 {/* <img src={userInfo.profileImg} alt="userProfile" /> */}
                 {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
-                {Profile && <img src={Profile.profileImg} alt={dummyicon} />}
+                {Profile ? <img src={Profile.profileImg} alt="" /> : <img src={dummyicon} alt="" />}
                 {/* {Profile.profileImg && <img src={dummyicon} alt="" />} */}
                 {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
               </button>
