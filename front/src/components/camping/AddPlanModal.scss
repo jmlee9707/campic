@@ -81,4 +81,27 @@
       }
     }
   }
+  &_login {
+    margin: vw(18px) 0;
+    &_txt {
+      margin-bottom: vw(32px);
+    }
+    &_btn {
+      &_close {
+        border-radius: vw(15px);
+        padding: vw(12px) vw(31px);
+        background-color: $WHITE;
+        color: $MAIN;
+        margin: 0 vw(8px);
+        border: vw(1.5px) solid $MAIN;
+      }
+      &_move {
+        border-radius: vw(15px);
+        margin: 0 vw(8px);
+        padding: vw(12px) vw(31px);
+        background-color: $MAIN;
+        color: $WHITE;
+      }
+    }
+  }
 }
