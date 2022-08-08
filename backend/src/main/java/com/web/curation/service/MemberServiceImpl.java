@@ -52,7 +52,7 @@ public class MemberServiceImpl implements MemberService {
         user.setBirth("");
         user.setProfileImg(ssafy.getProfileImg());
         user.setJoinDate(LocalDateTime.now());
-
+        user.setIsSocial("default");
         if (role.equalsIgnoreCase("admin")) {
             user.setRoleType(RoleType.ROLE_ADMIN);
         } else {
@@ -112,6 +112,7 @@ public class MemberServiceImpl implements MemberService {
         userDto.setProfileImg(user.getProfileImg());
         userDto.setJoinDate(user.getJoinDate());
         userDto.setAuth(String.valueOf(user.getRoleType()));
+        userDto.setIsSocial(user.getIsSocial());
 
         return userDto;
     }

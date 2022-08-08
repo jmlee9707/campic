@@ -83,7 +83,7 @@ public class SocialService {
             e.printStackTrace();
         }
 
-        UserDto userDto = registerOrLogin(id, nickname);
+        UserDto userDto = registerOrLogin(id, nickname, "kakao");
 
         return userDto;
     }
@@ -129,7 +129,7 @@ public class SocialService {
             e.printStackTrace();
         }
 
-        UserDto userDto = registerOrLogin(id, nickname);
+        UserDto userDto = registerOrLogin(id, nickname, "naver");
 
         return userDto;
     }
@@ -176,17 +176,17 @@ public class SocialService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        UserDto userDto = registerOrLogin(id, nickname);
+        UserDto userDto = registerOrLogin(id, nickname, "google");
 
         return userDto;
     }
 
-    private UserDto registerOrLogin(String id, String nickname){
+    private UserDto registerOrLogin(String id, String nickname, String social){
         // 회원가입 또는 로그인 시키기
 
         // DB에 중복되는 email 있는지 확인
         boolean isUser = userRepository.existsByEmail(id);
-
+        User defaultUser = userRepository.getByEmail("ssafy@naver.com");
         // 회원아니면 회원가입 시키기
         if(!isUser){
 
@@ -202,8 +202,9 @@ public class SocialService {
             user.setRoleType(RoleType.ROLE_USER);
             user.setTel("");
             user.setBirth("");
-//            user.setProfileImg("img");
+            user.setProfileImg(defaultUser.getProfileImg());
             user.setJoinDate(LocalDateTime.now());
+            user.setIsSocial(social);
 
             userRepository.save(user);
         }
