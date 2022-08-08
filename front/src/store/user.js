@@ -18,12 +18,15 @@ export const userSlice = createSlice({
     setEmail: (state, action) => {
       state.email = action.payload.email;
     },
+    setProfileImg: (state, action) => {
+      state.profileImg = action.payload;
+    },
     setUserInfo: (state, action) => {
       state.auth = action.payload.auth;
       state.birth = action.payload.birth;
       state.joinDate = action.payload.joinDate;
       state.nickname = action.payload.nickname;
-      // state.profileImg = action.payload.profileImg;
+      state.profileImg = `data:image/png;base64,${action.payload.profileImg}`;
       state.tel = action.payload.tel;
     },
     updateUserInfo: (state, action) => {
@@ -50,6 +53,7 @@ export const selectProfile = (state) => state.user;
 
 export const { 
   setUserInfo,
+  setProfileImg,
   updateUserInfo, 
   reset,
   setEmail,  
