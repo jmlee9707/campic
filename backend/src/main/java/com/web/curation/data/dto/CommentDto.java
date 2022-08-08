@@ -50,7 +50,7 @@ public class CommentDto {
         private String uploadDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
         private int userId;
         private String nickname;
-        private String profileImg;
+        private byte[] profileImg;
         private int talkId;
         private int depth;
         private int bundle;

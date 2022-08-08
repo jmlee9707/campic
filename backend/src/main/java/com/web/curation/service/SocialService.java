@@ -202,7 +202,7 @@ public class SocialService {
             user.setRoleType(RoleType.ROLE_USER);
             user.setTel("");
             user.setBirth("");
-            user.setProfileImg("img");
+//            user.setProfileImg("img");
             user.setJoinDate(LocalDateTime.now());
 
             userRepository.save(user);
