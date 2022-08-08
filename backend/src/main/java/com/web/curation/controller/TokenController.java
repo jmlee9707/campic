@@ -78,7 +78,7 @@ public class TokenController {
 
             return new ResponseEntity<>(resultMap, status);
         }
-        status = HttpStatus.UNAUTHORIZED;
+        status = HttpStatus.NOT_ACCEPTABLE;
         resultMap.put("message", FAIL);
 
         return new ResponseEntity<>(resultMap, status);
