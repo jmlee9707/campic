@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./PlanDetail.scss";
-import TodoList from "@components/plan/TodoList";
+// import TodoList from "@components/plan/TodoList";
 import mainImg from "@images/temp_1.jpeg";
-import { useParams } from "react-router-dom";
-import { getPlanDetail } from "../../apis/plan";
+// import { useParams } from "react-router-dom";
+// import { getPlanDetail } from "../../apis/plan";
 // import TodoItemList from "@components/plan/TodoItemList";
 // import Location from "@components/common/Location";
 
@@ -15,17 +15,17 @@ function PlanDetail() {
   const address = "광주광역시 광산구 수완동 1111-1111";
   const phone = "010-0000-0000";
 
-  const [planInfo, setPlanInfo] = useState();
-  const { id: planId } = useParams();
+  // const [planInfo, setPlanInfo] = useState();
+  // const { id: planId } = useParams();
 
-  const getPlanInfo = async () => {
-    const res = await getPlanDetail(planId);
-    setPlanInfo(res);
-  };
+  // const getPlanInfo = async () => {
+  //   const res = await getPlanDetail(planId);
+  //   setPlanInfo(res);
+  // };
 
-  useEffect(() => {
-    getPlanInfo(); // 초기 일정정보 받아오기
-  }, planInfo);
+  // useEffect(() => {
+  //   getPlanInfo(); // 초기 일정정보 받아오기
+  // }, planInfo);
 
   return (
     <div className="container flex justify-center">
@@ -47,9 +47,7 @@ function PlanDetail() {
             </p>
             <p className="plan_detail_box_right_phone fs-20 notoMid">{phone}</p>
           </div>
-          <div className="plan_detail_box_left">
-            <TodoList />
-          </div>
+          <div className="plan_detail_box_left">{/* <TodoList /> */}</div>
         </div>
         <div className="plan_detail_map">{/* <Location /> */}</div>
       </div>
