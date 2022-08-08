@@ -15,6 +15,14 @@ export const getPhotoDetail = async boardId => {
   return res.data;
 };
 
+// 좋아요 유무 파악
+export const getIsLiked = async params => {
+  const res = await API_PHOTO.get(
+    `/photo/detail/isLiked?boardId=${params.boardId}&email=${params.email}`
+  );
+  return res.data;
+};
+
 // 좋아요
 export const photoLike = async params => {
   console.log(params);
