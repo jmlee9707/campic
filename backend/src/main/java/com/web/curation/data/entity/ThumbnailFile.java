@@ -26,7 +26,7 @@ public class ThumbnailFile {
     private String name;
 
     @Column(nullable = false)
-    private String filePath;
+    private byte[] file;
 
     private String fileType;
 

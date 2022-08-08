@@ -26,10 +26,9 @@ public class TalkDto {
     private int click;
     private long like;
 
-//    private String thumbnailFileName;
-//    private String thumbnailFilePath;
     private String fileName;
-    private String filePath;
+    private byte[] saveFile;
+    private String blobFile;
 
 
 }
