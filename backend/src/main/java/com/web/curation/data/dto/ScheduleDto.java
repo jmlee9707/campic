@@ -81,6 +81,7 @@ public class ScheduleDto {
         private final String campMapX;
         private final String campMapY;
         private final String firstImageUrl;
+        private final String email;
 
         /* Entity -> Dto*/
         public ScheduleDetail(LikedCampList likedCampList) {
@@ -97,6 +98,7 @@ public class ScheduleDto {
             this.campMapX = likedCampList.getTotalCampList().getMapX();
             this.campMapY = likedCampList.getTotalCampList().getMapY();
             this.firstImageUrl = likedCampList.getTotalCampList().getFirstImageUrl();
+            this.email = likedCampList.getUser().getEmail();
         }
     }
 
