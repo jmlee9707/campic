@@ -52,6 +52,7 @@ public class ScheduleDto {
         private final String endDate;
 
         private final String savedTitle;
+        private final String firstImageUrl;
 
         /* Entity -> Dto*/
         public Response(LikedCampList likedCampList) {
@@ -61,6 +62,7 @@ public class ScheduleDto {
             this.startDate = likedCampList.getStartDate();
             this.endDate = likedCampList.getEndDate();
             this.savedTitle = likedCampList.getSavedTitle();
+            this.firstImageUrl = likedCampList.getTotalCampList().getFirstImageUrl();
         }
     }
 
@@ -78,6 +80,7 @@ public class ScheduleDto {
         private final String campTel;
         private final String campMapX;
         private final String campMapY;
+        private final String firstImageUrl;
 
         /* Entity -> Dto*/
         public ScheduleDetail(LikedCampList likedCampList) {
@@ -93,6 +96,7 @@ public class ScheduleDto {
             this.campTel = likedCampList.getTotalCampList().getTel();
             this.campMapX = likedCampList.getTotalCampList().getMapX();
             this.campMapY = likedCampList.getTotalCampList().getMapY();
+            this.firstImageUrl = likedCampList.getTotalCampList().getFirstImageUrl();
         }
     }
 

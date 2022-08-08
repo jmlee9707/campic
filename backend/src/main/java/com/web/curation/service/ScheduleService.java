@@ -31,21 +31,21 @@ public class ScheduleService {
     @Transactional(readOnly = true)
     public List<ScheduleDto.Response> upcomingList(String email, String now){
         User user = userRepository.getByEmail(email);
-        List<ScheduleDto.Response> upcomingList = likedCampRepository.findAllByUserAndAndStartDateAfter(user, now);
+        List<ScheduleDto.Response> upcomingList = likedCampRepository.findAllByUserAndStartDateAfterOrderByStartDateDesc(user, now);
         return upcomingList;
     }
 
     @Transactional(readOnly = true)
     public List<ScheduleDto.Response> ongoingList(String email, String now){
         User user = userRepository.getByEmail(email);
-        List<ScheduleDto.Response> ongoingList = likedCampRepository.findAllByUserAndAndStartDateBeforeAndEndDateAfter(user, now, now);
+        List<ScheduleDto.Response> ongoingList = likedCampRepository.findAllByUserAndStartDateBeforeAndEndDateAfter(user, now, now);
         return ongoingList;
     }
 
     @Transactional(readOnly = true)
     public List<ScheduleDto.Response> endList(String email, String now){
         User user = userRepository.getByEmail(email);
-        List<ScheduleDto.Response> endList = likedCampRepository.findAllByUserAndAndEndDateBefore(user, now);
+        List<ScheduleDto.Response> endList = likedCampRepository.findAllByUserAndEndDateBeforeOrderByEndDateAsc(user, now);
         return endList;
     }
 

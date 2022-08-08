@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface LikedCampRepository  extends JpaRepository<LikedCampList, Integer> {
     LikedCampList getById(int saveId);
-    List<ScheduleDto.Response> findAllByUserAndAndStartDateAfter(User user, String now);
-    List<ScheduleDto.Response> findAllByUserAndAndStartDateBeforeAndEndDateAfter(User user, String now1, String now2);
-    List<ScheduleDto.Response> findAllByUserAndAndEndDateBefore(User user, String now);
+    List<ScheduleDto.Response> findAllByUserAndStartDateAfterOrderByStartDateDesc(User user, String now);
+    List<ScheduleDto.Response> findAllByUserAndStartDateBeforeAndEndDateAfter(User user, String now1, String now2);
+    List<ScheduleDto.Response> findAllByUserAndEndDateBeforeOrderByEndDateAsc(User user, String now);
 }
