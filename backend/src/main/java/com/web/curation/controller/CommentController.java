@@ -32,9 +32,8 @@ public class CommentController {
 
     /* CREATE */
     @PostMapping("/{talkId}")
-    public ResponseEntity save(@PathVariable int talkId, @RequestBody CommentDto.Request dto,
-                               @RequestBody String email) {
-        return ResponseEntity.ok(commentService.save(talkId, email, dto));
+    public ResponseEntity save(@PathVariable int talkId, @RequestBody CommentDto.ComDto dto) {
+        return ResponseEntity.ok(commentService.save(talkId, dto));
     }
 
     /* UPDATE */

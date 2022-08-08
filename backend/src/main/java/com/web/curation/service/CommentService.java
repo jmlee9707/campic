@@ -29,19 +29,20 @@ public class CommentService {
     @Transactional
     // depth -> 댓글인지 대댓글인지 프론트에서 알려주세요 댓글 -> 0, 대댓글 -> 1
     // bundle -> 몇번째 댓글에 대한 대댓글인지 댓글 아이디 넘기기
-    public int save(int talkId, String email, CommentDto.Request dto) {
-        User user = userRepository.getByEmail(email);
+    public int save(int talkId,CommentDto.ComDto dto) {
+        User user = userRepository.getByEmail(dto.getEmail());
         Talk talk = talkRepository.findById(talkId).orElseThrow(() ->
                 new IllegalArgumentException("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다. " + talkId));
 
+        Comment comment = new Comment();
 
-        dto.setUserId(user);
-        dto.setTalkId(talk);
-        dto.setDepth(dto.getDepth());
-        dto.setBundle(dto.getBundle());
-        dto.setContent(dto.getContent());
+        comment.setUser(user);
+        comment.setTalk(talk);
+        comment.setUploadDate(dto.getUploadDate());
+        comment.setDepth(dto.getDepth());
+        comment.setBundle(dto.getBundle());
+        comment.setContent(dto.getContent());
 
-        Comment comment = dto.toEntity();
         commentRepository.save(comment);
 
         return comment.getCommentId();

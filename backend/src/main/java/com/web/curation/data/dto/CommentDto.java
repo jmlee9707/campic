@@ -37,6 +37,20 @@ public class CommentDto {
         }
     }
 
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class ComDto{
+        private int commentId;
+        private String content;
+        private String uploadDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
+        private String email;
+        private int talkId;
+        private int depth;
+        private int bundle;
+    }
+
     /**
      * 댓글 정보를 리턴할 응답(Response) 클래스
      * Entity 클래스를 생성자 파라미터로 받아 데이터를 Dto로 변환하여 응답
