@@ -8,9 +8,14 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,8 +41,15 @@ public class TalkService {
         this.userRepository = userRepository;
     }
 
-    public List<TalkDto> listTalk() {
-        List<Talk> listTalks = talkRepository.findAll();
+    public List<TalkDto> listTalk(int page) {
+        Pageable sortedByPriceDesc = PageRequest.of(page, 15, Sort.by("uploadDate").descending());
+
+        Page<Talk> pageTalk = talkRepository.findAll(sortedByPriceDesc);
+        List<Talk> listTalks = new ArrayList<>();
+
+        for(Talk talk : pageTalk){
+            listTalks.add(talk);
+        }
 
         return getTalkDtos(listTalks);
     }
@@ -79,11 +91,12 @@ public class TalkService {
 
         ThumbnailFile thumbnailFile = thumbnailFileRepository.findByTalk(talk);
         talkDto.setFileName(thumbnailFile.getName());
-        talkDto.setFilePath(thumbnailFile.getFilePath());
+
+        String blobFile = encodeBlobToBase64(thumbnailFile.getFile());
+        LOGGER.info("blobFile", blobFile);
 
         return talkDto;
     }
-
 
     private List<TalkDto> getTalkDtos(List<Talk> talks) {
         List<TalkDto> listTalk = new ArrayList<>();
@@ -95,6 +108,7 @@ public class TalkService {
             talkDto.setProfileImgPath(talk.getUser().getProfileImg());
             talkDto.setTalkId(talk.getTalkId());
             talkDto.setNickname(talk.getUser().getNickname());
+            talkDto.setContents(talk.getContents());
             talkDto.setUploadDate(talk.getUploadDate());
             talkDto.setTitle(talk.getTitle());
             talkDto.setHashtag(talk.getHashtag());
@@ -106,17 +120,30 @@ public class TalkService {
             // 조회수
             talkDto.setClick(talk.getClick());
 
-            talkDto.setContents(talk.getContents());
-
+            // 사진 넣기
             ThumbnailFile thumbnailFile = thumbnailFileRepository.findByTalk(talk);
-            talkDto.setFilePath(thumbnailFile.getFilePath());
             talkDto.setFileName(thumbnailFile.getName());
+
+            String blobFile = encodeBlobToBase64(thumbnailFile.getFile());
+
+            talkDto.setSaveFile(thumbnailFile.getFile());
+            talkDto.setBlobFile(blobFile);
 
             listTalk.add(talkDto);
         }
 
         return listTalk;
     }
+
+    public static String encodeBlobToBase64(byte[] data){
+
+        final String BASE_64_PREFIX = "data:image/png;base64,";
+        String base64Str = Base64Utils.encodeToString(data);
+
+        return BASE_64_PREFIX+base64Str;
+    }
+
+
     @Transactional
     public int writeTalk(TalkDto talkDto) {
         LOGGER.info("[talk 게시글 등록] 게시글 제목 : {}", talkDto.getTitle());
@@ -136,14 +163,14 @@ public class TalkService {
 
         // thumbnailFile 저장
         ThumbnailFile thumbnailFile = new ThumbnailFile();
-        thumbnailFile.setFilePath(talkDto.getFilePath());
-        LOGGER.info("talkDto FIleName() : ", talkDto.getFileName());
-
-        thumbnailFile.setName(talkDto.getFileName());
         thumbnailFile.setTalk(talk);
+        thumbnailFile.setFile(talkDto.getSaveFile());
+        LOGGER.info("talkDto FIleName() : ", talkDto.getFileName());
+        thumbnailFile.setName(talkDto.getFileName());
 
         thumbnailFileRepository.save(thumbnailFile);
         LOGGER.info("[getSignUpResult] userEntity 값이 들어왔는지 확인 후 결과값 주입");
+
         if (savedTalk != null) {
             LOGGER.info("talk 게시글 저장 완료");
             int talkId = savedTalk.getTalkId();
@@ -169,7 +196,7 @@ public class TalkService {
 
         thumbnailFile.setTalk(talk);
         thumbnailFile.setName(talkDto.getFileName());
-        thumbnailFile.setFilePath(talkDto.getFilePath());
+        thumbnailFile.setFile(talkDto.getSaveFile());
 
         thumbnailFileRepository.save(thumbnailFile);
 
@@ -183,10 +210,12 @@ public class TalkService {
     public boolean deleteTalk(int talkId) {
         // 게시글 삭제
         Talk talk = talkRepository.findByTalkId(talkId);
-        talkRepository.delete(talk);
-        // 사진 삭제
+        // 사진 삭제한 다음에
         ThumbnailFile thumbnailFile = thumbnailFileRepository.findByTalk(talk);
         thumbnailFileRepository.delete(thumbnailFile);
+
+        // 게시글 삭제
+        talkRepository.delete(talk);
 
         Talk verify = talkRepository.findByTalkId(talkId);
 
@@ -241,6 +270,14 @@ public class TalkService {
         return -1;
     }
 
+    public int isUserLikedPhoto(int talkId, String email) {
+        Talk talk = talkRepository.findByTalkId(talkId);
+        User user = userRepository.getByEmail(email);
 
+        // 좋아요가 눌러져 있으면 1을 반환
+        if(talkLikeRepository.existsByUserAndTalk(user, talk)) return 1;
+        // 좋아요가 안눌러져 있으면 0을 반환
+        return 0;
+    }
 
 }
