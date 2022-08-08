@@ -102,7 +102,6 @@
 
 .todo_box {
   margin-bottom: (20px);
-
   button {
     width: (40px);
     height: (40px);
@@ -131,17 +130,23 @@
       }
     }
   }
-
-  &_text {
-    background-color: $GRAY-F3;
-    border-radius: (12px);
-    padding: (11px) (18px);
-    width: (483px);
-    p {
-      color: $GRAY-61;
+  &_content {
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    &_text {
+      background-color: $GRAY-F3;
+      border-radius: (12px);
+      padding: (11px) (18px);
+      width: (483px);
+      color: $GRAY-67;
+      &_done {
+        text-decoration: line-through 2px;
+      }
     }
-    &_done {
-      text-decoration: line-through;
+    &_delete {
+      color: $RED;
+      margin-left: vw(50px);
     }
   }
 }

@@ -26,9 +26,9 @@ function PlanDetail() {
     getPlanInfo(); // 초기 일정정보 받아오기
     // setStart(planInfo.startDate);
     // setEnd(planInfo.endDate);
-    console.log(planInfo);
   }, [planId]);
 
+  console.log(planInfo);
   return (
     <div className="container flex justify-center">
       <div className="plan_detail">
@@ -62,7 +62,7 @@ function PlanDetail() {
             </p>
           </div>
           <div className="plan_detail_box_left">
-            <TodoItemList listId={planInfo.saveId} />
+            <TodoItemList listId={planInfo.saveId} writer={planInfo.email} />
           </div>
         </div>
         <div className="plan_detail_map">

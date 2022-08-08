@@ -5,27 +5,25 @@ import { v4 } from "uuid";
 import TodoItem from "./TodoItem";
 import { getTodo, addTodo } from "../../apis/plan";
 
-function TodoItemList({ listId }) {
+function TodoItemList({ listId, writer }) {
   const todoRef = useRef();
   const [todoList, setTodoList] = useState("");
   const todoListId = listId;
-
+  // writer = 작성자
+  async function getTodoList() {
+    const res = await getTodo(todoListId);
+    setTodoList(res);
+  }
   const addTask = async () => {
     const task = todoRef.current.value;
-    // console.log(task);
-    const res = await addTodo(todoListId, task);
-    setTodoList([...todoList, ...res]);
+    await addTodo(todoListId, task);
+    getTodoList();
   };
 
   useEffect(() => {
     // todoList 불러오기
-    async function getTodoList() {
-      const res = await getTodo(todoListId);
-      setTodoList(res);
-    }
     getTodoList();
-    // console.log(`${todoListId}aaa`);
-  }, [todoListId]);
+  }, [listId, todoList.length]);
   console.log(todoList);
 
   return (
@@ -55,6 +53,7 @@ function TodoItemList({ listId }) {
               done={done}
               saveId={saveId}
               todoId={todoId}
+              writer={writer}
             />
           ))}
       </div>

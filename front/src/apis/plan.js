@@ -37,9 +37,9 @@ export const getTodo = async saveId => {
 
 // todolist 추가하기
 export const addTodo = async (todoId, task) => {
-  const res = await API_USER.post(`/schedule/${todoId}/todo`, {
-    body: { task }
-  });
+  console.log(task);
+  console.log(todoId);
+  const res = await API_USER.post(`/schedule/${todoId}/todo`, { task });
   console.log(res.data);
   return res.data;
 };
@@ -50,6 +50,13 @@ export const modifyTodo = async (todoId, task, done, saveId) => {
     task,
     done
   });
+  return res.data;
+};
+
+// todolist 삭제하기
+export const deleteTodo = async (todoId, saveId) => {
+  const res = await API_USER.delete(`/schedule/${saveId}/todo/${todoId}`);
+  console.log(res.data);
   return res.data;
 };
 // 다가올 캠핑 조회하기
