@@ -28,6 +28,7 @@ export const userSlice = createSlice({
       state.nickname = action.payload.nickname;
       state.profileImg = `data:image/png;base64,${action.payload.profileImg}`;
       state.tel = action.payload.tel;
+      state.email = action.payload.email;
     },
     updateUserInfo: (state, action) => {
       state.birth = action.payload.birth;

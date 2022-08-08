@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // style import
 import "./MainNavBar.scss";
 import logoGreen from "@images/logo/logo_text_green.svg";
+import dummyicon from "@images/icon/dummyicon.jpg";
 // import logoWhite from "@images/logo/logo_text_white.svg";
 // import temp from "@images/cute.jpeg";
 import { reset, selectProfile } from "../../store/user";
@@ -116,7 +117,7 @@ function MainNavBar() {
                 onClick={openTooltip}
               >
                 {/* <img src={userInfo.profileImg} alt="userProfile" /> */}
-                <img src={Profile.profileImg} alt="userProfile" />
+                <img src={Profile.profileImg} alt={dummyicon} />
               </button>
             </>
           )}
