@@ -49,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
         user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
         user.setTel(registerUser.getTel());
         user.setBirth("");
-        user.setProfileImg("img");
+//        user.setProfileImg("img");
         user.setJoinDate(LocalDateTime.now());
 
         if (role.equalsIgnoreCase("admin")) {

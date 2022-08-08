@@ -21,7 +21,7 @@ public class UserDto {
 
     private String birth;
 
-    private String profileImg;
+    private byte[] profileImg;
 
     private LocalDateTime joinDate;
 
