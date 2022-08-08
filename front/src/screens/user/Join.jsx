@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import kakao from "@images/icon/kakao.svg";
 import naver from "@images/icon/naver.svg";
 import google from "@images/icon/google.svg";
@@ -37,6 +37,24 @@ function Join() {
   const [code, setcode] = useState("");
   const [open, setOpen] = useState("");
   const [isMailChecked, setIsMailChecked] = useState(false);
+
+  // 타이머 변수 저장
+  const [tick, setTick] = useState(0);
+  const [flag, setFlag] = useState(true);
+  // 타이머
+  useEffect(() => {
+    let countdown = null;
+    // 타이머 시작
+     if (tick > 0) {
+      countdown = setInterval(() => {
+        setTick(tick - 1);
+      }, 1000);
+    // 타이머 끝
+    } else if (tick <= 0) {
+      setFlag(false);
+    }
+    return () => clearInterval(countdown);
+  }, [tick]);
 
   // 유효성 검사
   // 이메일 유효성 검사
@@ -118,6 +136,8 @@ function Join() {
       setEmailError("이미 가입된 이메일 입니다");
     } else if (result.message === "success") {
       // 코드번호 비교
+      setTick(180);
+      setFlag(true);
       setcode(result.emailCode);
       setOpen(true); // 모듈창 오픈
     }
@@ -224,13 +244,23 @@ function Join() {
                     ref={codeRef}
                   />
                 </div>
-                <button
+                { flag && <button
                   className="join_input_email_cert_btn fs-14 notoBold flex justify-center align-center"
                   type="button"
                   onClick={checkCode}
                 >
                   인증코드 확인
                 </button>
+                }
+                { !flag && <button
+                  className="join_input_email_cert_btn fs-14 notoBold flex justify-center align-center"
+                  type="button"
+                  onClick={ (e) => {e.preventDefault();} }
+                >
+                  인증코드 만료
+                </button> 
+                }
+                {flag && <div className="fs-13 notoBold flex justify-center align-center"> 남은 시간 : { Math.floor(tick / 60) } 분 {tick % 60 } 초 </div>}
                 <div
                   className={
                     codeError
@@ -243,8 +273,9 @@ function Join() {
                 <div className="join_input_email_cert_resend notoMid fs-10">
                   이메일을 받지 못하셨나요?
                   <button
-                    className="join_input_email_cert_resend_btn notoMid fs-10 "
+                    className="join_input_email_cert_resend_btn notoMid fs-10"
                     type="button"
+                    onClick={canUseMail}
                   >
                     이메일 재전송하기
                   </button>
