@@ -12,6 +12,9 @@ import {
 
 function PhotoDetail() {
   const [photoDetail, setPhotoDetail] = useState([]);
+  const [like, setLike] = useState(false);
+  const [likeCnt, setLikeCnt] = useState();
+  const [viewCnt, setViewCnt] = useState();
   const { id } = useParams();
 
   // 삭제 시 포토 메인페이지로 이동을 위한 네비게이트
@@ -24,38 +27,43 @@ function PhotoDetail() {
       setPhotoDetail(res);
     }
     getAndSetPhotoDetail();
-  }, []);
+    setLikeCnt(photoDetail.like);
+    setViewCnt(photoDetail.click)
+    console.log(likeCnt);
+  }, [likeCnt]); // likeCnt 의존배열 
+
 
   // 업로드 시간 가공
   const uploadTime = moment(photoDetail.uploadDate).fromNow();
   // console.log(photoDetail.uploadDate)
 
   // 좋아요
-  const [like, setLike] = useState(false);
-  const [likeCnt, setLikeCnt] = useState(photoDetail.like);
+
   const email = "jmlee9707@naver.com";
   // console.log(likeCnt)
   const params = {
     boardId: id,
-    // eslint-disable-next-line object-shorthand
-    email: email
+    email  // 값 똑같으면 이름 지정 안해도 됨 
   };
   async function liked() {
     const res = await photoLike(params);
 
     if (res.message === "success") {
       setLike(true);
-      setLikeCnt(likeCnt + 1);
+      setLikeCnt(res.like + 1);
+      // console.log(likeCnt)
     }
   }
 
   async function disLiked() {
     const res = await photoDisLike(params);
-
+    console.log(res)
     if (res.message === "success") {
+  
       setLike(false);
       setLikeCnt(likeCnt - 1);
-      console.log()
+      console.log(likeCnt)
+      // console.log(like)
     }
   }
 
@@ -132,7 +140,7 @@ function PhotoDetail() {
             {/* 조회수 */}
             <div className="campPhoto_count_view flex">
               <div className="campPhoto_count_view_name notoMid fs-18">
-                조회수
+                {viewCnt}
               </div>
               <div className="campPhoto_count_view_num roMid fs-18">
                 {photoDetail.click}
