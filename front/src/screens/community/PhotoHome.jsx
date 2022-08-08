@@ -1,11 +1,12 @@
 import React from "react";
 import "./PhotoHome.scss";
 
-// import coco from "@images/coco.jpeg";
 import BestPhotoList from "@components/community/BestPhotoList";
 import CommunityPhotoList from "@components/community/CommunityPhotoList";
+import { Link } from "react-router-dom";
 
 function PhotoHome() {
+
   return (
     <div className="container flex">
       <div className="picture flex align-center">
@@ -26,12 +27,13 @@ function PhotoHome() {
             <p className="picture_camp_title_text notoBold fs-32">
               CAMPING PHOTO
             </p>
-            <button
-              type="button"
+            <Link
+              to="/board/photo/regist"
               className="picture_camp_title_btn notoBold fs-18"
+
             >
               글쓰기
-            </button>
+            </Link>
           </div>
         </div>
         <div className="comp flex">

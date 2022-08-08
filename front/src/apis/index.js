@@ -17,6 +17,14 @@ export const API_USER = axios.create({
   }
 });
 
+export const API_PHOTO = axios.create({
+  baseURL: BASE_URL, // 기본 서버 URL
+  headers: {
+    // 자신이 매번 전달해야 하는 객체가 자동으로 삽입된다.
+    "Content-Type": "multipart/form-data"
+  }
+});
+
 API_USER.interceptors.response.use(
   response => response,
   async error => {
@@ -58,3 +66,5 @@ API_USER.interceptors.response.use(
   }
 );
 export const ex = () => {};
+
+// export default API;

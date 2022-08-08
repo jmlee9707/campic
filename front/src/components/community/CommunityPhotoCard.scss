@@ -53,10 +53,16 @@
 
   &_text {
     color: $GRAY-40;
+    align-content: flex-start;
   }
 }
 
 .photolist {
   flex-wrap: wrap;
-  justify-content: space-between;
+  // justify-content: flex-start;
+  
+}
+
+.button {
+  padding: 0px;
 }

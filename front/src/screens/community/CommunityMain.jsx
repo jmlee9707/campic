@@ -1,5 +1,6 @@
 import React from "react";
 import "./CommunityMain.scss";
+import { Link } from "react-router-dom";
 // import coco from "@images/coco.jpeg";
 import TalkMain from "@components/community/TalkMain";
 import PhotoMainList from "@components/community/PhotoMainList";
@@ -21,7 +22,7 @@ function CommunityMain() {
             <p className="commu_bestpic_extra_title notoMid fs-22">
               감성 넘치는 사진 자랑 해 볼까요?
             </p>
-            <p className="commu_bestpic_extra_more notoMid fs-22">더보기</p>
+            <Link to="/board/photo/home" className="commu_bestpic_extra_more notoMid fs-22">더보기</Link>
           </div>
           <div className="commu_bestpic_comp">
             <PhotoMainList />

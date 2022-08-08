@@ -1,12 +1,42 @@
-import React from "react";
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { React, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./TalkRegist.scss";
 // import camera from "@images/logo/logo_photo_black.svg";
 import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
+
 // import CommunityNavBar from "@components/community/CommunityNavBar";
 
 function TalkRegist() {
-  const nameCount = "0/30";
+  const [count, setCount] = useState(0);
+  const titleRef = useRef();
+
+  // const increaseCount = () => {
+  //   setCount(count+1)
+  // }
+
+  // const decreaseCount = () => {
+  //   setCount(count-1)
+  // }
+  // 카메라 이미지에 파일 인풋 달기
+  const photoInput = useRef();
+  const handleclick = () => {
+    photoInput.current.click();
+  };
+  // 사진 미리보기
+
+  const [fileImage, setFileImage] = useState("");
+  const saveFileImage = event => {
+    // @ts-ignore
+    setFileImage(URL.createObjectURL(event.target.files[0]));
+  };
+
+  const countSize = () => {
+    const temp = titleRef.current.value;
+    setCount(temp.length);
+  };
+
   return (
     <div className="container flex">
       {/* <CommunityNavBar /> */}
@@ -14,13 +44,34 @@ function TalkRegist() {
         <div className="regist_title notoBold fs-32">글 등록하기</div>
         <div className="regist_img flex justify-center">
           {/* 사진 업로드 박스 */}
-          <div className="regist_img_cover flex align-center justify-center">
+          <div className="regist_img_cover flex align-center justify-center" onClick={handleclick}>
             {/* <img src={camera} alt="camera" /> */}
             {/* 카메라 로고 컴포넌트화 */}
-            <Camera className="camera" />
-            <div className="regist_img_cover_sub fs-20 notoBold">
+            {!fileImage && (
+              <Camera className="camera" fill="#DBDBDB" />
+            )}
+            {!fileImage && (
+              <div className="regist_img_cover_sub fs-28 notoBold">
+                커버 사진 업로드
+              </div>
+            )}
+            {fileImage && (
+              <div className="regist_img_cover_priv">
+                <img alt="sample" src={fileImage} />
+              </div>
+            )}
+            <input
+              type="file"
+              accept="image/jpg, image.jpeg, image.png"
+              ref={photoInput}
+              style={{ display: "none" }}
+              name="imgFile"
+              id="imgFile"
+              onChange={saveFileImage}
+            />
+            {/* <div className="regist_img_cover_sub fs-20 notoBold">
               커버 사진 업로드
-            </div>
+            </div> */}
           </div>
           {/* 사진 업로드 박스 끝 */}
         </div>
@@ -31,11 +82,16 @@ function TalkRegist() {
             <input
               type="text"
               className="regist_text_name_input notoMid fs-24"
+              id="subarea"
               placeholder="제목을 입력해주세요."
+              maxLength="30"
+              onChange={countSize}
+              // onKeyUp={increaseCount}
+              ref={titleRef}
             />
-            <div className="regist_text_name_count roReg fs-24">
-              {nameCount}
-            </div>
+            <span id="count" className="regist_text_name_count roReg fs-24">
+              ({count}/30)
+            </span>
           </div>
           <div className="divide" />
           <textarea

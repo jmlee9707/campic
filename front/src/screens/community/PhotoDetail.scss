@@ -14,6 +14,7 @@
     &_img {
       width: vw(74px);
       height: vw(74px);
+      border-radius: 70%;
 
       img {
         width: 100%;
@@ -113,8 +114,34 @@
 
   &_tag {
     margin-top: vw(12px);
-    margin-bottom: vw(500px); // 하단 임시 마진
+    margin-bottom: vw(32px); // 하단 임시 마진
 
     color: $MAIN;
+  }
+
+  &_myPhotoOpt {
+    margin-bottom: vw(50px);
+    justify-content: end;
+    &_modify {
+      color: $WHITE;
+      background-color: $GRAY-BF;
+      width: vw(106px);
+      height: vw(40px);
+      border-radius: vw(17px);
+      margin-right: vw(32px);
+      // margin-left: vw(672px);
+
+    }
+
+    &_delete {
+      color: $WHITE;
+      background-color: $GRAY-BF;
+      width: vw(106px);
+      height: vw(40px);
+      border-radius: vw(17px);
+      // margin-right: vw(68px);
+      // margin-left: vw(672px);
+
+    }
   }
 }
