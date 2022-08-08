@@ -50,6 +50,9 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private LocalDateTime joinDate;
 
+    @Column
+    private String isSocial;
+
     // 권한 목록 List로 저장
 //    @ElementCollection(fetch = FetchType.EAGER)
 //    @Builder.Default

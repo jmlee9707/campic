@@ -30,4 +30,6 @@ public class UserDto {
     private String accessToken;
 
     private String refreshToken;
+
+    private String isSocial;
 }
