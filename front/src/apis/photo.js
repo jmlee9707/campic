@@ -33,8 +33,9 @@ export const photoDisLike = async params => {
 };
 
 // 포토 메인페이지 컴포넌트
-export const getPhoto = async () => {
-  const res = await API.get("/photo");
+// photo?page=0
+export const getPhoto = async (page) => {
+  const res = await API.get(`/photo?page=${page}`);
   return res.data;
 };
 
