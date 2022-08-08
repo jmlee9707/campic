@@ -72,6 +72,11 @@ export const modifyUserInfo = async body => {
   const res = await API_USER.put("user/info", body);
   return res.data;
 };
+// 회원 프로필 수정
+export const modifyUserProfileImg = async body => {
+  const res = await API_USER.put("/user/info/profile", body, { headers : { "Content-Type" : "multipart/form-data" } });
+  return res.data;
+};
 // // 코드 전송하기
 // export const sendCode = async body => {
 //   const res = await API.post("/user/register", body);

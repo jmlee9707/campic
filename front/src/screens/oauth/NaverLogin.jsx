@@ -6,9 +6,9 @@ import queryString from 'query-string';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { setEmail } from '../../store/user';
-import { setEmail, setUserInfo } from '../../store/user';
+import { setEmail, setUserInfo } from '@store/user';
 // import { getUserInfo, getKakaoToken, kakaoLogin } from "../../apis/user";
-import { getUserInfo } from "../../apis/user";
+import { getUserInfo } from "@apis/user";
 
 function NaverLogin () {
   const dispatch = useDispatch();
@@ -30,15 +30,16 @@ function NaverLogin () {
         // 로그인 작업
         // 리덕스 스토어에 이메일 저장
         dispatch(setEmail({email: res1.data.email}))
+        sessionStorage.setItem("userEmail", res1.data.email);
         // 세션스토리지에 토큰 저장
         sessionStorage.setItem("refreshToken", res1.data.refreshToken);
         sessionStorage.setItem("accessToken", res.data.Authorization);
         // 유저 정보 가져오기
         // console.log("유저 정보 가져오기")
-        const userRes = getUserInfo(res1.data.email);
-        // console.log(userRes.userInfo);
-        // 유저 정보 스토어에 저장
-        dispatch(setUserInfo(userRes.userInfo))
+        getUserInfo(res1.data.email)
+        .then(userRes => {
+          dispatch(setUserInfo(userRes.userInfo))
+        })
         // navigate("/");
       })
       navigate("/");
@@ -59,8 +60,12 @@ function NaverLogin () {
   }, []);
 
   return (
-    <div>
-      스피너 모양
+    <div className="container flex align-center justify-center">
+       <div className='spinner'>
+        <span className='spinner-inner-1'> </span>
+        <span className='spinner-inner-2'> </span>
+        <span className='spinner-inner-3'> </span>
+      </div>
     </div>
   );
 };

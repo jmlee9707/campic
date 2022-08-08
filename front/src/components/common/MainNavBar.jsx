@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // style import
 import "./MainNavBar.scss";
 import logoGreen from "@images/logo/logo_text_green.svg";
+import dummyicon from "@images/icon/dummyicon.jpg";
 // import logoWhite from "@images/logo/logo_text_white.svg";
 // import temp from "@images/cute.jpeg";
 import { reset, selectProfile } from "../../store/user";
@@ -14,9 +15,9 @@ function MainNavBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const userId = useSelector(state => state.user.email);
+  // const [home, setHome] = useState(true);
   // const userId = useSelector(state => state.user.email);
   const Profile = useSelector(selectProfile);
-  // const [home, setHome] = useState(true);
 
   const activeClassName = active => {
     const prefix = "left_nav__link flex fs-16 btn--";
@@ -116,7 +117,10 @@ function MainNavBar() {
                 onClick={openTooltip}
               >
                 {/* <img src={userInfo.profileImg} alt="userProfile" /> */}
-                <img src={Profile.profileImg} alt="userProfile" />
+                {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
+                {Profile && <img src={Profile.profileImg} alt={dummyicon} />}
+                {/* {Profile.profileImg && <img src={dummyicon} alt="" />} */}
+                {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
               </button>
             </>
           )}

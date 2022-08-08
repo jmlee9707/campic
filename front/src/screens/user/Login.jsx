@@ -34,6 +34,7 @@ function Login() {
     dispatch(setEmail({ email: userEmail }));
     // 세션스토리지에 토큰 저장
     sessionStorage.setItem("refreshToken", res.refreshToken);
+    sessionStorage.setItem("userEmail", userEmail);
     sessionStorage.setItem("accessToken", res.Authorization);
     // 유저 정보 가져오기
     // console.log("유저 정보 가져오기")
