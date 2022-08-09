@@ -206,14 +206,14 @@ public class TalkController {
     }
 
     @GetMapping("/detail/isLiked")
-    public ResponseEntity<Map<String, Object>> isUserLikedTalk(@RequestParam int boardId, @RequestParam String email) {
+    public ResponseEntity<Map<String, Object>> isUserLikedTalk(@RequestParam int talkId, @RequestParam String email) {
 
         Map<String, Object> resultMap = new HashMap<>();
         HttpStatus status = HttpStatus.OK;
 
         LOGGER.info("isUserLikedTalk 호출");
 
-        int isLiked = talkService.isUserLikedTalk(boardId, email);
+        int isLiked = talkService.isUserLikedTalk(talkId, email);
 
         resultMap.put("isLike", isLiked);
         resultMap.put("message", SUCCESS);
