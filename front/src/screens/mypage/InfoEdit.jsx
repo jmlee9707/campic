@@ -190,7 +190,7 @@ function InfoEdit() {
             </div>
           </div>
           <div className="infoedit_box">
-            <div className="infoedit_box_title notoBold fs-15">생일</div>
+            <div className="infoedit_box_title notoMid fs-15">생일</div>
             {/* <input
               ref={birthRef}
               type="text"
@@ -225,7 +225,7 @@ function InfoEdit() {
             <input
               type="text"
               className="infoedit_box_input notoMid fs-14"
-              value={(Profile.auth === "ROLE_USER") ? "소셜 로그인" : "회원 로그인"}
+              value={Profile.isSocial}
               readOnly
             />
           </div>
