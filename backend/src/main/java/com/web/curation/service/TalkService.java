@@ -270,7 +270,7 @@ public class TalkService {
         return -1;
     }
 
-    public int isUserLikedPhoto(int talkId, String email) {
+    public int isUserLikedTalk(int talkId, String email) {
         Talk talk = talkRepository.findByTalkId(talkId);
         User user = userRepository.getByEmail(email);
 

@@ -25,7 +25,7 @@ import java.util.UUID;
 @RequestMapping("/talk")
 
 public class TalkController {
-    private final Logger LOGGER = LoggerFactory.getLogger(PhotoController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(TalkController.class);
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
 
@@ -57,7 +57,7 @@ public class TalkController {
 
     @GetMapping("/detail/{talkId}")
     public ResponseEntity<TalkDto> detailTalk(@PathVariable int talkId) {
-        LOGGER.info("detailPhoto 호출 {}", talkId);
+        LOGGER.info("detailTalk 호출 {}", talkId);
         return new ResponseEntity<>(talkService.detailTalk(talkId), HttpStatus.OK);
     }
 
@@ -69,7 +69,7 @@ public class TalkController {
         Map<String, Object> resultMap = new HashMap<>();
         HttpStatus status = HttpStatus.OK;
 
-        LOGGER.info("writePhoto - 호출");
+        LOGGER.info("writeTalk - 호출");
 
         String fileName = file.getOriginalFilename();
         talkDto.setFileName(fileName);
@@ -161,7 +161,7 @@ public class TalkController {
     }
 
     @DeleteMapping("{talkId}")
-    public ResponseEntity<String> deletePhoto(@PathVariable int talkId) {
+    public ResponseEntity<String> deleteTalk(@PathVariable int talkId) {
         LOGGER.info("deleteTalk - 호출");
         if (talkService.deleteTalk(talkId)) {
             return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
@@ -206,14 +206,14 @@ public class TalkController {
     }
 
     @GetMapping("/detail/isLiked")
-    public ResponseEntity<Map<String, Object>> isUserLikedPhoto(@RequestParam int boardId, @RequestParam String email) {
+    public ResponseEntity<Map<String, Object>> isUserLikedTalk(@RequestParam int boardId, @RequestParam String email) {
 
         Map<String, Object> resultMap = new HashMap<>();
         HttpStatus status = HttpStatus.OK;
 
-        LOGGER.info("isUserLikedPhoto 호출");
+        LOGGER.info("isUserLikedTalk 호출");
 
-        int isLiked = talkService.isUserLikedPhoto(boardId, email);
+        int isLiked = talkService.isUserLikedTalk(boardId, email);
 
         resultMap.put("isLike", isLiked);
         resultMap.put("message", SUCCESS);

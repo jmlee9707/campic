@@ -3,6 +3,7 @@ package com.web.curation.controller;
 import com.web.curation.config.security.JwtTokenProvider;
 import com.web.curation.data.dto.CampDto;
 import com.web.curation.data.dto.ScheduleDto;
+import com.web.curation.data.dto.SearchListDto;
 import com.web.curation.data.dto.UserDto;
 import com.web.curation.data.entity.LikedCampList;
 import com.web.curation.data.entity.TotalCampList;
@@ -18,6 +19,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +39,20 @@ public class CampController {
         this.campService = campService;
         this.jwtTokenProvider = jwtTokenProvider;
     }
+
+//    /* campList and Search */
+//    @PostMapping()
+//    public List<CampDto.CampList> filterCampList(@RequestBody SearchListDto.SearchList searchList){
+//
+//        HashMap<String, List> taglist = new HashMap<String, List>() {{
+//            put(1,["봄","여름","가을","겨울"]);
+//            put()
+//        }};
+//
+//        List<CampDto.CampList> filterCampList = new ArrayList<>();
+//
+//    }
+
 
     /* campList READ */
     @GetMapping()
