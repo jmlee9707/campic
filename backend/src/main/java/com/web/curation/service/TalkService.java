@@ -94,7 +94,8 @@ public class TalkService {
 
         String blobFile = encodeBlobToBase64(thumbnailFile.getFile());
         LOGGER.info("blobFile", blobFile);
-
+        talkDto.setSaveFile(thumbnailFile.getFile());
+        talkDto.setBlobFile(blobFile);
         return talkDto;
     }
 
