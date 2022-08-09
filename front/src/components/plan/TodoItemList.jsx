@@ -23,7 +23,7 @@ function TodoItemList({ listId, writer }) {
   useEffect(() => {
     // todoList 불러오기
     getTodoList();
-  }, [listId, todoList.length]);
+  }, []);
   console.log(todoList);
 
   return (
