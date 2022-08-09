@@ -35,7 +35,7 @@ function PlanDetail() {
         <div className="plan_detail_title notoBold fs-40">
           {planInfo.savedTitle}
         </div>
-        <div className="plan_detail_subtitle flex align-center">
+        <div className="plan_detail_subtitle ">
           <div className="plan_detail_subtitle_days roBold fs-20">
             {/* {start} ~ {end} */}
             {planInfo && planInfo.startDate.substr(0, 10)}
