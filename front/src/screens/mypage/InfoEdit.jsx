@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import logo from "@images/logo/logo_icon_green.svg";
+import DatePicker from "react-datepicker";
 import imageCompression from "browser-image-compression"
 import "./InfoEdit.scss";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,7 +14,7 @@ function InfoEdit() {
   const navigate = useNavigate();
   const nickRef = useRef();
   const phoneRef = useRef();
-  const birthRef = useRef();
+  // const birthRef = useRef();
   const inputRef = useRef();
 
   const Profile = useSelector(selectProfile);
@@ -24,10 +25,15 @@ function InfoEdit() {
   const [nickMess, setNickMess] = useState("");
   const [phoneMess, setPhoneMess] = useState("");
 
+  // 생일 달력
+  const [startDate, setStartDate] = useState(new Date(Profile.birth));
+  // const [startDate, setStartDate] = useState(new Date('1993/1/12'));
+
   const canEdit = async () => {
     if (!nickError && !phoneError) {
+      // console.log(`${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`);
       const userInfo = {
-        birth: birthRef.current.value,
+        birth: `${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`,
         email: Profile.email,
         nickname: nickRef.current.value,
         // profileImg:
@@ -116,7 +122,7 @@ function InfoEdit() {
       await setImgFile(compressedFile);
     }
   };
-  const cl = (e) => {
+  const editImg = (e) => {
     e.preventDefault();
     inputRef.current.click();
   };
@@ -130,7 +136,7 @@ function InfoEdit() {
               { imgBase64 && <img src={imgBase64} alt="" />}
             </div>
           <input type="file" className="imginput" name="imgFile" id="imgFile" ref={inputRef} onChange={handleChangeFile}/>
-          <button className="infoedit_top_btn notoBold fs-15" type="button" onClick={cl} >
+          <button className="infoedit_top_btn notoBold fs-15" type="button" onClick={editImg} >
             프로필 사진 변경
           </button>
           <div className="divide" />
@@ -185,11 +191,20 @@ function InfoEdit() {
           </div>
           <div className="infoedit_box">
             <div className="infoedit_box_title notoBold fs-15">생일</div>
-            <input
+            {/* <input
               ref={birthRef}
               type="text"
               className="infoedit_box_input notoMid fs-14"
               placeholder={Profile.birth}
+            /> */}
+            <DatePicker
+              className="infoedit_box_input notoMid fs-14"
+              selected={startDate}
+              dateFormat="yyyy/MM/dd"
+              onChange={date => {
+                setStartDate(date);
+              // console.log(date)
+            }}
             />
           </div>
           <div className="infoedit_box">

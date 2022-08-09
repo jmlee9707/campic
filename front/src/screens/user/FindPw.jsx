@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./FindPw.scss";
 import { useDispatch } from "react-redux";
@@ -28,6 +28,26 @@ function FindPw() {
   const [userId, setUserId] = useState("");
   const [code, setCode] = useState("");
 
+  // 타이머 변수 저장
+  const [tick, setTick] = useState(0);
+  const [flag, setFlag] = useState(true);
+  // 타이머
+  useEffect(() => {
+    let countdown = null;
+    // 타이머 시작
+     if (tick > 0) {
+      countdown = setInterval(() => {
+        setTick(tick - 1);
+      }, 1000);
+    // 타이머 끝
+    } else if (tick <= 0) {
+      setFlag(false);
+    }
+    return () => clearInterval(countdown);
+  }, [tick]);
+
+
+
   // 이메일 유효성 검사
   const checkEmail = e => {
     const regEmail =
@@ -43,6 +63,11 @@ function FindPw() {
 
   const isJoined = async () => {
     if (!emailError) {
+      // setTick(10);
+      // setFlag(true);
+      // setNext(true);
+      // setInputName("인증번호");
+
       const res = await findPw(emailRef.current.value);
       if (res.message === "success") {
         setUserId(emailRef.current.value); // 아이디값 저장
@@ -50,6 +75,8 @@ function FindPw() {
         setSubTitle("인증번호를 입력해주세요!");
         setInputName("인증번호");
         setNext(true);
+        setTick(180);
+        setFlag(true);
       } else if (res.message === "fail") {
         setEmailError("존재하지 않는 이메일 입니다");
       }
@@ -113,7 +140,7 @@ function FindPw() {
           )}
         </div>
         {/* 첫번째 컴포넌트  */}
-        {!next && (
+        {!flag && !next && (
           <button
             className="findpw_btn notoBold fs-18"
             type="button"
@@ -123,15 +150,26 @@ function FindPw() {
           </button>
         )}
         {/* 두번째 컴포넌트  */}
-        {next && (
+        {flag && next && (
           <button
-            className="findpw_btn notoBold fs-18"
-            type="button"
-            onClick={checkCode}
+          className="findpw_btn notoBold fs-18"
+          type="button"
+          onClick={checkCode}
           >
             확인
           </button>
         )}
+        {!flag && next && (
+          <button
+          className="findpw_btn notoBold fs-18"
+          type="button"
+          onClick={isJoined}
+          >
+            인증번호 재전송
+          </button>
+        )}        
+        {/* 인증번호 만료 확인 */}
+        {flag && <div className="fs-12 notoMid flex justify-center align-center"> 남은 시간 : { Math.floor(tick / 60) > 0 ? `${Math.floor(tick / 60)} 분` : '' } {tick % 60 } 초 </div>}
         <div className="findpw_ask notoMid fs-12 flex justify-center">
           이미 계정이 있으신가요?
           <div className="findpw_ask_login">

@@ -16,8 +16,8 @@ function App() {
   const reqUser = async () => {
     const userRes = await getUserInfo(sessionStorage.getItem("userEmail"));
     dispatch(setUserInfo(userRes.userInfo));
-    console.log("테스트");
-    console.log(userRes);
+    // console.log("테스트");
+    // console.log(userRes);
   };
   useEffect(() => {
     if ((sessionStorage.getItem("userEmail") !== null)) {

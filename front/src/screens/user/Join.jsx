@@ -260,7 +260,7 @@ function Join() {
                   인증코드 만료
                 </button> 
                 }
-                {flag && <div className="fs-13 notoBold flex justify-center align-center"> 남은 시간 : { Math.floor(tick / 60) } 분 {tick % 60 } 초 </div>}
+                {flag && <div className="fs-13 notoBold flex justify-center align-center">  남은 시간 : { Math.floor(tick / 60) > 0 ? `${Math.floor(tick / 60)} 분` : '' } {tick % 60 } 초 </div>}
                 <div
                   className={
                     codeError
