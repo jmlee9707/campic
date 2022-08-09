@@ -6,12 +6,14 @@ import "./PhotoRegist.scss";
 import imageCompression from "browser-image-compression"
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
-// import { useDispatch } from "react-redux";
-// import { write } from "../../store/photo";
-import { writePhoto } from "@apis/photo"; // 포토등록 api
+import { useSelector } from 'react-redux';
+import { useBeforeunload } from "react-beforeunload";
+import { writePhoto } from "../../apis/photo"; // 포토등록 api
 
 function PhotoRegist() {
-  // const dispatch = useDispatch(); // 디스패치 사용을 위한 변수 선언
+  // 유저정보 파악  
+  const userId = useSelector(state => state.user.email);
+  const nickname = useSelector(state => state.user.nickname);
   const navigate = useNavigate(); // 네비게이트, 작성 시 포토 상세페이지로 이동
   // 카메라 이미지에 파일 인풋 달기
   const photoInput = useRef(); // 포토ref
@@ -64,6 +66,9 @@ function PhotoRegist() {
     }
   };
 
+  useBeforeunload((event) => event.preventDefault());
+
+
   const handlingDataForm = async dataURI => {
     // dataURL 값이 data:image/jpeg:base64,~~~~~~~ 이므로 ','를 기점으로 잘라서 ~~~~~인 부분만 다시 인코딩
     const byteString = atob(dataURI.split(",")[1]);
@@ -85,8 +90,8 @@ function PhotoRegist() {
     const formData = new FormData();
     
     // 필요시 더 추가합니다.
-    formData.append("nickname", "yaho");
-    formData.append("email", "ssafy@naver.com");
+    formData.append("nickname", nickname);
+    formData.append("email", userId);
     formData.append("content", textareaRef.current.value);
     formData.append("hashtag", tagRef.current.value);
     formData.append("fileName", "baek");
@@ -107,11 +112,13 @@ function PhotoRegist() {
       console.log("왜 에러남");
     }
   };
+
+
   
   return (
     <div className="container flex">
-      {/* 커뮤니티 네브바 들어가야 함 */}
-      <div className="regist">
+      {userId !== null && (
+        <div className="regist">
         <div className="regist_title notoBold fs-32">사진 등록하기</div>
         <div className="regist_content flex">
           {/* 사진 업로드 박스 */}
@@ -176,6 +183,11 @@ function PhotoRegist() {
           </div>
         </div>
       </div>
+      )}
+      {userId === null && (
+        window.alert("로그인 후 이용해주세요!!")
+        
+        )}
     </div>
   );
 }
