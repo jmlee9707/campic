@@ -4,7 +4,7 @@ import Location from "@components/common/Location";
 import AddPlanModal from "@components/camping/AddPlanModal";
 import temp from "@images/temp_1.jpeg";
 import { useParams } from "react-router-dom";
-import { campDetailInfo } from "../../apis/camp";
+import { campDetailInfo } from "@apis/camp";
 
 function CampingDetail() {
   const distance = "77";

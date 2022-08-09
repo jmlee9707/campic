@@ -3,9 +3,9 @@ import logo from "@images/logo/logo_icon_green.svg";
 import "./PwEdit.scss";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { changePw } from "../../apis/user";
+import { changePw } from "@apis/user";
 
-import { selectProfile } from "../../store/user";
+import { selectProfile } from "@store/user";
 
 function PwEdit() {
   const navigate = useNavigate();

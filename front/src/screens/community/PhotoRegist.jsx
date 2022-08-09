@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
 // import { useDispatch } from "react-redux";
 // import { write } from "../../store/photo";
-import { writePhoto } from "../../apis/photo"; // 포토등록 api
+import { writePhoto } from "@apis/photo"; // 포토등록 api
 
 function PhotoRegist() {
   // const dispatch = useDispatch(); // 디스패치 사용을 위한 변수 선언

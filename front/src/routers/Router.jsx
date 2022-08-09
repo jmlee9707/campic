@@ -77,10 +77,10 @@ function Router() {
         </Route>
 
         {/* Drop */}
-        {/* <Route path="/drop/*">
+        <Route path="/drop/*">
           <Route index element={<Drop />} />
           <Route path="finish" element={<DropFinish />} />
-        </Route> */}
+        </Route>
 
         {/* community */}
         {/* <CommunityNavBar /> */}

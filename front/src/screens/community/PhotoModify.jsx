@@ -6,7 +6,7 @@ import "./PhotoModify.scss";
 import imageCompression from "browser-image-compression";
 import { useNavigate, useParams } from "react-router-dom";
 // import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
-import { updatePhoto, getPhotoDetail } from "../../apis/photo";
+import { updatePhoto, getPhotoDetail } from "@apis/photo";
 
 function PhotoModify() {
   const navigate = useNavigate(); // 네비게이트, 작성 시 포토 상세페이지로 이동
