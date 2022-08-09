@@ -139,13 +139,14 @@ function FindPw() {
           </div>
         </div>
         <div className="divide" />
-        <div className="findpw_alert notoMid fs-11">
+        <div className="findpw_alert flex column  align-center justify-center notoMid fs-11">
           <div className="findpw_alert_sub1">
             &middot; 인증 이메일은 발송 시점으로 부터 3분간 유효합니다.
           </div>
           <div className="findpw_alert_sub2">
-            &middot; 인증 이메일 재발송 시 기존 인증코드는 무효처리되며, <br />
-            &nbsp;&nbsp;&nbsp;새로 받은 인증코드로 인증해야 합니다.
+            &middot; 인증 이메일 재발송 시 기존 인증코드는 무효처리되며, 새로{" "}
+            <br />
+            받은 인증코드로 인증해야 합니다.
           </div>
           <div className="findpw_alert_sub3">
             &middot; 이메일이 도착하지 않았다면 스펨메일함을 확인해주세요!

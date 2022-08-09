@@ -4,8 +4,8 @@ $DESKTOP-VH: 1024;
 $TABLET-VW: 1200px;
 $TABLET-VH: 1024px;
 
-$PHONE-VW: 600px;
-$PHONE-VH: 600px;
+$PHONE-VW: 650px;
+$PHONE-VH: 650px;
 
 @function vw($size) {
   $vw-context: $DESKTOP-VW * 0.01 * 1px;
