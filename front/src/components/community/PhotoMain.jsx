@@ -9,11 +9,11 @@ function PhotoMain({ blobFile, boardId }) {
     navigate(`/board/photo/detail/${boardId}`);
   };
   return (
-    <button type="button" onClick={onClickImg}>
-      <div className="MainPhoto">
+    <div className="MainPhoto">
+      <button type="button" onClick={onClickImg}>
         <img src={[blobFile]} alt="베스트이미지" />
-      </div>
-    </button>
+      </button>
+    </div>
   );
 }
 
