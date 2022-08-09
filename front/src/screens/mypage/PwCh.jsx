@@ -3,8 +3,8 @@ import logo from "@images/logo/logo_icon_green.svg";
 import "./PwCh.scss";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectProfile } from "../../store/user";
-import { checkPw } from "../../apis/user";
+import { selectProfile } from "@store/user";
+import { checkPw } from "@apis/user";
 
 function PwCh() {
   const navigate = useNavigate();

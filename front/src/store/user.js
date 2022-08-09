@@ -9,6 +9,7 @@ export const initialUserState = {
   nickname: null,
   profileImg: null,
   tel: null,
+  isSocial: null,
 };
 
 export const userSlice = createSlice({
@@ -18,13 +19,18 @@ export const userSlice = createSlice({
     setEmail: (state, action) => {
       state.email = action.payload.email;
     },
+    setProfileImg: (state, action) => {
+      state.profileImg = action.payload;
+    },
     setUserInfo: (state, action) => {
       state.auth = action.payload.auth;
+      state.email = action.payload.email;
       state.birth = action.payload.birth;
-      state.joinDate = action.payload.joinDate;
+      state.joinDate = action.payload.joinDate.substr(0, 10);
       state.nickname = action.payload.nickname;
-      // state.profileImg = action.payload.profileImg;
+      state.profileImg = `data:image/png;base64,${action.payload.profileImg}`;
       state.tel = action.payload.tel;
+      state.isSocial = action.payload.isSocial;
     },
     updateUserInfo: (state, action) => {
       state.birth = action.payload.birth;
@@ -50,6 +56,7 @@ export const selectProfile = (state) => state.user;
 
 export const { 
   setUserInfo,
+  setProfileImg,
   updateUserInfo, 
   reset,
   setEmail,  

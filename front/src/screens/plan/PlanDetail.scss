@@ -14,13 +14,23 @@
     margin-top: (60px);
     color: $GRAY-40;
   }
-  &_days {
-    color: $GRAY-67;
-    background-color: $GRAY-F3;
-    border-radius: (27px);
-    padding: (9px) (28px);
-    margin: (20px) 0 (44px);
-    width: (300px);
+  &_subtitle {
+    justify-content: space-between;
+    &_writer {
+      color: $GRAY-67;
+      // padding: (9px) (9px);
+      // width: (300px);
+      // background-color: $GRAY-F3;
+      // margin-top: (62px);
+    }
+    &_days {
+      color: $GRAY-67;
+      background-color: $GRAY-F3;
+      border-radius: (27px);
+      padding: (9px) (28px);
+      margin: (40px) 0 (44px) 0;
+      width: (300px);
+    }
   }
   &_box {
     margin-bottom: 100px;
@@ -92,11 +102,10 @@
 
 .todo_box {
   margin-bottom: (20px);
-
   button {
-    width: (42px);
-    height: (42px);
-    border-radius: (15px);
+    width: (40px);
+    height: (40px);
+    border-radius: (12px);
     margin-right: (20px);
 
     img {
@@ -104,32 +113,40 @@
       height: (28px);
     }
   }
-
-  &_done {
-    border: 2px solid $MAIN;
-    background-color: $MAIN;
-    opacity: 0.8;
-    &:hover {
-      box-shadow: 0px 0px 5px $MAIN;
-    }
-  }
-  &_yet {
-    border: 2px solid $GRAY-E4;
-    &:hover {
-      box-shadow: 0px 0px 5px $GRAY-E4;
-    }
-  }
-
-  &_text {
-    background-color: $GRAY-F3;
-    border-radius: (12px);
-    padding: (11px) (18px);
-    width: (483px);
-    p {
-      color: $GRAY-61;
-    }
+  &_btn {
     &_done {
-      text-decoration: line-through;
+      border: 2px solid $MAIN;
+      background-color: $MAIN;
+      opacity: 0.8;
+      &:hover {
+        box-shadow: 0px 0px 5px $MAIN;
+      }
+    }
+    &_yet {
+      border: 2px solid $GRAY-E4;
+      background-color: $WHITE;
+      &:hover {
+        box-shadow: 0px 0px 5px $GRAY-E4;
+      }
+    }
+  }
+  &_content {
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    &_text {
+      background-color: $GRAY-F3;
+      border-radius: (12px);
+      padding: (11px) (18px);
+      width: (483px);
+      color: $GRAY-67;
+      &_done {
+        text-decoration: line-through 2px;
+      }
+    }
+    &_delete {
+      color: $RED;
+      margin-left: vw(50px);
     }
   }
 }

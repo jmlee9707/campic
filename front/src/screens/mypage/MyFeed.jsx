@@ -6,7 +6,7 @@ import MyTalkList from "@components/mypage/MyTalkCardList";
 // import navLogo from "@images/logo/logo_icon_green.svg";
 
 import { useSelector } from "react-redux";
-import { selectProfile } from '../../store/user';
+import { selectProfile } from '@store/user';
 
 function MyFeed() {
   const [photoClick, setPhotoClick] = useState(true);

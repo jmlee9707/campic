@@ -34,6 +34,7 @@ function Login() {
     dispatch(setEmail({ email: userEmail }));
     // 세션스토리지에 토큰 저장
     sessionStorage.setItem("refreshToken", res.refreshToken);
+    sessionStorage.setItem("userEmail", userEmail);
     sessionStorage.setItem("accessToken", res.Authorization);
     // 유저 정보 가져오기
     // console.log("유저 정보 가져오기")
@@ -48,7 +49,7 @@ function Login() {
     <div className="container flex">
       <div id="login" className="login flex justify-center">
         <div className="login_title">
-          <img src={logo} alt="logoImage" className="login_title_logo" />
+          <img src={logo} alt="logoImage" />
         </div>
         <div className="login_input flex align-center justify-center">
           <input
