@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { useDispatch } from "react-redux";
 // axios instance 생성
-const BASE_URL = "http://i7C109.p.ssafy.io:8081/";
+const BASE_URL = "http://i7C109.p.ssafy.io:8081";
 
 export const API = axios.create({
   baseURL: BASE_URL, // 기본 서버 url

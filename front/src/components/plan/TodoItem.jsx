@@ -4,7 +4,7 @@ import check from "@images/icon/done_black.svg";
 import checkGray from "@images/icon/done_gray.svg";
 import { deleteTodo, modifyTodo } from "../../apis/plan";
 
-function TodoItem({ task, done, saveId, todoId, writer }) {
+function TodoItem({ task, done, saveId, todoId, writer, removeItem }) {
   const [isDone, setIsDone] = useState(done);
   const userId = useSelector(state => state.user.email);
 
@@ -14,6 +14,7 @@ function TodoItem({ task, done, saveId, todoId, writer }) {
   };
   const deleteTask = async () => {
     await deleteTodo(todoId, saveId);
+    removeItem(todoId);
   };
 
   return (

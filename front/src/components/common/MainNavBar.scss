@@ -1,17 +1,37 @@
 .wrapper {
   justify-content: center;
-  box-shadow: 0 vw(2px) 0 rgba(211, 211, 211, 0.25);
+  // box-shadow: 0 vw(2px) 0 rgba(211, 211, 211, 0.25);
+  // width: vw(1440px);
+  // height: (100px);
+  // padding: 0 (135px);
 }
 
 #MainNavBar {
-  // z-index: 20;
-  width: 1440px;
+  // position: fixed;
+  // top: 0;
+  width: 100%;
   height: (100px);
-  padding: 0 (135px);
 
-  justify-content: space-between;
+  // padding: 0 (135px);
+  align-items: center;
   color: $GRAY-67;
 
+  .container {
+    width: 100%;
+    height: 100%;
+    &_inner {
+      // background-color: red;
+      margin: 0 (135px) 0 (135px);
+      align-content: center;
+      height: 100%;
+      // width: vw(1200px);
+      justify-content: space-between;
+    }
+    .home_click {
+      height: 100%;
+      background-color: none;
+    }
+  }
   .logo {
     width: (129px);
     height: (30px);
@@ -21,7 +41,7 @@
   .left_nav {
     &__link + .left_nav__link {
       // align-items: center;
-      margin-right: vw(40px);
+      margin-left: vw(40px);
     }
 
     .btn--active {
@@ -30,7 +50,7 @@
 
     .btn--unactive {
       color: $GRAY-67;
-      margin-right: vw(40px);
+      // margin-right: vw(40px);
     }
   }
 
@@ -58,82 +78,26 @@
     }
   }
 }
-
-@media screen and (max-width: $DESKTOP-VW) {
-  #MainNavBar {
-    width: 1440px;
-    height: vw(100px);
-    padding: 0 vw(135px);
-
-    .logo {
-      width: vw(129px);
-      height: vw(30px);
-      margin-right: vw(56px);
-    }
-
-    .left_nav {
-      &__link + .left_nav__link {
-        //   align-items: center;
-        margin-right: vw(40px);
-      }
-    }
-
-    .right_nav {
-      &__link {
-        margin-left: vw(24px);
-      }
-    }
-  }
+.none_click {
+  box-shadow: 0 vw(2px) 0 rgba(181, 146, 146, 0.25);
+  position: relative;
+  top: 0;
 }
-@media screen and (max-width: $TABLET-VW) {
-  #MainNavBar {
-    width: 1440px;
-    height: vw-t(100px);
-    padding: 0 vw-t(135px);
 
-    .logo {
-      width: vw-t(129px);
-      height: vw-t(30px);
-      margin-right: vw-t(56px);
-    }
-
-    .left_nav {
-      &__link + .left_nav__link {
-        //   align-items: center;
-        margin-right: vw-t(40px);
-      }
-    }
-
-    .right_nav {
-      &__link {
-        margin-left: vw-t(24px);
-      }
-    }
+.home_click {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: none;
+  box-shadow: none;
+  color: $WHITE;
+  a {
+    color: $WHITE;
   }
-}
-@media screen and (max-width: $PHONE-VW) {
-  #MainNavBar {
-    width: 1440px;
-    height: vw-p(100px);
-    padding: 0 vw-p(135px);
-
-    .logo {
-      width: vw-p(129px);
-      height: vw-p(30px);
-      margin-right: vw-p(56px);
-    }
-
-    .left_nav {
-      &__link + .left_nav__link {
-        //   align-items: center;
-        margin-right: vw-p(40px);
-      }
-    }
-  }
-
-  .right_nav {
-    &__link {
-      margin-left: vw-p(24px);
+  .left_nav__link {
+    // background-color: aqua;
+    p {
+      color: $WHITE;
     }
   }
 }

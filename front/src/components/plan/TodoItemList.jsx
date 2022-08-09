@@ -7,17 +7,22 @@ import { getTodo, addTodo } from "../../apis/plan";
 
 function TodoItemList({ listId, writer }) {
   const todoRef = useRef();
-  const [todoList, setTodoList] = useState("");
-  const todoListId = listId;
+  const [todoList, setTodoList] = useState([]);
+  // const todoListId = listId;
   // writer = 작성자
   async function getTodoList() {
-    const res = await getTodo(todoListId);
+    const res = await getTodo(listId);
+    console.log(res);
     setTodoList(res);
   }
   const addTask = async () => {
     const task = todoRef.current.value;
-    await addTodo(todoListId, task);
+    await addTodo(listId, task);
     getTodoList();
+  };
+
+  const removeItem = id => {
+    setTodoList(todoList.filter(todo => todo.todoId !== id));
   };
 
   useEffect(() => {
@@ -54,6 +59,7 @@ function TodoItemList({ listId, writer }) {
               saveId={saveId}
               todoId={todoId}
               writer={writer}
+              removeItem={removeItem}
             />
           ))}
       </div>
