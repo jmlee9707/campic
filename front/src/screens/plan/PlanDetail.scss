@@ -97,7 +97,7 @@
     }
   }
   #map {
-    width: (1170px);
+    width: (1150px);
     height: (720px);
   }
 }
@@ -155,8 +155,7 @@
 
 @media screen and (max-width: $DESKTOP-VW) {
   .plan_detail {
-    width: vw(900px);
-    background-color: yellow;
+    width: vw(1150px);
     .divide {
       height: vw(1px);
     }
