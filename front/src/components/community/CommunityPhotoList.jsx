@@ -34,7 +34,7 @@ function CommunityPhotoList() {
   }, [inView, loading]);
 
   return (
-    <div className="maincomupiclist">
+    <div className="maincomupiclist flex">
       {photoList.length !== 0 &&
         photoList.map(
           ({
@@ -58,7 +58,7 @@ function CommunityPhotoList() {
             />
           )
         )}
-      {loading ? <div>로딩중</div> : <div ref={ref} className="obe" />}
+      {loading ? <div>로딩중</div> : <div ref={ref} className="observe" />}
     </div>
   );
 }
