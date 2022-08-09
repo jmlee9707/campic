@@ -83,6 +83,20 @@ function FindPw() {
     }
   };
 
+  const reSend = async () => {
+    const res = await findPw(userId);
+    if (res.message === "success") {
+      setCode(res.emailCode); // code 입력
+      setSubTitle("인증번호를 입력해주세요!");
+      setInputName("인증번호");
+      setNext(true);
+      setTick(180);
+      setFlag(true);
+    } else if (res.message === "fail") {
+      setEmailError("존재하지 않는 이메일 입니다");
+    }
+  };
+
   const checkCode = () => {
     if (code === codeRef.current.value) {
       dispatch(setEmail({ email: userId }));
@@ -163,7 +177,7 @@ function FindPw() {
           <button
           className="findpw_btn notoBold fs-18"
           type="button"
-          onClick={isJoined}
+          onClick={reSend}
           >
             인증번호 재전송
           </button>
