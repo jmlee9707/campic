@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 // import React from 'react';
 import "@styles/reset.css";
 import "@styles/_typography.scss";
@@ -16,13 +16,14 @@ function App() {
   const reqUser = async () => {
     const userRes = await getUserInfo(sessionStorage.getItem("userEmail"));
     dispatch(setUserInfo(userRes.userInfo));
-    console.log("테스트");
-    console.log(userRes);
   };
   useEffect(() => {
-    if ((sessionStorage.getItem("userEmail") !== null)) {
-      try {reqUser();}
-      catch (err ){ console.log(err); }
+    if (sessionStorage.getItem("userEmail") !== null) {
+      try {
+        reqUser();
+      } catch (err) {
+        console.log(err);
+      }
     }
   }, []);
 

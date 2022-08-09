@@ -49,7 +49,7 @@ function Login() {
     <div className="container flex">
       <div id="login" className="login flex justify-center">
         <div className="login_title">
-          <img src={logo} alt="logoImage" className="login_title_logo" />
+          <img src={logo} alt="logoImage" />
         </div>
         <div className="login_input flex align-center justify-center">
           <input
