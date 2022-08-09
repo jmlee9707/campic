@@ -3,6 +3,7 @@ import "./PhotoDetail.scss";
 import moment from "moment";
 import "moment/locale/ko";
 import { useParams, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   getPhotoDetail,
   photoLike,
@@ -12,6 +13,10 @@ import {
 } from "../../apis/photo";
 
 function PhotoDetail() {
+  // 유저정보 가져오기 - 수정, 삭제를 위한   
+  const userId = useSelector(state => state.user.email)
+  const nickname = useSelector(state => state.user.nickname)
+
   const [photoDetail, setPhotoDetail] = useState([]);
   // const [like, setLike] = useState(false);
   const [likeCnt, setLikeCnt] = useState();
@@ -36,11 +41,11 @@ function PhotoDetail() {
   // 업로드 시간 가공
   const uploadTime = moment(photoDetail.uploadDate).fromNow();
 
-  const email = "jmlee9707@naver.com";
+  // const email = "jmlee9707@naver.com";
   // console.log(likeCnt)
   const params = {
     boardId: id,
-    email // 값 똑같으면 이름 지정 안해도 됨
+    email: userId // 값 똑같으면 이름 지정 안해도 됨
   };
 
   // 좋아요 유무 파악
@@ -130,26 +135,28 @@ function PhotoDetail() {
                   {uploadTime}
                 </p>
               </div>
-              <div className="campPhoto_profile_extra_good flex justify-center align-center">
-                {isLiked === 0 && (
-                  <button
-                    type="button"
-                    className="notoBold fs-18"
-                    onClick={liked}
-                  >
-                    좋아요
-                  </button>
-                )}
-                {isLiked === 1 && (
-                  <button
-                    type="button"
-                    className="notoBold fs-18"
-                    onClick={disLiked}
-                  >
-                    좋아요 취소
-                  </button>
-                )}
-              </div>
+              {nickname !== null && (
+                <div className="campPhoto_profile_extra_good flex justify-center align-center">
+                  {isLiked === 0 && (
+                    <button
+                      type="button"
+                      className="notoBold fs-18"
+                      onClick={liked}
+                    >
+                      좋아요
+                    </button>
+                  )}
+                  {isLiked === 1 && (
+                    <button
+                      type="button"
+                      className="notoBold fs-18"
+                      onClick={disLiked}
+                    >
+                      좋아요 취소
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
           {/* 커버사진 */}
@@ -188,22 +195,25 @@ function PhotoDetail() {
           <div className="campPhoto_tag notoMid fs-24">
             {photoDetail.hashtag}
           </div>
-          <div className="campPhoto_myPhotoOpt flex">
-            <button
-              type="button"
-              className="campPhoto_myPhotoOpt_modify notoBold fs-18"
-              onClick={updatePhoto}
-            >
-              수정
-            </button>
-            <button
-              type="button"
-              className="campPhoto_myPhotoOpt_delete notoBold fs-18"
-              onClick={deletePhoto}
-            >
-              삭제
-            </button>
-          </div>
+          {nickname === photoDetail.nickname && (
+            <div className="campPhoto_myPhotoOpt flex">
+              <button
+                type="button"
+                className="campPhoto_myPhotoOpt_modify notoBold fs-18"
+                onClick={updatePhoto}
+              >
+                수정
+              </button>
+              <button
+                type="button"
+                className="campPhoto_myPhotoOpt_delete notoBold fs-18"
+                onClick={deletePhoto}
+              >
+                삭제
+              </button>
+            </div>
+          )}
+
         </div>
       )}
       {/* 수정, 삭제 버튼 - 내가 쓴 글일때만 보이게 하기 */}
