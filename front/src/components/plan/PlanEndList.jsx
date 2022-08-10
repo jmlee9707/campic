@@ -21,7 +21,15 @@ function PlanEndList() {
     <div className="flex align-center">
       {list.length !== 0 &&
         list.map(
-          ({ savedTitle, place, startDate, endDate, campId, saveId }) => (
+          ({
+            savedTitle,
+            place,
+            startDate,
+            endDate,
+            campId,
+            saveId,
+            firstImageUrl
+          }) => (
             <PlanCard
               className="past_img"
               key={v4()}
@@ -31,6 +39,7 @@ function PlanEndList() {
               endDate={endDate.substr(0, 10)} // 문자열 자르기
               campId={campId}
               saveId={saveId}
+              firstImageUrl={firstImageUrl}
             />
           )
         )}

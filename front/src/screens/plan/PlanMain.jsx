@@ -13,7 +13,7 @@ function PlanMain() {
   });
   return (
     <div className="container flex justify-center">
-      <div className="plan ">
+      <div className="plan">
         <div className="plan_title notoBold fs-40">계획하기</div>
         {userId !== null && (
           <>

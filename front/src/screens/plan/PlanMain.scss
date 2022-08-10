@@ -3,26 +3,59 @@
 }
 
 .plan {
-  width: vw(1170px);
+  width: (1150px);
   .divide {
     width: 100%;
-    height: vw(1px);
+    height: (1px);
   }
   &_title {
     // justify-content: flex-start;
-    margin-top: vw(60px);
+    margin-top: (60px);
   }
 
   &_coming,
   &_past {
     &_title {
-      margin: vw(32px) 0 vw(40px) 0;
+      margin: (32px) 0 (40px) 0;
     }
   }
 
   &_past {
     img {
       filter: brightness(65%);
+    }
+  }
+  &_login {
+    margin-top: (180px);
+    &_txt {
+      margin-bottom: (60px);
+    }
+    &_btn {
+      background-color: $MAIN;
+      color: $WHITE;
+      padding: (16px) (28px);
+      border-radius: (18px);
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .plan {
+    width: vw(1150px);
+    .divide {
+      width: 100%;
+      height: vw(1px);
+    }
+    &_title {
+      // justify-content: flex-start;
+      margin-top: vw(60px);
+    }
+
+    &_coming,
+    &_past {
+      &_title {
+        margin: vw(32px) 0 vw(40px) 0;
+      }
     }
   }
   &_login {
@@ -35,6 +68,84 @@
       color: $WHITE;
       padding: vw(16px) vw(28px);
       border-radius: vw(18px);
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .plan {
+    width: vw-t(900px);
+    .divide {
+      width: 100%;
+      height: vw-t(1px);
+    }
+    &_title {
+      // justify-content: flex-start;
+      margin-top: vw-t(60px);
+    }
+
+    &_coming,
+    &_past {
+      &_title {
+        margin: vw-t(32px) 0 vw-t(40px) 0;
+      }
+    }
+
+    &_past {
+      img {
+        filter: brightness(65%);
+      }
+    }
+    &_login {
+      margin-top: vw-t(180px);
+      &_txt {
+        margin-bottom: vw-t(60px);
+      }
+      &_btn {
+        background-color: $MAIN;
+        color: $WHITE;
+        padding: vw-t(16px) vw-t(28px);
+        border-radius: vw-t(18px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .plan {
+    width: vw-p(900px);
+    .divide {
+      width: 100%;
+      height: vw-p(1px);
+    }
+    &_title {
+      // justify-content: flex-start;
+      margin-top: vw-p(60px);
+    }
+
+    &_coming,
+    &_past {
+      &_title {
+        margin: vw-p(32px) 0 vw-p(40px) 0;
+      }
+    }
+
+    &_past {
+      img {
+        filter: brightness(65%);
+      }
+    }
+    &_login {
+      margin-top: vw-p(180px);
+      &_txt {
+        margin-bottom: vw-p(60px);
+      }
+      &_btn {
+        background-color: $MAIN;
+        color: $WHITE;
+        padding: vw-p(16px) vw-p(28px);
+        border-radius: vw-p(18px);
+      }
     }
   }
 }
