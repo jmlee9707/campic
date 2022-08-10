@@ -55,7 +55,7 @@ public class TalkService {
     }
 
     public List<TalkDto> bestTalk() {
-        List<Talk> listTalk = talkRepository.findTop8ByOrderByClickDesc();
+        List<Talk> listTalk = talkRepository.findTop6ByOrderByClickDesc();
         return getTalkDtos(listTalk);
     }
 

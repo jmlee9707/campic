@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface TalkRepository extends JpaRepository<Talk, Integer> {
-    List<Talk> findTop8ByOrderByClickDesc();
+    List<Talk> findTop6ByOrderByClickDesc();
     Talk findByTalkId(int id);
     List<Talk> findByUser(User user);
 }
