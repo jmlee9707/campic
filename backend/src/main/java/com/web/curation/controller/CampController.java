@@ -19,47 +19,50 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import java.util.*;
 
 @RestController
 //@CrossOrigin("*")
 @RequestMapping("/camp")
 public class CampController {
-    private final Logger LOGGER = LoggerFactory.getLogger(ScheduleController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(CampController.class);
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
     private final CampService campService;
     private final JwtTokenProvider jwtTokenProvider;
+    EntityManager entityManager;
 
     @Autowired
     public CampController(CampService campService, JwtTokenProvider jwtTokenProvider) {
         this.campService = campService;
         this.jwtTokenProvider = jwtTokenProvider;
     }
+    @PostMapping()
+    public List<CampDto.CampList> filterCampList(@RequestBody SearchListDto.SearchList searchList) {
+        LOGGER.info("filterCampList - 호출");
+        return campService.filterCampList(searchList);
+    }
+
 
 //    /* campList and Search */
 //    @PostMapping()
 //    public List<CampDto.CampList> filterCampList(@RequestBody SearchListDto.SearchList searchList){
-//
-//        HashMap<String, List> taglist = new HashMap<String, List>() {{
-//            put(1,["봄","여름","가을","겨울"]);
-//            put()
-//        }};
-//
-//        List<CampDto.CampList> filterCampList = new ArrayList<>();
-//
+//        LOGGER.info("filterCampList - 호출");
+//        System.out.println("controller");
+//        System.out.println(searchList.getTags());
+//        return campService.filterCampList(searchList);
 //    }
 
 
-    /* campList READ */
-    @GetMapping()
-    public List<CampDto.CampList> getAllCamps(@RequestParam int page){
-        System.out.println(page);
-        return campService.getAllCamps(page);
-    }
+//    /* campList READ */
+//    @GetMapping()
+//    public List<CampDto.CampList> getAllCamps(@RequestParam int page){
+//        System.out.println(page);
+//        return campService.getAllCamps(page);
+//    }
 
 
     /* campDetail READ */
@@ -70,24 +73,24 @@ public class CampController {
 
     }
 
-    /* camp 키워드 검색 결과 리스트 READ */
-    @GetMapping("/search/{keyword}")
-    public List<CampDto.CampList> keywordSearchCampList(@PathVariable("keyword") String keyword){
-        System.out.println(keyword);
-        return campService.keywordSearchCampList(keyword);
-    }
+//    /* camp 키워드 검색 결과 리스트 READ */
+//    @GetMapping("/search/{keyword}")
+//    public List<CampDto.CampList> keywordSearchCampList(@PathVariable("keyword") String keyword){
+//        System.out.println(keyword);
+//        return campService.keywordSearchCampList(keyword);
+//    }
 
-    /* camp 지역 검색 결과 리스트 READ */
-    @GetMapping("/search/{doname}/{sigungu}")
-    public List<CampDto.CampList> regionSearchCampList(@PathVariable("doname") String doname, @PathVariable("sigungu") String sigungu){
-        return campService.regionSearchCampList(doname, sigungu);
-    }
+//    /* camp 지역 검색 결과 리스트 READ */
+//    @GetMapping("/search/{doname}/{sigungu}")
+//    public List<CampDto.CampList> regionSearchCampList(@PathVariable("doname") String doname, @PathVariable("sigungu") String sigungu){
+//        return campService.regionSearchCampList(doname, sigungu);
+//    }
 
-    /* camp tag 검색 결과 리스트 READ */
-    @GetMapping("/search/tagsearch")
-    public List<CampDto.CampList> tagSearchCampList(@RequestParam List<String> taglist, @RequestParam int page){
-        return campService.tagSearchCampList(taglist, page);
-    }
+//    /* camp tag 검색 결과 리스트 READ */
+//    @GetMapping("/search/tagsearch")
+//    public List<CampDto.CampList> tagSearchCampList(@RequestParam List<String> taglist, @RequestParam int page){
+//        return campService.tagSearchCampList(taglist, page);
+//    }
 
     /*
     likedCampList(schedule) CREATE

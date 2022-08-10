@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class SearchListDto {
@@ -16,7 +18,8 @@ public class SearchListDto {
         private String keyword;
         private String sido;
         private String gugun;
-        private String[] tags;
+        private List<String> tags;
+        private int page;
 
         public SearchList(SearchList searchList){
             this.arrange = searchList.getArrange();
@@ -24,6 +27,7 @@ public class SearchListDto {
             this.sido = searchList.getSido();
             this.gugun = searchList.getGugun();
             this.tags = searchList.getTags();
+            this.page = searchList.getPage();
         }
     }
 
