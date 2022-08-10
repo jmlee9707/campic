@@ -4,7 +4,7 @@ import TodoItemList from "@components/plan/TodoItemList";
 import mainImg from "@images/temp_1.jpeg";
 import { useParams } from "react-router-dom";
 import Location from "@components/common/Location";
-import { getPlanDetail } from "../../apis/plan";
+import { getPlanDetail } from "@apis/plan";
 // import TodoItemList from "@components/plan/TodoItemList";
 
 function PlanDetail() {
@@ -17,18 +17,24 @@ function PlanDetail() {
   //   const res = await getPlanDetail(planId);
   //   setPlanInfo(res);
   // };
-
-  useEffect(() => {
-    async function getPlanInfo() {
+  async function getPlanInfo() {  
+    try {
       const res = await getPlanDetail(planId);
       setPlanInfo(res);
+
+    } catch (err) {
+      console.log(err);
     }
+    
+  };
+
+  useEffect(() => {
     getPlanInfo(); // 초기 일정정보 받아오기
     // setStart(planInfo.startDate);
     // setEnd(planInfo.endDate);
-  }, [planId]);
+  }, []);
 
-  console.log(planInfo);
+ 
   return (
     <div className="container flex justify-center">
       <div className="plan_detail">
@@ -68,7 +74,10 @@ function PlanDetail() {
           </div>
         </div>
         <div className="plan_detail_map">
-          <Location />
+          {planInfo &&
+           <Location
+            pos={{mapY : planInfo.mapX, mapX : planInfo.mapY}}
+           />}
         </div>
       </div>
     </div>

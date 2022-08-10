@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import CampingList from "@components/camping/CampingList";
 import "./CampingMain.scss";
+import { useDispatch } from "react-redux";
 // import { useSelector } from "react-redux";
 import banner from "@images/temp_1.jpeg"; // banner 이미지
 import {
@@ -9,8 +10,10 @@ import {
   CampingSearchAll
 } from "@components/camping/CampingSearch";
 // import { click } from "../../store/camp";
+import { setLocation } from "@store/camp";
 
 function CampingMain() {
+  const dispatch = useDispatch();
   // const dispatch = useDispatch();
   // const top = "싸피 캠핑장";
   // dispatch(click( allList: true ));
@@ -23,7 +26,28 @@ function CampingMain() {
 
   // camplist props
   // campInfos  = [];
-
+  // 위도 경도 받아오기 함수
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+        dispatch(setLocation({lati:position.coords.latitude, longi:position.coords.longitude}))
+      }
+      , err => console.log(err)
+      , {
+        enableHighAccuracy: false,
+        maximumAge: 0,
+        timeout: Infinity
+      });
+    } else {
+      alert('GPS를 지원하지 않습니다');
+    }
+  };
+  // useeffect
+  useEffect(() => {
+    getLocation();
+    // console.log("위치정보");
+  }, []);
   return (
     <div className="container flex justify-center">
       <div className="main">
