@@ -24,7 +24,6 @@ import PwCh from "@screens/mypage/PwCh";
 import PwEdit from "@screens/mypage/PwEdit";
 import MyFeed from "@screens/mypage/MyFeed";
 
-
 // import
 
 // camping
@@ -85,8 +84,6 @@ function Router() {
         {/* community */}
         {/* <CommunityNavBar /> */}
         <Route path="/board/*" element={<Community />} />
-          
-          
 
         <Route path="/camping/*">
           <Route index element={<CampingMain />} />

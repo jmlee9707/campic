@@ -2,35 +2,23 @@ import React, { useRef, useState, useEffect } from "react";
 import check from "@images/icon/done_black.svg";
 // import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
+
 import TodoItem from "./TodoItem";
+
 import { getTodo, addTodo } from "../../apis/plan";
 
 function TodoItemList({ listId, writer }) {
   const todoRef = useRef();
-<<<<<<< HEAD
-  const [todoList, setTodoList] = useState("");
-  const todoListId = listId;
-  // writer = 작성자
-  async function getTodoList() {
-    const res = await getTodo(todoListId);
-=======
   const [todoList, setTodoList] = useState([]);
   // const todoListId = listId;
   // writer = 작성자
   async function getTodoList() {
     const res = await getTodo(listId);
     console.log(res);
->>>>>>> origin/FE_fix_이정민
     setTodoList(res);
   }
   const addTask = async () => {
     const task = todoRef.current.value;
-<<<<<<< HEAD
-    await addTodo(todoListId, task);
-    getTodoList();
-  };
-
-=======
     await addTodo(listId, task);
     getTodoList();
   };
@@ -39,7 +27,6 @@ function TodoItemList({ listId, writer }) {
     setTodoList(todoList.filter(todo => todo.todoId !== id));
   };
 
->>>>>>> origin/FE_fix_이정민
   useEffect(() => {
     // todoList 불러오기
     getTodoList();
@@ -74,10 +61,7 @@ function TodoItemList({ listId, writer }) {
               saveId={saveId}
               todoId={todoId}
               writer={writer}
-<<<<<<< HEAD
-=======
               removeItem={removeItem}
->>>>>>> origin/FE_fix_이정민
             />
           ))}
       </div>
