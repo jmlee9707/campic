@@ -7,6 +7,7 @@ import "./MainNavBar.scss";
 import logoGreen from "@images/logo/logo_text_green.svg";
 import dummyicon from "@images/icon/dummyicon.jpg";
 import logoWhite from "@images/logo/logo_text_white.svg";
+import menuIcon from "@images/icon/menu.svg";
 // import temp from "@images/cute.jpeg";
 import { reset, selectProfile } from "../../store/user";
 import "./NavTooltip.scss";
@@ -59,29 +60,16 @@ function MainNavBar() {
         className={pathname === "/" ? "home_click" : "none_click"}
       >
         <div className="container">
-          <nav
-            className={
-              pathname === "/" ? "container_inner flex" : "container_inner flex"
-            }
-          >
-            <nav className="left_nav notoBold flex align-center">
-              <Link to="/" className="left_nav__link flex">
+          <nav className="container_inner flex">
+            <nav className="left_nav notoBold flex align-center justify-center">
+              <Link to="/" className="left_nav__img ">
                 {pathname !== "/" && (
-                  <img
-                    className="logo"
-                    title="!213"
-                    alt="logoImage"
-                    src={logoGreen}
-                  />
+                  <img className="logo" alt="logoImage" src={logoGreen} />
                 )}
                 {pathname === "/" && (
-                  <img
-                    className="logo"
-                    title="!213"
-                    alt="logoImage"
-                    src={logoWhite}
-                  />
+                  <img className="logo" alt="logoImage" src={logoWhite} />
                 )}
+                <img className="logo_mobile" alt="logoImage" src={logoGreen} />
               </Link>
               {pathname === "/" && (
                 <>
@@ -89,7 +77,7 @@ function MainNavBar() {
                     className="left_nav__link flex notoMid fs-16"
                     to="/camping"
                   >
-                    <p>캠핑장</p>
+                    캠핑장
                   </NavLink>
                   <NavLink
                     className="left_nav__link flex notoMid fs-16"
@@ -131,10 +119,16 @@ function MainNavBar() {
             <nav className="right_nav notoReg flex align-center">
               {Profile.email === null ? (
                 <>
-                  <NavLink className="right_nav__link_none fs-16" to="/login">
+                  <NavLink
+                    className="right_nav__link_none_login fs-16"
+                    to="/login"
+                  >
                     로그인
                   </NavLink>
-                  <NavLink className="right_nav__link_none fs-16" to="/join">
+                  <NavLink
+                    className="right_nav__link_none_join fs-16"
+                    to="/join"
+                  >
                     회원가입
                   </NavLink>
                 </>
@@ -164,8 +158,12 @@ function MainNavBar() {
                   </button>
                 </>
               )}
+              <button type="button" className="right_nav_menu">
+                <img src={menuIcon} alt="menu" />
+              </button>
             </nav>
           </nav>
+
           {openTool && (
             <div className="my_tool">
               <div className="my_tool_box flex justify-center column">
