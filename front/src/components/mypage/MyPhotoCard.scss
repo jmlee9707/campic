@@ -20,4 +20,10 @@
   // flex-direction: column;
   // justify-content: space-between;
   width: vw(830px);
+
+  &_nope {
+    color: $GRAY-DB;
+    justify-content: center;
+    margin-left: vw(240px);
+  }
 }
