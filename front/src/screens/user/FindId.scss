@@ -1,12 +1,13 @@
 .container {
   justify-content: center;
+  // margin-bottom: 150px;
 }
 .findid {
-  width: (300px);
+  // width: (300px);
   flex-direction: column;
   &_title {
     color: $GRAY-40;
-    margin: (176px) 0 (16px);
+    margin: (160px) 0 (16px) 0;
   }
   &_sub1,
   &_sub2 {
@@ -24,8 +25,8 @@
       margin-top: (42px);
     }
     input {
-      width: (300px);
-      height: (44px);
+      width: (350px);
+      height: (52px);
       border-radius: (6px);
       border: (1px) solid $MAIN;
       color: $GRAY-40;
@@ -41,11 +42,11 @@
     }
   }
   &_btn {
-    width: (300px);
+    width: (350px);
     height: (52px);
     color: $WHITE;
     background-color: $MAIN;
-    margin: (14px) 0 (24px);
+    margin: (14px) 0 (60px) 0;
     border-radius: (6px);
   }
   &_btn:hover {
@@ -62,15 +63,12 @@
 }
 @media screen and (max-width: $DESKTOP-VW) {
   .findid {
-    width: vw(300px);
-    flex-direction: column;
     &_title {
       color: $GRAY-40;
-      margin: vw(176px) 0 vw(16px);
+      margin: vw(160px) 0 vw(16px) 0;
     }
     &_sub1,
     &_sub2 {
-      color: $GRAY-67;
       margin-bottom: vw(4px);
     }
     &_phone {
@@ -84,8 +82,8 @@
         margin-top: vw(42px);
       }
       input {
-        width: vw(300px);
-        height: vw(44px);
+        width: vw(350px);
+        height: vw(52px);
         border-radius: vw(6px);
         border: vw(1px) solid $MAIN;
         color: $GRAY-40;
@@ -96,42 +94,32 @@
         border: vw(1px) solid $MAIN;
         box-shadow: 0 0 vw(5px) $MAIN;
       }
-      &_check {
-        color: $RED;
-      }
     }
     &_btn {
-      width: vw(300px);
+      width: vw(350px);
       height: vw(52px);
-      color: $WHITE;
-      background-color: $MAIN;
-      margin: vw(14px) 0 vw(24px);
+      margin: vw(14px) 0 vw(60px) 0;
       border-radius: vw(6px);
     }
     &_btn:hover {
       box-shadow: 0 0 vw(5px) $MAIN;
     }
     &_ask {
-      color: $GRAY-67;
       margin-bottom: vw(20px);
       &_login {
         margin-left: vw(6px);
-        text-decoration: underline;
       }
     }
   }
 }
+
 @media screen and (max-width: $TABLET-VW) {
   .findid {
-    width: vw-t(300px);
-    flex-direction: column;
     &_title {
-      color: $GRAY-40;
-      margin: vw-t(176px) 0 vw-t(16px);
+      margin: vw-t(160px) 0 vw-t(16px) 0;
     }
     &_sub1,
     &_sub2 {
-      color: $GRAY-67;
       margin-bottom: vw-t(4px);
     }
     &_phone {
@@ -141,58 +129,47 @@
         margin-bottom: vw-t(12px);
       }
       &_title {
-        color: $GRAY-67;
         margin-top: vw-t(42px);
       }
       input {
-        width: vw-t(300px);
-        height: vw-t(44px);
+        width: vw-t(420px);
+        height: vw-t(60px);
         border-radius: vw-t(6px);
         border: vw-t(1px) solid $MAIN;
-        color: $GRAY-40;
-        padding-left: vw-t(16px);
+        padding-left: vw-t(24px);
         margin-bottom: vw-t(6px);
       }
       input:focus {
         border: vw-t(1px) solid $MAIN;
         box-shadow: 0 0 vw-t(5px) $MAIN;
       }
-      &_check {
-        color: $RED;
-      }
     }
     &_btn {
-      width: vw-t(300px);
-      height: vw-t(52px);
-      color: $WHITE;
-      background-color: $MAIN;
-      margin: vw-t(14px) 0 vw-t(24px);
+      width: vw-t(420px);
+      height: vw-t(60px);
+      margin: vw-t(14px) 0 vw-t(60px) 0;
       border-radius: vw-t(6px);
     }
     &_btn:hover {
       box-shadow: 0 0 vw-t(5px) $MAIN;
     }
     &_ask {
-      color: $GRAY-67;
       margin-bottom: vw-t(20px);
       &_login {
         margin-left: vw-t(6px);
-        text-decoration: underline;
       }
     }
-  }  
+  }
 }
+
 @media screen and (max-width: $PHONE-VW) {
   .findid {
-    width: vw-p(300px);
-    flex-direction: column;
     &_title {
       color: $GRAY-40;
-      margin: vw-p(176px) 0 vw-p(16px);
+      margin: vw-p(160px) 0 vw-p(16px) 0;
     }
     &_sub1,
     &_sub2 {
-      color: $GRAY-67;
       margin-bottom: vw-p(4px);
     }
     &_phone {
@@ -202,44 +179,35 @@
         margin-bottom: vw-p(12px);
       }
       &_title {
-        color: $GRAY-67;
         margin-top: vw-p(42px);
       }
       input {
-        width: vw-p(300px);
-        height: vw-p(44px);
+        width: vw-p(420px);
+        height: vw-p(60px);
         border-radius: vw-p(6px);
         border: vw-p(1px) solid $MAIN;
-        color: $GRAY-40;
-        padding-left: vw-p(16px);
+        padding-left: vw-p(24px);
         margin-bottom: vw-p(6px);
       }
       input:focus {
         border: vw-p(1px) solid $MAIN;
         box-shadow: 0 0 vw-p(5px) $MAIN;
       }
-      &_check {
-        color: $RED;
-      }
     }
     &_btn {
-      width: vw-p(300px);
-      height: vw-p(52px);
-      color: $WHITE;
-      background-color: $MAIN;
-      margin: vw-p(14px) 0 vw-p(24px);
+      width: vw-p(420px);
+      height: vw-p(60px);
+      margin: vw-p(14px) 0 vw-p(60px) 0;
       border-radius: vw-p(6px);
     }
     &_btn:hover {
       box-shadow: 0 0 vw-p(5px) $MAIN;
     }
     &_ask {
-      color: $GRAY-67;
       margin-bottom: vw-p(20px);
       &_login {
         margin-left: vw-p(6px);
-        text-decoration: underline;
       }
     }
-  }  
+  }
 }

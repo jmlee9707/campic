@@ -7,19 +7,39 @@ import { getTodo, addTodo } from "../../apis/plan";
 
 function TodoItemList({ listId, writer }) {
   const todoRef = useRef();
+<<<<<<< HEAD
   const [todoList, setTodoList] = useState("");
   const todoListId = listId;
   // writer = 작성자
   async function getTodoList() {
     const res = await getTodo(todoListId);
+=======
+  const [todoList, setTodoList] = useState([]);
+  // const todoListId = listId;
+  // writer = 작성자
+  async function getTodoList() {
+    const res = await getTodo(listId);
+    console.log(res);
+>>>>>>> origin/FE_fix_이정민
     setTodoList(res);
   }
   const addTask = async () => {
     const task = todoRef.current.value;
+<<<<<<< HEAD
     await addTodo(todoListId, task);
     getTodoList();
   };
 
+=======
+    await addTodo(listId, task);
+    getTodoList();
+  };
+
+  const removeItem = id => {
+    setTodoList(todoList.filter(todo => todo.todoId !== id));
+  };
+
+>>>>>>> origin/FE_fix_이정민
   useEffect(() => {
     // todoList 불러오기
     getTodoList();
@@ -54,6 +74,10 @@ function TodoItemList({ listId, writer }) {
               saveId={saveId}
               todoId={todoId}
               writer={writer}
+<<<<<<< HEAD
+=======
+              removeItem={removeItem}
+>>>>>>> origin/FE_fix_이정민
             />
           ))}
       </div>

@@ -35,11 +35,19 @@ function PlanDetail() {
         <div className="plan_detail_title notoBold fs-40">
           {planInfo.savedTitle}
         </div>
+<<<<<<< HEAD
         <div className="plan_detail_subtitle flex align-center">
           <div className="plan_detail_subtitle_days roBold fs-20">
             {/* {start} ~ {end} */}
             {/* {planInfo.startDate} */}
             2022-07-14 ~ 2022-08-12
+=======
+        <div className="plan_detail_subtitle ">
+          <div className="plan_detail_subtitle_days roBold fs-20">
+            {/* {start} ~ {end} */}
+            {planInfo && planInfo.startDate.substr(0, 10)}
+            {/* 2022-07-14 ~ 2022-08-12 */}
+>>>>>>> origin/FE_fix_이정민
           </div>
           <div className="plan_detail_subtitle_writer notoMid fs-18">
             작성자 : {planInfo.email}
@@ -62,7 +70,13 @@ function PlanDetail() {
             </p>
           </div>
           <div className="plan_detail_box_left">
+<<<<<<< HEAD
             <TodoItemList listId={planInfo.saveId} writer={planInfo.email} />
+=======
+            {planInfo && (
+              <TodoItemList listId={planInfo.saveId} writer={planInfo.email} />
+            )}
+>>>>>>> origin/FE_fix_이정민
           </div>
         </div>
         <div className="plan_detail_map">

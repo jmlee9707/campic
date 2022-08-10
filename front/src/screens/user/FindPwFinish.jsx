@@ -7,7 +7,7 @@ import "./FindPwFinish.scss";
 function FindPwFinish() {
   return (
     <div className="container flex justify-center">
-      <div id="findpwfin" className="findpwfin flex justify-center">
+      <div id="findpwfin" className="findpwfin flex">
         <div className="findpwfin_img">
           <img
             src={checkCircle}
@@ -18,7 +18,7 @@ function FindPwFinish() {
         <div className="findpwfin_remind notoBold fs-28">
           비밀번호 재설정 완료!
         </div>
-        <div className="findpwfin_info notoBold fs-16 flex align-center justify-center">
+        <div className="findpwfin_info notoBold fs-16 flex align-center">
           <div>재설정한 비밀번호로</div>
           <div>로그인 해주세요</div>
         </div>

@@ -21,7 +21,7 @@ function FindIdFinish() {
   };
   return (
     <div className="container flex justify-center">
-      <div id="findidfin" className="findidfin flex justify-center">
+      <div id="findidfin" className="findidfin flex">
         <div className="findidfin_img">
           <img
             src={checkCircle}

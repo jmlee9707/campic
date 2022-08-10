@@ -25,6 +25,7 @@ export const addPlan = async (
 };
 
 export const getPlanDetail = async saveId => {
+  console.log(saveId);
   const res = await API_USER.get(`schedule/${saveId}`);
   return res.data;
 };

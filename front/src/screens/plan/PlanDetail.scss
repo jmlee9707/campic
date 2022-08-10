@@ -4,7 +4,7 @@
 }
 
 .plan_detail {
-  width: (1170px);
+  width: (1150px);
   .divide {
     width: 100%;
     height: (1px);
@@ -15,7 +15,13 @@
     color: $GRAY-40;
   }
   &_subtitle {
+<<<<<<< HEAD
     justify-content: space-between;
+=======
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+>>>>>>> origin/FE_fix_이정민
     &_writer {
       color: $GRAY-67;
       // padding: (9px) (9px);
@@ -95,7 +101,7 @@
     }
   }
   #map {
-    width: (1170px);
+    width: (1150px);
     height: (720px);
   }
 }
@@ -150,20 +156,23 @@
     }
   }
 }
+
 @media screen and (max-width: $DESKTOP-VW) {
   .plan_detail {
-    width: vw(1170px);
+    width: vw(1150px);
     .divide {
       height: vw(1px);
     }
     &_title {
-      margin-top: vw(60px);
+      margin-top: (60px);
     }
-    &_days {
-      border-radius: vw(27px);
-      padding: vw(9px) vw(28px);
-      margin: vw(20px) 0 vw(44px);
-      width: vw(300px);
+    &_subtitle {
+      &_days {
+        border-radius: vw(27px);
+        padding: vw(9px) vw(28px);
+        margin: vw(40px) 0 vw(44px) 0;
+        width: vw(300px);
+      }
     }
     &_box {
       margin-bottom: vw(100px);
@@ -198,7 +207,7 @@
             margin-right: vw(16px);
             &:hover,
             &:focus {
-              box-shadow: 0px 0px 5px $MAIN;
+              box-shadow: 0px 0px vw(5px) $MAIN;
             }
           }
           button {
@@ -210,7 +219,7 @@
               height: vw(40px);
             }
             &:hover {
-              box-shadow: 0px 0px 5px $MAIN;
+              box-shadow: 0px 0px vw(5px) $MAIN;
             }
           }
         }
@@ -225,49 +234,77 @@
   .todo_box {
     margin-bottom: vw(20px);
     button {
-      width: vw(42px);
-      height: vw(42px);
-      border: vw(2px) solid $GRAY-E4;
-      border-radius: vw(15px);
+      width: vw(40px);
+      height: vw(40px);
+      border-radius: vw(12px);
       margin-right: vw(20px);
+
       img {
         width: vw(28px);
         height: vw(28px);
       }
-      &:hover {
-        box-shadow: 0px 0px 5px $MAIN;
+    }
+    &_btn {
+      &_done {
+        border: vw(2px) solid $MAIN;
+        &:hover {
+          box-shadow: 0 0 vw(5px) $MAIN;
+        }
+      }
+      &_yet {
+        border: vw(2px) solid $GRAY-E4;
+        &:hover {
+          box-shadow: 0 0 vw(5px) $GRAY-E4;
+        }
       }
     }
-    div {
-      border-radius: vw(12px);
-      padding: vw(11px) vw(18px);
-      width: vw(483px);
+    &_content {
+      &_text {
+        border-radius: vw(12px);
+        padding: vw(11px) vw(18px);
+        width: vw(483px);
+        &_done {
+          text-decoration: line-through vw(2px);
+        }
+      }
+      &_delete {
+        margin-left: vw(50px);
+      }
     }
   }
 }
 
 @media screen and (max-width: $TABLET-VW) {
   .plan_detail {
-    width: vw-t(1170px);
+    width: vw-t(950px);
+    // background-color: red;
     .divide {
       height: vw-t(1px);
     }
     &_title {
-      margin-top: vw-t(60px);
+      margin-top: (60px);
     }
-    &_days {
-      border-radius: vw-t(27px);
-      padding: vw-t(9px) vw-t(28px);
-      margin: vw-t(20px) 0 vw-t(44px);
-      width: vw-t(300px);
+    &_subtitle {
+      // display: block;
+      // flex-direction: column;
+      align-items: center;
+      &_days {
+        border-radius: vw-t(27px);
+        padding: vw-t(9px) vw-t(28px);
+        margin: vw-t(30px) 0 vw-t(44px) 0;
+        width: vw-t(300px);
+      }
     }
     &_box {
-      margin-bottom: vw-t(100px);
+      flex-direction: column;
+      margin-bottom: vw-t(70px);
+      border-top: vw-t(1px) solid $GRAY-E4;
       &_right {
         width: vw-t(600px);
+        margin: 0 0 vw-t(30px) 0;
         &_img {
-          width: vw-t(570px);
-          height: vw-t(480px);
+          width: vw-t(950px);
+          height: vw-t(650px);
           margin-bottom: vw-t(40px);
         }
         &_campName {
@@ -279,14 +316,16 @@
         }
       }
       &_left {
-        margin-left: vw-t(24px);
+        border-top: vw-t(1px) solid $GRAY-E4;
+        margin: vw-t(20px) 0 0 0;
+
         &_title {
-          margin-bottom: vw-t(40px);
+          margin: vw-t(64px) 0 vw-t(40px) 0;
         }
         &_input {
           margin-bottom: vw-t(44px);
           input {
-            width: vw-t(477px);
+            width: vw-t(900px);
             height: vw-t(52px);
             padding: vw-t(14px) vw-t(20px);
             border: vw-t(1.5px) solid $MAIN;
@@ -294,7 +333,7 @@
             margin-right: vw-t(16px);
             &:hover,
             &:focus {
-              box-shadow: 0px 0px 5px $MAIN;
+              box-shadow: 0px 0px vw-t(5px) $MAIN;
             }
           }
           button {
@@ -306,14 +345,17 @@
               height: vw-t(40px);
             }
             &:hover {
-              box-shadow: 0px 0px 5px $MAIN;
+              box-shadow: 0px 0px vw-t(5px) $MAIN;
             }
           }
         }
       }
     }
+    &_map {
+      padding-top: vw-t(20px);
+    }
     #map {
-      width: vw-t(1170px);
+      width: vw-t(950px);
       height: vw-t(720px);
     }
   }
@@ -321,49 +363,80 @@
   .todo_box {
     margin-bottom: vw-t(20px);
     button {
-      width: vw-t(42px);
-      height: vw-t(42px);
-      border: vw-t(2px) solid $GRAY-E4;
-      border-radius: vw-t(15px);
+      width: vw-t(40px);
+      height: vw-t(40px);
+      border-radius: vw-t(12px);
       margin-right: vw-t(20px);
+
       img {
         width: vw-t(28px);
         height: vw-t(28px);
       }
-      &:hover {
-        box-shadow: 0px 0px 5px $MAIN;
+    }
+    &_btn {
+      &_done {
+        border: vw-t(2px) solid $MAIN;
+        &:hover {
+          box-shadow: 0 0 vw-t(5px) $MAIN;
+        }
+      }
+      &_yet {
+        border: vw-t(2px) solid $GRAY-E4;
+        &:hover {
+          box-shadow: 0 0 vw-t(5px) $GRAY-E4;
+        }
       }
     }
-    div {
-      border-radius: vw-t(12px);
-      padding: vw-t(11px) vw-t(18px);
-      width: vw-t(483px);
+    &_content {
+      &_text {
+        border-radius: vw-t(12px);
+        padding: vw-t(11px) vw-t(18px);
+        width: vw-t(483px);
+        &_done {
+          text-decoration: line-through vw-t(2px);
+        }
+      }
+      &_delete {
+        margin-left: vw-t(50px);
+      }
     }
   }
 }
 
 @media screen and (max-width: $PHONE-VW) {
   .plan_detail {
-    width: vw-p(1170px);
+    width: vw-p(570px);
+    // background-color: red;
     .divide {
       height: vw-p(1px);
     }
     &_title {
-      margin-top: vw-p(60px);
+      margin-top: (60px);
     }
-    &_days {
-      border-radius: vw-p(27px);
-      padding: vw-p(9px) vw-p(28px);
-      margin: vw-p(20px) 0 vw-p(44px);
-      width: vw-p(300px);
+    &_subtitle {
+      display: block;
+      flex-direction: column;
+      align-items: center;
+      &_days {
+        border-radius: vw-p(27px);
+        padding: vw-p(4px) vw-p(20px);
+        margin: vw-p(30px) 0 vw-p(14px) 0;
+        width: vw-p(300px);
+      }
+      &_writer {
+        margin: vw-p(20px) 0;
+      }
     }
     &_box {
-      margin-bottom: vw-p(100px);
+      flex-direction: column;
+      margin-bottom: vw-p(70px);
+      border-top: vw-p(1px) solid $GRAY-E4;
       &_right {
         width: vw-p(600px);
+        margin: 0 0 vw-p(30px) 0;
         &_img {
           width: vw-p(570px);
-          height: vw-p(480px);
+          height: vw-p(570px);
           margin-bottom: vw-p(40px);
         }
         &_campName {
@@ -375,14 +448,16 @@
         }
       }
       &_left {
-        margin-left: vw-p(24px);
+        border-top: vw-p(1px) solid $GRAY-E4;
+        margin: vw-p(20px) 0 0 0;
+
         &_title {
-          margin-bottom: vw-p(40px);
+          margin: vw-p(64px) 0 vw-p(40px) 0;
         }
         &_input {
           margin-bottom: vw-p(44px);
           input {
-            width: vw-p(477px);
+            width: vw-p(520px);
             height: vw-p(52px);
             padding: vw-p(14px) vw-p(20px);
             border: vw-p(1.5px) solid $MAIN;
@@ -390,7 +465,7 @@
             margin-right: vw-p(16px);
             &:hover,
             &:focus {
-              box-shadow: 0px 0px 5px $MAIN;
+              box-shadow: 0px 0px vw-p(5px) $MAIN;
             }
           }
           button {
@@ -402,38 +477,60 @@
               height: vw-p(40px);
             }
             &:hover {
-              box-shadow: 0px 0px 5px $MAIN;
+              box-shadow: 0px 0px vw-p(5px) $MAIN;
             }
           }
         }
       }
     }
+    &_map {
+      padding-top: vw-p(20px);
+    }
     #map {
-      width: vw-p(1170px);
-      height: vw-p(720px);
+      width: vw-p(570px);
+      height: vw-p(500px);
     }
   }
 
   .todo_box {
     margin-bottom: vw-p(20px);
     button {
-      width: vw-p(42px);
-      height: vw-p(42px);
-      border: vw-p(2px) solid $GRAY-E4;
-      border-radius: vw-p(15px);
+      width: vw-p(40px);
+      height: vw-p(40px);
+      border-radius: vw-p(12px);
       margin-right: vw-p(20px);
+
       img {
         width: vw-p(28px);
         height: vw-p(28px);
       }
-      &:hover {
-        box-shadow: 0px 0px 5px $MAIN;
+    }
+    &_btn {
+      &_done {
+        border: vw-p(2px) solid $MAIN;
+        &:hover {
+          box-shadow: 0 0 vw-p(5px) $MAIN;
+        }
+      }
+      &_yet {
+        border: vw-p(2px) solid $GRAY-E4;
+        &:hover {
+          box-shadow: 0 0 vw-p(5px) $GRAY-E4;
+        }
       }
     }
-    div {
-      border-radius: vw-p(12px);
-      padding: vw-p(11px) vw-p(18px);
-      width: vw-p(483px);
+    &_content {
+      &_text {
+        border-radius: vw-p(12px);
+        padding: vw-p(11px) vw-p(18px);
+        width: vw-p(483px);
+        &_done {
+          text-decoration: line-through vw-p(2px);
+        }
+      }
+      &_delete {
+        margin-left: vw-p(50px);
+      }
     }
   }
 }

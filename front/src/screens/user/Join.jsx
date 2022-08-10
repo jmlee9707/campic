@@ -176,7 +176,7 @@ function Join() {
   return (
     <div className="container flex">
       <div id="join" className="join flex justify-center">
-        <div className="join_head flex align-center">
+        <div className="join_head flex align-center justify-center">
           <div className="join_head_logo">
             <img src={logo} alt="logo" />
           </div>

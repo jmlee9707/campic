@@ -1,5 +1,6 @@
 .container {
   justify-content: center;
+  margin-bottom: 150px;
 }
 .login {
   // width: (350px);
@@ -11,22 +12,22 @@
     background-color: $GRAY-E4;
   }
   &_title {
-    margin: vw(187px) 0 vw(44px) 0;
+    margin: (160px) 0 (58px) 0;
     img {
-      width: vw(196px);
-      height: vw(45px);
+      width: (196px);
+      height: (45px);
     }
   }
   &_input {
     flex-direction: column;
     input {
-      width: vw(300px);
-      height: vw(48px);
-      border-radius: vw(6px);
-      border: vw(1px) solid $MAIN;
+      width: (350px);
+      height: (52px);
+      border-radius: (6px);
+      border: (1px) solid $MAIN;
       color: $GRAY-40;
-      margin-bottom: vw(12px);
-      padding: vw(4px) vw(20px);
+      margin-bottom: (24px);
+      padding: (4px) (20px);
     }
     input:focus {
       border: vw(1px) solid $MAIN;
@@ -34,13 +35,13 @@
     }
   }
   &_btn {
-    width: vw(300px);
-    // height: vw(52px);
+    width: (350px);
+    // height: (52px);
     color: $WHITE;
     background-color: $MAIN;
-    margin: vw(23px) 0 vw(25px);
-    border-radius: vw(4px);
-    padding: vw(10px) 0;
+    margin: (24px) 0 (40px);
+    border-radius: (6px);
+    padding: (15px) 0;
   }
   &_text {
     width: vw(132px);
@@ -67,12 +68,202 @@
     &_icon_google {
       margin: 0 vw(8px) 0 v(8px);
       img {
-        width: vw(48px);
-        height: vw(48px);
+        width: (60px);
+        height: (60px);
       }
     }
     &_icons {
       justify-content: space-between;
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .login {
+    .divide {
+      width: 100%;
+      height: vw(1px);
+      background-color: $GRAY-E4;
+    }
+    &_title {
+      margin: vw(160px) 0 vw(58px) 0;
+      img {
+        width: vw(196px);
+        height: vw(45px);
+      }
+    }
+    &_input {
+      input {
+        width: vw(350px);
+        height: vw(52px);
+        border-radius: vw(6px);
+        border: vw(1px) solid $MAIN;
+        margin-bottom: vw(24px);
+        padding: vw(4px) vw(20px);
+      }
+      input:focus {
+        border: vw(1px) solid $MAIN;
+        box-shadow: 0 0 vw(5px) $MAIN;
+      }
+    }
+    &_btn {
+      width: vw(350px);
+      margin: vw(24px) 0 vw(40px);
+      border-radius: vw(6px);
+      padding: vw(15px) 0;
+    }
+    &_text {
+      width: vw(132px);
+      height: vw(20px);
+      margin-bottom: vw(38px);
+    }
+    &_social {
+      &_line {
+        height: vw(1px);
+        width: vw(350px);
+        margin-bottom: vw(28px);
+      }
+      &_txt {
+        height: vw(20px);
+        width: vw(180px);
+        margin: vw(28px) 0 vw(24px) 0;
+      }
+      &_icon_naver,
+      &_icon_kakao,
+      &_icon_google {
+        margin: 0 vw(8px) 0 v(8px);
+        img {
+          width: vw(60px);
+          height: vw(60px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .login {
+    // background-color: red;
+    .divide {
+      width: 100%;
+      height: vw-t(1px);
+      background-color: $GRAY-E4;
+    }
+    &_title {
+      margin: vw-t(157px) 0 vw-t(64px) 0;
+      img {
+        width: vw-t(196px);
+        height: vw-t(45px);
+      }
+    }
+    &_input {
+      input {
+        width: vw-t(420px);
+        height: vw-t(60px);
+        border-radius: vw-t(6px);
+        border: vw-t(1px) solid $MAIN;
+        margin-bottom: vw-t(24px);
+        padding: vw-t(4px) vw-t(20px);
+      }
+      input:focus {
+        border: vw-t(1px) solid $MAIN;
+        box-shadow: 0 0 vw-t(5px) $MAIN;
+      }
+    }
+    &_btn {
+      width: vw-t(420px);
+      margin: vw-t(24px) 0 vw-t(40px) 0;
+      border-radius: vw-t(6px);
+      padding: vw-t(15px) 0;
+    }
+    &_text {
+      width: vw-t(132px);
+      height: vw-t(20px);
+      margin-bottom: vw-t(38px);
+    }
+    &_social {
+      &_line {
+        height: vw-t(1px);
+        width: 100%;
+        margin-bottom: vw-t(40px);
+      }
+      &_txt {
+        height: vw-t(20px);
+        width: vw-t(180px);
+        margin: vw-t(42px) 0;
+      }
+      &_icon_naver,
+      &_icon_kakao,
+      &_icon_google {
+        margin: 0 vw-t(14px);
+        img {
+          width: vw-t(70px);
+          height: vw-t(70px);
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $PHONE-VW) {
+  .login {
+    // background-color: red;
+    .divide {
+      width: 100%;
+      height: vw-p(1px);
+      background-color: $GRAY-E4;
+    }
+    &_title {
+      margin: vw-p(157px) 0 vw-p(64px) 0;
+      img {
+        width: vw-p(196px);
+        height: vw-p(45px);
+      }
+    }
+    &_input {
+      input {
+        width: vw-p(420px);
+        height: vw-p(60px);
+        border-radius: vw-p(6px);
+        border: vw-p(1px) solid $MAIN;
+        margin-bottom: vw-p(24px);
+        padding: vw-p(4px) vw-p(20px);
+      }
+      input:focus {
+        border: vw-p(1px) solid $MAIN;
+        box-shadow: 0 0 vw-p(5px) $MAIN;
+      }
+    }
+    &_btn {
+      width: vw-p(420px);
+      margin: vw-p(24px) 0 vw-p(40px) 0;
+      border-radius: vw-p(6px);
+      padding: vw-p(15px) 0;
+    }
+    &_text {
+      width: vw-p(132px);
+      height: vw-p(20px);
+      margin-bottom: vw-p(38px);
+    }
+    &_social {
+      &_line {
+        height: vw-p(1px);
+        width: 100%;
+        margin-bottom: vw-p(40px);
+      }
+      &_txt {
+        height: vw-p(20px);
+        width: vw-p(180px);
+        margin: vw-p(42px) 0;
+      }
+      &_icon_naver,
+      &_icon_kakao,
+      &_icon_google {
+        margin: 0 vw-p(14px);
+        img {
+          width: vw-p(70px);
+          height: vw-p(70px);
+        }
+      }
     }
   }
 }

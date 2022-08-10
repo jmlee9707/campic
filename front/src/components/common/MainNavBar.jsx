@@ -1,12 +1,13 @@
 // import React, { useState, useEffect } from "react";
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // style import
 import "./MainNavBar.scss";
 import logoGreen from "@images/logo/logo_text_green.svg";
 import dummyicon from "@images/icon/dummyicon.jpg";
-// import logoWhite from "@images/logo/logo_text_white.svg";
+import logoWhite from "@images/logo/logo_text_white.svg";
+import menuIcon from "@images/icon/menu.svg";
 // import temp from "@images/cute.jpeg";
 import { reset, selectProfile } from "../../store/user";
 import "./NavTooltip.scss";
@@ -14,27 +15,18 @@ import "./NavTooltip.scss";
 function MainNavBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const userId = useSelector(state => state.user.email);
-  // const [home, setHome] = useState(true);
-  // const userId = useSelector(state => state.user.email);
   const Profile = useSelector(selectProfile);
+  const { pathname } = useLocation();
 
   const activeClassName = active => {
     const prefix = "left_nav__link flex fs-16 btn--";
     return active ? `${prefix}active` : `${prefix}unactive`;
   };
 
-  const activeHome = active => {
-    const prefix = "left_nav__link flex";
-    // if (active === true) {
-    //   setHome(true);
-    //   console.log(home);
-    //   return `${prefix}active`;
-    // }
-    // setHome(false);
-    // return `${prefix}unactive`;
-    return active ? `${prefix}active` : `${prefix}unactive`;
-  };
+  // const activeHome = active => {
+  //   const prefix = "left_nav__link flex";
+  //   return active ? `${prefix}active` : `${prefix}unactive`;
+  // };
 
   const logoutClick = () => {
     // 토큰 삭제를 위해서 클리어
@@ -63,99 +55,147 @@ function MainNavBar() {
 
   return (
     <div className="wrapper flex align-center">
-      <nav id="MainNavBar" className="flex align-center">
-        <nav className="left_nav notoBold flex align-center">
-          <Link to="/" className={({ isActive }) => activeHome(isActive)}>
-            <img
-              className="logo"
-              title="!213"
-              alt="logoImage"
-              src={logoGreen}
-            />
-          </Link>
-          <NavLink
-            className={({ isActive }) => activeClassName(isActive)}
-            to="/camping"
-          >
-            캠핑장
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => activeClassName(isActive)}
-            to="/plan"
-          >
-            계획하기
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => activeClassName(isActive)}
-            to="/board"
-          >
-            커뮤니티
-          </NavLink>
-        </nav>
-        <nav className="right_nav notoReg flex align-center">
-          {Profile.email === null ? (
-            <>
-              <NavLink className="right_nav__link_none fs-16" to="/login">
-                로그인
-              </NavLink>
-              <NavLink className="right_nav__link_none fs-16" to="/join">
-                회원가입
-              </NavLink>
-            </>
-          ) : (
-            <>
-              <button
-                type="button"
-                className="right_nav__link_user fs-16"
-                onClick={logoutClick}
-              >
-                로그아웃
+      <div
+        id="MainNavBar"
+        className={pathname === "/" ? "home_click" : "none_click"}
+      >
+        <div className="container">
+          <nav className="container_inner flex">
+            <nav className="left_nav notoBold flex align-center justify-center">
+              <Link to="/" className="left_nav__img ">
+                {pathname !== "/" && (
+                  <img className="logo" alt="logoImage" src={logoGreen} />
+                )}
+                {pathname === "/" && (
+                  <img className="logo" alt="logoImage" src={logoWhite} />
+                )}
+                <img className="logo_mobile" alt="logoImage" src={logoGreen} />
+              </Link>
+              {pathname === "/" && (
+                <>
+                  <NavLink
+                    className="left_nav__link flex notoMid fs-16"
+                    to="/camping"
+                  >
+                    캠핑장
+                  </NavLink>
+                  <NavLink
+                    className="left_nav__link flex notoMid fs-16"
+                    to="/plan"
+                  >
+                    계획하기
+                  </NavLink>
+                  <NavLink
+                    className="left_nav__link flex notoMid fs-16"
+                    to="/board"
+                  >
+                    커뮤니티
+                  </NavLink>
+                </>
+              )}
+              {pathname !== "/" && (
+                <>
+                  <NavLink
+                    className={({ isActive }) => activeClassName(isActive)}
+                    to="/camping"
+                  >
+                    <p>캠핑장</p>
+                  </NavLink>
+                  <NavLink
+                    className={({ isActive }) => activeClassName(isActive)}
+                    to="/plan"
+                  >
+                    계획하기
+                  </NavLink>
+                  <NavLink
+                    className={({ isActive }) => activeClassName(isActive)}
+                    to="/board"
+                  >
+                    커뮤니티
+                  </NavLink>
+                </>
+              )}
+            </nav>
+            <nav className="right_nav notoReg flex align-center">
+              {Profile.email === null ? (
+                <>
+                  <NavLink
+                    className="right_nav__link_none_login fs-16"
+                    to="/login"
+                  >
+                    로그인
+                  </NavLink>
+                  <NavLink
+                    className="right_nav__link_none_join fs-16"
+                    to="/join"
+                  >
+                    회원가입
+                  </NavLink>
+                </>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    className="right_nav__link_user fs-16"
+                    onClick={logoutClick}
+                  >
+                    로그아웃
+                  </button>
+                  <button
+                    type="button"
+                    className="right_nav__link_user_img fs-16"
+                    onClick={openTooltip}
+                  >
+                    {/* <img src={userInfo.profileImg} alt="userProfile" /> */}
+                    {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
+                    {Profile ? (
+                      <img src={Profile.profileImg} alt="" />
+                    ) : (
+                      <img src={dummyicon} alt="" />
+                    )}
+                    {/* {Profile.profileImg && <img src={dummyicon} alt="" />} */}
+                    {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
+                  </button>
+                </>
+              )}
+              <button type="button" className="right_nav_menu">
+                <img src={menuIcon} alt="menu" />
               </button>
-              <button
-                type="button"
-                className="right_nav__link_user_img fs-16"
-                onClick={openTooltip}
-              >
-                {/* <img src={userInfo.profileImg} alt="userProfile" /> */}
-                {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
-                {Profile ? <img src={Profile.profileImg} alt="" /> : <img src={dummyicon} alt="" />}
-                {/* {Profile.profileImg && <img src={dummyicon} alt="" />} */}
-                {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
-              </button>
-            </>
+            </nav>
+          </nav>
+
+          {openTool && (
+            <div className="my_tool">
+              <div className="my_tool_box flex justify-center column">
+                <button
+                  type="button"
+                  to="/mypage/myfeed"
+                  className="my_tool_info flex align-center fs-13"
+                  onClick={moveMyFeed}
+                >
+                  내 계정
+                </button>
+                <button
+                  type="button"
+                  to="/infoedit"
+                  className="my_tool_edit flex align-center fs-13"
+                  onClick={moveEdit}
+                >
+                  개인정보 수정
+                </button>
+                <button
+                  type="button"
+                  to="/myfeed"
+                  className="my_tool_about flex align-center fs-13"
+                  onClick={moveInfo}
+                >
+                  사이트 정보
+                </button>
+              </div>
+            </div>
           )}
-        </nav>
-      </nav>
-      {openTool && (
-        <div className="my_tool">
-          <div className="my_tool_box flex justify-center column">
-            <button
-              type="button"
-              to="/mypage/myfeed"
-              className="my_tool_info flex align-center fs-13"
-              onClick={moveMyFeed}
-            >
-              내 계정
-            </button>
-            <button
-              type="button"
-              to="/infoedit"
-              className="my_tool_edit flex align-center fs-13"
-              onClick={moveEdit}
-            >
-              개인정보 수정
-            </button>
-            <button
-              type="button"
-              to="/myfeed"
-              className="my_tool_about flex align-center fs-13"
-              onClick={moveInfo}
-            >
-              사이트 정보
-            </button>
-          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -47,8 +47,13 @@ function Login() {
 
   return (
     <div className="container flex">
+<<<<<<< HEAD
       <div id="login" className="login flex justify-center">
         <div className="login_title">
+=======
+      <div id="login" className="login flex ">
+        <div className="login_title flex align-center justify-center">
+>>>>>>> origin/FE_fix_이정민
           <img src={logo} alt="logoImage" />
         </div>
         <div className="login_input flex align-center justify-center">

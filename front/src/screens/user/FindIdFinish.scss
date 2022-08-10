@@ -2,26 +2,23 @@
   justify-content: center;
 }
 .findidfin {
-  width: (350px);
+  // width: (350px);
   align-items: center;
   flex-direction: column;
   &_img {
-    margin: (212px) 0 (28px) 0;
+    margin: (190px) 0 (28px) 0;
     &_checkbox {
-      height: (48px);
-      width: (48px);
+      height: (60px);
+      width: (60px);
     }
   }
   &_remind {
-    height: (40px);
     padding: (6px);
     color: $GRAY-40;
   }
   &_info {
-    margin: (46px) 0 (22px) 0;
+    margin: (46px) 0 (30px) 0;
     color: $GRAY-76;
-    width: (240px);
-    height: (70px);
     flex-direction: column;
     &_email {
       color: $GRAY-4A;
@@ -30,11 +27,12 @@
   &_pw_btn,
   &_login_btn {
     width: (300px);
-    height: (52px);
+    height: (60px);
     color: $WHITE;
     background-color: $MAIN;
+    opacity: 0.95;
     border-radius: (4px);
-    margin-top: (24px);
+    margin: (24px) 0 (4px) 0;
   }
   &_pw_btn:hover,
   &_login_btn:hover {
@@ -43,26 +41,22 @@
 }
 @media screen and (max-width: $DESKTOP-VW) {
   .findidfin {
-    width: vw(350px);
     align-items: center;
     flex-direction: column;
     &_img {
-      margin: vw(212px) 0 vw(28px) 0;
+      margin: vw(190px) 0 vw(28px) 0;
       &_checkbox {
-        height: vw(48px);
-        width: vw(48px);
+        height: vw(60px);
+        width: vw(60px);
       }
     }
     &_remind {
-      height: vw(40px);
       padding: vw(6px);
       color: $GRAY-40;
     }
     &_info {
-      margin: vw(46px) 0 vw(22px) 0;
+      margin: vw(46px) 0 vw(30px) 0;
       color: $GRAY-76;
-      width: vw(240px);
-      height: vw(70px);
       flex-direction: column;
       &_email {
         color: $GRAY-4A;
@@ -71,7 +65,7 @@
     &_pw_btn,
     &_login_btn {
       width: vw(300px);
-      height: vw(52px);
+      height: vw(60px);
       color: $WHITE;
       background-color: $MAIN;
       border-radius: vw(4px);
@@ -85,26 +79,22 @@
 }
 @media screen and (max-width: $TABLET-VW) {
   .findidfin {
-    width: vw-t(350px);
     align-items: center;
     flex-direction: column;
     &_img {
-      margin: vw-t(212px) 0 vw-t(28px) 0;
+      margin: vw-t(190px) 0 vw-t(28px) 0;
       &_checkbox {
-        height: vw-t(48px);
-        width: vw-t(48px);
+        height: vw-t(52px);
+        width: vw-t(52px);
       }
     }
     &_remind {
-      height: vw-t(40px);
       padding: vw-t(6px);
       color: $GRAY-40;
     }
     &_info {
-      margin: vw-t(46px) 0 vw-t(22px) 0;
+      margin: vw-t(46px) 0 vw-t(30px) 0;
       color: $GRAY-76;
-      width: vw-t(240px);
-      height: vw-t(70px);
       flex-direction: column;
       &_email {
         color: $GRAY-4A;
@@ -112,11 +102,11 @@
     }
     &_pw_btn,
     &_login_btn {
-      width: vw-t(300px);
-      height: vw-t(52px);
+      width: vw-t(350px);
+      height: vw-t(65px);
       color: $WHITE;
       background-color: $MAIN;
-      border-radius: vw-t(4px);
+      border-radius: vw-t(8px);
       margin-top: vw-t(24px);
     }
     &_pw_btn:hover,
@@ -127,26 +117,22 @@
 }
 @media screen and (max-width: $PHONE-VW) {
   .findidfin {
-    width: vw-p(350px);
     align-items: center;
     flex-direction: column;
     &_img {
-      margin: vw-p(212px) 0 vw-p(28px) 0;
+      margin: vw-p(190px) 0 vw-p(28px) 0;
       &_checkbox {
-        height: vw-p(48px);
-        width: vw-p(48px);
+        height: vw-p(60px);
+        width: vw-p(60px);
       }
     }
     &_remind {
-      height: vw-p(40px);
       padding: vw-p(6px);
       color: $GRAY-40;
     }
     &_info {
-      margin: vw-p(46px) 0 vw-p(22px) 0;
+      margin: vw-p(46px) 0 vw-p(30px) 0;
       color: $GRAY-76;
-      width: vw-p(240px);
-      height: vw-p(70px);
       flex-direction: column;
       &_email {
         color: $GRAY-4A;
@@ -154,11 +140,11 @@
     }
     &_pw_btn,
     &_login_btn {
-      width: vw-p(300px);
-      height: vw-p(52px);
+      width: vw-p(350px);
+      height: vw-p(65px);
       color: $WHITE;
       background-color: $MAIN;
-      border-radius: vw-p(4px);
+      border-radius: vw-p(8px);
       margin-top: vw-p(24px);
     }
     &_pw_btn:hover,
