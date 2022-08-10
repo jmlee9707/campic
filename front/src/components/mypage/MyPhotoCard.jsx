@@ -1,14 +1,14 @@
 import React from "react";
 import "./MyPhotoCard.scss";
 
-import coco from "@images/coco.jpeg";
+// import coco from "@images/coco.jpeg";
 
-function PhotoCard() {
+function MyPhotoCard({blobFile}) {
   return (
     <div className="photoCard">
-      <img src={coco} alt="베스트이미지" />
+      <img src={[blobFile]} alt="내 이미지" />
     </div>
   );
 }
 
-export default PhotoCard;
+export default MyPhotoCard;

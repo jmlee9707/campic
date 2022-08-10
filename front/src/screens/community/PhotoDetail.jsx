@@ -13,9 +13,9 @@ import {
 } from "../../apis/photo";
 
 function PhotoDetail() {
-  // 유저정보 가져오기 - 수정, 삭제를 위한   
-  const userId = useSelector(state => state.user.email)
-  const nickname = useSelector(state => state.user.nickname)
+  // 유저정보 가져오기 - 수정, 삭제를 위한
+  const userId = useSelector(state => state.user.email);
+  const nickname = useSelector(state => state.user.nickname);
 
   const [photoDetail, setPhotoDetail] = useState([]);
   // const [like, setLike] = useState(false);
@@ -31,12 +31,12 @@ function PhotoDetail() {
     async function getAndSetPhotoDetail() {
       const res = await getPhotoDetail(id);
       setPhotoDetail(res);
+      setLikeCnt(res.like);
     }
     getAndSetPhotoDetail();
-    setLikeCnt(photoDetail.like);
-    setViewCnt(photoDetail.click);
-    // console.log(likeCnt);
-  }, [likeCnt]); // likeCnt 의존배열
+    setViewCnt(photoDetail.click)
+  }, [likeCnt, viewCnt]); // likeCnt 의존배열
+  console.log(photoDetail)
 
   // 업로드 시간 가공
   const uploadTime = moment(photoDetail.uploadDate).fromNow();
@@ -49,7 +49,7 @@ function PhotoDetail() {
   };
 
   // 좋아요 유무 파악
-  const[isLiked, setIsLiked] = useState(0)
+  const [isLiked, setIsLiked] = useState(0);
 
   useEffect(() => {
     // await 를 사용하기 위해서 Async 선언
@@ -61,7 +61,6 @@ function PhotoDetail() {
     // console.log(likeCnt);
   }, []);
 
-
   // 좋아요
   async function liked() {
     const res = await photoLike(params);
@@ -70,14 +69,11 @@ function PhotoDetail() {
       // setLike(true);
       setLikeCnt(res.like + 1);
       // console.log(likeCnt)
-      setIsLiked(1)  
+      setIsLiked(1);
     }
-
   }
 
-  
-
-  // 싫어요 
+  // 싫어요
   async function disLiked() {
     const res = await photoDisLike(params);
     console.log(res);
@@ -86,12 +82,9 @@ function PhotoDetail() {
       setLikeCnt(likeCnt - 1);
       // console.log(likeCnt);
       // console.log(like)
-      setIsLiked(0)
+      setIsLiked(0);
     }
   }
-
-  
-
 
   // 수정
   const updatePhoto = () => {
@@ -123,7 +116,7 @@ function PhotoDetail() {
           <div className="campPhoto_profile flex">
             <img
               className="campPhoto_profile_proimg"
-              src={photoDetail.profileImgPath}
+              src={[photoDetail.profileImgPath]}
               alt="프로필이미지"
             />
             <div className="campPhoto_profile_extra flex align-center">
@@ -171,7 +164,7 @@ function PhotoDetail() {
                 조회수
               </div>
               <div className="campPhoto_count_view_num roMid fs-18">
-                {viewCnt}
+                {photoDetail.click}
               </div>
             </div>
             {/* 좋아요 */}
@@ -213,7 +206,6 @@ function PhotoDetail() {
               </button>
             </div>
           )}
-
         </div>
       )}
       {/* 수정, 삭제 버튼 - 내가 쓴 글일때만 보이게 하기 */}

@@ -13,18 +13,14 @@ function CommunityPhotoList() {
   const [loading, setLoading] = useState(false);
   const [ref, inView] = useInView();
 
-  useEffect(() => {
+  useEffect(async () => {
     // await 를 사용하기 위해서 Async 선언
-    async function getAndSetPhoto() {
-      const res = await getPhoto(page);
-      // console.log(res);
-      console.log("11111");
-      setPhotoList([...photoList, ...res]);
-    }
-    getAndSetPhoto();
+    const res = await getPhoto(page);
+    console.log(res);
+    setPhotoList([...photoList, ...res]);
     setLoading(false);
   }, [page]);
-  console.log(photoList);
+  // console.log(photoList);
 
   useEffect(() => {
     if (inView && !loading) {
@@ -32,6 +28,7 @@ function CommunityPhotoList() {
       setPage(page + 1);
     }
   }, [inView, loading]);
+  console.log(ref);
 
   return (
     <div className="maincomupiclist flex">
@@ -58,7 +55,7 @@ function CommunityPhotoList() {
             />
           )
         )}
-      {loading ? <div>로딩중</div> : <div ref={ref} className="observe" />}
+      {/* {loading ? <div>로딩중</div> : <div ref={ref} />} */}
     </div>
   );
 }

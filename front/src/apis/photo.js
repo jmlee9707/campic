@@ -67,3 +67,11 @@ export const photoDelete = async params => {
   const res = await API_PHOTO.delete(`/photo/${params.boardId}`);
   return res.data;
 };
+
+// 특정 유저 포토 리스트
+export const getMyPhoto = async email => {
+  console.log(1111);
+  const res = await API_PHOTO.get(`/photo/${email}`);
+  console.log(res);
+  return res.data;
+};

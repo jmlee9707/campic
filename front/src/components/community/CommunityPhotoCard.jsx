@@ -30,7 +30,7 @@ function CommunityPhotoCard({
           {/* 프로필 이미지 */}
           <div className="image_header_profile flex">
             <div className="image_header_profile_pic">
-              <img src={profileImgPath} alt="프로필이미지" />
+              <img src={[profileImgPath]} alt="프로필이미지" />
             </div>
             <div className="image_header_profile_name notoMid fs-20">{nickname}</div>
           </div>
