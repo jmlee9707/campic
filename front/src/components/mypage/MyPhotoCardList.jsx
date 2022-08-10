@@ -21,7 +21,7 @@ function PhotoCardList() {
     }
     getAndSetMyPhotoList();
   }, []);
-  console.log(myPhotoList);
+  // console.log(myPhotoList);
 
   return (
     <div className="photoList flex">
@@ -30,7 +30,7 @@ function PhotoCardList() {
           <MyPhotoCard key={v4()} blobFile={blobFile} boardId={boardId} />
         ))}
       {myPhotoList.length === 0 && (
-        <div>감성 넘치는 사진을 자랑 해 보세요!</div>
+        <div className="photoList_nope notoMid fs-32">감성 넘치는 사진을 자랑 해 보세요!</div>
       )}
     </div>
   );
