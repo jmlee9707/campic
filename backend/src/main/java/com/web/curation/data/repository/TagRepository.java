@@ -33,6 +33,7 @@ public interface TagRepository  extends JpaRepository<CampTag, Integer> {
             "where t.hashtag in :taglist " //+
 //            "group by t.tagGroup "
     )
-    Page<TagDto.SearchedTag> findDistinctByAndHashtagIn( List<String> taglist, PageRequest pageRequest);
+    List<TagDto.SearchedTag> findDistinctByAndHashtagIn( List<String> taglist);
 
 }
+
