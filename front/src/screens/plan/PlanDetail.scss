@@ -15,13 +15,9 @@
     color: $GRAY-40;
   }
   &_subtitle {
-<<<<<<< HEAD
-    justify-content: space-between;
-=======
     display: flex;
     justify-content: space-between;
     align-items: center;
->>>>>>> origin/FE_fix_이정민
     &_writer {
       color: $GRAY-67;
       // padding: (9px) (9px);

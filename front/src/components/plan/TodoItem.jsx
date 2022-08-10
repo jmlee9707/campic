@@ -4,11 +4,7 @@ import check from "@images/icon/done_black.svg";
 import checkGray from "@images/icon/done_gray.svg";
 import { deleteTodo, modifyTodo } from "../../apis/plan";
 
-<<<<<<< HEAD
-function TodoItem({ task, done, saveId, todoId, writer }) {
-=======
 function TodoItem({ task, done, saveId, todoId, writer, removeItem }) {
->>>>>>> origin/FE_fix_이정민
   const [isDone, setIsDone] = useState(done);
   const userId = useSelector(state => state.user.email);
 
@@ -18,10 +14,7 @@ function TodoItem({ task, done, saveId, todoId, writer, removeItem }) {
   };
   const deleteTask = async () => {
     await deleteTodo(todoId, saveId);
-<<<<<<< HEAD
-=======
     removeItem(todoId);
->>>>>>> origin/FE_fix_이정민
   };
 
   return (
