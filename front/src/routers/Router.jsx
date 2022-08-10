@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import MainNavBar from "@components/common/MainNavBar";
 // import CommunityNavBar from "@components/community/CommunityNavBar"
 import Home from "@screens/Home";
-
+import { useSelector } from "react-redux";
 // user
 import Login from "@screens/user/Login";
 import Join from "@screens/user/Join";
@@ -39,6 +39,10 @@ import PlanDetail from "@screens/plan/PlanDetail";
 import Community from "./Community";
 
 function Router() {
+
+  const flag = useSelector(state => state.user.email);
+
+
   return (
     <>
       <MainNavBar />
@@ -92,11 +96,16 @@ function Router() {
           <Route index element={<CampingMain />} />
           <Route path="detail/:id" element={<CampingDetail />} />
         </Route>
-
+        {flag &&
         <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
         </Route>
+        }
+        {/* <Route path="/plan/*">
+          <Route index element={<PlanMain />} />
+          <Route path="detail/:id" element={<PlanDetail />} />
+        </Route> */}
 
         {/* mypage */}
         <Route path="/mypage/*">
@@ -108,6 +117,7 @@ function Router() {
           <Route path="info/edit" element={<InfoEdit />} />
         </Route>
       </Routes>
+
     </>
   );
 }

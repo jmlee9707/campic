@@ -4,11 +4,13 @@ import React, { useEffect } from "react";
 
 // const { kakao } = window;
 
-function Location() {
+function Location({pos}) {
+
   useEffect(() => {
+    // console.log(pos.mapX, pos.mapY);
     const container = document.getElementById("map");
     const options = {
-      center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488),
+      center: new kakao.maps.LatLng(pos.mapX, pos.mapY),
       level: 3
     };
 
@@ -23,8 +25,8 @@ function Location() {
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
     const markerPosition = new kakao.maps.LatLng(
-      37.365264512305174,
-      127.10676860117488
+      pos.mapX,
+      pos.mapY
     );
     const marker = new kakao.maps.Marker({
       position: markerPosition

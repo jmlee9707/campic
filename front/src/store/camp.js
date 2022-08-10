@@ -6,7 +6,9 @@ export const initialCampState = {
   keyword: null,
   tag: [],
   sido: null,
-  gugun: null
+  gugun: null,
+  lati: null,
+  longi: null
 };
 
 // camp store 생성
@@ -33,10 +35,17 @@ const campReducer = createSlice({
     setLocaConditions: (state, { payload }) => {
       state.sido = payload.sido;
       state.gugun = payload.gugun;
-    }
+    },
+    setLocation: (state, { payload }) => {
+      state.lati = payload.lati;
+      state.longi = payload.longi;
+    },
+
   }
 });
+export const selectLocation = (state) => state.campSearch;
 
-export const { reset, setCampList, setTagConditions, setLocaConditions } =
+
+export const { reset, setCampList, setTagConditions, setLocaConditions, setLocation } =
   campReducer.actions;
 export default campReducer.reducer;

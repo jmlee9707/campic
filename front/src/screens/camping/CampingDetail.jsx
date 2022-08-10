@@ -3,12 +3,14 @@ import "./CampingDetail.scss";
 import Location from "@components/common/Location";
 import AddPlanModal from "@components/camping/AddPlanModal";
 import temp from "@images/temp_1.jpeg";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { selectLocation } from "@store/camp";
 import { campDetailInfo } from "@apis/camp";
 
 function CampingDetail() {
-  const distance = "77";
-
+  const pos = useSelector(selectLocation);
+  const [dist, setDist] = useState(0); // 거리 정보
   const [campInfo, setCampInfo] = useState(); // 캠핑장 정보
   const { id: campId } = useParams(); // 파라미터 정보 가져오기
 
@@ -25,9 +27,25 @@ function CampingDetail() {
   const moveReserve = () => {
     window.open(`${campInfo.resveUrl}`);
   };
+
+  // 거리 계산 함수
+  const calDist = (curLati1, curLongi1, targetLati, targetLongi) => {
+    console.log(curLati1, curLongi1);
+    const curLati = 35.2051912;
+    const curLongi = 126.8116475;
+    const RADIUS = 6371;
+    const LAD = Math.PI / 180;
+    const DELTALATI = Math.abs((curLati - targetLati)*LAD);
+    const DELTALONGI = Math.abs((curLongi - targetLongi)*LAD);
+    const innervalue = Math.sin(DELTALATI / 2)*Math.sin(DELTALATI / 2) + Math.cos(curLati*LAD)*Math.cos(targetLati*LAD)*Math.sin(DELTALONGI/2)*Math.sin(DELTALONGI/2);
+    return Math.floor(2 * RADIUS * Math.asin(Math.sqrt(innervalue)));
+  };
   // 캠핑장 정보 가져오기
   const getCampDetailInfo = async () => {
     const res = await campDetailInfo(campId);
+    // 현재 위치 받아오기
+    // 캠핑장 위치와 함께 계산하기
+    setDist(calDist(pos.lati, pos.longi, res.mapY, res.mapX));
     setCampInfo(res);
   };
 
@@ -63,7 +81,7 @@ function CampingDetail() {
             </div>
             <div className="detail_camp_sub notoMid fs-20 flex">
               <div className="detail_camp_sub_add">{campInfo.addr1}</div>
-              <div className="detail_camp_sub_distance">~{distance}km</div>
+              {dist > 0 && <div className="detail_camp_sub_distance">~{dist}km</div>}
             </div>
             <div className="detail_camp_sub notoMid fs-20">
               {campInfo.tel !== "\\N" && campInfo.tel}
@@ -136,8 +154,8 @@ function CampingDetail() {
               <div className="detail_camp_map_title notoBold fs-30">약도</div>
               <Location
                 className="detail_map_img"
-                mapX={campInfo.mapX}
-                mapY={campInfo.mapY}
+                pos={{mapY : campInfo.mapX, mapX : campInfo.mapY}}
+                
               />
             </div>
           </div>
