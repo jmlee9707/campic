@@ -26,8 +26,8 @@ function PhotoCardList() {
   return (
     <div className="photoList flex">
       {myPhotoList.length !== 0 &&
-        myPhotoList.map(({ blobFile }) => (
-          <MyPhotoCard key={v4()} blobFile={blobFile} />
+        myPhotoList.map(({ blobFile, boardId }) => (
+          <MyPhotoCard key={v4()} blobFile={blobFile} boardId={boardId} />
         ))}
       {myPhotoList.length === 0 && (
         <div>감성 넘치는 사진을 자랑 해 보세요!</div>
