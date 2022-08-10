@@ -44,7 +44,7 @@ import CommunityNavBar from "@components/community/CommunityNavBar";
 import CommunityMain from "@screens/community/CommunityMain";
 import PhotoHome from "@screens/community/PhotoHome";
 // import TalkHome from "@screens/community/TalkHome"
-// import PhotoRegist from "@screens/community/PhotoRegist";
+import PhotoRegist from "@screens/community/PhotoRegist";
 import TalkRegist from "@screens/community/TalkRegist";
 import PhotoDetail from "@screens/community/PhotoDetail";
 import PhotoModify from "@screens/community/PhotoModify";
@@ -119,6 +119,7 @@ function Router() {
           <Route path="/board/*">
             <Route index element={<CommunityMain />} />
             <Route path="photo/home" element={<PhotoHome />} />
+            <Route path="photo/regist" element={<PhotoRegist />} />
             {/* <Route path="talk/home" element={<TalkHome />} /> */}
             <Route path="talk/regist" element={<TalkRegist />} />
             <Route path="photo/detail/:id" element={<PhotoDetail />} />
