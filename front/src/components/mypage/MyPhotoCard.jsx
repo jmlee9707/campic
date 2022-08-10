@@ -10,11 +10,11 @@ function MyPhotoCard({blobFile, boardId}) {
     navigate(`/board/photo/detail/${boardId}`)
   }
   return (
-    <div className="photoCard flex">
-      <button type="button" onClick={onClickPhoto}>
+    <button type="button" onClick={onClickPhoto}>
+      <div className="photoCard">
         <img src={[blobFile]} alt="내 이미지" />
-      </button>
-    </div>
+      </div>
+    </button>
   );
 }
 

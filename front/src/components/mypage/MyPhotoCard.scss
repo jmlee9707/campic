@@ -4,6 +4,9 @@
   overflow: hidden;
   border-radius: vw(8px);
   margin-bottom: vw(32px);
+  // padding-right: vw(32px);
+  
+  // margin-right: vw(22px);
 
   img {
     width: 100%;
@@ -12,8 +15,9 @@
 }
 
 .photoList {
-  //   background-color: rebeccapurple;
+  // background-color: rebeccapurple;
   flex-wrap: wrap;
-  justify-content: space-between;
+  // flex-direction: column;
+  // justify-content: space-between;
   width: vw(830px);
 }
