@@ -13,7 +13,7 @@ function CommunityPhotoList() {
   const [loading, setLoading] = useState(false);
   const [ref, inView] = useInView();
 
-  useEffect(async() => {
+  useEffect(async () => {
     // await 를 사용하기 위해서 Async 선언
     const res = await getPhoto(page);
     console.log(res);
@@ -21,13 +21,14 @@ function CommunityPhotoList() {
     setLoading(false);
   }, [page]);
   // console.log(photoList);
-  
+
   useEffect(() => {
     if (inView && !loading) {
       setLoading(true);
       setPage(page + 1);
     }
   }, [inView, loading]);
+  console.log(ref);
 
   return (
     <div className="maincomupiclist flex">
