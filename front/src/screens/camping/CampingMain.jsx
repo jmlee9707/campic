@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 // import CampingList from "@components/camping/CampingList";
 import "./CampingMain.scss";
+import { v4 } from "uuid";
 // import { useSelector } from "react-redux";
-import banner from "@images/temp_1.jpeg"; // banner 이미지
+// import banner from "@images/temp_1.jpeg"; // banner 이미지
 import {
   CampingSearchLoca,
   CampingSearchTag,
@@ -18,66 +19,82 @@ function CampingMain() {
   // const keywordList = useSelector(state => state.campSearch.click.keywordClick);
   // const [tagList, setTagList] = useState(false);
   // const [locaList, setLocaList] = useState(false);
-  const [visibleTag, setVisibleTag] = useState(true);
-  const [visibleLoca, setVisibleLoca] = useState(false);
 
   // camplist props
   // campInfos  = [];
+  const tops = ["싸피 캠핑장", "프로젝트 캠핑장", "연관검색어3", "연관검색어4"];
+  const topList = tops.map(top => (
+    <div
+      className="camp_top_banner_favo_camp_list notoMid fs-14 flex align-center justify-center"
+      key={v4()}
+    >
+      {top}
+    </div>
+  ));
 
   return (
     <div className="container flex justify-center">
-      <div className="main">
-        <div className="main_title flex notoBold fs-32">
-          <div className="main_title_left">
+      <div className="camp">
+        <div className="camp_top_banner flex column align-center justify-center">
+          <div className="opac" />
+          <div className="camp_top_banner_title flex column align-center notoBold fs-40">
+            <p>캠핑 준비하세요?</p>
+            <p>맞춤 검색으로 찾아보세요!</p>
+          </div>
+          <div className="camp_top_banner_favo flex column align-center">
+            <div className="camp_top_banner_favo_camp notoBold fs-14 flex align-center justify-center">
+              인기 캠핑장
+            </div>
+            <div className="flex"> {topList}</div>
+          </div>
+        </div>
+        {/* <div className="camp_search flex notoBold fs-32">
+          <div className="camp_search_left">
             <CampingSearchAll />
           </div>
-          <div className="main_title_right">
-            <img src={banner} alt="banner" title="banner" />
-          </div>
-        </div>
-        <div className="main_type">
-          <div className="main_type_title flex align-center">
-            <div className="main_type_title_txt  fs-32 notoBold">맞춤 검색</div>
-            <div className="main_type_title_select">
-              {/* 토글로 할까 버튼으로 할까~ */}
-              <button
-                type="button"
-                className={
-                  visibleTag
-                    ? "main_type_title_select_tag_t notoBold fs-16"
-                    : "main_type_title_select_tag_f notoBold fs-16"
-                }
-                onClick={() => {
-                  setVisibleTag(true);
-                  setVisibleLoca(false);
-                }}
-              >
-                태그별
-              </button>
-              <button
-                type="button"
-                className={
-                  visibleLoca
-                    ? "main_type_title_select_loca_t notoBold fs-16"
-                    : "main_type_title_select_loca_f notoBold fs-16"
-                }
-                onClick={() => {
-                  setVisibleLoca(true);
-                  setVisibleTag(false);
-                }}
-              >
-                지역별
-              </button>
+        </div> */}
+
+        <div className="camp_type">
+          <div className="camp_type_search">
+            <div className="camp_type_search_text fs-32 notoBold">
+              캠핑장 찾고 계신가요?
+            </div>
+
+            <div className="camp_type_search_select">
+              <div className="camp_type_search_select_box flex">
+                <button
+                  type="button"
+                  className="camp_type_search_select_box_btn notoBold fs-16"
+                >
+                  지역별
+                </button>
+                <CampingSearchLoca />
+              </div>
+              <div className="camp_type_search_select_box flex">
+                <button
+                  type="button"
+                  className="camp_type_search_select_box_btn notoBold fs-16"
+                >
+                  이름
+                </button>
+                <CampingSearchAll />
+              </div>
+              <div className="camp_type_search_select_box flex">
+                <button
+                  type="button"
+                  className="camp_type_search_select_box_btn notoBold fs-16"
+                >
+                  태그별
+                </button>
+                <CampingSearchTag />
+              </div>
             </div>
           </div>
-          <div className="main_type_search flex">
-            {visibleLoca && <CampingSearchLoca />}
-            {visibleTag && <CampingSearchTag />}
-          </div>
+          <div className="camp_type_search flex column" />
         </div>
-        <div className="main_list flex align-center">
-          <p className="main_list_title fs-32 notoBold">캠핑장 리스트</p>
-          <select type="text" className="main_list_sort fs-22 notoMid">
+        <div className="camp_list flex align-center">
+          <p className="camp_list_title fs-32 notoBold">캠핑장 리스트</p>
+          <select type="text" className="camp_list_sort fs-22 notoMid">
             <option value=" ">거리순</option>
             <option value="favorite">인기순</option>
             <option value="word">가나다순</option>

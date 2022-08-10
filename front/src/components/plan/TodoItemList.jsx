@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import check from "@images/icon/done_black.svg";
 // import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
-
 import TodoItem from "./TodoItem";
 
 import { getTodo, addTodo } from "../../apis/plan";

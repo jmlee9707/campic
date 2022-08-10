@@ -7,10 +7,10 @@ import {
   getSido,
   searchAll,
   getGun,
-  searchLocation,
+  // searchLocation,
   searchTag
 } from "../../apis/camp";
-import { reset, setTagConditions, setLocaConditions } from "../../store/camp";
+import { reset, setTagConditions } from "../../store/camp";
 
 export function CampingSearchAll() {
   const dispatch = useDispatch();
@@ -23,42 +23,38 @@ export function CampingSearchAll() {
     console.log(res);
     // }
   };
-  const tops = ["싸피 캠핑장", "연관검색어2", "연관검색어3", "연관검색어4"];
-  const topList = tops.map(top => (
-    <div
-      className="main_title_left_word_detail flex align-center justify-center"
-      key={v4()}
-    >
-      {top}
-    </div>
-  ));
+  // const tops = ["싸피 캠핑장", "연관검색어2", "연관검색어3", "연관검색어4"];
+  // const topList = tops.map(top => (
+  //   <div
+  //     className="main_title_left_word_detail flex align-center justify-center"
+  //     key={v4()}
+  //   >
+  //     {top}
+  //   </div>
+  // ));
   return (
-    <>
-      <div className="main_title_left_txt">캠핑장 찾고 계신가요?</div>
-      <div className="main_title_left_search flex">
-        <input
-          ref={keywordRef}
-          type="text"
-          className="main_title_left_search_input notoMid fs-16"
-          placeholder="캠핑장을 검색해주세요"
-        />
-        <button
-          onClick={searchKeyword}
-          type="button"
-          className="main_title_left_search_btn flex align-center justify-center"
-        >
-          <img src={search} alt="button" />
-        </button>
-      </div>
-      <div className="main_title_left_word flex fs-14 notoMid">{topList}</div>
-    </>
+    <div className="search_keyword flex">
+      <input
+        ref={keywordRef}
+        type="text"
+        className="search_keyword_input notoMid fs-16"
+        placeholder="캠핑장을 검색해주세요"
+      />
+      <button
+        onClick={searchKeyword}
+        type="button"
+        className="search_keyword_btn flex align-center justify-center"
+      >
+        <img src={search} alt="button" />
+      </button>
+    </div>
   );
 }
 
 // ==================================
 // 지역별 검색 컴포넌트
 export function CampingSearchLoca() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [doCodeList, setDoCodeList] = useState([]); // 시코드
   const [gunCodeList, setGunCodeList] = useState([]); // 군구 코드
   const [doName, setDoName] = useState("");
@@ -90,16 +86,16 @@ export function CampingSearchLoca() {
     console.log(gunName);
   };
 
-  // 지역별 검색
-  const searchLoca = async () => {
-    const res = await searchLocation(
-      `${encodeURIComponent(doName)}`,
-      `${encodeURIComponent(gunName)}`
-    );
-    console.log(res);
-    // redux에 location 값 전달
-    dispatch(setLocaConditions({ sido: doName, gugun: gunName }));
-  };
+  // // 지역별 검색
+  // const searchLoca = async () => {
+  //   const res = await searchLocation(
+  //     `${encodeURIComponent(doName)}`,
+  //     `${encodeURIComponent(gunName)}`
+  //   );
+  //   console.log(res);
+  //   // redux에 location 값 전달
+  //   dispatch(setLocaConditions({ sido: doName, gugun: gunName }));
+  // };
 
   return (
     <div className="search_loca">
@@ -141,9 +137,9 @@ export function CampingSearchLoca() {
           </option>
         ))}
       </select>
-      <button type="button" className="fs-18 notoBold" onClick={searchLoca}>
+      {/* <button type="button" className="fs-18 notoBold" onClick={searchLoca}>
         검색
-      </button>
+      </button> */}
     </div>
   );
 }
@@ -168,6 +164,7 @@ export function CampingSearchTag() {
     "무선인터넷",
     "물놀이장",
     "반려견가능",
+    "스키",
     "반려견불가능",
     "봄",
     "봄꽃여행",
@@ -176,7 +173,6 @@ export function CampingSearchTag() {
     "섬",
     "수상레저",
     "숲",
-    "스키",
     "액티비티",
     "여름",
     "여름물놀이",
@@ -186,7 +182,6 @@ export function CampingSearchTag() {
     "일몰명소",
     "일반야영장",
     "일출명소",
-    "자동차야영장",
     "장작판매",
     "전기",
     "카라반",
@@ -194,7 +189,8 @@ export function CampingSearchTag() {
     "항공레저",
     "해변",
     "호수",
-    "장비대여"
+    "장비대여",
+    "자동차야영장"
   ];
 
   // const [selectTags, setSelectTags] = useState([]); // 선택된 태그들 보내기
