@@ -41,10 +41,8 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String tel;
 
-    @Column(nullable = false)
     private String birth;
 
-    @Column(nullable = false)
     private byte[] profileImg;
 
     @Column(nullable = false)
