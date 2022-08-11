@@ -37,20 +37,67 @@ function MainNavBar() {
   };
 
   const [openTool, setOpenTool] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+
   const openTooltip = () => {
     setOpenTool(!openTool);
   };
+  const openMobile = () => {
+    setOpenMenu(!openMenu);
+  };
   const moveEdit = () => {
     navigate("/infoedit");
-    setOpenTool(!openTool);
+    if (openTool === true) {
+      setOpenTool(!openTool);
+    }
+    if (openMenu === true) {
+      setOpenMenu(!openMenu);
+    }
+  };
+  const moveCommu = () => {
+    navigate("/board");
+    if (openTool === true) {
+      setOpenTool(!openTool);
+    }
+    if (openMenu === true) {
+      setOpenMenu(!openMenu);
+    }
+  };
+  const moveCamp = () => {
+    navigate("/camping");
+    if (openTool === true) {
+      setOpenTool(!openTool);
+    }
+    if (openMenu === true) {
+      setOpenMenu(!openMenu);
+    }
+  };
+  const movePlan = () => {
+    navigate("/plan");
+    if (openTool === true) {
+      setOpenTool(!openTool);
+    }
+    if (openMenu === true) {
+      setOpenMenu(!openMenu);
+    }
   };
   const moveInfo = () => {
     navigate("/infoedit");
-    setOpenTool(!openTool);
+    if (openTool === true) {
+      setOpenTool(!openTool);
+    }
+    if (openMenu === true) {
+      setOpenMenu(!openMenu);
+    }
   };
   const moveMyFeed = () => {
     navigate("/mypage/myfeed");
-    setOpenTool(!openTool);
+    if (openTool === true) {
+      setOpenTool(!openTool);
+    }
+    if (openMenu === true) {
+      setOpenMenu(!openMenu);
+    }
   };
 
   return (
@@ -99,7 +146,7 @@ function MainNavBar() {
                     className={({ isActive }) => activeClassName(isActive)}
                     to="/camping"
                   >
-                    <p>캠핑장</p>
+                    캠핑장
                   </NavLink>
                   <NavLink
                     className={({ isActive }) => activeClassName(isActive)}
@@ -158,7 +205,11 @@ function MainNavBar() {
                   </button>
                 </>
               )}
-              <button type="button" className="right_nav_menu">
+              <button
+                type="button"
+                className="right_nav_menu"
+                onClick={openMobile}
+              >
                 <img src={menuIcon} alt="menu" />
               </button>
             </nav>
@@ -192,6 +243,60 @@ function MainNavBar() {
                   사이트 정보
                 </button>
               </div>
+            </div>
+          )}
+          {openMenu && (
+            <div className="mobile_menu flex column ">
+              <button
+                type="button"
+                className="mobile_menu__link fs-16"
+                onClick={moveCamp}
+              >
+                캠핑장
+              </button>
+              <button
+                type="button"
+                className="mobile_menu__link fs-16"
+                onClick={movePlan}
+              >
+                계획하기
+              </button>
+              <button
+                type="button"
+                className="mobile_menu__link fs-16"
+                onClick={moveCommu}
+              >
+                커뮤니티
+              </button>
+              {Profile.email === null && (
+                <>
+                  <div className="divide" />
+                  <button
+                    type="button"
+                    to="/mypage/myfeed"
+                    className="mobile_menu__link fs-16"
+                    onClick={moveMyFeed}
+                  >
+                    내 계정
+                  </button>
+                  <button
+                    type="button"
+                    to="/infoedit"
+                    className="mobile_menu__link fs-16"
+                    onClick={moveEdit}
+                  >
+                    개인정보 수정
+                  </button>
+                  <button
+                    type="button"
+                    to="/myfeed"
+                    className="mobile_menu__link fs-16"
+                    onClick={moveInfo}
+                  >
+                    사이트 정보
+                  </button>
+                </>
+              )}
             </div>
           )}
         </div>

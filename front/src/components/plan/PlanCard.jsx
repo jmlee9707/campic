@@ -11,20 +11,24 @@ function PlanCard({
   endDate,
   campId,
   saveId,
+  firstImageUrl,
   past
 }) {
   console.log(campId);
-  console.log(past);
+  console.log(firstImageUrl);
 
   const isPast = () => {
     const prefix = "card_img";
-    return past ? `${prefix}active` : `${prefix}unactive`;
+    return past ? `${prefix} active` : `${prefix} unactive`;
   };
   return (
     <Link to={`/plan/detail/${saveId}`}>
-      <div className="card flex column">
+      <div className="card column">
         <div className={() => isPast()}>
-          <img src={planImg} alt="coverImg" />
+          {firstImageUrl === "\\N" && <img src={planImg} alt="coverImg" />}
+          {firstImageUrl !== "\\N" && (
+            <img src={firstImageUrl} alt="coverImg" />
+          )}
         </div>
 
         <div className="card_txt flex column">

@@ -44,7 +44,8 @@ function PlanDetail() {
         <div className="plan_detail_subtitle">
           <div className="plan_detail_subtitle_days roBold fs-20">
             {/* {start} ~ {end} */}
-            {planInfo && planInfo.startDate.substr(0, 10)}
+            {planInfo && planInfo.startDate.substr(0, 10)} ~
+            {planInfo && planInfo.endDate.substr(0, 10)}
             {/* 2022-07-14 ~ 2022-08-12 */}
           </div>
           <div className="plan_detail_subtitle_writer notoMid fs-18">
@@ -54,7 +55,12 @@ function PlanDetail() {
         <div className="plan_detail_box flex">
           <div className="plan_detail_box_right">
             <div className="plan_detail_box_right_img">
-              <img src={mainImg} alt="coverImg" />
+              {planInfo.firstImageUrl !== "\\N" && (
+                <img src={planInfo.firstImageUrl} alt="coverImg" />
+              )}
+              {planInfo.firstImageUrl === "\\N" && (
+                <img src={mainImg} alt="coverImg" />
+              )}
             </div>
             <p className="plan_detail_box_right_campName notoBold fs-30">
               {planInfo.campName}
