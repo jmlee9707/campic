@@ -41,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public boolean register(UserDto registerUser) {
         LOGGER.info("[getSignUpResult] 회원 가입 정보 전달");
-        User ssafy = userRepository.getByEmail("ssafy@naver.com");
+
 //        LOGGER.info(registerUser.getUserName());
         String role = registerUser.getAuth();
         User user = new User();
@@ -51,7 +51,7 @@ public class MemberServiceImpl implements MemberService {
         user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
         user.setTel(registerUser.getTel());
         user.setBirth("");
-        user.setProfileImg(ssafy.getProfileImg());
+
         user.setJoinDate(LocalDateTime.now());
         user.setIsSocial("default");
         if (role.equalsIgnoreCase("admin")) {

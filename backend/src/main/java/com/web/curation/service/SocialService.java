@@ -186,7 +186,7 @@ public class SocialService {
 
         // DB에 중복되는 email 있는지 확인
         boolean isUser = userRepository.existsByEmail(id);
-        User defaultUser = userRepository.getByEmail("ssafy@naver.com");
+
         // 회원아니면 회원가입 시키기
         if(!isUser){
 
@@ -202,7 +202,7 @@ public class SocialService {
             user.setRoleType(RoleType.ROLE_USER);
             user.setTel("");
             user.setBirth("");
-            user.setProfileImg(defaultUser.getProfileImg());
+
             user.setJoinDate(LocalDateTime.now());
             user.setIsSocial(social);
 
