@@ -201,7 +201,6 @@ public class SocialService {
             user.setPassword(encodedPassword);
             user.setRoleType(RoleType.ROLE_USER);
             user.setTel("");
-            user.setBirth("");
 
             user.setJoinDate(LocalDateTime.now());
             user.setIsSocial(social);

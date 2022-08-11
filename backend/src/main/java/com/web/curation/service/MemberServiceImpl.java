@@ -50,7 +50,6 @@ public class MemberServiceImpl implements MemberService {
         user.setNickname(registerUser.getNickname());
         user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
         user.setTel(registerUser.getTel());
-        user.setBirth("");
 
         user.setJoinDate(LocalDateTime.now());
         user.setIsSocial("default");
@@ -115,8 +114,11 @@ public class MemberServiceImpl implements MemberService {
         userDto.setNickname(user.getNickname());
 //        userDto.setPassword(user.getPassword()); ==> 이 값은 여기서 안줘도 될거 같음
         userDto.setTel(user.getTel());
-        userDto.setBirth(user.getBirth());
         
+        if(user.getBirth() != null){
+            userDto.setBirth(user.getBirth());
+        }
+
         if(user.getProfileImg()!=null){
             userDto.setProfileImg(user.getProfileImg());
             userDto.setBlobProfile(encodeBlobToBase64(user.getProfileImg()));
