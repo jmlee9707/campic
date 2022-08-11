@@ -68,6 +68,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         configuration.addAllowedOrigin("http://localhost:3000");
         configuration.addAllowedOrigin("http://i7c109.p.ssafy.io/");
         configuration.addAllowedOrigin("https://i7c109.p.ssafy.io/");
+        configuration.addAllowedOrigin("https://campic.site/");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(true);
