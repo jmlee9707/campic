@@ -57,17 +57,17 @@
         margin: vw(32px) 0 vw(40px) 0;
       }
     }
-  }
-  &_login {
-    margin-top: vw(180px);
-    &_txt {
-      margin-bottom: vw(60px);
-    }
-    &_btn {
-      background-color: $MAIN;
-      color: $WHITE;
-      padding: vw(16px) vw(28px);
-      border-radius: vw(18px);
+    &_login {
+      margin-top: vw(180px);
+      &_txt {
+        margin-bottom: vw(60px);
+      }
+      &_btn {
+        background-color: $MAIN;
+        color: $WHITE;
+        padding: vw(16px) vw(28px);
+        border-radius: vw(18px);
+      }
     }
   }
 }

@@ -1,42 +1,137 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { React, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+/* eslint-disable no-shadow */
+import React, { useState, useRef } from "react";
+// import TalkContent from "@components/community/TalkContent";
+import { Link, useNavigate } from "react-router-dom";
+import imageCompression from "browser-image-compression";
 import "./TalkRegist.scss";
 // import camera from "@images/logo/logo_photo_black.svg";
 import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
-
+import { CKEditor } from "ckeditor4-react";
+import { writeTalk } from "../../apis/talk";
 // import CommunityNavBar from "@components/community/CommunityNavBar";
 
 function TalkRegist() {
-  const [count, setCount] = useState(0);
-  const titleRef = useRef();
-
-  // const increaseCount = () => {
-  //   setCount(count+1)
-  // }
-
-  // const decreaseCount = () => {
-  //   setCount(count-1)
-  // }
-  // 카메라 이미지에 파일 인풋 달기
+  const navigate = useNavigate();
   const photoInput = useRef();
-  const handleclick = () => {
+  const handleClick = () => {
     photoInput.current.click();
   };
-  // 사진 미리보기
-
-  const [fileImage, setFileImage] = useState("");
+  const [fileImage, setFileImage] = useState(""); // 파일이미지
   const saveFileImage = event => {
-    // @ts-ignore
     setFileImage(URL.createObjectURL(event.target.files[0]));
   };
-
-  const countSize = () => {
-    const temp = titleRef.current.value;
-    setCount(temp.length);
+  const titleRef = useRef(); // 제목 ref
+  const tagRef = useRef(); // 태그 ref
+  const [talkContent, setTalkContent] = useState({
+    // title: "",
+    content: ""
+  });
+  const [titleLength, setTitleLength] = useState(0);
+  const getValue = e => {
+    setTitleLength(e.target.value.length);
+    if (e.target.value.length > 30) {
+      console.log("30자를 초과합니다.");
+    }
+  };
+  // const getValue = e => {
+  //   const { name, value } = e.target;
+  //   setTalkContent({
+  //     ...talkContent,
+  //     [name]: value
+  //   });
+  //   console.log(talkContent);
+  //   setNameLength({
+  //     ...nameLength,
+  //     [name]: value.length
+  //   });
+  //   console.log(nameLength);
+  // };
+  const submit = async () => {
+    // eslint-disable-next-line no-use-before-define
+    actionImgCompress(photoInput.current.files[0]);
+  };
+  const actionImgCompress = async fileImage => {
+    const options = {
+      maxSizeMB: 0.2,
+      maxWidthOrHeight: 1170,
+      useWebWorker: true
+    };
+    try {
+      const compressedFile = await imageCompression(fileImage, options);
+      const reader = new FileReader();
+      reader.readAsDataURL(compressedFile);
+      reader.onloadend = () => {
+        const base64data = reader.result;
+        // console.log(base64data)
+        // eslint-disable-next-line no-use-before-define
+        handlingDataForm(base64data);
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handlingDataForm = async dataURI => {
+    const byteString = atob(dataURI.split(",")[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([ia], {
+      type: "image/jpeg"
+    });
+    const file = new File([blob], "image.jpg");
+    const formData = new FormData();
+    formData.append("nickname", "test");
+    formData.append("title", titleRef.current.value);
+    formData.append("hashtag", tagRef.current.value);
+    formData.append("fileName", "baek");
+    formData.append("file", file);
+    formData.append("contents", talkContent.content);
+    // console.log(formData)
+    try {
+      const res = await writeTalk(formData);
+      if (res.message === "success") {
+        navigate(`/board/talk/detail/${res.talkId}`);
+        // console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  // }
+  // const submitTalk = async () => {
+  //   const formData = new FormData();
+  //   formData.append("nickname", "test");
+  //   formData.append("title", titleRef.current.value);
+  //   formData.append("hashtag", tagRef.current.value);
+  //   formData.append("fileName", "baek");
+  //   formData.append("file", photoInput.current.files[0]);
+  //   formData.append("contents", talkContent.content);
+  //   // console.log(formData)
+  //   try {
+  //     const res = await writeTalk(formData);
+  //     if (res.message === "success") {
+  //       console.log("success");
+  //     }
+  //     navigate(`/board/talk/detail/${res.talkId}`);
+  //   } catch (error) {
+  //     console.log("error occur");
+  //     console.log(error)
+  //   }
+  // };
+  // const consoleTalk = () => {
+  //   const formData = new FormData();
+  //   formData.append("nickname", "yaho");
+  //   formData.append("title", titleRef.current.value);
+  //   formData.append("file", photoInput.current.files[0]);
+  //   formData.append("fileName", "baek");
+  //   formData.append("content", talkContent.content);
+  //   formData.append("hashtag", tagRef.current.value);
+  //   console.log(formData);
+  // };
   return (
     <div className="container flex">
       {/* <CommunityNavBar /> */}
@@ -44,16 +139,14 @@ function TalkRegist() {
         <div className="regist_title notoBold fs-32">글 등록하기</div>
         <div className="regist_img flex justify-center">
           {/* 사진 업로드 박스 */}
-          <div className="regist_img_cover flex align-center justify-center" onClick={handleclick}>
-            {/* <img src={camera} alt="camera" /> */}
-            {/* 카메라 로고 컴포넌트화 */}
+          <button
+            className="regist_img_cover flex align-center justify-center"
+            onClick={handleClick}
+            type="button"
+          >
+            {!fileImage && <Camera className="camera" fill="#DBDBDB" />}
             {!fileImage && (
-              <Camera className="camera" fill="#DBDBDB" />
-            )}
-            {!fileImage && (
-              <div className="regist_img_cover_sub fs-28 notoBold">
-                커버 사진 업로드
-              </div>
+              <div className="regist_img_cover_sub fs-28 notoBold">Upload</div>
             )}
             {fileImage && (
               <div className="regist_img_cover_priv">
@@ -62,6 +155,8 @@ function TalkRegist() {
             )}
             <input
               type="file"
+              multiple="multiple"
+              encType="multipart/form-data"
               accept="image/jpg, image.jpeg, image.png"
               ref={photoInput}
               style={{ display: "none" }}
@@ -69,37 +164,81 @@ function TalkRegist() {
               id="imgFile"
               onChange={saveFileImage}
             />
-            {/* <div className="regist_img_cover_sub fs-20 notoBold">
-              커버 사진 업로드
-            </div> */}
-          </div>
-          {/* 사진 업로드 박스 끝 */}
+          </button>
         </div>
-
         {/* 제목 입력 박스 */}
         <div className="regist_text flex align-center justify-center">
           <div className="regist_text_name flex align-center">
             <input
+              ref={titleRef}
               type="text"
               className="regist_text_name_input notoMid fs-24"
-              id="subarea"
               placeholder="제목을 입력해주세요."
-              maxLength="30"
-              onChange={countSize}
-              // onKeyUp={increaseCount}
-              ref={titleRef}
+              name="title"
+              maxLength={29}
+              onChange={getValue}
             />
-            <span id="count" className="regist_text_name_count roReg fs-24">
-              ({count}/30)
-            </span>
+            <div
+              className="regist_text_name_count roReg fs-24"
+              // onChange={getValue}
+            >
+              {titleLength}/30
+            </div>
           </div>
           <div className="divide" />
-          <textarea
+          {/* <div className="regist_text_content_detail">
+            {viewContent.map(element => (
+              <div>
+                <h2>{element.title}</h2>
+                <div>{element.content}</div>
+              </div>
+            ))}
+          </div> */}
+          {/* <textarea
             type="textarea"
             className="regist_text_content_input notoReg fs-20"
             placeholder="내용을 입력해 주세요."
-          />
+          /> */}
+          {/* <h1>테스트1</h1> */}
+          <div className="regist_text_content_box" id="editor">
+            {/* <h1>테스트2</h1> */}
+            <CKEditor
+              initData=""
+              style={{ borderColor: "#467264" }}
+              // onChange = {(e) => {console.log(e.editor.getData()) }}
+              onChange={e => {
+                const data = e.editor.getData();
+                setTalkContent({
+                  ...talkContent,
+                  content: data
+                });
+              }}
+              config={{
+                readOnly: false,
+                uiColor: "#AADC6E",
+                height: 500,
+                fontSize_sizes: 100,
+                width: 900,
+                resize_enabled: false,
+                toolbar: [
+                  // ["Source"],
+                  ["Styles", "Format", "Font", "FontSize"],
+                  ["Bold", "Italic"],
+                  ["Undo", "Redo"],
+                  ["EasyImageUpload"]
+                  // ["About"]
+                ],
+                extraPlugins: "easyimage",
+                removePlugins: "image, elementspath",
+                cloudServices_uploadUrl:
+                  "https://91146.cke-cs.com/easyimage/upload/",
+                cloudServices_tokenUrl:
+                  "https://91146.cke-cs.com/token/dev/dhX4bynkAsQH3fJCt5hcTqSXRmjWtPGhgE2f?limit=10"
+              }}
+            />
+          </div>
           <input
+            ref={tagRef}
             type="text"
             placeholder="# 태그입력"
             className="regist_text_content_tag notoReg fs-16"
@@ -107,10 +246,17 @@ function TalkRegist() {
           <div className="divide" />
         </div>
         <div className="regist_btn flex align-center justify-center">
-          <Link to="/board/talk" className="regist_btn_back notoBold fs-24">
+          <Link to="/board/talk/home" className="regist_btn_back notoBold fs-24">
             뒤로가기
           </Link>
-          <button type="button" className="regist_btn_ok notoBold fs-24">
+          <button
+            type="button"
+            className="regist_btn_ok notoBold fs-24"
+            onClick={submit}
+            // onClick={() => {
+            //   setViewContent(viewContent.concat({ ...talkContent }));
+            // }}
+          >
             등록하기
           </button>
         </div>

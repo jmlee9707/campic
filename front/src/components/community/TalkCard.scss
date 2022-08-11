@@ -2,7 +2,7 @@
   width: vw(370px);
   // background-color: red;
   margin-bottom: vw(48px);
-  &_emg {
+  &_img {
     width: vw(370px);
     height: vw(230px);
     overflow: hidden;
@@ -53,9 +53,10 @@
     }
   }
 }
-
+.button {
+  padding: 0px;
+}
 .talkCardList {
-  // background-color: rebeccapurple;
   flex-wrap: wrap;
   justify-content: space-between;
   // width: vw(1170px);
