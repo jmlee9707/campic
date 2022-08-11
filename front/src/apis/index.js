@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { useDispatch } from "react-redux";
 // axios instance 생성
-const BASE_URL = "http://i7C109.p.ssafy.io:8081";
+const BASE_URL = "https://campic.site:8080";
 
 export const API = axios.create({
   baseURL: BASE_URL, // 기본 서버 url
@@ -11,7 +11,7 @@ export const API = axios.create({
 export const API_USER = axios.create({
   baseURL: BASE_URL, // 기본 서버 url
   headers: {
-    "Access-Control-Allow-Origin": "http://localhost:8081",
+    "Access-Control-Allow-Origin": "https://campic.site:8080",
     Authorization: `Bearer-${sessionStorage.getItem("accessToken")}`
     // "withCredentials": true
   }
@@ -38,7 +38,7 @@ API_USER.interceptors.response.use(
       const refreshToken = await sessionStorage.getItem("refreshToken");
       // console.log(refreshToken)
       const res = await axios({
-        url: "http://i7C109.p.ssafy.io:8081/token/silentRefresh",
+        url: "https://campic.site:8080/token/silentRefresh",
         method: "post",
         headers: {
           "Content-Type": "application/json"

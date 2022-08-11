@@ -42,8 +42,6 @@ function PhotoRegist() {
   };
 
   const actionImgCompress = async fileImage => {
-    console.log("압축할게");
-
     const options = {
       maxSizeMB: 0.2,
       maxWidthOrHeight: 720,
@@ -57,7 +55,6 @@ function PhotoRegist() {
       reader.onloadend = () => {
         // 변환 완료!
         const base64data = reader.result;
-        console.log("변경끝");
         console.log(base64data);
 
         // formData 만드는 함수
@@ -91,7 +88,7 @@ function PhotoRegist() {
 
     // 필요시 더 추가합니다.
     formData.append("nickname", profile.nickname);
-    formData.append("profileImg", profile.profileImg);
+    // formData.append("profileImg", profile.profileImg);
     formData.append("email", profile.userId);
     formData.append("content", textareaRef.current.value);
     formData.append("hashtag", tagRef.current.value);
@@ -109,7 +106,7 @@ function PhotoRegist() {
         navigate(`/board/photo/detail/${res.boardId}`);
       }
     } catch (error) {
-      console.log("왜 에러남");
+      console.log("왜 에러날까?");
     }
   };
 

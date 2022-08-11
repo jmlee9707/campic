@@ -6,7 +6,6 @@ import CommunityPhotoList from "@components/community/CommunityPhotoList";
 import { Link } from "react-router-dom";
 
 function PhotoHome() {
-
   return (
     <div className="container flex">
       <div className="picture flex align-center">
@@ -30,17 +29,13 @@ function PhotoHome() {
             <Link
               to="/board/photo/regist"
               className="picture_camp_title_btn notoBold fs-18"
-
             >
               글쓰기
             </Link>
           </div>
         </div>
-        <div className="comp flex">
-          <div className="comp_thr flex">
-            <CommunityPhotoList />
-          </div>
-        </div>
+
+        <CommunityPhotoList />
       </div>
     </div>
   );
