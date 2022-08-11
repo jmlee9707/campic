@@ -142,7 +142,7 @@ function InfoEdit() {
           <div className="divide" />
         </div>
         <div className="flex justify-center align-center column">
-          <div className="infoedit_box">
+          {Profile.isSocial === "default" && <div className="infoedit_box">
             <div className="infoedit_box_title notoBold fs-15">이메일</div>
             <input
               type="email"
@@ -150,7 +150,18 @@ function InfoEdit() {
               value={Profile.email}
               readOnly
             />
-          </div>
+          </div>}
+          {Profile.isSocial !== "default" &&<div className="infoedit_box">
+            <div className="infoedit_box_title notoBold fs-15">
+              소셜 로그인 여부
+            </div>
+            <input
+              type="text"
+              className="infoedit_box_input notoMid fs-14"
+              value={Profile.isSocial}
+              readOnly
+            />
+          </div>}
           <div className="infoedit_box">
             <div className="infoedit_box_title notoBold fs-15">닉네임</div>
             <input
@@ -215,17 +226,6 @@ function InfoEdit() {
               type="text"
               className="infoedit_box_input notoMid fs-14"
               placeholder={Profile.joinDate}
-              readOnly
-            />
-          </div>
-          <div className="infoedit_box">
-            <div className="infoedit_box_title notoBold fs-15">
-              소셜 로그인 여부
-            </div>
-            <input
-              type="text"
-              className="infoedit_box_input notoMid fs-14"
-              value={Profile.isSocial}
               readOnly
             />
           </div>
