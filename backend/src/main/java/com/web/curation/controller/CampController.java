@@ -46,25 +46,6 @@ public class CampController {
         return campService.filterCampList(searchList);
     }
 
-
-//    /* campList and Search */
-//    @PostMapping()
-//    public List<CampDto.CampList> filterCampList(@RequestBody SearchListDto.SearchList searchList){
-//        LOGGER.info("filterCampList - 호출");
-//        System.out.println("controller");
-//        System.out.println(searchList.getTags());
-//        return campService.filterCampList(searchList);
-//    }
-
-
-//    /* campList READ */
-//    @GetMapping()
-//    public List<CampDto.CampList> getAllCamps(@RequestParam int page){
-//        System.out.println(page);
-//        return campService.getAllCamps(page);
-//    }
-
-
     /* campDetail READ */
     @GetMapping("/{campId}")
     public ResponseEntity<CampDto.CampDetail> campDetailRead(@PathVariable("campId") int campId){
@@ -73,33 +54,10 @@ public class CampController {
 
     }
 
-//    /* camp 키워드 검색 결과 리스트 READ */
-//    @GetMapping("/search/{keyword}")
-//    public List<CampDto.CampList> keywordSearchCampList(@PathVariable("keyword") String keyword){
-//        System.out.println(keyword);
-//        return campService.keywordSearchCampList(keyword);
-//    }
-
-//    /* camp 지역 검색 결과 리스트 READ */
-//    @GetMapping("/search/{doname}/{sigungu}")
-//    public List<CampDto.CampList> regionSearchCampList(@PathVariable("doname") String doname, @PathVariable("sigungu") String sigungu){
-//        return campService.regionSearchCampList(doname, sigungu);
-//    }
-
-//    /* camp tag 검색 결과 리스트 READ */
-//    @GetMapping("/search/tagsearch")
-//    public List<CampDto.CampList> tagSearchCampList(@RequestParam List<String> taglist, @RequestParam int page){
-//        return campService.tagSearchCampList(taglist, page);
-//    }
-
     /*
     likedCampList(schedule) CREATE
-    로그인한 user id 필요함.
     */
     @PostMapping("/{campId}")
-//    public ResponseEntity save(@RequestBody ScheduleDto.Request dto, @LoginUser UserDto.Response user ) {
-//        return ResponseEntity.ok(postsService.save(dto, user.getNickname()));
-//    }
     public ResponseEntity save(@RequestBody ScheduleDto.Request dto,@RequestParam String email,@PathVariable("campId") int campId) {
         return ResponseEntity.ok(campService.save(dto,email,campId));
     }
