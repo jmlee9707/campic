@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { useDispatch } from "react-redux";
 // axios instance 생성
-export const BASE_URL = "https://campic.site:8080";
+const BASE_URL = "https://campic.site:8080";
 
 export const API = axios.create({
   baseURL: BASE_URL, // 기본 서버 url

@@ -15,7 +15,7 @@ function BestPhotoList() {
     async function getAndSetBestPhoto() {
       const res = await getBestPhoto();
       // console.log(res);
-      console.log("11111");
+
       setBestPhotoList(res);
     }
     getAndSetBestPhoto();
@@ -25,21 +25,21 @@ function BestPhotoList() {
 
   return (
     <div className="maincomupiclist flex">
-      {bestPhotoList.length !==0 &&
-        bestPhotoList.map(({ blobFile, profileImgPath, boardId, nickname, content }) => (
-          <BestPhoto 
-            key={v4()}
-            boardId={boardId}
-            blobFile={blobFile}
-            nickname={nickname}
-            content={content}
-            profileImgPath={profileImgPath}
-          />
-        ))
-      }
+      {bestPhotoList.length !== 0 &&
+        bestPhotoList.map(
+          ({ blobFile, profileImgPath, boardId, nickname, content }) => (
+            <BestPhoto
+              key={v4()}
+              boardId={boardId}
+              blobFile={blobFile}
+              nickname={nickname}
+              content={content}
+              profileImgPath={profileImgPath}
+            />
+          )
+        )}
     </div>
   );
 }
-
 
 export default BestPhotoList;

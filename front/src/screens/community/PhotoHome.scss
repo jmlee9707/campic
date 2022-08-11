@@ -1,7 +1,12 @@
 .container {
   justify-content: center;
 }
-
+.observer {
+  margin-top: vw(20px);
+  background-color: red;
+  height: 300px;
+  width: 300px;
+}
 .picture {
   // justify-content: center;
   flex-direction: column;
@@ -27,7 +32,6 @@
       width: vw(1173px);
       // justify-content: space-between;
     }
-
   }
 
   &_camp {
@@ -56,9 +60,10 @@
 
 .comp {
   width: vw(1170px);
-  flex-direction: column;
-  &_thr {
-    justify-content: space-between;
-    flex-direction: row;
-  }
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
+
+// .commu_photo_infi {
+//   flex-wrap: wrap;
+// }

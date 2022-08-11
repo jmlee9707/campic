@@ -4,14 +4,18 @@ import { API_PHOTO } from "./index";
 // eslint-disable-next-line import/prefer-default-export
 export const writePhoto = async body => {
   const res = await API_PHOTO.post("/photo", body); // POST날릴거임
-  console.log(res.data);
+
   return res.data;
 };
 
 // 포토상세
 export const getPhotoDetail = async boardId => {
   const res = await API_PHOTO.get(`/photo/detail/${boardId}`);
-  console.log(res.data);
+  return res.data;
+};
+// 유저 프로필 가져오기
+export const getWriterProfile = async email => {
+  const res = await API_PHOTO.get(`/user/profile/${email}`);
   return res.data;
 };
 
@@ -25,10 +29,10 @@ export const getIsLiked = async params => {
 
 // 좋아요
 export const photoLike = async params => {
-  console.log(params);
   const res = await API_PHOTO.post(
     `/photo/like?boardId=${params.boardId}&email=${params.email}`
   );
+  console.log(res.data);
   return res.data;
 };
 
@@ -43,22 +47,24 @@ export const photoDisLike = async params => {
 // 포토 메인페이지 컴포넌트
 // photo?page=0
 export const getPhoto = async page => {
-  const res = await API_PHOTO.get(`/photo?page=${page}`);
+  const res = await API_PHOTO.get("/photo", {
+    params: {
+      page
+    }
+  });
   return res.data;
 };
 
 // 포토 메인페이지 베스트포토 컴포넌트
 export const getBestPhoto = async () => {
   const res = await API_PHOTO.get("/photo/best");
-  console.log("22222");
+
   return res.data;
 };
 
 // 포토 수정
 export const updatePhoto = async body => {
   const res = await API_PHOTO.put("/photo", body); // POST날릴거임
-  console.log("11111");
-  console.log(res.data);
   return res.data;
 };
 
@@ -70,8 +76,7 @@ export const photoDelete = async params => {
 
 // 특정 유저 포토 리스트
 export const getMyPhoto = async email => {
-  console.log(1111);
   const res = await API_PHOTO.get(`/photo/${email}`);
-  console.log(res);
+
   return res.data;
 };
