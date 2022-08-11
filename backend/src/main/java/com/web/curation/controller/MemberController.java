@@ -262,4 +262,27 @@ public class MemberController {
         }
         return new ResponseEntity<>(resultMap, status);
     }
+    @GetMapping("/profile/{email}")
+    public ResponseEntity<Map<String, Object>> getProfile(@PathVariable("email") String email) {
+
+        LOGGER.debug("email : {} ", email);
+
+        Map<String, Object> resultMap = new HashMap<>();
+        HttpStatus status = HttpStatus.ACCEPTED;
+
+        try {
+//			// 로그인 사용자 정보.
+            UserDto userDto = memberService.userInfo(email);
+            resultMap.put("userInfo", userDto.getNickname());
+            resultMap.put("profile", userDto.getBlobProfile());
+            resultMap.put("message", SUCCESS);
+            status = HttpStatus.ACCEPTED;
+        } catch (Exception e) {
+            LOGGER.error("정보조회 실패 : {}", e);
+            resultMap.put("message", e.getMessage());
+            status = HttpStatus.BAD_REQUEST;
+        }
+
+        return new ResponseEntity<>(resultMap, status);
+    }
 }
