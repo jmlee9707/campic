@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BASE_URL } from '@apis/index';
 // import kakao from "@images/icon/kakao.svg";
 
 import axios from 'axios';
@@ -24,7 +25,7 @@ function NaverLogin () {
       state=${code1[1]}`)
     .then((res) => {
       // console.log(res.data)
-      axios.post('http://i7C109.p.ssafy.io:8081/social/naver', {Authorization: res.data.access_token})
+      axios.post(`${BASE_URL}/social/naver`, {Authorization: res.data.access_token})
       .then(res1 => {
         // console.log(res1);
         // 로그인 작업
