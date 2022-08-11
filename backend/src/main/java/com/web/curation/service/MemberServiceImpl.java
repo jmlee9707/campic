@@ -116,8 +116,12 @@ public class MemberServiceImpl implements MemberService {
 //        userDto.setPassword(user.getPassword()); ==> 이 값은 여기서 안줘도 될거 같음
         userDto.setTel(user.getTel());
         userDto.setBirth(user.getBirth());
-        userDto.setProfileImg(user.getProfileImg());
-        userDto.setBlobProfile(encodeBlobToBase64(user.getProfileImg()));
+        
+        if(user.getProfileImg()!=null){
+            userDto.setProfileImg(user.getProfileImg());
+            userDto.setBlobProfile(encodeBlobToBase64(user.getProfileImg()));
+        }
+
         userDto.setJoinDate(user.getJoinDate());
         userDto.setAuth(String.valueOf(user.getRoleType()));
         userDto.setIsSocial(user.getIsSocial());
