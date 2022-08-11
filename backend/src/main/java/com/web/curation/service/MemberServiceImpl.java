@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
 
 import java.time.LocalDateTime;
 
@@ -96,7 +97,13 @@ public class MemberServiceImpl implements MemberService {
 
         return userDto;
     }
+    public static String encodeBlobToBase64(byte[] data){
 
+        final String BASE_64_PREFIX = "data:image/png;base64,";
+        String base64Str = Base64Utils.encodeToString(data);
+
+        return BASE_64_PREFIX+base64Str;
+    }
     // 회원 정보 조회
     @Override
     public UserDto userInfo(String email) {
@@ -110,6 +117,7 @@ public class MemberServiceImpl implements MemberService {
         userDto.setTel(user.getTel());
         userDto.setBirth(user.getBirth());
         userDto.setProfileImg(user.getProfileImg());
+        userDto.setBlobProfile(encodeBlobToBase64(user.getProfileImg()));
         userDto.setJoinDate(user.getJoinDate());
         userDto.setAuth(String.valueOf(user.getRoleType()));
         userDto.setIsSocial(user.getIsSocial());

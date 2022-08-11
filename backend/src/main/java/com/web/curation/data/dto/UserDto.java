@@ -23,6 +23,8 @@ public class UserDto {
 
     private byte[] profileImg;
 
+    private String blobProfile;
+
     private LocalDateTime joinDate;
 
     private String auth;
