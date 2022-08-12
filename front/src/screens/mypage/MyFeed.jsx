@@ -7,6 +7,7 @@ import MyTalkList from "@components/mypage/MyTalkCardList";
 import { useSelector } from "react-redux";
 import { selectProfile } from '@store/user';
 import { getMyPhoto } from "../../apis/photo";
+import { getMyTalk } from "../../apis/talk";
 
 function MyFeed() {
   const [photoClick, setPhotoClick] = useState(true);
@@ -35,6 +36,14 @@ function MyFeed() {
     }
     getAndSetMyPhotoList();
   }, []);
+  const [myTalkList, setMyTalkList] = useState([]);
+  useEffect(() => {
+    async function getMyTalkList() {
+      const res = await getMyTalk(email);
+      setMyTalkList(res);
+    }
+    getMyTalkList();
+  }, []);
 
   return (
     <div className="container flex">
@@ -48,7 +57,7 @@ function MyFeed() {
               { Profile.nickname }
             </div>
             {Profile.isSocial === "default" && <div className="myfeed_profile_content_email notoBold fs-22">
-            { Profile.email }
+              { Profile.email }
             </div>}
             <div className="myfeed_profile_content_extra flex">
               <div className="myfeed_profile_content_extra_poname notoMid fs-16">
@@ -61,7 +70,7 @@ function MyFeed() {
                 TALK
               </div>
               <div className="myfeed_profile_content_extra_tacnt roMid fs-16">
-                7777
+                {myTalkList.length}
               </div>
             </div>
           </div>

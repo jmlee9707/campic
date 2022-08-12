@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import MainNavBar from "@components/common/MainNavBar";
 // import CommunityNavBar from "@components/community/CommunityNavBar"
 import Home from "@screens/Home";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 // user
 import Login from "@screens/user/Login";
 import Join from "@screens/user/Join";
@@ -36,24 +36,27 @@ import PlanDetail from "@screens/plan/PlanDetail";
 
 // others
 import NotFound from "@screens/NotFound";
-import PlzLogin from "@screens/PlzLogin";
+// import PlzLogin from "@screens/PlzLogin";
 
 // Community
-// import Community from "./Community";
-import CommunityNavBar from "@components/community/CommunityNavBar";
-import CommunityMain from "@screens/community/CommunityMain";
-import PhotoHome from "@screens/community/PhotoHome";
+// import CommunityMain from "@screens/community/CommunityMain";
+import Community from "./Community";
+// import PhotoHome from "@screens/community/PhotoHome";
 // import TalkHome from "@screens/community/TalkHome"
-import PhotoRegist from "@screens/community/PhotoRegist";
-import TalkRegist from "@screens/community/TalkRegist";
-import PhotoDetail from "@screens/community/PhotoDetail";
-import PhotoModify from "@screens/community/PhotoModify";
+// import PhotoRegist from "@screens/community/PhotoRegist";
+// import PhotoDetail from "@screens/community/PhotoDetail";
+// import PhotoModify from "@screens/community/PhotoModify";
 // import TalkDetail from "@screens/community/TalkDetail";
 // import PhotoModify from "../screens/community/PhotoModify";
+// TALK
+// import TalkHome from "@screens/community/TalkHome"
+// import TalkRegist from "@screens/community/TalkRegist";
+// import TalkDetail from "@screens/community/TalkDetail";
+// import TalkUpdate from "@screens/community/TalkUpdate";
 
 function Router() {
 
-  const isLogined = useSelector(state => state.user.email);
+  // const isLogined = useSelector(state => state.user.email);
 
 
   return (
@@ -86,22 +89,31 @@ function Router() {
         </Route>
 
         {/* info edit */}
-        { isLogined &&
+        <Route path="/infoedit/*">
+          <Route index element={<InfoEdit />} />
+          <Route path="pwch" element={<PwCh />} />
+          <Route path="pwedit" element={<PwEdit />} />
+        </Route>
+        {/* { isLogined &&
           <Route path="/infoedit/*">
             <Route index element={<InfoEdit />} />
             <Route path="pwch" element={<PwCh />} />
             <Route path="pwedit" element={<PwEdit />} />
           </Route>
-        }
-        { !isLogined &&
+        } */}
+        {/* { !isLogined &&
           <Route path="/infoedit/*">
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        } */}
 
 
         {/* Drop */}
-        { isLogined &&
+        <Route path="/drop/*">
+          <Route index element={<Drop />} />
+          <Route path="finish" element={<DropFinish />} />
+        </Route>        
+        {/* { isLogined &&
           <Route path="/drop/*">
             <Route index element={<Drop />} />
             <Route path="finish" element={<DropFinish />} />
@@ -111,30 +123,18 @@ function Router() {
         <Route path="/drop/*">
           <Route path="*" element={<PlzLogin />} />
         </Route>
-        }
+        } */}
 
 
         {/* community */}
-        { isLogined && <CommunityNavBar/> &&
-          <Route path="/board/*">
-            <Route index element={<CommunityMain />} />
-            <Route path="photo/home" element={<PhotoHome />} />
-            <Route path="photo/regist" element={<PhotoRegist />} />
-            {/* <Route path="talk/home" element={<TalkHome />} /> */}
-            <Route path="talk/regist" element={<TalkRegist />} />
-            <Route path="photo/detail/:id" element={<PhotoDetail />} />
-            {/* <Route path="talk/detail/:id" element={<TalkDetail />} /> */}
-            <Route path="photo/modi/:id" element={<PhotoModify />} />
-            {/* <Route path="photo/detail" element={<PhotoDetail />} /> */}
-            {/* <Route path="talk/detail" element={<TalkDetail />} /> */}
-          </Route>
-        }
+        <Route path="/board/*" element={<Community/>}/>
+        {/* { isLogined && <Route path="/board/*" element={<Community/>}/> }
         { !isLogined && 
           <Route path="/board/*">
             <Route index element={<CommunityMain />} />
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        } */}
           
           
         {/* camping */}
@@ -144,7 +144,11 @@ function Router() {
         </Route>
 
         {/* plan */}
-        { isLogined &&
+        <Route path="/plan/*">
+          <Route index element={<PlanMain />} />
+          <Route path="detail/:id" element={<PlanDetail />} />
+        </Route>
+        {/* { isLogined &&
           <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
@@ -155,14 +159,22 @@ function Router() {
             <Route index element={<PlanMain />} />
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        } */}
         {/* <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
         </Route> */}
 
         {/* mypage */}
-        { isLogined && 
+        <Route path="/mypage/*">
+          <Route path="myfeed" element={<MyFeed />} />
+          <Route path="drop" element={<Drop />} />
+          <Route path="drop/finish" element={<DropFinish />} />
+          <Route path="pwch" element={<PwCh />} />
+          <Route path="pwch/edit" element={<PwEdit />} />
+          <Route path="info/edit" element={<InfoEdit />} />
+        </Route>        
+        {/* { isLogined && 
           <Route path="/mypage/*">
           <Route path="myfeed" element={<MyFeed />} />
           <Route path="drop" element={<Drop />} />
@@ -171,12 +183,12 @@ function Router() {
           <Route path="pwch/edit" element={<PwEdit />} />
           <Route path="info/edit" element={<InfoEdit />} />
           </Route>
-        }
-        { !isLogined && 
+        } */}
+        {/* { !isLogined && 
           <Route path="/mypage/*">
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        } */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

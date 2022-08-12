@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 // import { setEmail } from '../../store/user';
 import { setEmail, setUserInfo } from '@store/user';
 // import { getUserInfo, getKakaoToken, kakaoLogin } from "../../apis/user";
-import { getUserInfo } from "@apis/user";
+import { getUserInfo, exchangeImg } from "@apis/user";
 
 function KakaoLogin () {
   const dispatch = useDispatch();
@@ -45,7 +45,11 @@ function KakaoLogin () {
         // console.log("유저 정보 가져오기")
         getUserInfo(res1.data.email)
         .then(userRes => {
-          dispatch(setUserInfo(userRes.userInfo))
+          let tempUserRes = userRes;
+          if (tempUserRes.userInfo.profileImg === null) {
+            tempUserRes = exchangeImg(userRes);
+          }
+          dispatch(setUserInfo(tempUserRes.userInfo))
         })
         // console.log(userRes.userInfo);
         // 유저 정보 스토어에 저장

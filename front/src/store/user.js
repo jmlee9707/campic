@@ -11,7 +11,6 @@ export const initialUserState = {
   tel: null,
   isSocial: null,
 };
-
 export const userSlice = createSlice({
   name: "user",
   initialState: initialUserState,

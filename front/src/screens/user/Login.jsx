@@ -7,7 +7,7 @@ import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setEmail, setUserInfo } from "@store/user";
-import { login, getUserInfo } from "@apis/user"; // login api
+import { login, getUserInfo, exchangeImg } from "@apis/user"; // login api
 // import { setEmail } from '@store/user';
 // import { login } from "@apis/user"; // login api
 
@@ -25,6 +25,7 @@ function Login() {
   const emailRef = useRef();
   const passRef = useRef();
   const canLogin = async () => {
+    try {
     const userEmail = emailRef.current.value;
     const res = await login({
       email: userEmail,
@@ -38,13 +39,24 @@ function Login() {
     sessionStorage.setItem("accessToken", res.Authorization);
     // 유저 정보 가져오기
     // console.log("유저 정보 가져오기")
-    const userRes = await getUserInfo(userEmail);
+    let userRes = await getUserInfo(userEmail);
     // console.log(userRes.userInfo);
     // 유저 정보 스토어에 저장
+    if (userRes.userInfo.profileImg === null) {
+      userRes = exchangeImg(userRes);
+    }
     dispatch(setUserInfo(userRes.userInfo));
     navigate("/");
+    } catch {
+      alert("로그인 실패")
+    }
   };
-
+  const handleOnKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      console.log("엔터 테스트")
+      canLogin();
+    }
+  }
   return (
     <div className="container flex">
       <div id="login" className="login flex">
@@ -58,14 +70,13 @@ function Login() {
             type="email"
             placeholder="이메일"
           />
-          <form>
-            <input
-              ref={passRef}
-              className="login_input_PW notoReg fs-16"
-              type="password"
-              placeholder="비밀번호"
-            />
-          </form>
+          <input
+            ref={passRef}
+            className="login_input_PW notoReg fs-16"
+            type="password"
+            placeholder="비밀번호"
+            onKeyPress={handleOnKeyPress}
+          />
         </div>
         <div className="login_btn flex align-center justify-center">
           <button className="fs-18 notoBold" type="button" onClick={canLogin}>

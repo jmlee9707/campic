@@ -35,7 +35,7 @@ function CommunityMain() {
             <p className="commu_besttalk_extra_title notoMid fs-22">
               나만 아는 캠핑 노하우를 공유 해 주세요:)
             </p>
-            <p className="commu_besttalk_extra_more notoMid fs-22">더보기</p>
+            <Link to="/board/talk/home" className="commu_besttalk_extra_more notoMid fs-22">더보기</Link>
           </div>
           <div className="commu_besttalk_comp">
             <TalkMain />

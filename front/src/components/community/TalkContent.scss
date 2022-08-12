@@ -1,0 +1,8 @@
+.TalkContent {
+  width: vw(800px);
+}
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+  min-height: vw(400px);
+  margin-bottom: vw(24px);
+}
