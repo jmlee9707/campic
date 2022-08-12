@@ -27,13 +27,14 @@ function FindId() {
 
   const canFind = async () => {
     if (!phoneError) {
-      try {
+      // try {
         const res = await findId(phoneRef.current.value);
+        console.log("비번찾기", res)
         dispatch(setEmail({ email: res.email }));
         navigate("/findid/finish");
-      } catch {
-        setPhoneMess("계정이 존재하지 않습니다.")
-      }
+      // } catch {
+      //   setPhoneMess("계정이 존재하지 않습니다.")
+      // }
     }
   };
 

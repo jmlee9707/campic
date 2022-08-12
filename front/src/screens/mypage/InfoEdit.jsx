@@ -27,10 +27,8 @@ function InfoEdit() {
 
   // 생일 달력
   const [startDate, setStartDate] = useState( Profile.birth ? new Date(Profile.birth) : new Date());
-  // const [startDate, setStartDate] = useState(new Date('1993/1/12'));
   const canEdit = async () => {
     if (!nickError && !phoneError) {
-      // console.log(`${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`);
       const userInfo = {
         birth: `${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`,
         email: Profile.email,
@@ -38,9 +36,6 @@ function InfoEdit() {
         tel: phoneRef.current.value
       };
 
-      console.log("테스트")
-      console.log(userInfo)
-      // console.log(imgFile);
       const res = await modifyUserInfo(userInfo);
       if (imgBase64) {
         // 이미지 저장 api 호출
@@ -202,19 +197,12 @@ function InfoEdit() {
           </div>
           <div className="infoedit_box">
             <div className="infoedit_box_title notoMid fs-15">생일</div>
-            {/* <input
-              ref={birthRef}
-              type="text"
-              className="infoedit_box_input notoMid fs-14"
-              placeholder={Profile.birth}
-            /> */}
             <DatePicker
               className="infoedit_box_input notoMid fs-14"
               selected={startDate}
               dateFormat="yyyy/MM/dd"
               onChange={date => {
                 setStartDate(date);
-              // console.log(date)
             }}
             />
           </div>

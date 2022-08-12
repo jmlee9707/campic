@@ -44,18 +44,18 @@ function PwEdit() {
 
   const canEdit = async () => {
     if (!passError && !passSameError) {
-      try {
-        const res = await changePw({
+      
+      // try {
+      const res = await changePw({
           email: Profile.email,
           password: passRef.current.value
         });
-        navigate("/infoedit/pwedit");
-        if (res !== "success") {
-          throw new Error("canEdit err");
-        }
-      } catch {
-        setPassMess("관리자에게 문의하세요");
-        setPassError(true);
+      if (res === "success") {
+        navigate("/infoedit");
+
+      } else {
+          setPassMess("관리자에게 문의하세요");
+          setPassError(true);
       }
     }
   };
