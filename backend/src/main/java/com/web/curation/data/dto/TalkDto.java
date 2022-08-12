@@ -17,7 +17,7 @@ public class TalkDto {
     private byte[] profileImgPath;
     private int talkId;
     private String nickname;
-
+    private String email;
     private String title;
     private String hashtag;
     private String contents;

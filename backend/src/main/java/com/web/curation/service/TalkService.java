@@ -73,9 +73,10 @@ public class TalkService {
 
         TalkDto talkDto = new TalkDto();
 
-        talkDto.setProfileImgPath(talk.getUser().getProfileImg());
+//        talkDto.setProfileImgPath(talk.getUser().getProfileImg());
 
         talkDto.setTalkId(talk.getTalkId());
+        talkDto.setEmail(talk.getUser().getEmail());
         talkDto.setNickname(talk.getUser().getNickname());
         talkDto.setTitle(talk.getTitle());
         talkDto.setContents(talk.getContents());
@@ -106,7 +107,7 @@ public class TalkService {
 
             TalkDto talkDto = new TalkDto();
 
-            talkDto.setProfileImgPath(talk.getUser().getProfileImg());
+//            talkDto.setProfileImgPath(talk.getUser().getProfileImg());
             talkDto.setTalkId(talk.getTalkId());
             talkDto.setNickname(talk.getUser().getNickname());
             talkDto.setContents(talk.getContents());
