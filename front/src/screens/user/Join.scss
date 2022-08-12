@@ -360,8 +360,8 @@
     }
   }
   @media screen and (max-width: $PHONE-VW) {
-    width: vw-p(570px);
     .join {
+      width: vw-p(570px);
       .divide {
         height: vw-p(1px);
         margin-bottom: vw-p(14px);

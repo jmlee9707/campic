@@ -175,6 +175,7 @@ function PhotoDetail() {
           <div className="campPhoto_tag notoMid fs-24">
             {photoDetail.hashtag}
           </div>
+          {/* 수정, 삭제 버튼 - 내가 쓴 글일때만 보이게 하기 */}
           {nickname === photoDetail.nickname && (
             <div className="campPhoto_myPhotoOpt flex">
               <button
@@ -195,7 +196,6 @@ function PhotoDetail() {
           )}
         </div>
       )}
-      {/* 수정, 삭제 버튼 - 내가 쓴 글일때만 보이게 하기 */}
     </div>
   );
 }

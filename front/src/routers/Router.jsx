@@ -41,6 +41,18 @@ import PlzLogin from "@screens/PlzLogin";
 // Community
 import CommunityMain from "@screens/community/CommunityMain";
 import Community from "./Community";
+// import PhotoHome from "@screens/community/PhotoHome";
+// import TalkHome from "@screens/community/TalkHome"
+// import PhotoRegist from "@screens/community/PhotoRegist";
+// import PhotoDetail from "@screens/community/PhotoDetail";
+// import PhotoModify from "@screens/community/PhotoModify";
+// import TalkDetail from "@screens/community/TalkDetail";
+// import PhotoModify from "../screens/community/PhotoModify";
+// TALK
+// import TalkHome from "@screens/community/TalkHome"
+// import TalkRegist from "@screens/community/TalkRegist";
+// import TalkDetail from "@screens/community/TalkDetail";
+// import TalkUpdate from "@screens/community/TalkUpdate";
 
 function Router() {
 

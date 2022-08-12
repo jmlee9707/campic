@@ -37,16 +37,27 @@
   }
   &_camp {
     width: vw(1170px);
+    flex-direction: column;
     // background-color: red;
     &_title {
       margin-bottom: vw(60px);
       justify-content: space-between;
+      align-items: center;
       &_btn {
         background-color: $MAIN;
         color: $WHITE;
+        height: vw(40px);
         padding: vw(7px) vw(28px);
         border-radius: vw(17px);
       }
     }
+  }
+}
+.list {
+  width: vw(1170px);
+  flex-direction: column;
+  &_row {
+    justify-content: space-between;
+    flex-direction: row;
   }
 }
