@@ -65,6 +65,11 @@ export const getTalkBest = async () => {
   });
   return res.data;
 };
+// User Photo
+export const getMyTalk = async email => {
+  const res = await API.get(`talk/${email}`);
+  return res.data;
+}
 // Comment Regist
 export const writeComment = async (talkId, body) => {
   const res = await API.post(`/talk/comments/${talkId}`, body);

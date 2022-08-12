@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import moment from "moment";
@@ -27,7 +28,9 @@ function TalkDetail() {
   const [talkLikeNum, setTalkLikeNum] = useState();
   // const [talkViewNum, setTalkViewNum] = useState();
   const [isLiked, setIsLiked] = useState(0);
-  const talkEmail = "ssafy@naver.com";
+  const talkEmail = useSelector(state => state.user.email);
+  const nickname = useSelector(state => state.user.nickname);
+  // const nickname = useSelector(state => state.user.nickname);
   const params = {
     talkId: id,
     // eslint-disable-next-line object-shorthand
@@ -127,7 +130,7 @@ function TalkDetail() {
             {/* 작성자 프로필 */}
             <div className="detail_talk_profile flex">
               <div className="detail_talk_profile_img">
-                <img src={talkDetail.profileImgPath} alt="프로필이미지" />
+                <img src={[talkDetail.profileImgPath]} alt="프로필이미지" />
               </div>
               {/* 이름, 게시일 */}
               <div className="detail_talk_profile_extra flex">
@@ -165,26 +168,28 @@ function TalkDetail() {
                 {talkDetail.hashtag}
               </div>
               {/* 좋아요버튼 */}
-              <div className="detail_talk_tag_good flex align-center justify-center">
-                {isLiked === 0 && (
-                  <button
-                    type="button"
-                    className="detail_talk_tag_good_noLike notoBoldflex flex align-center justify-center"
-                    onClick={checkTalkLike}
-                  >
-                    <img src={good} alt="good" />
-                  </button>
-                )}
-                {isLiked === 1 && (
-                  <button
-                    type="button"
-                    className="detail_talk_tag_good_like notoBold fs-18 flex align-center justify-center"
-                    onClick={noTalkLike}
-                  >
-                    <img src={nogood} alt="nogood" />
-                  </button>
-                )}
-              </div>
+              {nickname !== null && (
+                <div className="detail_talk_tag_good flex align-center justify-center">
+                  {isLiked === 0 && (
+                    <button
+                      type="button"
+                      className="detail_talk_tag_good_noLike notoBoldflex flex align-center justify-center"
+                      onClick={checkTalkLike}
+                    >
+                      <img src={good} alt="good" />
+                    </button>
+                  )}
+                  {isLiked === 1 && (
+                    <button
+                      type="button"
+                      className="detail_talk_tag_good_like notoBold fs-18 flex align-center justify-center"
+                      onClick={noTalkLike}
+                    >
+                      <img src={nogood} alt="nogood" />
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
             {/* 좋아요랑 조회수 */}
             <div className="detail_talk_count flex">
@@ -208,22 +213,24 @@ function TalkDetail() {
               </div>
             </div>
             <div className="divide" />
-            <div className="detail_talk_btns flex">
-              <button
-                type="button"
-                className="detail_talk_btns_update notoBold fs-18"
-                onClick={updateTalk}
-              >
-                수정
-              </button>
-              <button
-                type="button"
-                className="detail_talk_btns_delete notoBold fs-18"
-                onClick={deleteTalk}
-              >
-                삭제
-              </button>
-            </div>
+            {nickname === talkDetail.nickname && (
+              <div className="detail_talk_btns flex">
+                <button
+                  type="button"
+                  className="detail_talk_btns_update notoBold fs-18"
+                  onClick={updateTalk}
+                >
+                  수정
+                </button>
+                <button
+                  type="button"
+                  className="detail_talk_btns_delete notoBold fs-18"
+                  onClick={deleteTalk}
+                >
+                  삭제
+                </button>
+              </div>
+            )}
             {/* 댓글 갯수 */}
             <div className="detail_talk_comment_cnt flex">
               <div className="detail_talk_comment_cnt_text notoBold fs-24">

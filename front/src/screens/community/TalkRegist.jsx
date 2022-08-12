@@ -2,15 +2,20 @@
 import React, { useState, useRef } from "react";
 // import TalkContent from "@components/community/TalkContent";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useBeforeunload } from "react-beforeunload";
 import imageCompression from "browser-image-compression";
 import "./TalkRegist.scss";
 // import camera from "@images/logo/logo_photo_black.svg";
 import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
 import { CKEditor } from "ckeditor4-react";
+import { selectProfile } from "../../store/user";
 import { writeTalk } from "../../apis/talk";
 // import CommunityNavBar from "@components/community/CommunityNavBar";
 
 function TalkRegist() {
+  const profile = useSelector(selectProfile);
+  const talkEmail = useSelector(state => state.user.email);
   const navigate = useNavigate();
   const photoInput = useRef();
   const handleClick = () => {
@@ -53,7 +58,7 @@ function TalkRegist() {
   const actionImgCompress = async fileImage => {
     const options = {
       maxSizeMB: 0.2,
-      maxWidthOrHeight: 1170,
+      maxWidthOrHeight: 720,
       useWebWorker: true
     };
     try {
@@ -83,7 +88,9 @@ function TalkRegist() {
     });
     const file = new File([blob], "image.jpg");
     const formData = new FormData();
-    formData.append("nickname", "test");
+    formData.append("nickname", profile.nickname);
+    formData.append("profileImg", profile.profileImg);
+    formData.append("email", profile.userId);
     formData.append("title", titleRef.current.value);
     formData.append("hashtag", tagRef.current.value);
     formData.append("fileName", "baek");
@@ -100,6 +107,7 @@ function TalkRegist() {
       console.log(error);
     }
   };
+  useBeforeunload(event => event.preventDefault());
 
   // }
   // const submitTalk = async () => {
@@ -135,132 +143,135 @@ function TalkRegist() {
   return (
     <div className="container flex">
       {/* <CommunityNavBar /> */}
-      <div className="regist">
-        <div className="regist_title notoBold fs-32">글 등록하기</div>
-        <div className="regist_img flex justify-center">
-          {/* 사진 업로드 박스 */}
-          <button
-            className="regist_img_cover flex align-center justify-center"
-            onClick={handleClick}
-            type="button"
-          >
-            {!fileImage && <Camera className="camera" fill="#DBDBDB" />}
-            {!fileImage && (
-              <div className="regist_img_cover_sub fs-28 notoBold">Upload</div>
-            )}
-            {fileImage && (
-              <div className="regist_img_cover_priv">
-                <img alt="sample" src={fileImage} />
-              </div>
-            )}
-            <input
-              type="file"
-              multiple="multiple"
-              encType="multipart/form-data"
-              accept="image/jpg, image.jpeg, image.png"
-              ref={photoInput}
-              style={{ display: "none" }}
-              name="imgFile"
-              id="imgFile"
-              onChange={saveFileImage}
-            />
-          </button>
-        </div>
-        {/* 제목 입력 박스 */}
-        <div className="regist_text flex align-center justify-center">
-          <div className="regist_text_name flex align-center">
-            <input
-              ref={titleRef}
-              type="text"
-              className="regist_text_name_input notoMid fs-24"
-              placeholder="제목을 입력해주세요."
-              name="title"
-              maxLength={29}
-              onChange={getValue}
-            />
-            <div
-              className="regist_text_name_count roReg fs-24"
-              // onChange={getValue}
+      {talkEmail !== null && (
+        <div className="regist">
+          <div className="regist_title notoBold fs-32">글 등록하기</div>
+          <div className="regist_img flex justify-center">
+            {/* 사진 업로드 박스 */}
+            <button
+              className="regist_img_cover flex align-center justify-center"
+              onClick={handleClick}
+              type="button"
             >
-              {titleLength}/30
-            </div>
+              {!fileImage && <Camera className="camera" fill="#DBDBDB" />}
+              {!fileImage && (
+                <div className="regist_img_cover_sub fs-28 notoBold">Upload</div>
+              )}
+              {fileImage && (
+                <div className="regist_img_cover_priv">
+                  <img alt="sample" src={fileImage} />
+                </div>
+              )}
+              <input
+                type="file"
+                multiple="multiple"
+                encType="multipart/form-data"
+                accept="image/jpg, image.jpeg, image.png"
+                ref={photoInput}
+                style={{ display: "none" }}
+                name="imgFile"
+                id="imgFile"
+                onChange={saveFileImage}
+              />
+            </button>
           </div>
-          <div className="divide" />
-          {/* <div className="regist_text_content_detail">
-            {viewContent.map(element => (
-              <div>
-                <h2>{element.title}</h2>
-                <div>{element.content}</div>
+          {/* 제목 입력 박스 */}
+          <div className="regist_text flex align-center justify-center">
+            <div className="regist_text_name flex align-center">
+              <input
+                ref={titleRef}
+                type="text"
+                className="regist_text_name_input notoMid fs-24"
+                placeholder="제목을 입력해주세요."
+                name="title"
+                maxLength={29}
+                onChange={getValue}
+              />
+              <div
+                className="regist_text_name_count roReg fs-24"
+                // onChange={getValue}
+              >
+                {titleLength}/30
               </div>
-            ))}
-          </div> */}
-          {/* <textarea
-            type="textarea"
-            className="regist_text_content_input notoReg fs-20"
-            placeholder="내용을 입력해 주세요."
-          /> */}
-          {/* <h1>테스트1</h1> */}
-          <div className="regist_text_content_box" id="editor">
-            {/* <h1>테스트2</h1> */}
-            <CKEditor
-              initData=""
-              style={{ borderColor: "#467264" }}
-              // onChange = {(e) => {console.log(e.editor.getData()) }}
-              onChange={e => {
-                const data = e.editor.getData();
-                setTalkContent({
-                  ...talkContent,
-                  content: data
-                });
-              }}
-              config={{
-                readOnly: false,
-                uiColor: "#AADC6E",
-                height: 500,
-                fontSize_sizes: 100,
-                width: 900,
-                resize_enabled: false,
-                toolbar: [
-                  // ["Source"],
-                  ["Styles", "Format", "Font", "FontSize"],
-                  ["Bold", "Italic"],
-                  ["Undo", "Redo"],
-                  ["EasyImageUpload"]
-                  // ["About"]
-                ],
-                extraPlugins: "easyimage",
-                removePlugins: "image, elementspath",
-                cloudServices_uploadUrl:
-                  "https://91146.cke-cs.com/easyimage/upload/",
-                cloudServices_tokenUrl:
-                  "https://91146.cke-cs.com/token/dev/dhX4bynkAsQH3fJCt5hcTqSXRmjWtPGhgE2f?limit=10"
-              }}
+            </div>
+            <div className="divide" />
+            {/* <div className="regist_text_content_detail">
+              {viewContent.map(element => (
+                <div>
+                  <h2>{element.title}</h2>
+                  <div>{element.content}</div>
+                </div>
+              ))}
+            </div> */}
+            {/* <textarea
+              type="textarea"
+              className="regist_text_content_input notoReg fs-20"
+              placeholder="내용을 입력해 주세요."
+            /> */}
+            {/* <h1>테스트1</h1> */}
+            <div className="regist_text_content_box" id="editor">
+              {/* <h1>테스트2</h1> */}
+              <CKEditor
+                initData=""
+                style={{ borderColor: "#467264" }}
+                // onChange = {(e) => {console.log(e.editor.getData()) }}
+                onChange={e => {
+                  const data = e.editor.getData();
+                  setTalkContent({
+                    ...talkContent,
+                    content: data
+                  });
+                }}
+                config={{
+                  readOnly: false,
+                  uiColor: "#AADC6E",
+                  height: 500,
+                  fontSize_sizes: 100,
+                  width: 900,
+                  resize_enabled: false,
+                  toolbar: [
+                    // ["Source"],
+                    ["Styles", "Format", "Font", "FontSize"],
+                    ["Bold", "Italic"],
+                    ["Undo", "Redo"],
+                    ["EasyImageUpload"]
+                    // ["About"]
+                  ],
+                  extraPlugins: "easyimage",
+                  removePlugins: "image, elementspath",
+                  cloudServices_uploadUrl:
+                    "https://91146.cke-cs.com/easyimage/upload/",
+                  cloudServices_tokenUrl:
+                    "https://91146.cke-cs.com/token/dev/dhX4bynkAsQH3fJCt5hcTqSXRmjWtPGhgE2f?limit=10"
+                }}
+              />
+            </div>
+            <input
+              ref={tagRef}
+              type="text"
+              placeholder="# 태그입력"
+              className="regist_text_content_tag notoReg fs-16"
             />
+            <div className="divide" />
           </div>
-          <input
-            ref={tagRef}
-            type="text"
-            placeholder="# 태그입력"
-            className="regist_text_content_tag notoReg fs-16"
-          />
-          <div className="divide" />
+          <div className="regist_btn flex align-center justify-center">
+            <Link to="/board/talk/home" className="regist_btn_back notoBold fs-24">
+              뒤로가기
+            </Link>
+            <button
+              type="button"
+              className="regist_btn_ok notoBold fs-24"
+              onClick={submit}
+              // onClick={() => {
+              //   setViewContent(viewContent.concat({ ...talkContent }));
+              // }}
+            >
+              등록하기
+            </button>
+          </div>
         </div>
-        <div className="regist_btn flex align-center justify-center">
-          <Link to="/board/talk/home" className="regist_btn_back notoBold fs-24">
-            뒤로가기
-          </Link>
-          <button
-            type="button"
-            className="regist_btn_ok notoBold fs-24"
-            onClick={submit}
-            // onClick={() => {
-            //   setViewContent(viewContent.concat({ ...talkContent }));
-            // }}
-          >
-            등록하기
-          </button>
-        </div>
-      </div>
+      )}
+      {talkEmail === null && window.alert("로그인 후 이용해주세요!!")}
     </div>
     // </div>
   );

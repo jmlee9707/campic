@@ -12,7 +12,7 @@
       border-radius: vw(10px);
     }
   }
-  &_subject {
+  &_title {
     color: $GRAY-40;
     // margin-bottom: vw(10px);
     width: vw(400px);
@@ -21,9 +21,14 @@
   }
 }
 
-.my_talklist {
+.talkList {
   //   background-color: rebeccapurple;
   flex-wrap: wrap;
   justify-content: space-between;
   width: vw(830px);
+  &_nope {
+    color: $GRAY-DB;
+    justify-content: center;
+    margin-left: vw(240px);
+  }
 }
