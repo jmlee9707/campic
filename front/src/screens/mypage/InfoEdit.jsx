@@ -28,22 +28,7 @@ function InfoEdit() {
   // 생일 달력
   const [startDate, setStartDate] = useState( Profile.birth ? new Date(Profile.birth) : new Date());
   // const [startDate, setStartDate] = useState(new Date('1993/1/12'));
-
-  const canEdit = async () => {
-    if (!nickError && !phoneError) {
-      // console.log(`${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`);
-      const userInfo = {
-        birth: `${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`,
-        email: Profile.email,
-        nickname: nickRef.current.value,
-        // profileImg:
-        tel: phoneRef.current.value
-      };
-      console.log("테스트")
-      console.log(userInfo)
-      // console.log(imgFile);
-      const res = await modifyUserInfo(userInfo);
-
+  const imgUpdate = async () => {
       // 이미지 저장 api 호출
       const formData = new FormData();
       const byteString = atob(imgBase64.split(",")[1]);
@@ -61,8 +46,26 @@ function InfoEdit() {
       const file = new File([blob], imgFile.name);
       formData.append("email", Profile.email);
       formData.append("file", file);
-      console.log(file);
-      const res1 = await modifyUserProfileImg(formData);
+      return formData
+  };
+  const canEdit = async () => {
+    if (!nickError && !phoneError) {
+      // console.log(`${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`);
+      const userInfo = {
+        birth: `${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`,
+        email: Profile.email,
+        nickname: nickRef.current.value,
+        // profileImg:
+        tel: phoneRef.current.value
+      };
+      // console.log("테스트")
+      // console.log(userInfo)
+      // console.log(imgFile);
+      
+      const res = await modifyUserInfo(userInfo);
+      const temp = await imgUpdate();
+      // 사진 업데이트
+      const res1 = await modifyUserProfileImg(temp);
 
       if (res === "success" && res1 === "success") {
         dispatch(updateUserInfo(userInfo));
@@ -107,6 +110,7 @@ function InfoEdit() {
         dispatch(setProfileImg(base64.toString()));
       }
     }
+
     if (event.target.files[0]) {
       reader.readAsDataURL(event.target.files[0]);
       const options = {
@@ -116,7 +120,7 @@ function InfoEdit() {
       };
       const compressedFile = await imageCompression(event.target.files[0], options);
 
-      
+      // 이미지 압축 결과 사용      
       await setImgFile(compressedFile);
     }
   };
