@@ -41,14 +41,9 @@ function CampingCard({ campId, facltNm, addr1, homepage, firstImageUrl }) {
         <div className="camping_card_info_txt">
           <p className="camping_card_info_txt_name notoBold fs-30">{facltNm}</p>
           <div className="camping_card_info_txt_place flex align-center">
-            <Link to="/">
-              <img
-                src={placeIcon}
-                alt="icon"
-                className="camping_card_info_txt_place_icon"
-                type="button"
-              />
-            </Link>
+            <div className="camping_card_info_txt_place_icon">
+              <img src={placeIcon} alt="icon" type="button" />
+            </div>
             <div className="camping_card_info_txt_place_text notoMid fs-22">
               {addr1}
             </div>

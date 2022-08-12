@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CampingList from "@components/camping/CampingList";
 import "./CampingMain.scss";
 // import { getCampList } from "@apis/camp";
@@ -17,6 +17,8 @@ function CampingMain() {
   // campInfo 생성
   dispatch(reset()); // reduc 초기화
   // setCampInfo(result);
+  const [fold, setFold] = useState(false);
+  const [isFold, setIsFold] = useState("상세 접기");
 
   // 위도 경도 받아오기 함수
   function getLocation() {
@@ -59,22 +61,20 @@ function CampingMain() {
   const clickCamp = () => {
     dispatch(reset()); // 페이지와 리스트 0으로 돌리기
   };
-
-  // useEffect(() => {
-  //   async function getList() {
-  //     setCampInfo(result);
-  //     console.log(campInfo);
-  //   }
-  //   getList();
-  // }, []);
-
   // 정렬 어떻게 할것인지?
   const arrangeClick = e => {
     const arrange = e.target.value;
-    console.log(arrange);
     dispatch(reset());
-    console.log("aaa");
     dispatch(setArrangeConditions({ arrange })); // 왜 정렬이 안될까요?
+  };
+  const foldTag = () => {
+    if (fold === true) {
+      setIsFold("상세 접기");
+      setFold(false);
+    } else {
+      setIsFold("열기");
+      setFold(true);
+    }
   };
 
   return (
@@ -99,44 +99,54 @@ function CampingMain() {
               <div className="camp_type_search_text fs-32 notoBold flex">
                 캠핑장 찾고 계신가요?
               </div>
-              <button
-                onClick={clickCamp}
-                type="button"
-                className="flex align-center fs-16 camp_type_search_text_btn justify-center"
-              >
-                검색
-              </button>
-            </div>
-
-            <div className="camp_type_search_select">
-              <div className="camp_type_search_select_box flex">
+              <div className="flex">
                 <button
+                  onClick={foldTag}
                   type="button"
-                  className="camp_type_search_select_box_btn notoBold fs-16"
+                  className="flex align-center fs-16 camp_type_search_text_btn_fold justify-center"
                 >
-                  지역별
+                  {isFold}
                 </button>
-                <CampingSearchLoca />
-              </div>
-              <div className="camp_type_search_select_box flex">
                 <button
+                  onClick={clickCamp}
                   type="button"
-                  className="camp_type_search_select_box_btn notoBold fs-16"
+                  className="flex align-center fs-16 camp_type_search_text_btn justify-center"
                 >
-                  이름
+                  검색
                 </button>
-                <CampingSearchAll />
-              </div>
-              <div className="camp_type_search_select_box flex">
-                <button
-                  type="button"
-                  className="camp_type_search_select_box_btn notoBold fs-16"
-                >
-                  태그별
-                </button>
-                <CampingSearchTag />
               </div>
             </div>
+            {!fold && (
+              <div className="camp_type_search_select">
+                <div className="camp_type_search_select_box flex">
+                  <button
+                    type="button"
+                    className="camp_type_search_select_box_btn notoBold fs-16"
+                  >
+                    지역별
+                  </button>
+                  <CampingSearchLoca />
+                </div>
+                <div className="camp_type_search_select_box flex">
+                  <button
+                    type="button"
+                    className="camp_type_search_select_box_btn notoBold fs-16"
+                  >
+                    이름
+                  </button>
+                  <CampingSearchAll />
+                </div>
+                <div className="camp_type_search_select_box flex">
+                  <button
+                    type="button"
+                    className="camp_type_search_select_box_btn notoBold fs-16"
+                  >
+                    태그별
+                  </button>
+                  <CampingSearchTag />
+                </div>
+              </div>
+            )}
           </div>
           <div className="camp_type_search flex column" />
         </div>
@@ -146,7 +156,7 @@ function CampingMain() {
             id="camp_arrange"
             type="text"
             onChange={arrangeClick}
-            className="camp_list_sort fs-22 notoMid"
+            className="camp_list_sort fs-20 notoMid"
           >
             <option value="0">가나다순</option>
             <option value="1">인기순</option>
