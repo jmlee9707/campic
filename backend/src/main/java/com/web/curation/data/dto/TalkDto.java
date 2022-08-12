@@ -14,7 +14,7 @@ import java.util.List;
 @ToString
 @Builder
 public class TalkDto {
-    private byte[] profileImgPath;
+    private String profileImgPath;
     private int talkId;
     private String nickname;
     private String email;
