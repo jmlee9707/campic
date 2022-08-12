@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import MainNavBar from "@components/common/MainNavBar";
 // import CommunityNavBar from "@components/community/CommunityNavBar"
 import Home from "@screens/Home";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 // user
 import Login from "@screens/user/Login";
 import Join from "@screens/user/Join";
@@ -36,15 +36,15 @@ import PlanDetail from "@screens/plan/PlanDetail";
 
 // others
 import NotFound from "@screens/NotFound";
-import PlzLogin from "@screens/PlzLogin";
+// import PlzLogin from "@screens/PlzLogin";
 
 // Community
-import CommunityMain from "@screens/community/CommunityMain";
+// import CommunityMain from "@screens/community/CommunityMain";
 import Community from "./Community";
 
 function Router() {
 
-  const isLogined = useSelector(state => state.user.email);
+  // const isLogined = useSelector(state => state.user.email);
 
 
   return (
@@ -77,22 +77,31 @@ function Router() {
         </Route>
 
         {/* info edit */}
-        { isLogined &&
+        <Route path="/infoedit/*">
+          <Route index element={<InfoEdit />} />
+          <Route path="pwch" element={<PwCh />} />
+          <Route path="pwedit" element={<PwEdit />} />
+        </Route>
+        {/* { isLogined &&
           <Route path="/infoedit/*">
             <Route index element={<InfoEdit />} />
             <Route path="pwch" element={<PwCh />} />
             <Route path="pwedit" element={<PwEdit />} />
           </Route>
-        }
-        { !isLogined &&
+        } */}
+        {/* { !isLogined &&
           <Route path="/infoedit/*">
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        } */}
 
 
         {/* Drop */}
-        { isLogined &&
+        <Route path="/drop/*">
+          <Route index element={<Drop />} />
+          <Route path="finish" element={<DropFinish />} />
+        </Route>        
+        {/* { isLogined &&
           <Route path="/drop/*">
             <Route index element={<Drop />} />
             <Route path="finish" element={<DropFinish />} />
@@ -102,17 +111,18 @@ function Router() {
         <Route path="/drop/*">
           <Route path="*" element={<PlzLogin />} />
         </Route>
-        }
+        } */}
 
 
         {/* community */}
-        { isLogined && <Route path="/board/*" element={<Community/>}/> }
+        <Route path="/board/*" element={<Community/>}/>
+        {/* { isLogined && <Route path="/board/*" element={<Community/>}/> }
         { !isLogined && 
           <Route path="/board/*">
             <Route index element={<CommunityMain />} />
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        } */}
           
           
         {/* camping */}
@@ -122,7 +132,11 @@ function Router() {
         </Route>
 
         {/* plan */}
-        { isLogined &&
+        <Route path="/plan/*">
+          <Route index element={<PlanMain />} />
+          <Route path="detail/:id" element={<PlanDetail />} />
+        </Route>
+        {/* { isLogined &&
           <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
@@ -133,14 +147,22 @@ function Router() {
             <Route index element={<PlanMain />} />
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        } */}
         {/* <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
         </Route> */}
 
         {/* mypage */}
-        { isLogined && 
+        <Route path="/mypage/*">
+          <Route path="myfeed" element={<MyFeed />} />
+          <Route path="drop" element={<Drop />} />
+          <Route path="drop/finish" element={<DropFinish />} />
+          <Route path="pwch" element={<PwCh />} />
+          <Route path="pwch/edit" element={<PwEdit />} />
+          <Route path="info/edit" element={<InfoEdit />} />
+        </Route>        
+        {/* { isLogined && 
           <Route path="/mypage/*">
           <Route path="myfeed" element={<MyFeed />} />
           <Route path="drop" element={<Drop />} />
@@ -149,12 +171,12 @@ function Router() {
           <Route path="pwch/edit" element={<PwEdit />} />
           <Route path="info/edit" element={<InfoEdit />} />
           </Route>
-        }
-        { !isLogined && 
+        } */}
+        {/* { !isLogined && 
           <Route path="/mypage/*">
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        } */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
