@@ -1,4 +1,4 @@
-import { API_PHOTO } from "./index";
+import { API_PHOTO, API_USER } from "./index";
 
 // 포토 등록
 // eslint-disable-next-line import/prefer-default-export
@@ -78,5 +78,16 @@ export const photoDelete = async params => {
 export const getMyPhoto = async email => {
   const res = await API_PHOTO.get(`/photo/${email}`);
 
+  return res.data;
+};
+
+// 유저 프로필이미지, 닉네임
+export const getPhotoProfile = async params => {
+  console.log(1111)
+  console.log(params)
+  console.log('왜왜오애ㅗ애왜왜ㅗㅇ')
+  console.log(params)
+  const res = await API_USER.get(`/user/profile/${params}`);
+  console.log(2222)
   return res.data;
 };

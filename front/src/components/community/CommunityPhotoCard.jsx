@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./CommunityPhotoCard.scss";
 
-// import navLogo from "@images/logo/logo_icon_green.svg";
+import dummyLogo from "@images/person.png";
 // import friend from "@images/friend.jpeg";
 
 function CommunityPhotoCard({
@@ -30,7 +30,8 @@ function CommunityPhotoCard({
           {/* 프로필 이미지 */}
           <div className="image_header_profile flex">
             <div className="image_header_profile_pic">
-              <img src={[profileImgPath]} alt="프로필이미지" />
+              {profileImgPath !== null && <img src={[profileImgPath]} alt="프로필이미지" />}
+              {profileImgPath === null && <img src={dummyLogo} alt="프로필이미지" />}
             </div>
             <div className="image_header_profile_name notoMid fs-20">{nickname}</div>
           </div>
