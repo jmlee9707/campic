@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BASE_URL } from '@apis/index';
 // import kakao from "@images/icon/kakao.svg";
 
 import axios from 'axios';
@@ -30,7 +31,7 @@ function KakaoLogin () {
       }
     }).then((res) => {
       // console.log(res.data.access_token)
-      axios.post('http://i7C109.p.ssafy.io:8081/social/kakao', {Authorization: res.data.access_token})
+      axios.post(`${BASE_URL}/social/kakao`, {Authorization: res.data.access_token})
       .then(res1 => {
         // console.log(res1);
         // 로그인 작업

@@ -47,9 +47,9 @@ function MyFeed() {
             <div className="myfeed_profile_content_name notoBold fs-32">
               { Profile.nickname }
             </div>
-            <div className="myfeed_profile_content_email notoBold fs-22">
+            {Profile.isSocial === "default" && <div className="myfeed_profile_content_email notoBold fs-22">
             { Profile.email }
-            </div>
+            </div>}
             <div className="myfeed_profile_content_extra flex">
               <div className="myfeed_profile_content_extra_poname notoMid fs-16">
                 PHOTO
