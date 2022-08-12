@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import logo from "@images/logo/logo_icon_green.svg";
+// import logo from "@images/logo/logo_icon_green.svg";
 import "./PwCh.scss";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -50,7 +50,7 @@ function PwCh() {
       <div className="pwch flex column">
         <div className="pwch_top flex column align-center justify-center">
           <div className="pwch_top_title notoBold fs-28">비밀번호 수정</div>
-          <img src={logo} alt="Profile_Image" className="pwch1_img" />
+          <img src={Profile.profileImg} alt="Profile_Image" className="pwch1_img" />
           <div className="divide" />
         </div>
 
