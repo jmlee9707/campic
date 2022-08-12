@@ -114,7 +114,7 @@ public class PhotoServiceimpl implements PhotoService {
 //            photoDto.setProfileImgPath(community.getUser().getProfileImg());
 
             photoDto.setBoardId(community.getBoardId());
-            photoDto.setEmail(community.getUser().getEmail());
+//            photoDto.setEmail(community.getUser().getEmail());
             photoDto.setNickname(community.getUser().getNickname());
             photoDto.setContent(community.getContent());
             photoDto.setHashtag(community.getHashtag());
