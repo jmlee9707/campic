@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const initialCampState = {
   arrange: 0,
   page: 0,
-  campList: [1],
+  campList: [],
   keyword: null,
   tag: [],
   sido: null,
@@ -21,16 +21,15 @@ const campReducer = createSlice({
     reset: state => {
       state.page = initialCampState.page;
       // state.campList = initialCampState.campList;
-      state.campList = [0];
+      state.campList = initialCampState.campList;
     },
     setCampList: (state, { payload }) => {
-      // console.log(payload);
-      state.campList = [...state.campList, payload];
+      console.log(payload);
+      state.campList = [...state.campList, ...payload.campList];
       state.page += 1; // 페이지 하나씩 증가
     },
     setTagConditions: (state, { payload }) => {
       // state.tag = [...state.tag, payload];
-      console.log(payload);
       state.tag = payload;
     },
     setLocaConditions: (state, { payload }) => {
@@ -38,9 +37,9 @@ const campReducer = createSlice({
       state.gugun = payload.gugun;
     },
     setKeyword: (state, { payload }) => {
-      state.keyword = payload.keyword;
+      state.keyword = payload;
     },
-    setArrangeContidions: (state, { payload }) => {
+    setArrangeConditions: (state, { payload }) => {
       state.arrange = payload.arrange;
     },
     setLocation: (state, { payload }) => {

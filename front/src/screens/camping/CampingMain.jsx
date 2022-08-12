@@ -1,27 +1,22 @@
 import React, { useEffect } from "react";
-// import React, { useEffect, useState } from "react";
-// import CampingList from "@components/camping/CampingList";
+import CampingList from "@components/camping/CampingList";
 import "./CampingMain.scss";
+// import { getCampList } from "@apis/camp";
 import { useDispatch } from "react-redux";
 import { v4 } from "uuid";
-// import { useSelector } from "react-redux";
-// import banner from "@images/temp_1.jpeg"; // banner 이미지
 import {
   CampingSearchLoca,
   CampingSearchTag,
   CampingSearchAll
 } from "@components/camping/CampingSearch";
-// import { click } from "../../store/camp";
 import { setLocation, reset, setArrangeConditions } from "@store/camp";
 
 function CampingMain() {
   const dispatch = useDispatch();
-  // const top = "싸피 캠핑장";
-  // const allList = useSelector(state => state.campSearch.click.allClick);
-  // const keywordList = useSelector(state => state.campSearch.click.keywordClick);
-
-  // camplist props
-  // campInfos  = [];
+  // const [campInfo, setCampInfo] = useState([]);
+  // campInfo 생성
+  dispatch(reset()); // reduc 초기화
+  // setCampInfo(result);
 
   // 위도 경도 받아오기 함수
   function getLocation() {
@@ -49,7 +44,6 @@ function CampingMain() {
   // use effect
   useEffect(() => {
     getLocation();
-    // console.log("위치정보");
   }, []);
 
   const tops = ["싸피 캠핑장", "프로젝트 캠핑장", "연관검색어3", "연관검색어4"];
@@ -62,19 +56,25 @@ function CampingMain() {
     </div>
   ));
 
-  const searchCamp = () => {
-    // 초기화면으로 돌리기
-    reset();
+  const clickCamp = () => {
+    dispatch(reset()); // 페이지와 리스트 0으로 돌리기
   };
 
-  const arrangeClick = () => {
-    const arrange = document.getElementById("camp_arrange");
+  // useEffect(() => {
+  //   async function getList() {
+  //     setCampInfo(result);
+  //     console.log(campInfo);
+  //   }
+  //   getList();
+  // }, []);
 
-    dispatch(
-      setArrangeConditions({
-        arrange: arrange.options[arrange.selectedIndex].value
-      })
-    );
+  // 정렬 어떻게 할것인지?
+  const arrangeClick = e => {
+    const arrange = e.target.value;
+    console.log(arrange);
+    dispatch(reset());
+    console.log("aaa");
+    dispatch(setArrangeConditions({ arrange })); // 왜 정렬이 안될까요?
   };
 
   return (
@@ -100,7 +100,7 @@ function CampingMain() {
                 캠핑장 찾고 계신가요?
               </div>
               <button
-                onClick={searchCamp}
+                onClick={clickCamp}
                 type="button"
                 className="flex align-center fs-16 camp_type_search_text_btn justify-center"
               >
@@ -155,7 +155,7 @@ function CampingMain() {
         </div>
         <div className="divide" />
         {/* {allList && <CampingList />} */}
-        {/* <CampingList /> */}
+        <CampingList searchClick={clickCamp} />
       </div>
     </div>
   );

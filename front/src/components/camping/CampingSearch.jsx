@@ -48,6 +48,7 @@ export function CampingSearchLoca() {
   const [gunName, setGunName] = useState("");
 
   useEffect(() => {
+    //  1. 처음 select box중 처음 시군 셀렉트 옵션에 전국 도 이름을 담음
     async function getSidoCode() {
       setDoCodeList([]); // 초기화
       const res = await getSido();
@@ -62,20 +63,20 @@ export function CampingSearchLoca() {
     const res = await getGun(doCode.substr(0, 2));
     await setGunCodeList(res);
     const tempName = document.getElementById("sido_select");
-    const dodo = tempName.options[tempName.selectedIndex].text;
-    console.log(dodo);
-    setDoName(dodo);
-    console.log(doName);
+    setDoName(tempName.options[tempName.selectedIndex].text);
+    // console.log(doName);
   };
 
   // 군구 선택 변화
   const onGunChange = async () => {
     const tempName = document.getElementById("gugun_select");
     await setGunName(tempName.options[tempName.selectedIndex].text);
-    console.log(gunName);
-    await dispatch(setLocaConditions({ sido: doName, gugun: gunName }));
-    // console.log(useSelector(state => state.campSearch.doName));
   };
+
+  useEffect(() => {
+    dispatch(setLocaConditions({ sido: doName, gugun: gunName }));
+    // console.log(useSelector(state => state.campSearch.doName));
+  }, [gunName]);
 
   return (
     <div className="search_loca">
@@ -84,14 +85,12 @@ export function CampingSearchLoca() {
         onChange={onSiChange}
         type="text"
         className="fs-16 notoMid"
-        multiple={false}
+        // multiple="false"
         defaultValue="도"
       >
-        <option value="default" onChange={onSiChange}>
-          시/도
-        </option>
+        <option value="default">시/도</option>
         {doCodeList.map(item => (
-          <option value={item.sidoCode} onChange={onSiChange}>
+          <option key={item.sidoName} value={item.sidoCode}>
             {item.sidoName}
           </option>
         ))}
@@ -100,16 +99,14 @@ export function CampingSearchLoca() {
       <select
         onChange={onGunChange}
         id="gugun_select"
-        mutiple={false}
+        // mutiple="false"
         type="text"
         className="fs-16 notoMid"
         defaultValue="시/군/구"
       >
-        <option value="default" onChange={onGunChange}>
-          군/구
-        </option>
+        <option value="default">군/구</option>
         {gunCodeList.map(item => (
-          <option value={item.gugunCode} onChange={onGunChange}>
+          <option key={item.gugunName} value={item.gugunCode}>
             {item.gugunName}
           </option>
         ))}
