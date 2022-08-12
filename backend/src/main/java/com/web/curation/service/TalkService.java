@@ -107,7 +107,10 @@ public class TalkService {
 
             TalkDto talkDto = new TalkDto();
 
-//            talkDto.setProfileImgPath(talk.getUser().getProfileImg());
+            if(talk.getUser().getProfileImg() !=null){
+                talkDto.setProfileImgPath(encodeBlobToBase64(talk.getUser().getProfileImg()));
+            }
+
             talkDto.setTalkId(talk.getTalkId());
             talkDto.setNickname(talk.getUser().getNickname());
             talkDto.setContents(talk.getContents());

@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 public class PhotoDto {
 
-    private byte[] profileImgPath;
+    private String profileImgPath;
 
     private int boardId;
     private String nickname;

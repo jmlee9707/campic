@@ -111,7 +111,10 @@ public class PhotoServiceimpl implements PhotoService {
         for(Community community : listCommunity){
 
             PhotoDto photoDto = new PhotoDto();
-//            photoDto.setProfileImgPath(community.getUser().getProfileImg());
+
+            if(community.getUser().getProfileImg() != null){
+                photoDto.setProfileImgPath(encodeBlobToBase64(community.getUser().getProfileImg()));
+            }
 
             photoDto.setBoardId(community.getBoardId());
 //            photoDto.setEmail(community.getUser().getEmail());
@@ -214,6 +217,7 @@ public class PhotoServiceimpl implements PhotoService {
         return false;
     }
 
+    @Transactional
     @Override
     public boolean deletePhoto(int boardId) {
 
