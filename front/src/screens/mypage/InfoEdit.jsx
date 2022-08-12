@@ -26,7 +26,7 @@ function InfoEdit() {
   const [phoneMess, setPhoneMess] = useState("");
 
   // 생일 달력
-  const [startDate, setStartDate] = useState(new Date(Profile.birth));
+  const [startDate, setStartDate] = useState( Profile.birth ? new Date(Profile.birth) : new Date());
   // const [startDate, setStartDate] = useState(new Date('1993/1/12'));
 
   const canEdit = async () => {
@@ -39,8 +39,9 @@ function InfoEdit() {
         // profileImg:
         tel: phoneRef.current.value
       };
-
-      console.log(imgFile);
+      console.log("테스트")
+      console.log(userInfo)
+      // console.log(imgFile);
       const res = await modifyUserInfo(userInfo);
 
       // 이미지 저장 api 호출
@@ -98,9 +99,7 @@ function InfoEdit() {
   };
   // 이미지 받기
   const handleChangeFile = async (event) => {
-    console.log("압축하기")
     const reader = new FileReader();
-
     reader.onloadend = () => {
       const base64 = reader.result;
       if (base64) {
@@ -108,7 +107,6 @@ function InfoEdit() {
         dispatch(setProfileImg(base64.toString()));
       }
     }
-
     if (event.target.files[0]) {
       reader.readAsDataURL(event.target.files[0]);
       const options = {
@@ -122,10 +120,12 @@ function InfoEdit() {
       await setImgFile(compressedFile);
     }
   };
+
   const editImg = (e) => {
     e.preventDefault();
     inputRef.current.click();
   };
+
   return (
     <div className="container flex justify-center">
       <div className="infoedit ">

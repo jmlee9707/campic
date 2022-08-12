@@ -9,7 +9,7 @@ import PhotoRegist from "@screens/community/PhotoRegist";
 import TalkRegist from "@screens/community/TalkRegist";
 import PhotoDetail from "@screens/community/PhotoDetail";
 import PhotoModify from "@screens/community/PhotoModify";
-// import TalkDetail from "@screens/community/TalkDetail";
+import TalkDetail from "@screens/community/TalkDetail";
 // import PhotoModify from "../screens/community/PhotoModify";
 
 
@@ -23,12 +23,12 @@ function Community() {
         <Route path="photo/regist" element={<PhotoRegist />} />
         <Route path="photo/detail/:id" element={<PhotoDetail />} />
         <Route path="photo/modi/:id" element={<PhotoModify />} />
-        {/* <Route path="photo/detail" element={<PhotoDetail />} /> */}
+        <Route path="photo/detail" element={<PhotoDetail />} />
         
         <Route path="talk/home" element={<TalkHome />} />
         <Route path="talk/regist" element={<TalkRegist />} />
-        {/* <Route path="talk/detail/:id" element={<TalkDetail />} /> */}
-        {/* <Route path="talk/detail" element={<TalkDetail />} /> */}
+        <Route path="talk/detail/:id" element={<TalkDetail />} />
+        <Route path="talk/detail" element={<TalkDetail />} />
       </Routes>
     </>
   );
