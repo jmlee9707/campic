@@ -82,6 +82,7 @@ public class PhotoServiceimpl implements PhotoService {
 
         photoDto.setBoardId(community.getBoardId());
         photoDto.setNickname(community.getUser().getNickname());
+        photoDto.setEmail(community.getUser().getEmail());
         photoDto.setContent(community.getContent());
         photoDto.setHashtag(community.getHashtag());
         photoDto.setUploadDate(community.getUploadDate());
@@ -155,8 +156,8 @@ public class PhotoServiceimpl implements PhotoService {
 
         community.setContent(photoDto.getContent());
         community.setHashtag(photoDto.getHashtag());
-        User user = userRepository.getByNickname(photoDto.getNickname());
-        System.out.println(user.getNickname() + " "+ user.getUserId());
+        User user = userRepository.getByEmail(photoDto.getEmail());
+        LOGGER.info(user.getEmail() + " "+ user.getUserId());
         community.setUser(user);
         community.setUploadDate(LocalDateTime.now());
         community.setClick(0);
