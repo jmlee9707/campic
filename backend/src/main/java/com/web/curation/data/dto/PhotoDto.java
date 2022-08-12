@@ -17,6 +17,7 @@ public class PhotoDto {
 
     private int boardId;
     private String nickname;
+    private String email;
 //    private String title;
     private String content;
     private String hashtag;
