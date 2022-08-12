@@ -59,7 +59,7 @@ function PwCh() {
             <div className="pwch_content_title notoBold fs-15">비밀번호</div>
             <input
               ref={passRef}
-              type="text"
+              type="password"
               onChange={checkPass}
               className="pwch_content_input notoMid fs-14"
               placeholder="본인확인을 위해 비밀번호를 입력하세요"

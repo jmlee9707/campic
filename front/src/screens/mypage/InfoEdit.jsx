@@ -26,7 +26,7 @@ function InfoEdit() {
   const [phoneMess, setPhoneMess] = useState("");
 
   // 생일 달력
-  const [startDate, setStartDate] = useState(new Date(Profile.birth));
+  const [startDate, setStartDate] = useState( Profile.birth ? new Date(Profile.birth) : new Date());
   // const [startDate, setStartDate] = useState(new Date('1993/1/12'));
 
   const canEdit = async () => {
