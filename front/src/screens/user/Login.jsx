@@ -25,6 +25,7 @@ function Login() {
   const emailRef = useRef();
   const passRef = useRef();
   const canLogin = async () => {
+    try {
     const userEmail = emailRef.current.value;
     const res = await login({
       email: userEmail,
@@ -46,8 +47,16 @@ function Login() {
     }
     dispatch(setUserInfo(userRes.userInfo));
     navigate("/");
+    } catch {
+      alert("로그인 실패")
+    }
   };
-
+  const handleOnKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      console.log("엔터 테스트")
+      canLogin();
+    }
+  }
   return (
     <div className="container flex">
       <div id="login" className="login flex">
@@ -61,14 +70,13 @@ function Login() {
             type="email"
             placeholder="이메일"
           />
-          <form>
-            <input
-              ref={passRef}
-              className="login_input_PW notoReg fs-16"
-              type="password"
-              placeholder="비밀번호"
-            />
-          </form>
+          <input
+            ref={passRef}
+            className="login_input_PW notoReg fs-16"
+            type="password"
+            placeholder="비밀번호"
+            onKeyPress={handleOnKeyPress}
+          />
         </div>
         <div className="login_btn flex align-center justify-center">
           <button className="fs-18 notoBold" type="button" onClick={canLogin}>
