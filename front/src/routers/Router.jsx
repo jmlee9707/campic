@@ -43,9 +43,7 @@ import CommunityMain from "@screens/community/CommunityMain";
 import Community from "./Community";
 
 function Router() {
-
   const isLogined = useSelector(state => state.user.email);
-
 
   return (
     <>
@@ -53,7 +51,6 @@ function Router() {
       <Routes>
         {/* main */}
         <Route path="/" element={<Home />} />
-
         {/* login */}
         <Route path="/login" element={<Login />} />
         <Route path="/kakao" element={<KakaoLogin />} />
@@ -64,7 +61,6 @@ function Router() {
           <Route index element={<Join />} />
           <Route path="finish" element={<JoinFinish />} />
         </Route>
-
         {/* find ID/PW  */}
         <Route path="/findid/*">
           <Route index element={<FindId />} />
@@ -75,86 +71,77 @@ function Router() {
           <Route path="change" element={<FindPwCh />} />
           <Route path="finish" element={<FindPwFinish />} />
         </Route>
-
         {/* info edit */}
-        { isLogined &&
+        {isLogined && (
           <Route path="/infoedit/*">
             <Route index element={<InfoEdit />} />
             <Route path="pwch" element={<PwCh />} />
             <Route path="pwedit" element={<PwEdit />} />
           </Route>
-        }
-        { !isLogined &&
+        )}
+        {!isLogined && (
           <Route path="/infoedit/*">
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
-
-
+        )}
         {/* Drop */}
-        { isLogined &&
+        {isLogined && (
           <Route path="/drop/*">
             <Route index element={<Drop />} />
             <Route path="finish" element={<DropFinish />} />
           </Route>
-        }
-        { !isLogined &&
-        <Route path="/drop/*">
-          <Route path="*" element={<PlzLogin />} />
-        </Route>
-        }
-
-
+        )}
+        {!isLogined && (
+          <Route path="/drop/*">
+            <Route path="*" element={<PlzLogin />} />
+          </Route>
+        )}
         {/* community */}
-        { isLogined && <Route path="/board/*" element={<Community/>}/> }
-        { !isLogined && 
+        {isLogined && <Route path="/board/*" element={<Community />} />}
+        {!isLogined && (
           <Route path="/board/*">
             <Route index element={<CommunityMain />} />
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
-          
-          
+        )}
         {/* camping */}
         <Route path="/camping/*">
           <Route index element={<CampingMain />} />
           <Route path="detail/:id" element={<CampingDetail />} />
         </Route>
-
         {/* plan */}
-        { isLogined &&
-          <Route path="/plan/*">
+        {/* { isLogined && */}
+        <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
-          </Route>
-        }
-        { !isLogined && 
+        </Route>
+        {/* // } */}
+        {/* { !isLogined && 
           <Route path="/plan/*">
             <Route index element={<PlanMain />} />
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        } */}
         {/* <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
         </Route> */}
-
         {/* mypage */}
-        { isLogined && 
+        {isLogined && (
           <Route path="/mypage/*">
-          <Route path="myfeed" element={<MyFeed />} />
-          <Route path="drop" element={<Drop />} />
-          <Route path="drop/finish" element={<DropFinish />} />
-          <Route path="pwch" element={<PwCh />} />
-          <Route path="pwch/edit" element={<PwEdit />} />
-          <Route path="info/edit" element={<InfoEdit />} />
+            <Route path="myfeed" element={<MyFeed />} />
+            <Route path="drop" element={<Drop />} />
+            <Route path="drop/finish" element={<DropFinish />} />
+            <Route path="pwch" element={<PwCh />} />
+            <Route path="pwch/edit" element={<PwEdit />} />
+            <Route path="info/edit" element={<InfoEdit />} />
           </Route>
-        }
-        { !isLogined && 
+        )}
+        {!isLogined && (
           <Route path="/mypage/*">
             <Route path="*" element={<PlzLogin />} />
           </Route>
-        }
+        )}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

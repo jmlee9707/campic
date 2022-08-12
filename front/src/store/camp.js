@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialCampState = {
+  arrange: 0,
   page: 0,
   campList: [1],
   keyword: null,
@@ -36,16 +37,27 @@ const campReducer = createSlice({
       state.sido = payload.sido;
       state.gugun = payload.gugun;
     },
+    setKeyword: (state, { payload }) => {
+      state.keyword = payload.keyword;
+    },
+    setArrangeContidions: (state, { payload }) => {
+      state.arrange = payload.arrange;
+    },
     setLocation: (state, { payload }) => {
       state.lati = payload.lati;
       state.longi = payload.longi;
-    },
-
+    }
   }
 });
-export const selectLocation = (state) => state.campSearch;
+export const selectLocation = state => state.campSearch;
 
-
-export const { reset, setCampList, setTagConditions, setLocaConditions, setLocation } =
-  campReducer.actions;
+export const {
+  reset,
+  setCampList,
+  setTagConditions,
+  setLocaConditions,
+  setLocation,
+  setArrangeConditions,
+  setKeyword
+} = campReducer.actions;
 export default campReducer.reducer;

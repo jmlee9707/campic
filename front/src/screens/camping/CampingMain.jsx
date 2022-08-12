@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 // import React, { useEffect, useState } from "react";
 // import CampingList from "@components/camping/CampingList";
@@ -13,42 +12,46 @@ import {
   CampingSearchAll
 } from "@components/camping/CampingSearch";
 // import { click } from "../../store/camp";
-import { setLocation } from "@store/camp";
+import { setLocation, reset, setArrangeConditions } from "@store/camp";
 
 function CampingMain() {
   const dispatch = useDispatch();
-  // const dispatch = useDispatch();
   // const top = "싸피 캠핑장";
-  // dispatch(click( allList: true ));
   // const allList = useSelector(state => state.campSearch.click.allClick);
   // const keywordList = useSelector(state => state.campSearch.click.keywordClick);
-  // const [tagList, setTagList] = useState(false);
-  // const [locaList, setLocaList] = useState(false);
 
   // camplist props
   // campInfos  = [];
+
   // 위도 경도 받아오기 함수
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
-        dispatch(setLocation({lati:position.coords.latitude, longi:position.coords.longitude}))
-      }
-      , err => console.log(err)
-      , {
-        enableHighAccuracy: false,
-        maximumAge: 0,
-        timeout: Infinity
-      });
+        position => {
+          dispatch(
+            setLocation({
+              lati: position.coords.latitude,
+              longi: position.coords.longitude
+            })
+          );
+        },
+        err => console.log(err),
+        {
+          enableHighAccuracy: false,
+          maximumAge: 0,
+          timeout: Infinity
+        }
+      );
     } else {
-      alert('GPS를 지원하지 않습니다');
+      alert("GPS를 지원하지 않습니다");
     }
-  };
-  // useeffect
+  }
+  // use effect
   useEffect(() => {
     getLocation();
     // console.log("위치정보");
   }, []);
+
   const tops = ["싸피 캠핑장", "프로젝트 캠핑장", "연관검색어3", "연관검색어4"];
   const topList = tops.map(top => (
     <div
@@ -58,6 +61,21 @@ function CampingMain() {
       {top}
     </div>
   ));
+
+  const searchCamp = () => {
+    // 초기화면으로 돌리기
+    reset();
+  };
+
+  const arrangeClick = () => {
+    const arrange = document.getElementById("camp_arrange");
+
+    dispatch(
+      setArrangeConditions({
+        arrange: arrange.options[arrange.selectedIndex].value
+      })
+    );
+  };
 
   return (
     <div className="container flex justify-center">
@@ -75,16 +93,19 @@ function CampingMain() {
             <div className="flex"> {topList}</div>
           </div>
         </div>
-        {/* <div className="camp_search flex notoBold fs-32">
-          <div className="camp_search_left">
-            <CampingSearchAll />
-          </div>
-        </div> */}
-
         <div className="camp_type">
           <div className="camp_type_search">
-            <div className="camp_type_search_text fs-32 notoBold">
-              캠핑장 찾고 계신가요?
+            <div className="flex camp_type_search_text">
+              <div className="camp_type_search_text fs-32 notoBold flex">
+                캠핑장 찾고 계신가요?
+              </div>
+              <button
+                onClick={searchCamp}
+                type="button"
+                className="flex align-center fs-16 camp_type_search_text_btn justify-center"
+              >
+                검색
+              </button>
             </div>
 
             <div className="camp_type_search_select">
@@ -121,10 +142,15 @@ function CampingMain() {
         </div>
         <div className="camp_list flex align-center">
           <p className="camp_list_title fs-32 notoBold">캠핑장 리스트</p>
-          <select type="text" className="camp_list_sort fs-22 notoMid">
-            <option value=" ">거리순</option>
-            <option value="favorite">인기순</option>
-            <option value="word">가나다순</option>
+          <select
+            id="camp_arrange"
+            type="text"
+            onChange={arrangeClick}
+            className="camp_list_sort fs-22 notoMid"
+          >
+            <option value="0">가나다순</option>
+            <option value="1">인기순</option>
+            <option value="2">거리순</option>
           </select>
         </div>
         <div className="divide" />

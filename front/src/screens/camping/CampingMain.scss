@@ -59,56 +59,24 @@
       }
     }
   }
-  // &_title {
-  //   justify-content: space-between;
-  //   margin-bottom: (66px);
-
-  //   &_txt {
-  //     margin-bottom: (40px);
-  //     color: $GRAY-40;
-  //   }
-  //   &_search {
-  //     justify-content: space-between;
-  //     margin-bottom: (20px);
-  //     &_input {
-  //       width: (488px);
-  //       height: (52px);
-  //       border: (1.5px) solid $MAIN;
-  //       border-radius: (8px);
-  //       padding: 0 (15px);
-  //       color: $GRAY-4A;
-  //     }
-
-  //     &_btn {
-  //       width: (52px);
-  //       height: (52px);
-  //       background-color: $MAIN;
-  //       border-radius: (15px);
-
-  //       img {
-  //         width: (38px);
-  //         height: (38px);
-  //       }
-  //     }
-  //     &_word {
-  //       &_detail {
-  //         color: $GRAY-67;
-  //         background-color: $GRAY-F3;
-  //         padding: (6px) (16px);
-  //         border-radius: (14px);
-  //         margin-right: (16px);
-  //       }
-  //     }
-  //   }
-  // }
 
   &_type {
     margin-bottom: (97px);
     &_search {
       &_text {
+        justify-content: space-between;
         margin-bottom: (44px);
         color: $GRAY-40;
+        &_btn {
+          background-color: $GRAY-67;
+          color: $WHITE;
+          width: 100px;
+          height: 44px;
+          border-radius: (20px);
+          margin-right: 30px;
+        }
       }
+
       &_select {
         border-radius: (20px);
         &_box {
