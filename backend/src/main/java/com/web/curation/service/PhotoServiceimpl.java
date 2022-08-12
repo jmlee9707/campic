@@ -78,7 +78,7 @@ public class PhotoServiceimpl implements PhotoService {
 
         PhotoDto photoDto = new PhotoDto();
 
-        photoDto.setProfileImgPath(community.getUser().getProfileImg());
+//        photoDto.setProfileImgPath(community.getUser().getProfileImg());
 
         photoDto.setBoardId(community.getBoardId());
         photoDto.setNickname(community.getUser().getNickname());
@@ -111,7 +111,7 @@ public class PhotoServiceimpl implements PhotoService {
         for(Community community : listCommunity){
 
             PhotoDto photoDto = new PhotoDto();
-            photoDto.setProfileImgPath(community.getUser().getProfileImg());
+//            photoDto.setProfileImgPath(community.getUser().getProfileImg());
 
             photoDto.setBoardId(community.getBoardId());
             photoDto.setEmail(community.getUser().getEmail());
