@@ -10,7 +10,8 @@ import {
   photoLike,
   photoDisLike,
   photoDelete,
-  getIsLiked
+  getIsLiked,
+  getPhotoProfile
 } from "../../apis/photo";
 
 function PhotoDetail() {
@@ -21,6 +22,7 @@ function PhotoDetail() {
   const navigate = useNavigate();
 
   const { id } = useParams();
+
   // 좋아요 유무 파악
   const [isLiked, setIsLiked] = useState(0);
   const [photoDetail, setPhotoDetail] = useState("");
@@ -59,7 +61,7 @@ function PhotoDetail() {
       setIsLiked(1);
     }
   }
-  console.log(photoDetail.nickname);
+  // console.log(photoDetail.nickname);
   // 싫어요
   async function disLiked() {
     const res = await photoDisLike(params);
@@ -71,27 +73,68 @@ function PhotoDetail() {
     }
   }
 
+  const deleteParams = {
+    boardId: id
+  };
+
   async function deletePhoto() {
     if (window.confirm("정말로 삭제하시겠습니까?")) {
-      const res = await photoDelete(photoDetail.boardId);
+      const res = await photoDelete(deleteParams);
       if (res.message === "success") {
         console.log(res.message);
       }
       navigate("/board/photo/home");
     }
   }
+
   // ==========useEffect------------------------
-  useEffect(() => {
-    // getAndSetIsLiked();
-    getAndSetPhotoDetail();
-    console.log(isLiked);
-    // console.log(likeCnt);
-  }, [likeCnt, isLiked]);
+ 
 
   // 업로드 시간 가공
   const uploadTime = moment(photoDetail.uploadDate).fromNow();
   // console.log(photoDetail.blobFile)
 
+  // 유저 프로필, 닉네임 가져오기
+  const [photoNickname, setPhotoNickname] = useState("");
+  const [photoProfile, setPhotoProfile] = useState();
+  const [profileEmail, setProfileEmail] = useState();
+  
+  
+  // const profileParams = {
+  //   email : photoDetail.email
+  // }
+  console.log('여기')
+  // console.log(profileParams)
+  console.log('왜')
+  // eslint-disable-next-line no-unused-vars
+  async function getAndSetPhotoProfile() {
+    await setProfileEmail({
+      email : photoDetail.email
+    })
+    console.log(photoDetail.email)
+    // eslint-disable-next-line no-undef
+    const res = await getPhotoProfile(profileEmail);
+    // console.log(res);
+    // console.log("11111");
+    setPhotoNickname(res.nickname);
+    setPhotoProfile(res.profile);
+    console.log(photoProfile);
+  }
+
+  useEffect(() => {
+    // getAndSetIsLiked();
+    getAndSetPhotoDetail();
+    getAndSetPhotoProfile();
+    console.log(isLiked);
+    // console.log(likeCnt);
+  }, [likeCnt, isLiked]);
+  // useEffect(() => {
+    
+  //   // await 를 사용하기 위해서 Async 선언
+  //   getAndSetPhotoProfile();
+  // }, []);
+  console.log(photoDetail)
+  // console.log(photoDetail.email)
   return (
     <div className="container flex">
       {Object.keys(photoDetail).length !== 0 && (
@@ -108,7 +151,7 @@ function PhotoDetail() {
             <div className="campPhoto_profile_extra flex align-center">
               <div className="campPhoto_profile_extra_text align-center">
                 <p className="campPhoto_profile_extra_text_name notoBold fs-26">
-                  {photoDetail.nickname !== "" && <> {photoDetail.nickname} </>}
+                  {photoDetail.nickname !== "" && <> {photoNickname} </>}
                   {photoDetail.nickname === "" && <div>캠픽사용자</div>}
                 </p>
                 <p className="campPhoto_profile_extra_text_time notoMid fs-18">
