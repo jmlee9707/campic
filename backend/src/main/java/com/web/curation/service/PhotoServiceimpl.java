@@ -114,6 +114,7 @@ public class PhotoServiceimpl implements PhotoService {
             photoDto.setProfileImgPath(community.getUser().getProfileImg());
 
             photoDto.setBoardId(community.getBoardId());
+            photoDto.setEmail(community.getUser().getEmail());
             photoDto.setNickname(community.getUser().getNickname());
             photoDto.setContent(community.getContent());
             photoDto.setHashtag(community.getHashtag());
@@ -156,8 +157,10 @@ public class PhotoServiceimpl implements PhotoService {
 
         community.setContent(photoDto.getContent());
         community.setHashtag(photoDto.getHashtag());
-        User user = userRepository.getByEmail(photoDto.getEmail());
-        LOGGER.info(user.getEmail() + " "+ user.getUserId());
+
+        User user = userRepository.getByNickname(photoDto.getNickname());
+        LOGGER.info("user nickname: {} ", user.getNickname());
+
         community.setUser(user);
         community.setUploadDate(LocalDateTime.now());
         community.setClick(0);
