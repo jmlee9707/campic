@@ -27,12 +27,12 @@ function FindId() {
 
   const canFind = async () => {
     if (!phoneError) {
-      const res = await findId(phoneRef.current.value);
-      if (res.message === "success") {
-        // console.log(`${res.email}이메일!`);
+      try {
+        const res = await findId(phoneRef.current.value);
         dispatch(setEmail({ email: res.email }));
-        // console.log("디스패치 가능");
         navigate("/findid/finish");
+      } catch {
+        setPhoneMess("계정이 존재하지 않습니다.")
       }
     }
   };
