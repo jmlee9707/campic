@@ -42,7 +42,7 @@ public class TalkService {
         this.talkLikeRepository = talkLikeRepository;
         this.userRepository = userRepository;
     }
-    @Cacheable(value="talk")
+//    @Cacheable(value="talk")
     public List<TalkDto> listTalk(int page) {
         Pageable sortedByPriceDesc = PageRequest.of(page, 15, Sort.by("uploadDate").descending());
 
@@ -150,7 +150,7 @@ public class TalkService {
         return BASE_64_PREFIX+base64Str;
     }
 
-    @CacheEvict(value = "talk", allEntries = true)
+//    @CacheEvict(value = "talk", allEntries = true)
     @Transactional
     public int writeTalk(TalkDto talkDto) {
         LOGGER.info("[talk 게시글 등록] 게시글 제목 : {}", talkDto.getTitle());
@@ -187,7 +187,7 @@ public class TalkService {
             return 0;
         }
     }
-    @CacheEvict(value = "talk", allEntries = true)
+//    @CacheEvict(value = "talk", allEntries = true)
     public boolean updateTalk(TalkDto talkDto) {
 
         Talk talk = talkRepository.findByTalkId(talkDto.getTalkId());
@@ -213,7 +213,7 @@ public class TalkService {
         return false;
 //        return true;
     }
-    @CacheEvict(value = "talk", allEntries = true)
+//    @CacheEvict(value = "talk", allEntries = true)
     @Transactional
     public boolean deleteTalk(int talkId) {
         // 게시글 삭제
@@ -230,7 +230,7 @@ public class TalkService {
         if(verify == null) return true;
         return false;
     }
-    @CacheEvict(value = "talk", allEntries = true)
+//    @CacheEvict(value = "talk", allEntries = true)
     public int pushLike(int talkId, String email) {
         Talk talk = talkRepository.findByTalkId(talkId);
 
@@ -258,7 +258,7 @@ public class TalkService {
         }
     }
 
-    @CacheEvict(value = "talk", allEntries = true)
+//    @CacheEvict(value = "talk", allEntries = true)
     public int cancelLike(int talkId, String email) {
 
         Talk talk = talkRepository.findByTalkId(talkId);
