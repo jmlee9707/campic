@@ -29,10 +29,7 @@ function CampingDetail() {
   };
 
   // 거리 계산 함수
-  const calDist = (curLati1, curLongi1, targetLati, targetLongi) => {
-    console.log(curLati1, curLongi1);
-    const curLati = 35.2051912;
-    const curLongi = 126.8116475;
+  const calDist = (curLati, curLongi, targetLati, targetLongi) => {
     const RADIUS = 6371;
     const LAD = Math.PI / 180;
     const DELTALATI = Math.abs((curLati - targetLati)*LAD);
