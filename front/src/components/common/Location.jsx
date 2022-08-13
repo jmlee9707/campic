@@ -101,7 +101,7 @@ function makeOutListener (overlay) {
           });
           
           // 컨텐츠 생성
-          const content = `<div>${data[idx].place_name}</div>`;
+          const content = `<div style="background-color:#467264;"><div style="color:white;margin:10px;">${data[idx].place_name}</div></div>`;
           // const infowindow = new kakao.maps.InfoWindow({
           //   content: `<div style="position: absolute; left: 0px; top: 0px;"><div style="width:140px;padding:1px;text-align:center;">${data[idx].place_name}</div></div>` // 인포윈도우에 표시할 내용
           //   });
@@ -113,7 +113,7 @@ function makeOutListener (overlay) {
             position: markPos  
         });
           overlay.setMap(null);
-          kakao.maps.event.addListener(mark, 'mouseover', makeOverListener(map, overlay));
+          kakao.maps.event.addListener(mark, 'click', makeOverListener(map, overlay));
           kakao.maps.event.addListener(mark, 'mouseout', makeOutListener(overlay));
           // kakao.maps.event.addListener(mark, 'mouseover', makeOverListener(map, mark, infowindow));
           // kakao.maps.event.addListener(mark, 'mouseout', makeOutListener(infowindow));
