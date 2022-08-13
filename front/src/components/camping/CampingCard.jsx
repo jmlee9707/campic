@@ -37,7 +37,7 @@ function CampingCard({ campId, facltNm, addr1, homepage, firstImageUrl }) {
         )}
       </Link>
 
-      <div className="camping_card_info flex align-center">
+      <div className="camping_card_info flex ">
         <div className="camping_card_info_txt">
           <p className="camping_card_info_txt_name notoBold fs-30">{facltNm}</p>
           <div className="camping_card_info_txt_place flex align-center">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import check from "@images/icon/done_black.svg";
 import checkGray from "@images/icon/done_gray.svg";
@@ -8,14 +8,21 @@ function TodoItem({ task, done, saveId, todoId, writer, removeItem }) {
   const [isDone, setIsDone] = useState(done);
   const userId = useSelector(state => state.user.email);
 
-  const changeState = async () => {
-    await modifyTodo(todoId, task, isDone, saveId);
+  const changeState = () => {
     setIsDone(!isDone);
   };
   const deleteTask = async () => {
     await deleteTodo(todoId, saveId);
     removeItem(todoId);
   };
+
+  const changeDB = async () => {
+    await modifyTodo(todoId, task, isDone, saveId);
+  };
+
+  useEffect(() => {
+    changeDB();
+  }, [isDone]);
 
   return (
     <div className="todo_box flex align-center ">

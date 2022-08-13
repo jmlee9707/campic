@@ -11,15 +11,14 @@ import useOutSideClick from "../../utils/useOutSideClick";
 
 function Modal({ onClose, campId, facltNm }) {
   const navigate = useNavigate();
-  const userId = useSelector(state => state.user.email);
-  console.log(userId);
+  const email = useSelector(state => state.user.email);
+  console.log(email);
   const handleClose = () => {
-    onClose?.();
+    onClose();
   };
   const modalRef = useRef(null);
   const tripRef = useRef(""); // 여행 제목 입력 값
   // const email = sessionStorage.getItem("email");
-  const email = "jmlee9707@naver.com";
 
   useOutSideClick(modalRef, handleClose); // ref 밖의 요소 선택하면 함수 실행
 
@@ -29,12 +28,22 @@ function Modal({ onClose, campId, facltNm }) {
 
   const movePlan = async () => {
     const savedTitle = tripRef.current.value;
-    const saveId = await addPlan(campId, email, startDate, endDate, savedTitle);
-
-    if (saveId !== null || saveId === "\\N") {
-      navigate(`/plan/detail/${saveId}`);
+    if (savedTitle !== "" && savedTitle != null) {
+      console.log(email);
+      const saveId = await addPlan(
+        campId,
+        email,
+        startDate,
+        endDate,
+        savedTitle
+      );
+      if (saveId !== null || saveId === "\\N") {
+        navigate(`/plan/detail/${saveId}`);
+      } else {
+        alert("fail");
+      }
     } else {
-      alert("fail");
+      alert("여행 이름을 입력해주세요");
     }
     // console.log(campId);
   };
@@ -45,7 +54,7 @@ function Modal({ onClose, campId, facltNm }) {
         ref={modalRef}
         className="modal flex column align-center justify-center"
       >
-        {userId !== null && (
+        {email !== null && (
           <div className="modal_body flex column align-center justify-center">
             <div className="modal_body_txt flex column align-center">
               <div className="modal_body_txt_title notoBold fs-32">
@@ -105,7 +114,7 @@ function Modal({ onClose, campId, facltNm }) {
             </div>
           </div>
         )}
-        {userId === null && (
+        {email === null && (
           <div className="modal_login flex column align-center justify-center notoMid">
             <div className="modal_login_txt fs-24">
               로그인 후에 이용해 주세요
