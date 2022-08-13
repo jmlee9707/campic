@@ -30,7 +30,17 @@ function Location({pos}) {
   const mapTypeControl = new kakao.maps.MapTypeControl();
 
 
+  function makeOverListener(map, mark, infowindow) {
+    return function() {
+        infowindow.open(map, mark);
+    };
+};
 
+function makeOutListener(infowindow) {
+  return function() {
+      infowindow.close();
+  };
+};
 
   useEffect(() => {
     // 은행, 마트, 약국, 주유소, 카페, 편의점
@@ -47,7 +57,7 @@ function Location({pos}) {
 
     const imageSize = new kakao.maps.Size(80, 60);
     const imageOptions = {  
-        spriteOrigin: new kakao.maps.Point(0, 0),    
+        spriteOrigin: new kakao.maps.Point(-25, 0),    
         spriteSize: new kakao.maps.Size(30, 50)  
     };   
 
@@ -74,14 +84,19 @@ function Location({pos}) {
             data[idx].y,
             data[idx].x
           );
+
           mark = new kakao.maps.Marker({
             position: markPos,
-            image: markerImage
-          });          
-          // mark = new kakao.maps.Marker({
-          //   position: markPos
-          // });          
-
+            image: markerImage            
+          });
+          
+          // 컨텐츠 생성
+          const infowindow = new kakao.maps.InfoWindow({
+            content: `<div style="position: absolute; left: 0px; top: 0px;"><div style="width:140px;padding:1px;text-align:center;">${data[idx].place_name}</div></div>` // 인포윈도우에 표시할 내용
+            });
+        
+          kakao.maps.event.addListener(mark, 'mouseover', makeOverListener(map, mark, infowindow));
+          kakao.maps.event.addListener(mark, 'mouseout', makeOutListener(infowindow));
           mark.setMap(map);
         }
       } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
