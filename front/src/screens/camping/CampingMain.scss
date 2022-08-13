@@ -1,0 +1,335 @@
+.obe {
+  margin-top: vw(20px);
+}
+.container {
+  justify-content: center;
+}
+.divide {
+  width: 100%;
+  height: (1px);
+  background-color: $GRAY-E4;
+}
+.main {
+  width: (1170px);
+  flex-direction: column;
+  margin-top: (115px);
+
+  &_title {
+    justify-content: space-between;
+    margin-bottom: (66px);
+    &_left {
+      width: (570px);
+      &_txt {
+        margin-bottom: (40px);
+        color: $GRAY-40;
+      }
+      &_search {
+        justify-content: space-between;
+        margin-bottom: (20px);
+        &_input {
+          width: (488px);
+          height: (52px);
+          border: (1.5px) solid $MAIN;
+          border-radius: (8px);
+          padding: 0 (15px);
+          color: $GRAY-4A;
+        }
+
+        &_btn {
+          width: (52px);
+          height: (52px);
+          background-color: $MAIN;
+          border-radius: (15px);
+
+          img {
+            width: (38px);
+            height: (38px);
+          }
+        }
+      }
+      &_word {
+        &_detail {
+          color: $GRAY-67;
+          background-color: $GRAY-F3;
+          padding: (6px) (16px);
+          border-radius: (14px);
+          margin-right: (16px);
+        }
+      }
+    }
+    &_right {
+      width: (480px);
+      height: (230px);
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &_type {
+    margin-bottom: (97px);
+    &_title {
+      margin-bottom: (47px);
+      color: $GRAY-40;
+      &_txt {
+        margin-right: (27px);
+      }
+      &_select {
+        background: $GRAY-DB;
+        border-radius: (20px);
+        button {
+          color: $WHITE;
+          padding: (6px) (23px);
+          border-radius: (20px);
+        }
+
+        &_tag,
+        &_loca {
+          &_t {
+            background-color: $MAIN;
+          }
+          &_f {
+            background-color: $GRAY-DB;
+          }
+        }
+      }
+    }
+    &_search {
+      flex-direction: column;
+    }
+  }
+
+  &_list {
+    justify-content: space-between;
+    margin-bottom: (36px);
+    &_title {
+      color: $GRAY-40;
+    }
+
+    &_sort {
+      color: $GRAY-67;
+      appearance: none;
+      border: none;
+    }
+  }
+}
+@media screen and (max-width: $DESKTOP-VW) {
+  .divide {
+    height: vw(1px);
+  }
+  .main {
+    width: vw(1170px);
+    margin-top: vw(115px);
+
+    &_title {
+      margin-bottom: vw(66px);
+      &_left {
+        width: vw(570px);
+        &_txt {
+          margin-bottom: vw(40px);
+        }
+        &_search {
+          margin-bottom: vw(20px);
+          &_input {
+            width: vw(488px);
+            height: vw(52px);
+            border: vw(1.5px) solid $MAIN;
+            border-radius: vw(8px);
+            padding: 0 vw(15px);
+          }
+
+          &_btn {
+            width: vw(52px);
+            height: vw(52px);
+            border-radius: vw(15px);
+
+            img {
+              width: vw(38px);
+              height: vw(38px);
+            }
+          }
+        }
+        &_word {
+          &_detail {
+            padding: vw(6px) vw(16px);
+            border-radius: vw(14px);
+            margin-right: vw(16px);
+          }
+        }
+      }
+      &_right {
+        width: vw(480px);
+        height: vw(230px);
+      }
+    }
+
+    &_type {
+      margin-bottom: vw(97px);
+      &_title {
+        margin-bottom: vw(47px);
+        &_txt {
+          margin-right: vw(27px);
+        }
+        &_select {
+          border-radius: vw(20px);
+          button {
+            padding: vw(6px) vw(23px);
+            border-radius: vw(20px);
+          }
+        }
+      }
+    }
+
+    &_list {
+      margin-bottom: vw(36px);
+    }
+  }
+}
+@media screen and (max-width: $TABLET-VW) {
+  .divide {
+    height: vw-t(1px);
+  }
+  .main {
+    width: vw-t(1170px);
+    margin-top: vw-t(115px);
+
+    &_title {
+      margin-bottom: vw-t(66px);
+      &_left {
+        width: vw-t(570px);
+        &_txt {
+          margin-bottom: vw-t(40px);
+        }
+        &_search {
+          margin-bottom: vw-t(20px);
+          &_input {
+            width: vw-t(488px);
+            height: vw-t(52px);
+            border: vw-t(1.5px) solid $MAIN;
+            border-radius: vw-t(8px);
+            padding: 0 vw-t(15px);
+          }
+
+          &_btn {
+            width: vw-t(52px);
+            height: vw-t(52px);
+            border-radius: vw-t(15px);
+
+            img {
+              width: vw-t(38px);
+              height: vw-t(38px);
+            }
+          }
+        }
+        &_word {
+          &_detail {
+            padding: vw-t(6px) vw-t(16px);
+            border-radius: vw-t(14px);
+            margin-right: vw-t(16px);
+          }
+        }
+      }
+      &_right {
+        width: vw-t(480px);
+        height: vw-t(230px);
+      }
+
+      &_type {
+        margin-bottom: vw-t(97px);
+        &_title {
+          margin-bottom: vw-t(47px);
+          &_txt {
+            margin-right: vw-t(27px);
+          }
+          &_select {
+            border-radius: vw-t(20px);
+            button {
+              padding: vw-t(6px) vw-t(23px);
+              border-radius: vw-t(20px);
+            }
+          }
+        }
+      }
+    }
+
+    &_list {
+      margin-bottom: vw-t(36px);
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .divide {
+    height: vw-p(1px);
+  }
+  .main {
+    width: vw-p(1170px);
+    margin-top: vw-p(115px);
+
+    &_title {
+      margin-bottom: vw-p(66px);
+      &_left {
+        width: vw-p(570px);
+        &_txt {
+          margin-bottom: vw-p(40px);
+        }
+        &_search {
+          margin-bottom: vw-p(20px);
+          &_input {
+            width: vw-p(488px);
+            height: vw-p(52px);
+            border: vw-p(1.5px) solid $MAIN;
+            border-radius: vw-p(8px);
+            padding: 0 vw-p(15px);
+          }
+
+          &_btn {
+            width: vw-p(52px);
+            height: vw-p(52px);
+            border-radius: vw-p(15px);
+
+            img {
+              width: vw-p(38px);
+              height: vw-p(38px);
+            }
+          }
+        }
+        &_word {
+          &_detail {
+            padding: vw-p(6px) vw-p(16px);
+            border-radius: vw-p(14px);
+            margin-right: vw-p(16px);
+          }
+        }
+      }
+      &_right {
+        width: vw-p(480px);
+        height: vw-p(230px);
+      }
+    }
+
+    &_type {
+      margin-bottom: vw-p(97px);
+      &_title {
+        margin-bottom: vw-p(47px);
+        &_txt {
+          margin-right: vw-p(27px);
+        }
+        &_select {
+          border-radius: vw-p(20px);
+          button {
+            padding: vw-p(6px) vw-p(23px);
+            border-radius: vw-p(20px);
+          }
+        }
+      }
+    }
+
+    &_list {
+      margin-bottom: vw-p(36px);
+    }
+  }
+}

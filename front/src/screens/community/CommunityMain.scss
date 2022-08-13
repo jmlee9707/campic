@@ -1,0 +1,39 @@
+.container {
+  justify-content: center;
+}
+
+.commu {
+  width: vw(1173px);
+  flex-direction: column;
+  margin-top: vw(60px);
+
+  &_bestpic {
+    margin-top: vw(60px);
+
+    &_week {
+      margin-bottom: vw(8px);
+      color: $GRAY-40;
+    }
+
+    &_extra {
+      justify-content: space-between;
+      color: $GRAY-67;
+      margin-bottom: vw(40px);
+    }
+  }
+
+  &_besttalk {
+    margin-top: vw(60px);
+
+    &_week {
+      margin-bottom: vw(8px);
+      color: $GRAY-40;
+    }
+
+    &_extra {
+      justify-content: space-between;
+      color: $GRAY-67;
+      margin-bottom: vw(40px);
+    }
+  }
+}
