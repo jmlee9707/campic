@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialCampState = {
+  arrange: 0,
   page: 0,
-  campList: [1],
+  campList: [],
   keyword: null,
   tag: [],
   sido: null,
@@ -20,32 +21,42 @@ const campReducer = createSlice({
     reset: state => {
       state.page = initialCampState.page;
       // state.campList = initialCampState.campList;
-      state.campList = [0];
+      state.campList = initialCampState.campList;
     },
     setCampList: (state, { payload }) => {
-      // console.log(payload);
-      state.campList = [...state.campList, payload];
+      console.log(payload);
+      state.campList = [...state.campList, ...payload.campList];
       state.page += 1; // 페이지 하나씩 증가
     },
     setTagConditions: (state, { payload }) => {
       // state.tag = [...state.tag, payload];
-      console.log(payload);
       state.tag = payload;
     },
     setLocaConditions: (state, { payload }) => {
       state.sido = payload.sido;
       state.gugun = payload.gugun;
     },
+    setKeyword: (state, { payload }) => {
+      state.keyword = payload;
+    },
+    setArrangeConditions: (state, { payload }) => {
+      state.arrange = payload.arrange;
+    },
     setLocation: (state, { payload }) => {
       state.lati = payload.lati;
       state.longi = payload.longi;
-    },
-
+    }
   }
 });
-export const selectLocation = (state) => state.campSearch;
+export const selectLocation = state => state.campSearch;
 
-
-export const { reset, setCampList, setTagConditions, setLocaConditions, setLocation } =
-  campReducer.actions;
+export const {
+  reset,
+  setCampList,
+  setTagConditions,
+  setLocaConditions,
+  setLocation,
+  setArrangeConditions,
+  setKeyword
+} = campReducer.actions;
 export default campReducer.reducer;

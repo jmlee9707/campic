@@ -133,7 +133,7 @@ function Join() {
     const result = await duplicateEmail(emailRef.current.value);
 
     if (result.message === "duplicate") {
-      setEmailError("이미 가입된 이메일 입니다");
+      setEmailMess("이미 가입된 이메일 입니다");
     } else if (result.message === "success") {
       // 코드번호 비교
       setTick(180);

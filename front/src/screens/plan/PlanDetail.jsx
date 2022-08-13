@@ -82,7 +82,7 @@ function PlanDetail() {
         <div className="plan_detail_map">
           {planInfo &&
            <Location
-            pos={{mapY : planInfo.mapX, mapX : planInfo.mapY}}
+            pos={{mapY : planInfo.campMapX, mapX : planInfo.campMapY}}
            />}
         </div>
       </div>

@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import campReducer from "./camp";
 import userReducer from "./user";
-import todoReducer from "./plan";
 import findReducer from "./find";
 import photoReducer from "./photo";
 
@@ -11,7 +10,6 @@ const store = configureStore({
   // root reducer
   reducer: {
     campSearch: campReducer,
-    todos: todoReducer,
     user: userReducer,
     find: findReducer,
     photos: photoReducer

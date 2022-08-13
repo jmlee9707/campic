@@ -26,44 +26,40 @@ function InfoEdit() {
   const [phoneMess, setPhoneMess] = useState("");
 
   // 생일 달력
-  const [startDate, setStartDate] = useState(new Date(Profile.birth));
-  // const [startDate, setStartDate] = useState(new Date('1993/1/12'));
-
+  const [startDate, setStartDate] = useState( Profile.birth ? new Date(Profile.birth) : new Date());
   const canEdit = async () => {
     if (!nickError && !phoneError) {
-      // console.log(`${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`);
       const userInfo = {
         birth: `${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`,
         email: Profile.email,
-        nickname: nickRef.current.value,
-        // profileImg:
+        nickname:nickRef.current.value,
         tel: phoneRef.current.value
       };
 
-      console.log(imgFile);
       const res = await modifyUserInfo(userInfo);
-
-      // 이미지 저장 api 호출
-      const formData = new FormData();
-      const byteString = atob(imgBase64.split(",")[1]);
+      if (imgBase64) {
+        // 이미지 저장 api 호출
+        const formData = new FormData();
+        const byteString = atob(imgBase64.split(",")[1]);
+    
+        // Blob를 구성하기 위한 준비, 이 내용은 저도 잘 이해가 안가서 기술하지 않았습니다.
+        const ab = new ArrayBuffer(byteString.length);
+        const ia = new Uint8Array(ab);
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i < byteString.length; i++) {
+          ia[i] = byteString.charCodeAt(i);
+        }
+        const blob = new Blob([ia], {
+          type: "image/jpeg"
+        });
+        const file = new File([blob], imgFile.name);
+        formData.append("email", Profile.email);
+        formData.append("file", file);
   
-      // Blob를 구성하기 위한 준비, 이 내용은 저도 잘 이해가 안가서 기술하지 않았습니다.
-      const ab = new ArrayBuffer(byteString.length);
-      const ia = new Uint8Array(ab);
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
+        await modifyUserProfileImg(formData);
       }
-      const blob = new Blob([ia], {
-        type: "image/jpeg"
-      });
-      const file = new File([blob], imgFile.name);
-      formData.append("email", Profile.email);
-      formData.append("file", file);
-      console.log(file);
-      const res1 = await modifyUserProfileImg(formData);
 
-      if (res === "success" && res1 === "success") {
+      if (res === "success") {
         dispatch(updateUserInfo(userInfo));
         navigate("/mypage/myfeed"); // 다음페이지로 이동xw
       }
@@ -98,9 +94,7 @@ function InfoEdit() {
   };
   // 이미지 받기
   const handleChangeFile = async (event) => {
-    console.log("압축하기")
     const reader = new FileReader();
-
     reader.onloadend = () => {
       const base64 = reader.result;
       if (base64) {
@@ -108,7 +102,6 @@ function InfoEdit() {
         dispatch(setProfileImg(base64.toString()));
       }
     }
-
     if (event.target.files[0]) {
       reader.readAsDataURL(event.target.files[0]);
       const options = {
@@ -122,10 +115,12 @@ function InfoEdit() {
       await setImgFile(compressedFile);
     }
   };
+
   const editImg = (e) => {
     e.preventDefault();
     inputRef.current.click();
   };
+
   return (
     <div className="container flex justify-center">
       <div className="infoedit ">
@@ -202,19 +197,12 @@ function InfoEdit() {
           </div>
           <div className="infoedit_box">
             <div className="infoedit_box_title notoMid fs-15">생일</div>
-            {/* <input
-              ref={birthRef}
-              type="text"
-              className="infoedit_box_input notoMid fs-14"
-              placeholder={Profile.birth}
-            /> */}
             <DatePicker
               className="infoedit_box_input notoMid fs-14"
               selected={startDate}
               dateFormat="yyyy/MM/dd"
               onChange={date => {
                 setStartDate(date);
-              // console.log(date)
             }}
             />
           </div>

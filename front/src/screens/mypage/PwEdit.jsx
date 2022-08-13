@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import logo from "@images/logo/logo_icon_green.svg";
+// import logo from "@images/logo/logo_icon_green.svg";
 import "./PwEdit.scss";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -44,18 +44,18 @@ function PwEdit() {
 
   const canEdit = async () => {
     if (!passError && !passSameError) {
-      try {
-        const res = await changePw({
+      
+      // try {
+      const res = await changePw({
           email: Profile.email,
           password: passRef.current.value
         });
-        navigate("/infoedit/pwedit");
-        if (res !== "success") {
-          throw new Error("canEdit err");
-        }
-      } catch {
-        setPassMess("관리자에게 문의하세요");
-        setPassError(true);
+      if (res === "success") {
+        navigate("/infoedit");
+
+      } else {
+          setPassMess("관리자에게 문의하세요");
+          setPassError(true);
       }
     }
   };
@@ -65,7 +65,7 @@ function PwEdit() {
       <div className="pwedit">
         <div className="pwedit_top flex column justify-center align-center">
           <div className="pwedit_top_title notoBold fs-28">비밀번호 수정</div>
-          <img src={logo} alt="Profile_Image" className="pwedit1_img" />
+          <img src={Profile.profileImg} alt="Profile_Image" className="pwedit1_img" />
           <div className="divide" />
         </div>
 

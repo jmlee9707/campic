@@ -257,19 +257,19 @@
 
 @media screen and (max-width: $PHONE-VW) {
   .detail {
-    width: vw-p(720px);
+    width: vw-p(570px);
 
     .divide {
       height: vw-p(1px);
     }
     &_title {
       // justify-content: flex-start;
-      margin: vw-p(84px) 0 vw-p(32px) 0;
+      margin: vw-p(44px) 0 vw-p(30px) 0;
     }
     &_camp {
       &_img_box {
-        width: vw-p(720px);
-        height: vw-p(480px);
+        width: vw-p(570px);
+        height: vw-p(360px);
         padding-bottom: vw-p(36px);
       }
 
@@ -324,8 +324,8 @@
       }
     }
     #map {
-      width: vw-p(720px);
-      height: vw-p(480px);
+      width: vw-p(570px);
+      height: vw-p(320px);
     }
   }
 }

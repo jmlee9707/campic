@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 // import { setEmail } from '../../store/user';
 import { setEmail, setUserInfo } from '@store/user';
 // import { getUserInfo, getKakaoToken, kakaoLogin } from "../../apis/user";
-import { getUserInfo } from "@apis/user";
+import { getUserInfo, exchangeImg } from "@apis/user";
 
 function NaverLogin () {
   const dispatch = useDispatch();
@@ -18,13 +18,9 @@ function NaverLogin () {
  
   const getNaverTokenHandler = async (code1) => {
 
-    axios.get(`https://nid.naver.com/oauth2.0/token?
-      grant_type=${process.env.REACT_APP_GRANT_TYPE}&
-      client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&
-      code=${code1[0]}&
-      state=${code1[1]}`)
+    axios.get(`https://nid.naver.com/oauth2.0/token?grant_type=${process.env.REACT_APP_GRANT_TYPE}&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&client_secret=${process.env.REACT_APP_NAVER_CLIENT_SECRET}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URL}&state=${code1[1]}&code=${code1[0]}`)
     .then((res) => {
-      // console.log(res.data)
+      console.log("네이버 버그 테스트", res)
       axios.post(`${BASE_URL}/social/naver`, {Authorization: res.data.access_token})
       .then(res1 => {
         // console.log(res1);
@@ -37,9 +33,14 @@ function NaverLogin () {
         sessionStorage.setItem("accessToken", res.data.Authorization);
         // 유저 정보 가져오기
         // console.log("유저 정보 가져오기")
+        // console.log("네이버 버그 테스트",res1.data);
         getUserInfo(res1.data.email)
         .then(userRes => {
-          dispatch(setUserInfo(userRes.userInfo))
+          let tempUserRes = userRes;
+          if (tempUserRes.userInfo.profileImg === null) {
+            tempUserRes = exchangeImg(userRes);
+          }
+          dispatch(setUserInfo(tempUserRes.userInfo))
         })
         // navigate("/");
       })
@@ -54,7 +55,7 @@ function NaverLogin () {
     });
   };
 
-  React.useEffect(() => {  
+  React.useEffect(() => { 
     if (query.code) {
       getNaverTokenHandler([query.code.toString(), query.state.toString()]);
     }

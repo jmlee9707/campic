@@ -1,17 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./MyTalkCard.scss";
-import card from "@images/friend.jpeg";
 
-function MyTalkCard() {
+function MyTalkCard({blobFile, title, talkId}) { 
+  const navigate = useNavigate();
+  const onClickTalk = () => {
+    navigate(`/board/talk/detail/${talkId}`)
+  }
   return (
-    <div className="my_talkcard">
-      <div className="my_talkcard_img">
-        <img src={card} alt="cardImg" title="cardImg" />
+    <button type="button" onClick={onClickTalk}>
+      <div className="talkCard">
+        <div className="talkCard_img">
+          <img src={[blobFile]} alt="썸네일" />
+        </div>
+        <div className="talkCard_title notoBold fs-18">
+          {title}
+        </div>
       </div>
-      <div className="my_talkcard_subject notoBold fs-18">
-        10년차 캠핑러가 말하는 감성 캠핑 즐기는 꿀팁 5
-      </div>
-    </div>
+    </button>
   );
 }
 

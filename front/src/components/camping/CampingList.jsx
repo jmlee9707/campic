@@ -3,36 +3,42 @@ import React, { useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
+import Loading from "@components/common/Loading";
 import { getCamplist } from "../../apis/camp";
-// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import CampingCard from "./CampingCard";
 import { reset, setCampList } from "../../store/camp";
 
-function CampingList() {
+function CampingList({ searchClick }) {
   const dispatch = useDispatch();
-  // const [campList, setCampList] = useState([]);
+  // const [viewList, setViewList] = useState([]);
+  const campInfo = useSelector(state => state.campSearch); // redux의 선택 정보
   const [page, setPage] = useState(0); // 현재 페이지
   const [loading, setLoading] = useState(false);
   const list = useSelector(state => state.campSearch.campList);
   const [ref, inView] = useInView();
-  console.log(list, dispatch);
-  useEffect(async () => {
-    dispatch(setCampList("123"));
-    // async function getAndSetCampList() {
-    const res = await getCamplist();
-    dispatch(setCampList([...list, res.list]));
-    //   // setCampList(res.slice(10));
-    //   // setCampList([...campList, ...res]);
-    //   // dispatch(reset());
-    //   // dispatch(
-    //   //   search({
-    //   //     page,
-    //   //     campList
-    //   //   })
-    //   // );
-    // }
-    // getAndSetCampList();
+
+  async function getAndSetCampList() {
+    const res = await getCamplist({
+      arrange: campInfo.arrange,
+      keyword: campInfo.keyword,
+      sido: campInfo.sido,
+      gugun: campInfo.gugun,
+      tags: campInfo.tag,
+      page
+    });
+    console.log(res);
+    console.log("출력입니다");
+    dispatch(setCampList({ campList: res }));
+    // dispatch(setCampList({ campList: [...list, res] }));
+    // dispatch(setCampList({ page }));
     setLoading(false);
+  }
+  // page 달라질때마다 요청보내기
+  useEffect(() => {
+    console.log(campInfo);
+    console.log(page);
+    // setLoading(false);
+    getAndSetCampList();
   }, [page]);
 
   // 사용자가 마지막 요소를 보고 있고 로딩 중이 아니라면
@@ -40,13 +46,16 @@ function CampingList() {
     if (inView && !loading) {
       setLoading(true);
       setPage(page + 1);
+      // getAndSetCampList();
+      // setLoading(false);
     }
   }, [inView, loading]);
 
   return (
     <div className="">
-      {/* {campList.length !== 0 &&
-        campList.map(({ campId, facltNm, addr1, homepage, firstImageUrl }) => (
+      {/* <Loading /> */}
+      {list.length !== 0 &&
+        list.map(({ campId, facltNm, addr1, homepage, firstImageUrl }) => (
           <CampingCard
             key={v4()}
             campId={campId}
@@ -55,9 +64,8 @@ function CampingList() {
             homepage={homepage}
             firstImageUrl={firstImageUrl}
           />
-        ))} */}
-
-      {loading ? <div>로딩중</div> : <div ref={ref} className="obe" />}
+        ))}
+      {loading ? <Loading /> : <div ref={ref} className="obe" />}
     </div>
   );
 }

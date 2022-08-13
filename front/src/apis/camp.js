@@ -1,13 +1,9 @@
 import { API } from "./index";
 
 // 캠핑장 전체 리스트 불러오기
-export const getCamplist = async page => {
-  // console.log(page);
-  const res = await API.get("/camp", {
-    params: {
-      page
-    }
-  });
+export const getCamplist = async body => {
+  console.log(body);
+  const res = await API.post("/camp", body);
   return res.data;
 };
 
@@ -19,10 +15,10 @@ export const campDetailInfo = async campId => {
 };
 
 // 캠핑장 전체 검색
-export const searchAll = async keyword => {
-  const res = await API.get(`/camp/search/${keyword}`);
-  return res.data;
-};
+// export const searchAll = async keyword => {
+//   const res = await API.get(`/camp/search/${keyword}`);
+//   return res.data;
+// };
 
 export const searchLocation = async (doName, gunName) => {
   const res = await API.get(`/camp/search/${doName}/${gunName}`);
