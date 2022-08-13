@@ -30,17 +30,27 @@ function Location({pos}) {
   const mapTypeControl = new kakao.maps.MapTypeControl();
 
 
-  function makeOverListener(map, mark, infowindow) {
+//   function makeOverListener(map, mark, infowindow) {
+//     return function() {
+//         infowindow.open(map, mark);
+//     };
+// };
+
+// function makeOutListener(infowindow) {
+//   return function() {
+//       infowindow.close();
+//   };
+// };
+  function makeOverListener(map, overlay) {
     return function() {
-        infowindow.open(map, mark);
+      overlay.setMap(map);
     };
 };
-
-function makeOutListener(infowindow) {
+function makeOutListener (overlay) {
   return function() {
-      infowindow.close();
+      overlay.setMap(null);
   };
-};
+};   
 
   useEffect(() => {
     // 은행, 마트, 약국, 주유소, 카페, 편의점
@@ -91,12 +101,22 @@ function makeOutListener(infowindow) {
           });
           
           // 컨텐츠 생성
-          const infowindow = new kakao.maps.InfoWindow({
-            content: `<div style="position: absolute; left: 0px; top: 0px;"><div style="width:140px;padding:1px;text-align:center;">${data[idx].place_name}</div></div>` // 인포윈도우에 표시할 내용
-            });
-        
-          kakao.maps.event.addListener(mark, 'mouseover', makeOverListener(map, mark, infowindow));
-          kakao.maps.event.addListener(mark, 'mouseout', makeOutListener(infowindow));
+          const content = `<div>${data[idx].place_name}</div>`;
+          // const infowindow = new kakao.maps.InfoWindow({
+          //   content: `<div style="position: absolute; left: 0px; top: 0px;"><div style="width:140px;padding:1px;text-align:center;">${data[idx].place_name}</div></div>` // 인포윈도우에 표시할 내용
+          //   });
+          const overlay = new kakao.maps.CustomOverlay({
+            // eslint-disable-next-line object-shorthand
+            content: content,
+            // eslint-disable-next-line object-shorthand
+            map: map,
+            position: markPos  
+        });
+          overlay.setMap(null);
+          kakao.maps.event.addListener(mark, 'mouseover', makeOverListener(map, overlay));
+          kakao.maps.event.addListener(mark, 'mouseout', makeOutListener(overlay));
+          // kakao.maps.event.addListener(mark, 'mouseover', makeOverListener(map, mark, infowindow));
+          // kakao.maps.event.addListener(mark, 'mouseout', makeOutListener(infowindow));
           mark.setMap(map);
         }
       } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
