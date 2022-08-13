@@ -1,0 +1,86 @@
+.container {
+  justify-content: center;
+}
+
+.plan {
+  width: (1170px);
+  .divide {
+    width: 100%;
+    height: (1px);
+    background-color: $GRAY-E4;
+  }
+  &_title {
+    // justify-content: flex-start;
+    margin-top: (60px);
+    color: $GRAY-40;
+  }
+
+  &_coming,
+  &_past {
+    &_title {
+      color: $GRAY-67;
+      margin: (32px) 0 (40px) 0;
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .plan {
+    width: vw(1170px);
+    .divide {
+      width: 100%;
+      height: vw(1px);
+    }
+    &_title {
+      // justify-content: flex-start;
+      margin-top: vw(60px);
+    }
+
+    &_coming,
+    &_past {
+      &_title {
+        margin: vw(32px) 0 vw(40px) 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: $TABLET-VW) {
+  .plan {
+    width: vw-t(1170px);
+    .divide {
+      width: 100%;
+      height: vw-t(1px);
+    }
+    &_title {
+      // justify-content: flex-start;
+      margin-top: vw-t(60px);
+    }
+
+    &_coming,
+    &_past {
+      &_title {
+        margin: vw-t(32px) 0 vw-t(40px) 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: $PHONE-VW) {
+  .plan {
+    width: vw-p(1170px);
+    .divide {
+      width: 100%;
+      height: vw-p(1px);
+    }
+    &_title {
+      // justify-content: flex-start;
+      margin-top: vw-p(60px);
+    }
+
+    &_coming,
+    &_past {
+      &_title {
+        margin: vw-p(32px) 0 vw-p(40px) 0;
+      }
+    }
+  }
+}
