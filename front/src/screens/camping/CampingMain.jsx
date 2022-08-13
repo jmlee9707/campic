@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CampingList from "@components/camping/CampingList";
 import "./CampingMain.scss";
 // import { getCampList } from "@apis/camp";
@@ -9,44 +9,17 @@ import {
   CampingSearchTag,
   CampingSearchAll
 } from "@components/camping/CampingSearch";
-import { setLocation, reset, setArrangeConditions } from "@store/camp";
+import { reset, setArrangeConditions } from "@store/camp";
 
 function CampingMain() {
   const dispatch = useDispatch();
-  // const [campInfo, setCampInfo] = useState([]);
   // campInfo 생성
   dispatch(reset()); // reduc 초기화
   // setCampInfo(result);
   const [fold, setFold] = useState(false);
   const [isFold, setIsFold] = useState("상세 접기");
 
-  // 위도 경도 받아오기 함수
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          dispatch(
-            setLocation({
-              lati: position.coords.latitude,
-              longi: position.coords.longitude
-            })
-          );
-        },
-        err => console.log(err),
-        {
-          enableHighAccuracy: false,
-          maximumAge: 0,
-          timeout: Infinity
-        }
-      );
-    } else {
-      alert("GPS를 지원하지 않습니다");
-    }
-  }
-  // use effect
-  useEffect(() => {
-    getLocation();
-  }, []);
+
 
   const tops = ["싸피 캠핑장", "프로젝트 캠핑장", "연관검색어3", "연관검색어4"];
   const topList = tops.map(top => (
