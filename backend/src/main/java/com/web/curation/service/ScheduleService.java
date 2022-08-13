@@ -63,11 +63,19 @@ public class ScheduleService {
      *  User 객체를 영속화시키고, 영속화된 User 객체를 가져와 데이터를 변경하면
      * 트랜잭션이 끝날 때 자동으로 DB에 저장해준다. */
     @Transactional
-    public void update(int saveId, ScheduleDto.Request dto) {
+    public boolean update(int saveId, ScheduleDto.Request dto) {
         LikedCampList likedCampList = likedCampRepository.getById(saveId); // orElseThrow(() ->
 //                new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id=" + saveId));
 
         likedCampList.update(dto.getStartDate(), dto.getEndDate(), dto.getSavedTitle() );
+
+        if(likedCampList.getSavedTitle().equals(dto.getSavedTitle())
+                && likedCampList.getStartDate().equals(dto.getStartDate())
+                && likedCampList.getEndDate().equals(dto.getEndDate())){
+            return true;
+        }
+        return false;
+
     }
 
 

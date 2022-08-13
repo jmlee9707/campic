@@ -62,9 +62,11 @@ public class ScheduleController {
 
     /* 일정 UPDATE */
     @PutMapping("/{saveId}")
-    public ResponseEntity update(@PathVariable int saveId, @RequestBody ScheduleDto.Request dto) {
-        scheduleService.update(saveId, dto);
-        return ResponseEntity.ok(saveId);
+    public ResponseEntity<String> update(@PathVariable int saveId, @RequestBody ScheduleDto.Request dto) {
+        if(scheduleService.update(saveId, dto)){
+            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+        }
+        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
     }
 
     /* 일정 DELETE */
