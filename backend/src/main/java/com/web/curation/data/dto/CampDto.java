@@ -50,18 +50,17 @@ public class CampDto {
         }
     }
 
-    @Data
     @Getter
     @Setter
     @RequiredArgsConstructor
     public static class CampList {
-        private int campId;
-        private String facltNm;
-        private String addr1;
-        private String firstImageUrl;
-        private String homepage;
-        private String mapX;
-        private String mapY;
+        private final int campId;
+        private final String facltNm;
+        private final String addr1;
+        private final String firstImageUrl;
+        private final String homepage;
+        private final String mapX;
+        private final String mapY;
 
 
         public CampList(TotalCampList totalCampList) {
@@ -73,7 +72,6 @@ public class CampDto {
             this.mapX = totalCampList.getMapX();
             this.mapY = totalCampList.getMapY();
         }
-
     }
 
 
