@@ -10,6 +10,9 @@ import com.web.curation.data.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +42,7 @@ public class PhotoServiceimpl implements PhotoService {
         this.communityLikeRepository = communityLikeRepository;
         this.userRepository = userRepository;
     }
-
+    @Cacheable(value="photo")
     @Override
     public List<PhotoDto> listPhoto(int page) {
         Pageable sortedByPriceDesc =
@@ -67,7 +70,7 @@ public class PhotoServiceimpl implements PhotoService {
 
         return getPhotoDtos(listCommunity);
     }
-
+    @Cacheable(value = "photo", key = "#boardId")
     @Override
     public PhotoDto detailPhoto(int boardId) {
         Community community = communityRepository.findByBoardId(boardId);
@@ -151,6 +154,7 @@ public class PhotoServiceimpl implements PhotoService {
 
         return BASE_64_PREFIX+base64Str;
     }
+    @CacheEvict(value = "photo", allEntries = true)
     @Transactional
     @Override
     public int writePhoto(PhotoDto photoDto) {
@@ -191,7 +195,7 @@ public class PhotoServiceimpl implements PhotoService {
             return 0;
         }
     }
-
+    @CacheEvict(value = "photo", allEntries = true)
     @Override
     public boolean updatePhoto(PhotoDto photoDto) {
 
@@ -217,6 +221,7 @@ public class PhotoServiceimpl implements PhotoService {
         return false;
     }
 
+    @CacheEvict(value = "photo", allEntries = true)
     @Transactional
     @Override
     public boolean deletePhoto(int boardId) {
@@ -235,7 +240,7 @@ public class PhotoServiceimpl implements PhotoService {
         if(verify == null) return true;
         return false;
     }
-
+    @CacheEvict(value = "photo", allEntries = true)
     @Override
     public int pushLike(int boardId, String email) {
         Community community = communityRepository.findByBoardId(boardId);
@@ -262,7 +267,7 @@ public class PhotoServiceimpl implements PhotoService {
             return -1;
         }
     }
-
+    @CacheEvict(value = "photo", allEntries = true)
     @Override
     public int cancelLike(int boardId, String email) {
 
