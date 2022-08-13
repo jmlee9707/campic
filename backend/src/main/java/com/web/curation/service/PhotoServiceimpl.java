@@ -70,7 +70,7 @@ public class PhotoServiceimpl implements PhotoService {
 
         return getPhotoDtos(listCommunity);
     }
-    @Cacheable(value = "photo", key = "#boardId")
+
     @Override
     public PhotoDto detailPhoto(int boardId) {
         Community community = communityRepository.findByBoardId(boardId);
