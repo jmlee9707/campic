@@ -73,11 +73,13 @@ public class ScheduleService {
 
     /* DELETE */
     @Transactional
-    public void delete(int saveId) {
-        LikedCampList likedCampList = likedCampRepository.getById(saveId); // orElseThrow(() ->
-//                new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id=" + id));
-
+    public boolean delete(int saveId) {
+        LikedCampList likedCampList = likedCampRepository.getById(saveId);
         likedCampRepository.delete(likedCampList);
+        LikedCampList verify = likedCampRepository.getById(saveId);
+
+        if(verify == null) return true;
+        return false;
     }
 
 

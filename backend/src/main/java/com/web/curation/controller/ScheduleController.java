@@ -69,9 +69,12 @@ public class ScheduleController {
 
     /* 일정 DELETE */
     @DeleteMapping("/{saveId}")
-    public ResponseEntity delete(@PathVariable int saveId) {
+    public ResponseEntity<String> delete(@PathVariable int saveId) {
         scheduleService.delete(saveId);
-        return ResponseEntity.ok(saveId);
+        if(scheduleService.delete(saveId)){
+            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+        }
+        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
     }
 
     /* todolist READ */
