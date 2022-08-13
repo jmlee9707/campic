@@ -67,6 +67,19 @@ public class CampService{
             filterCampList.add(tcl);
         }
 
+        CampDto.CampList last = new CampDto.CampList();
+        last.setCampId(-1);
+        last.setFacltNm("last");
+        last.setAddr1("last");
+        last.setFirstImageUrl("last");
+        last.setHomepage("last");
+        last.setMapX("last");
+        last.setMapY("last");
+
+        if ((start + pageable.getPageSize()) >= totalCampLists.size()){
+            filterCampList.add(last);
+        }
+
         return filterCampList;
 
     }
