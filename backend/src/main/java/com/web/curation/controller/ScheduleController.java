@@ -72,7 +72,6 @@ public class ScheduleController {
     /* 일정 DELETE */
     @DeleteMapping("/{saveId}")
     public ResponseEntity<String> delete(@PathVariable int saveId) {
-        scheduleService.delete(saveId);
         if(scheduleService.delete(saveId)){
             return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
         }
