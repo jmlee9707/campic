@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { v4 } from "uuid";
-import { getUpcomingPlan } from "../../apis/plan";
-import PlanCard from "./PlanCard";
+import PlanCard from "@components/plan/PlanCard";
+import { getIngPlan } from "../../apis/plan";
 
-function PlanUpcomingList() {
+function PlanIngList() {
   const userId = useSelector(state => state.user.email);
-
+  console.log(userId);
+  //   const past = true;
   const [list, setList] = useState([]); // 리스트 불러오기
   const now = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0]; // 현재시간
   useEffect(() => {
     async function getList() {
-      const res = await getUpcomingPlan(userId, now);
-      console.log(res);
+      const res = await getIngPlan(userId, now);
       setList(res);
+      console.log(res);
     }
+
     getList();
   }, []);
   return (
     <div className="flex column">
-      <div className="plan_coming_title notoBold fs-28">
-        곧 다가올 캠핑이에요!
-      </div>
+      <div className="plan_ing_title notoBold fs-28">지금 캠핑 중이신가요?</div>
       <div className="flex">
         {list.length !== 0 &&
           list.map(
@@ -35,6 +35,7 @@ function PlanUpcomingList() {
               firstImageUrl
             }) => (
               <PlanCard
+                // className="past_img"
                 key={v4()}
                 savedTitle={savedTitle}
                 // place={place}
@@ -47,17 +48,15 @@ function PlanUpcomingList() {
             )
           )}
         {list.length === 0 && (
-          <div className="none_upcoming flex column align-center">
-            <div className="none_upcoming_txt notoMid fs-22 ">
-              계획중인 캠핑이 없습니다 ㅠㅅㅠ
+          <div className="none_ingPlan flex column align-center">
+            <div className="none_ingPlan_txt notoMid fs-22 ">
+              진행중인 캠핑이 없습니다 ㅠㅅㅠ
             </div>
           </div>
         )}
       </div>
-
-      {/* <PlanCard /> */}
     </div>
   );
 }
 
-export default PlanUpcomingList;
+export default PlanIngList;

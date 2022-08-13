@@ -26,8 +26,6 @@ function CampingList({ searchClick }) {
       tags: campInfo.tag,
       page
     });
-    console.log(res);
-    console.log("출력입니다");
     dispatch(setCampList({ campList: res }));
     // dispatch(setCampList({ campList: [...list, res] }));
     // dispatch(setCampList({ page }));
@@ -35,8 +33,6 @@ function CampingList({ searchClick }) {
   }
   // page 달라질때마다 요청보내기
   useEffect(() => {
-    console.log(campInfo);
-    console.log(page);
     // setLoading(false);
     getAndSetCampList();
   }, [page]);
