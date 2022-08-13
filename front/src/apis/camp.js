@@ -2,7 +2,6 @@ import { API } from "./index";
 
 // 캠핑장 전체 리스트 불러오기
 export const getCamplist = async body => {
-  console.log(body);
   const res = await API.post("/camp", body);
   return res.data;
 };

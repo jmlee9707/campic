@@ -6,6 +6,7 @@
 .plan_detail {
   width: (1150px);
   .divide {
+    margin-top: 100px;
     width: 100%;
     height: (1px);
     background-color: $GRAY-E4;
@@ -100,6 +101,20 @@
     width: (1150px);
     height: (720px);
   }
+  &_btn {
+    margin-top: 80px;
+    &_delete,
+    &_modify {
+      border-radius: 20px;
+      // border: 1.5px solid $MAIN;
+      background-color: $GRAY-DB;
+      width: 180px;
+      height: 52px;
+      margin: 0 40px;
+      color: $WHITE;
+      margin-bottom: 80px;
+    }
+  }
 }
 
 .todo_box {
@@ -157,6 +172,7 @@
   .plan_detail {
     width: vw(1150px);
     .divide {
+      margin-top: vw(100px);
       height: vw(1px);
     }
     &_title {
@@ -225,6 +241,17 @@
       width: vw(1170px);
       height: vw(720px);
     }
+    &_btn {
+      margin-top: vw(80px);
+      &_delete,
+      &_modify {
+        border-radius: vw(20px);
+        width: vw(180px);
+        height: vw(52px);
+        margin: 0 vw(40px);
+        margin-bottom: vw(80px);
+      }
+    }
   }
 
   .todo_box {
@@ -275,6 +302,7 @@
     width: vw-t(950px);
     // background-color: red;
     .divide {
+      margin-top: vw-t(100px);
       height: vw-t(1px);
     }
     &_title {
@@ -354,6 +382,17 @@
       width: vw-t(950px);
       height: vw-t(720px);
     }
+    &_btn {
+      margin-top: vw-t(80px);
+      &_delete,
+      &_modify {
+        border-radius: vw-t(20px);
+        width: vw-t(200px);
+        height: vw-t(52px);
+        margin: 0 vw-t(40px);
+        margin-bottom: vw-t(80px);
+      }
+    }
   }
 
   .todo_box {
@@ -404,6 +443,7 @@
     width: vw-p(570px);
     // background-color: red;
     .divide {
+      margin-top: vw-p(80px);
       height: vw-p(1px);
     }
     &_title {
@@ -485,6 +525,17 @@
     #map {
       width: vw-p(570px);
       height: vw-p(500px);
+    }
+    &_btn {
+      margin-top: vw-p(50px);
+      &_delete,
+      &_modify {
+        border-radius: vw-p(20px);
+        width: vw-p(180px);
+        height: vw-p(52px);
+        margin: 0 vw-p(20px);
+        margin-bottom: vw-p(80px);
+      }
     }
   }
 

@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./PlanDetail.scss";
 import TodoItemList from "@components/plan/TodoItemList";
 import mainImg from "@images/temp_1.jpeg";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Location from "@components/common/Location";
-import { getPlanDetail } from "@apis/plan";
+import { getPlanDetail, deletePlan } from "@apis/plan";
+import { useSelector } from "react-redux";
 // import TodoItemList from "@components/plan/TodoItemList";
 
 function PlanDetail() {
   const [planInfo, setPlanInfo] = useState("");
   const { id: planId } = useParams();
+  const navigate = useNavigate();
+  const userId = useSelector(state => state.user.email);
   // const [start, setStart] = useState("");
   // const [end, setEnd] = useState("");
 
@@ -17,16 +20,14 @@ function PlanDetail() {
   //   const res = await getPlanDetail(planId);
   //   setPlanInfo(res);
   // };
-  async function getPlanInfo() {  
+  async function getPlanInfo() {
     try {
       const res = await getPlanDetail(planId);
       setPlanInfo(res);
-
     } catch (err) {
       console.log(err);
     }
-    
-  };
+  }
 
   useEffect(() => {
     getPlanInfo(); // 초기 일정정보 받아오기
@@ -34,7 +35,14 @@ function PlanDetail() {
     // setEnd(planInfo.endDate);
   }, []);
 
- 
+  const deletePlanInfo = async () => {
+    // 일정 삭제
+    const res = await deletePlan(planId);
+    console.log(res);
+    if (res === "success") {
+      navigate("/plan");
+    }
+  };
   return (
     <div className="container flex justify-center">
       <div className="plan_detail">
@@ -67,7 +75,7 @@ function PlanDetail() {
             </p>
             <p className="plan_detail_box_right_address fs-20 notoMid">
               {planInfo.campAdd1}
-              {planInfo.campAdd2}
+              {planInfo.campAdd2 !== "\\N" && <div>{planInfo.campAdd2}</div>}
             </p>
             <p className="plan_detail_box_right_phone fs-20 notoMid">
               {planInfo.campTel}
@@ -80,11 +88,30 @@ function PlanDetail() {
           </div>
         </div>
         <div className="plan_detail_map">
-          {planInfo &&
-           <Location
-            pos={{mapY : planInfo.campMapX, mapX : planInfo.campMapY}}
-           />}
+          {planInfo && (
+            <Location
+              pos={{ mapY: planInfo.campMapX, mapX: planInfo.campMapY }}
+            />
+          )}
+          <div className="divide" />
         </div>
+        {userId === planInfo.email && (
+          <div className="plan_detail_btn flex justify-center">
+            <button
+              onClick={deletePlanInfo}
+              type="button"
+              className="plan_detail_btn_delete fs-20 notoMid flex align-center justify-center"
+            >
+              일정 삭제
+            </button>
+            <button
+              type="button"
+              className="plan_detail_btn_modify fs-20 notoMid flex align-center justify-center"
+            >
+              일정 수정
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

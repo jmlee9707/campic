@@ -14,35 +14,49 @@ function PlanEndList() {
     async function getList() {
       const res = await getEndPlan(userId, now);
       setList(res);
+      console.log(res);
     }
+
     getList();
   }, []);
   return (
-    <div className="flex align-center">
-      {list.length !== 0 &&
-        list.map(
-          ({
-            savedTitle,
-            place,
-            startDate,
-            endDate,
-            campId,
-            saveId,
-            firstImageUrl
-          }) => (
-            <PlanCard
-              className="past_img"
-              key={v4()}
-              savedTitle={savedTitle}
-              place={place}
-              startDate={startDate.substr(0, 10)} // 문자열 자르기
-              endDate={endDate.substr(0, 10)} // 문자열 자르기
-              campId={campId}
-              saveId={saveId}
-              firstImageUrl={firstImageUrl}
-            />
-          )
+    <div className="flex column">
+      <div className="plan_past_title notoBold fs-28">
+        지난 캠핑 어떠셨나요?
+      </div>
+      <div className="flex">
+        {list.length !== 0 &&
+          list.map(
+            ({
+              savedTitle,
+              // place,
+              startDate,
+              endDate,
+              campId,
+              saveId,
+              firstImageUrl
+            }) => (
+              <PlanCard
+                className="past_img"
+                key={v4()}
+                savedTitle={savedTitle}
+                // place={place}
+                startDate={startDate.substr(0, 10)} // 문자열 자르기
+                endDate={endDate.substr(0, 10)} // 문자열 자르기
+                campId={campId}
+                saveId={saveId}
+                firstImageUrl={firstImageUrl}
+              />
+            )
+          )}
+        {list.length === 0 && (
+          <div className="none_endPlan flex column align-center">
+            <div className="none_endPlan_txt notoMid fs-22 ">
+              지난 캠핑이 없습니다 ㅠㅅㅠ
+            </div>
+          </div>
         )}
+      </div>
     </div>
   );
 }

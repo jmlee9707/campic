@@ -15,64 +15,55 @@
   top: 50%;
   left: 50%;
   background-color: $WHITE;
-  border-radius: vw(80px);
-  width: vw(820px);
-  padding: vw(80px) 0;
+  border-radius: (80px);
+  width: (720px);
+  padding: (70px) 0;
   transform: translate(-50%, -50%);
-  &_close {
-    // align-items: flex-end;
-    justify-content: flex-end;
-    position: relative;
-    right: 0;
-  }
   &_body {
     &_txt {
-      margin-bottom: vw(25px);
+      margin-bottom: (25px);
       &_title {
         color: $GRAY-40;
-        margin-bottom: vw(40px);
+        margin-bottom: (40px);
       }
       &_days {
         color: $GRAY-67;
-        margin-bottom: vw(16px);
-        width: 100%;
+        margin-bottom: (22px);
         &_select {
-          margin-left: vw(16px);
-          //   margin-left: vw(8px);
+          margin-left: (16px);
+          //   margin-left: (8px);
           justify-content: space-between;
         }
         input {
           color: $GRAY-67;
-          width: vw(130px);
-          margin-left: vw(8px);
-          padding-bottom: vw(4px);
-          border-bottom: vw(1px) solid $GRAY-67;
+          width: (150px);
+          margin: 0 (8px);
+          padding: 0 (8px) (8px) 16px;
+          border-bottom: (1px) solid $GRAY-67;
           cursor: pointer;
         }
       }
       &_trip {
         color: $GRAY-67;
-        margin-bottom: vw(12px);
+        margin-bottom: (12px);
 
         &_input {
-          //   background-color: aqua;
-
-          margin-left: vw(24px);
-          padding-bottom: vw(4px);
-          border-bottom: vw(1px) solid $GRAY-67;
+          margin-left: (24px);
+          padding: 0 (8px) (8px) 16px;
+          border-bottom: (1px) solid $GRAY-67;
         }
       }
     }
     &_btn {
-      margin-top: vw(10px);
+      margin-top: (8px);
       &_add,
       &_close {
-        border-radius: vw(15px);
+        border-radius: (15px);
         color: $MAIN;
         background-color: $WHITE;
-        border: vw(1.5px) solid $MAIN;
-        padding: vw(12px) vw(31px);
-        margin: 0 vw(8px);
+        border: (1.5px) solid $MAIN;
+        padding: (12px) (30px);
+        margin: 0 (16px);
         &:hover {
           background-color: $MAIN;
           box-shadow: 0px 0px 5px $MAIN;
@@ -82,25 +73,232 @@
     }
   }
   &_login {
-    margin: vw(18px) 0;
+    margin: (18px) 0;
     &_txt {
-      margin-bottom: vw(32px);
+      margin-bottom: (50px);
     }
     &_btn {
       &_close {
-        border-radius: vw(15px);
-        padding: vw(12px) vw(31px);
+        border-radius: (15px);
+        padding: (12px) (30px);
         background-color: $WHITE;
         color: $MAIN;
-        margin: 0 vw(8px);
-        border: vw(1.5px) solid $MAIN;
+        margin: 0 (16px);
+        border: (1.5px) solid $MAIN;
       }
       &_move {
-        border-radius: vw(15px);
-        margin: 0 vw(8px);
-        padding: vw(12px) vw(31px);
+        border-radius: (15px);
+        margin: 0 (16px);
+        padding: (12px) (30px);
         background-color: $MAIN;
         color: $WHITE;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .modal {
+    border-radius: vw(80px);
+    width: vw(720px);
+    padding: vw(70px) 0;
+    transform: translate(-50%, -50%);
+    &_body {
+      &_txt {
+        margin-bottom: vw(25px);
+        &_title {
+          margin-bottom: vw(40px);
+        }
+        &_days {
+          margin-bottom: vw(22px);
+          &_select {
+            margin-left: vw(16px);
+          }
+          input {
+            width: vw(150px);
+            margin: 0 vw(8px);
+            padding: 0 vw(8px) vw(8px) vw(16px);
+            border-bottom: vw(1px) solid $GRAY-67;
+          }
+        }
+        &_trip {
+          margin-bottom: vw(12px);
+
+          &_input {
+            margin-left: vw(24px);
+            padding: 0 vw(8px) vw(8px) vw(16px);
+            border-bottom: vw(1px) solid $GRAY-67;
+          }
+        }
+      }
+      &_btn {
+        margin-top: vw(8px);
+        &_add,
+        &_close {
+          border-radius: vw(15px);
+          color: $MAIN;
+          background-color: $WHITE;
+          border: vw(1.5px) solid $MAIN;
+          padding: vw(12px) vw(30px);
+          margin: 0 vw(16px);
+        }
+      }
+    }
+    &_login {
+      margin: vw(18px) 0;
+      &_txt {
+        margin-bottom: vw(50px);
+      }
+      &_btn {
+        &_close {
+          border-radius: vw(15px);
+          padding: vw(12px) vw(30px);
+          margin: 0 vw(16px);
+          border: vw(1.5px) solid $MAIN;
+        }
+        &_move {
+          border-radius: vw(15px);
+          margin: 0 vw(16px);
+          padding: vw(12px) vw(30px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .modal {
+    border-radius: vw-t(80px);
+    width: vw-t(700px);
+    padding: vw-t(70px) 0;
+    transform: translate(-50%, -50%);
+    &_body {
+      &_txt {
+        margin-bottom: vw-t(25px);
+        &_title {
+          margin-bottom: vw-t(40px);
+        }
+        &_days {
+          margin-bottom: vw-t(22px);
+          &_select {
+            margin-left: vw-t(16px);
+          }
+          input {
+            width: vw-t(150px);
+            margin: 0 vw-t(8px);
+            padding: 0 vw-t(8px) vw-t(8px) vw-t(16px);
+            border-bottom: vw-t(1px) solid $GRAY-67;
+          }
+        }
+        &_trip {
+          margin-bottom: vw-t(12px);
+
+          &_input {
+            margin-left: vw-t(24px);
+            padding: 0 vw-t(8px) vw-t(8px) vw-t(16px);
+            border-bottom: vw-t(1px) solid $GRAY-67;
+          }
+        }
+      }
+      &_btn {
+        margin-top: vw-t(8px);
+        &_add,
+        &_close {
+          border-radius: vw-t(15px);
+          color: $MAIN;
+          background-color: $WHITE;
+          border: vw-t(1.5px) solid $MAIN;
+          padding: vw-t(12px) vw-t(30px);
+          margin: 0 vw-t(16px);
+        }
+      }
+    }
+    &_login {
+      margin: vw-t(25px) 0;
+      &_txt {
+        margin-bottom: vw-t(40px);
+      }
+      &_btn {
+        &_close {
+          border-radius: vw-t(15px);
+          padding: vw-t(12px) vw-t(30px);
+          margin: 0 vw-t(16px);
+          border: vw-t(1.5px) solid $MAIN;
+        }
+        &_move {
+          border-radius: vw-t(15px);
+          margin: 0 vw-t(16px);
+          padding: vw-t(12px) vw-t(30px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .modal {
+    border-radius: vw-p(80px);
+    width: vw-p(520px);
+    padding: vw-p(70px) 0;
+    transform: translate(-50%, -50%);
+    &_body {
+      &_txt {
+        margin-bottom: vw-p(18px);
+        &_title {
+          margin-bottom: vw-p(40px);
+        }
+        &_days {
+          margin-bottom: vw-p(22px);
+          &_select {
+            margin-left: vw-p(8px);
+          }
+          input {
+            width: vw-p(150px);
+            margin: 0 vw-p(8px);
+            padding: 0 vw-p(4px) vw-p(8px) vw-p(8px);
+            border-bottom: vw-p(1px) solid $GRAY-67;
+          }
+        }
+        &_trip {
+          margin-bottom: vw-p(12px);
+
+          &_input {
+            margin-left: vw-p(12px);
+            padding: 0 vw-p(8px) vw-p(8px) vw-p(16px);
+            border-bottom: vw-p(1px) solid $GRAY-67;
+          }
+        }
+      }
+      &_btn {
+        margin-top: vw-p(8px);
+        &_add,
+        &_close {
+          border-radius: vw-p(15px);
+          color: $MAIN;
+          background-color: $WHITE;
+          border: vw-p(1.5px) solid $MAIN;
+          padding: vw-p(12px) vw-p(30px);
+          margin: 0 vw-p(8px);
+        }
+      }
+    }
+    &_login {
+      margin: vw-p(25px) 0;
+      &_txt {
+        margin-bottom: vw-p(40px);
+      }
+      &_btn {
+        &_close {
+          border-radius: vw-p(15px);
+          padding: vw-p(12px) vw-p(30px);
+          margin: 0 vw-p(8px);
+          border: vw-p(1.5px) solid $MAIN;
+        }
+        &_move {
+          border-radius: vw-p(15px);
+          margin: 0 vw-p(8px);
+          padding: vw-p(12px) vw-p(30px);
+        }
       }
     }
   }

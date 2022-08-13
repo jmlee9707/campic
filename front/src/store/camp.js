@@ -24,7 +24,6 @@ const campReducer = createSlice({
       state.campList = initialCampState.campList;
     },
     setCampList: (state, { payload }) => {
-      console.log(payload);
       state.campList = [...state.campList, ...payload.campList];
       state.page += 1; // 페이지 하나씩 증가
     },
