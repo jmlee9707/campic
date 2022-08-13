@@ -1,11 +1,6 @@
 import React from "react";
 import "./BestPhoto.scss";
 import { useNavigate } from "react-router-dom";
-// import friends from "@images/friend.jpeg";
-// import { getBestPhoto } from "../../apis/photo";
-
-
-
 // eslint-disable-next-line react/prop-types
 function BestPhoto({ blobFile, boardId }) {
   const navigate = useNavigate();
@@ -22,6 +17,5 @@ function BestPhoto({ blobFile, boardId }) {
     </button>
   );
 }
-
 
 export default BestPhoto;

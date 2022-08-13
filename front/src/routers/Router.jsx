@@ -55,9 +55,7 @@ import Community from "./Community";
 // import TalkUpdate from "@screens/community/TalkUpdate";
 
 function Router() {
-
   // const isLogined = useSelector(state => state.user.email);
-
 
   return (
     <>
@@ -65,7 +63,6 @@ function Router() {
       <Routes>
         {/* main */}
         <Route path="/" element={<Home />} />
-
         {/* login */}
         <Route path="/login" element={<Login />} />
         <Route path="/kakao" element={<KakaoLogin />} />
@@ -76,7 +73,6 @@ function Router() {
           <Route index element={<Join />} />
           <Route path="finish" element={<JoinFinish />} />
         </Route>
-
         {/* find ID/PW  */}
         <Route path="/findid/*">
           <Route index element={<FindId />} />
@@ -87,7 +83,6 @@ function Router() {
           <Route path="change" element={<FindPwCh />} />
           <Route path="finish" element={<FindPwFinish />} />
         </Route>
-
         {/* info edit */}
         <Route path="/infoedit/*">
           <Route index element={<InfoEdit />} />
@@ -107,12 +102,11 @@ function Router() {
           </Route>
         } */}
 
-
         {/* Drop */}
         <Route path="/drop/*">
           <Route index element={<Drop />} />
           <Route path="finish" element={<DropFinish />} />
-        </Route>        
+        </Route>
         {/* { isLogined &&
           <Route path="/drop/*">
             <Route index element={<Drop />} />
@@ -125,9 +119,8 @@ function Router() {
         </Route>
         } */}
 
-
         {/* community */}
-        <Route path="/board/*" element={<Community/>}/>
+        <Route path="/board/*" element={<Community />} />
         {/* { isLogined && <Route path="/board/*" element={<Community/>}/> }
         { !isLogined && 
           <Route path="/board/*">
@@ -135,14 +128,12 @@ function Router() {
             <Route path="*" element={<PlzLogin />} />
           </Route>
         } */}
-          
-          
+
         {/* camping */}
         <Route path="/camping/*">
           <Route index element={<CampingMain />} />
           <Route path="detail/:id" element={<CampingDetail />} />
         </Route>
-
         {/* plan */}
         <Route path="/plan/*">
           <Route index element={<PlanMain />} />
@@ -152,9 +143,9 @@ function Router() {
           <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
-          </Route>
-        }
-        { !isLogined && 
+        </Route>
+        {/* // } */}
+        {/* { !isLogined && 
           <Route path="/plan/*">
             <Route index element={<PlanMain />} />
             <Route path="*" element={<PlzLogin />} />
@@ -164,7 +155,6 @@ function Router() {
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
         </Route> */}
-
         {/* mypage */}
         <Route path="/mypage/*">
           <Route path="myfeed" element={<MyFeed />} />
@@ -173,15 +163,15 @@ function Router() {
           <Route path="pwch" element={<PwCh />} />
           <Route path="pwch/edit" element={<PwEdit />} />
           <Route path="info/edit" element={<InfoEdit />} />
-        </Route>        
+        </Route>
         {/* { isLogined && 
           <Route path="/mypage/*">
-          <Route path="myfeed" element={<MyFeed />} />
-          <Route path="drop" element={<Drop />} />
-          <Route path="drop/finish" element={<DropFinish />} />
-          <Route path="pwch" element={<PwCh />} />
-          <Route path="pwch/edit" element={<PwEdit />} />
-          <Route path="info/edit" element={<InfoEdit />} />
+            <Route path="myfeed" element={<MyFeed />} />
+            <Route path="drop" element={<Drop />} />
+            <Route path="drop/finish" element={<DropFinish />} />
+            <Route path="pwch" element={<PwCh />} />
+            <Route path="pwch/edit" element={<PwEdit />} />
+            <Route path="info/edit" element={<InfoEdit />} />
           </Route>
         } */}
         {/* { !isLogined && 

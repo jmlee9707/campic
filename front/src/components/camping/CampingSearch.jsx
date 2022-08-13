@@ -1,16 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./CampingSearch.scss";
-import search from "@images/icon/search_black_24dp.svg";
 import { v4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
+
+import {
+  setLocaConditions,
+  setTagConditions,
+  setKeyword
+} from "../../store/camp";
 import {
   getSido,
-  searchAll,
+  // searchAll,
   getGun,
   // searchLocation,
   searchTag
 } from "../../apis/camp";
-import { reset, setTagConditions } from "../../store/camp";
 
 export function CampingSearchAll() {
   const dispatch = useDispatch();
@@ -18,35 +22,18 @@ export function CampingSearchAll() {
   const searchKeyword = async () => {
     const keyword = keywordRef.current.value;
     // async function searchCampWord() {
-    dispatch(reset());
-    const res = await searchAll(`${encodeURIComponent(keyword)}`);
-    console.log(res);
+    dispatch(setKeyword({ keyword }));
     // }
   };
-  // const tops = ["싸피 캠핑장", "연관검색어2", "연관검색어3", "연관검색어4"];
-  // const topList = tops.map(top => (
-  //   <div
-  //     className="main_title_left_word_detail flex align-center justify-center"
-  //     key={v4()}
-  //   >
-  //     {top}
-  //   </div>
-  // ));
   return (
     <div className="search_keyword flex">
       <input
+        onChange={searchKeyword}
         ref={keywordRef}
         type="text"
         className="search_keyword_input notoMid fs-16"
         placeholder="캠핑장을 검색해주세요"
       />
-      <button
-        onClick={searchKeyword}
-        type="button"
-        className="search_keyword_btn flex align-center justify-center"
-      >
-        <img src={search} alt="button" />
-      </button>
     </div>
   );
 }
@@ -54,13 +41,14 @@ export function CampingSearchAll() {
 // ==================================
 // 지역별 검색 컴포넌트
 export function CampingSearchLoca() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [doCodeList, setDoCodeList] = useState([]); // 시코드
   const [gunCodeList, setGunCodeList] = useState([]); // 군구 코드
   const [doName, setDoName] = useState("");
   const [gunName, setGunName] = useState("");
 
   useEffect(() => {
+    //  1. 처음 select box중 처음 시군 셀렉트 옵션에 전국 도 이름을 담음
     async function getSidoCode() {
       setDoCodeList([]); // 초기화
       const res = await getSido();
@@ -73,73 +61,56 @@ export function CampingSearchLoca() {
   const onSiChange = async e => {
     const doCode = e.target.value; // 도코드
     const res = await getGun(doCode.substr(0, 2));
-    setGunCodeList(res);
+    await setGunCodeList(res);
     const tempName = document.getElementById("sido_select");
     setDoName(tempName.options[tempName.selectedIndex].text);
-    console.log(doName);
+    // console.log(doName);
   };
 
   // 군구 선택 변화
   const onGunChange = async () => {
     const tempName = document.getElementById("gugun_select");
-    setGunName(tempName.options[tempName.selectedIndex].text);
-    console.log(gunName);
+    await setGunName(tempName.options[tempName.selectedIndex].text);
   };
 
-  // // 지역별 검색
-  // const searchLoca = async () => {
-  //   const res = await searchLocation(
-  //     `${encodeURIComponent(doName)}`,
-  //     `${encodeURIComponent(gunName)}`
-  //   );
-  //   console.log(res);
-  //   // redux에 location 값 전달
-  //   dispatch(setLocaConditions({ sido: doName, gugun: gunName }));
-  // };
+  useEffect(() => {
+    dispatch(setLocaConditions({ sido: doName, gugun: gunName }));
+    // console.log(useSelector(state => state.campSearch.doName));
+  }, [gunName]);
 
   return (
     <div className="search_loca">
       <select
         id="sido_select"
-        // value={doCodeList}
         onChange={onSiChange}
-        // onClick={getSidoList}
         type="text"
         className="fs-16 notoMid"
-        multiple={false}
+        // multiple="false"
         defaultValue="도"
       >
-        <option value="default" onChange={onSiChange}>
-          시/도
-        </option>
+        <option value="default">시/도</option>
         {doCodeList.map(item => (
-          <option value={item.sidoCode} onChange={onSiChange}>
+          <option key={item.sidoName} value={item.sidoCode}>
             {item.sidoName}
           </option>
         ))}
       </select>
 
       <select
-        // value={gunCodeList}
         onChange={onGunChange}
         id="gugun_select"
-        mutiple={false}
+        // mutiple="false"
         type="text"
         className="fs-16 notoMid"
         defaultValue="시/군/구"
       >
-        <option value="default" onChange={onGunChange}>
-          군/구
-        </option>
+        <option value="default">군/구</option>
         {gunCodeList.map(item => (
-          <option value={item.gugunCode} onChange={onGunChange}>
+          <option key={item.gugunName} value={item.gugunCode}>
             {item.gugunName}
           </option>
         ))}
       </select>
-      {/* <button type="button" className="fs-18 notoBold" onClick={searchLoca}>
-        검색
-      </button> */}
     </div>
   );
 }
@@ -208,7 +179,6 @@ export function CampingSearchTag() {
       // setSelectTags(selectTags.filter(tag => tag !== value));
       dispatch(setTagConditions(selectTags.filter(tag => tag !== value)));
     }
-    // console.log(selectTags);
   };
 
   // tag class 이름
@@ -241,11 +211,6 @@ export function CampingSearchTag() {
       <div className="search_tag_list" onChange={searchTags}>
         {tagList}
       </div>
-      {/* <div className="search_tag_fin">
-        <button type="button" className="fs-18 notoBold" onChange={searchTags}>
-          검색
-        </button>
-      </div> */}
     </div>
   );
 }
