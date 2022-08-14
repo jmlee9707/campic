@@ -34,10 +34,9 @@ public class ShopSearchService {
 
     /* 들어온 검색어 저장 */
     @Transactional
-    public int save(ShopSearch shopSearch) {
+    public int save(SearchRequestDto searchRequestDto) {
         ShopSearch ss = new ShopSearch();
-        System.out.println(shopSearch);
-        ss.setSearchWord(shopSearch.getSearchWord());
+        ss.setSearchWord(searchRequestDto.getQuery());
         shopSearchRepository.save(ss);
 
         return ss.getSearchId();
