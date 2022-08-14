@@ -34,6 +34,9 @@ import CampingDetail from "@screens/camping/CampingDetail";
 import PlanMain from "@screens/plan/PlanMain";
 import PlanDetail from "@screens/plan/PlanDetail";
 
+// shopping
+import Shopping from "@screens/shopping/shopping";
+
 // others
 import NotFound from "@screens/NotFound";
 // import PlzLogin from "@screens/PlzLogin";
@@ -164,6 +167,9 @@ function Router() {
           <Route path="pwch/edit" element={<PwEdit />} />
           <Route path="info/edit" element={<InfoEdit />} />
         </Route>
+        
+        {/* shopping */}
+        <Route path="/shopping" element={<Shopping />} />
         {/* { isLogined && 
           <Route path="/mypage/*">
             <Route path="myfeed" element={<MyFeed />} />
