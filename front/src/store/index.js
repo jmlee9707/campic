@@ -3,6 +3,7 @@ import campReducer from "./camp";
 import userReducer from "./user";
 import findReducer from "./find";
 import photoReducer from "./photo";
+import shoppingReducer from "./shopping";
 
 //-----------------------------------------------------------------
 // 객체 전달, 하나의 거대한 store, 모든 state 관리
@@ -12,7 +13,8 @@ const store = configureStore({
     campSearch: campReducer,
     user: userReducer,
     find: findReducer,
-    photos: photoReducer
+    photos: photoReducer,
+    shopping: shoppingReducer
   }
 });
 

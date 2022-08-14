@@ -54,6 +54,15 @@ function MainNavBar() {
       setOpenMenu(!openMenu);
     }
   };
+  const moveShopping = () => {
+    navigate("/shopping");
+    if (openTool === true) {
+      setOpenTool(!openTool);
+    }
+    if (openMenu === true) {
+      setOpenMenu(!openMenu);
+    }
+  };
   const moveCommu = () => {
     navigate("/board");
     if (openTool === true) {
@@ -138,6 +147,12 @@ function MainNavBar() {
                   >
                     커뮤니티
                   </NavLink>
+                  <NavLink
+                    className="left_nav__link flex notoMid fs-16"
+                    to="/shopping"
+                  >
+                    준비물
+                  </NavLink>                  
                 </>
               )}
               {pathname !== "/" && (
@@ -160,6 +175,13 @@ function MainNavBar() {
                   >
                     커뮤니티
                   </NavLink>
+                  <NavLink
+                    className={({ isActive }) => activeClassName(isActive)}
+                    to="/shopping"
+                  >
+                    준비물
+                  </NavLink>
+
                 </>
               )}
             </nav>
@@ -267,6 +289,13 @@ function MainNavBar() {
                 onClick={moveCommu}
               >
                 커뮤니티
+              </button>
+              <button
+                type="button"
+                className="mobile_menu__link fs-16"
+                onClick={moveShopping}
+              >
+                준비물
               </button>
               {Profile.email === null && (
                 <>

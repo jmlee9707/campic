@@ -53,7 +53,6 @@ function Login() {
   };
   const handleOnKeyPress = (e) => {
     if (e.key === 'Enter') {
-      console.log("엔터 테스트")
       canLogin();
     }
   }
