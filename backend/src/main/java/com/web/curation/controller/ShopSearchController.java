@@ -32,7 +32,7 @@ public class ShopSearchController {
 
     @PostMapping()
     public ResponseEntity searchItems(@RequestBody SearchRequestDto searchRequestDto){
-        if (searchRequestDto.getStart() == 0){
+        if (searchRequestDto.getStart() == 1){
             shopSearchService.save(searchRequestDto);
         }
         List<ItemsDto> result = shopSearchService.search(searchRequestDto);
