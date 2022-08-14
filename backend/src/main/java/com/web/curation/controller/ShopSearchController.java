@@ -25,9 +25,18 @@ public class ShopSearchController {
         this.shopSearchService = shopSearchService;
     }
 
+//    @PostMapping()
+//    public ResponseEntity save(@RequestBody ShopSearch shopSearch){
+//        return ResponseEntity.ok(shopSearchService.save(shopSearch));
+//    }
+
     @PostMapping()
-    public ResponseEntity save(@RequestBody ShopSearch shopSearch){
-        return ResponseEntity.ok(shopSearchService.save(shopSearch));
+    public ResponseEntity searchItems(@RequestBody SearchRequestDto searchRequestDto){
+        if (searchRequestDto.getStart() == 0){
+            shopSearchService.save(searchRequestDto);
+        }
+        List<ItemsDto> result = shopSearchService.search(searchRequestDto);
+        return new ResponseEntity<List<ItemsDto>>(result,HttpStatus.OK);
     }
 
     @GetMapping("/best")
@@ -35,17 +44,17 @@ public class ShopSearchController {
         return new ResponseEntity<List<String>>(shopSearchService.bestSearch(), HttpStatus.OK);
     }
 
-    @GetMapping()
-    public ResponseEntity<List<ItemsDto>> searchItems(@RequestParam int page, @RequestParam String inputWord) {
-        SearchRequestDto searchRequestDto = SearchRequestDto.builder()
-                .query(inputWord)
-                .display(10)
-                .start(page)
-                .build();
-
-        List<ItemsDto> result = shopSearchService.search(searchRequestDto);
-        return new ResponseEntity<List<ItemsDto>>(result,HttpStatus.OK);
-    }
+//    @GetMapping()
+//    public ResponseEntity<List<ItemsDto>> searchItems(@RequestParam int page, @RequestParam String inputWord) {
+//        SearchRequestDto searchRequestDto = SearchRequestDto.builder()
+//                .query(inputWord)
+//                .display(10)
+//                .start(page)
+//                .build();
+//
+//        List<ItemsDto> result = shopSearchService.search(searchRequestDto);
+//        return new ResponseEntity<List<ItemsDto>>(result,HttpStatus.OK);
+//    }
 
 
 }
