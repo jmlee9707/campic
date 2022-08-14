@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const initialUserState = {
+export const initialFindState = {
   email: null,
 };
 
 export const userSlice = createSlice({
   name: "find",
-  initialState: initialUserState,
+  initialState: initialFindState,
   reducers: {
     setEmail: (state, action) => {
       state.email = action.payload.email;
     },
     reset: state => {
-      Object.assign(state, initialUserState);
+      Object.assign(state, initialFindState);
     },
   }
 });
