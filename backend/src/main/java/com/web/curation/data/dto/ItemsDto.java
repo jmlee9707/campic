@@ -1,7 +1,12 @@
 package com.web.curation.data.dto;
+import lombok.Getter;
+import lombok.Setter;
 import org.json.JSONObject;
 
+@Getter
+@Setter
 public class ItemsDto {
+    @Getter
     private String title;
     private String link;
     private String image;

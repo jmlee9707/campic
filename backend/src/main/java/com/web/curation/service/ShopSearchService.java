@@ -81,6 +81,7 @@ public class ShopSearchService {
         // JSONObject에서 items 배열 꺼내기
         // JSON 배열이기 때문에 보통 배열이랑 다르게 활용해야한다.
         JSONArray items = rjson.getJSONArray("items");
+//        System.out.println();
         List<ItemsDto> itemsDtoList = new ArrayList<>();
         for (int i = 0; i < items.length(); i++) {
             JSONObject itemJson = (JSONObject) items.get(i);
