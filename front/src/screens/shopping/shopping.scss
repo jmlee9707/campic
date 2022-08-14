@@ -1,0 +1,120 @@
+.container {
+  justify-content: center;
+}
+
+.shop {
+  width: (1100px);
+  flex-direction: column;
+  margin-top: (100px);
+  .divide {
+    width: 100%;
+    height: (1px);
+    background-color: $GRAY-E4;
+  }
+  &_search {
+    height: vw(500px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../assets/images/campfire.jpg");
+    // opacity: 0.1;
+
+    // margin-bottom: (80px);
+    position: relative;
+    .opac {
+      background-color: $WHITE;
+      position: absolute;
+      height: vw(500px);
+      width: 100%;
+      opacity: 0.2;
+    }
+    &_tit {
+      color: $WHITE;
+      text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      margin-bottom: vw(50px);
+      &_title1 {
+        // position: relative;
+        margin-bottom: (8px);
+
+      }
+    }
+
+    &_input {
+      &_content {
+        width: (750px);
+        height: vw(40px);
+        color: $GRAY-40;
+        background-color: $WHITE;
+        border-radius: vw(6px);
+        border: 1px solid rgba(70, 114, 100, 0.18);
+        // input{
+        //   ::placeholder {
+        //     padding-left: vw(44px);
+        //   }
+        // }
+      }
+      &_enter {
+        margin-left: vw(30px);
+        height: vw(40px);
+        width: vw(60px);
+        color: $WHITE;
+        background-color: $MAIN;
+        border-radius: vw(5px);
+      }
+    }
+
+    &_hot {
+      margin-top: vw(76px);
+
+
+      &_popname {
+        margin-left: vw(128px);
+        width: vw(177px);
+        height: vw(32px);
+        align-items: center;
+        justify-content: center;
+        border-radius: vw(20px);
+        background-color: $GRAY-F3;
+        color: $GRAY-67;
+        margin-bottom: vw(50px);
+        
+      }
+
+      &_searchname {
+        justify-content: space-between;
+        width: vw(448px);
+
+        &_one,
+        &_two,
+        &_three,
+        &_four {
+          width: vw(100px);
+          height: vw(32px);
+          align-items: center;
+          justify-content: center;
+          border-radius: vw(20px);
+          background-color: $GRAY-F3;
+          color: $GRAY-67;
+        }
+      }
+    }
+  }
+
+  &_res {
+
+    &_title {
+      margin-bottom: vw(44px);
+  
+      &_tit1 {
+        color: $GRAY-40;
+      }
+      &_tit2 {
+        color: $GRAY-76;
+      }
+    }
+  }
+}

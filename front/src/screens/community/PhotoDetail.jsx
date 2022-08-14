@@ -77,7 +77,7 @@ function PhotoDetail() {
     const res = await photoLike(params);
     if (res.message === "success") {
       // setLike(true);
-      setLikeCnt(res.like + 1);
+      setLikeCnt(res.like);
       setIsLiked(1);
       }
     }
