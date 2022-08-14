@@ -88,11 +88,9 @@
         justify-content: space-between;
         width: vw(448px);
 
-        &_one,
-        &_two,
-        &_three,
-        &_four {
-          width: vw(100px);
+
+        &_word {
+          width: vw(80px);
           height: vw(32px);
           align-items: center;
           justify-content: center;

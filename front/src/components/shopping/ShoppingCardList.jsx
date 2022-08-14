@@ -5,6 +5,7 @@ import { setShoppingList } from "@store/shopping"
 import Loading from "@components/common/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
+import axios from "axios";
 import ShoppingCard from "./ShoppingCard";
 
 function ShoppingCardList() {
@@ -17,10 +18,19 @@ function ShoppingCardList() {
   const [loading, setLoading] = useState(false);
 
   async function getAndSetCampList() {
-    console.log(searchKeyword);
+    // console.log(searchKeyword);
     // 리스트 받아오기
-    dispatch(setShoppingList({ shoppingList: [{"test": 1}, {"test": 2}] }));
-    setLoading(false);
+    axios.post("https://campic.site:8080/shop/", {
+        query: searchKeyword,
+        start: page + 1,
+        display: 10,
+    })
+    .then((res) => {
+      // dispatch(setfirstShoppingList({ shoppingList: [{"test" : 1}, {"test": 2}] }))
+      dispatch(setShoppingList({ shoppingList: res.data }));
+      setLoading(false);
+    })
+    .catch((err) => console.log(err))
   }
 
   useEffect(() => {
@@ -39,10 +49,13 @@ function ShoppingCardList() {
   return (
     <div className="flex justify-space-between flex-wrap">
       {list.length !== 0 &&
-        list.map(({test}) => (
+        list.map(({title, image, link, lprice}) => (
           <ShoppingCard
             key={v4()}
-            test={test}
+            title={title}
+            image={image}
+            link={link}
+            lprice={lprice}
 
           />
         ))}

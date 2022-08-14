@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTop5, setfirstShoppingList, setSearchKeyword } from "@store/shopping";
+// import { setTop5, setSearchKeyword } from "@store/shopping";
 import "./shopping.scss";
 import ShoppingCardList from "@components/shopping/ShoppingCardList"
 import axios from "axios";
@@ -13,21 +14,29 @@ function Shopping() {
   const searchKeyword = useSelector(state => state.shopping.searchKeyword);
   // 인기 검색어 받아오기
   const getTop5 = () => {
-    axios.post("https://campic.site:8080/shop", {searchWord : searchKeyword})
-    .then((res) => {console.log(res)})
-    .catch()
-    axios.get("https://campic.site:8080/shop")
+    // 검색어 top5 받아오기
+    axios.get("https://campic.site:8080/shop/best")
     .then(res => {
       dispatch(setTop5({top5 : res.data}));
     })
     .catch(err => console.log(err))
   }
+
   // 검색 정보 받아오기
   const searchItem = async () => {
     // 검색어 저장
     dispatch(setSearchKeyword({searchKeyword: keywordRef.current.value}))
     // 백엔드에서 받아오기
-    dispatch(setfirstShoppingList({ shoppingList: [{"test" : 1}, {"test": 2}] }))
+    axios.post("https://campic.site:8080/shop/", {
+        query: keywordRef.current.value,
+        start: 1,
+        display: 10,
+    })
+    .then((res) => {
+      console.log("정보", res.data);
+      dispatch(setfirstShoppingList({ shoppingList: res.data }))
+    })
+    .catch((err) => console.log(err))
   };
 
   // 처음 인기검색어 받아오기
@@ -64,10 +73,10 @@ function Shopping() {
             <div className="shop_search_hot_popname flex notoBold fs-14">
               인기 검색어
             </div>
-            <div className="shop_search_hot_searchname flex justify-space-between">
+            <div className="shop_search_hot_searchname flex">
               {top5 && top5.map((item) => (
-                <div className="shop_search_hot_searchname_four flex">
-                  {item}
+                <div className="shop_search_hot_searchname_word flex">
+                  <div>{item}</div>
                 </div>
               ))}
             </div>
