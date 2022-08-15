@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { v4 } from "uuid";
 import { setTop5, setfirstShoppingList, setSearchKeyword } from "@store/shopping";
 // import { setTop5, setSearchKeyword } from "@store/shopping";
 import "./shopping.scss";
@@ -74,7 +75,7 @@ function Shopping() {
             </div>
             <div className="shop_search_hot_searchname flex">
               {top5 && top5.map((item) => (
-                <div className="shop_search_hot_searchname_word flex">
+                <div key={v4()} className="shop_search_hot_searchname_word flex">
                   <div>{item}</div>
                 </div>
               ))}

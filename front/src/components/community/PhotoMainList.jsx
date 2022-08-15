@@ -25,7 +25,6 @@ function MainPhotoList() {
     <div className="maincomupiclist flex">
       {bestPhotoList.length !==0 &&
         bestPhotoList.map(({ blobFile, profileImgPath, boardId, nickname, content }) => (
-          <button type="button">
             <PhotoMain 
               key={v4()}
               boardId={boardId}
@@ -34,8 +33,6 @@ function MainPhotoList() {
               content={content}
               profileImgPath={profileImgPath}
             />
-          </button>
-
         ))
       }
     </div>
