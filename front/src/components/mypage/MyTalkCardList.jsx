@@ -12,6 +12,7 @@ function MyTalkCardList() {
     async function getAndSetMyTalkList() {
       const res = await getMyTalk(email);
       setMyTalkList(res);
+      console.log(res);
     }
     getAndSetMyTalkList();
   }, []);
@@ -19,7 +20,7 @@ function MyTalkCardList() {
     <div className="talkList flex">
       {myTalkList.length !== 0 &&
         myTalkList.map(({ blobFile, title, talkId }) => (
-          <MyTalkCard key={v4()} blobFile={blobFile} tltie={title} talkId={talkId} />
+          <MyTalkCard key={v4()} blobFile={blobFile} title={title} talkId={talkId} />
         ))}
       {myTalkList.length === 0 && (
         <div className="talkList_nope notoMid fs-32">당신의 경험을 공유해 보세요!</div>

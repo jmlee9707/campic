@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
-import React, { useRef } from "react";
-import { useParams } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/ko";
 import "./TalkComment.scss";
+import dummyProfile from "@images/person.png";
 import { updateComment, deleteComment } from "../../apis/talk";
 
 function TalkComment({
-  talkId,
+  // talkId,
   commentId,
   nickname,
   depth,
@@ -17,19 +19,21 @@ function TalkComment({
   profileImg
 }) {
   // console.log(talkId, email, depth, bundle, content, uploadDate);
-  const { id } = useParams();
-  const uploadTime = moment(uploadDate).fromNow();
+  // const { id } = useParams();
+  const uploadTime = moment(uploadDate).add(9, 'h').fromNow();
   // const [makeReply, setMakeReply] = useState("답글달기");
   const modiRef = useRef();
   // const recommentRef = useRef();
-  const talkEmail = "ssafy@naver.com";
+  const userEmail = useSelector(state => state.user.email);
   const nowdepth = depth;
   const nowbundle = bundle;
-  console.log(talkId);
-  console.log(id);
+  const [ifClick, setIfClick] = useState(false);
+  const onClickModi = () => {
+    setIfClick(!ifClick);
+  };
   const modiComment = async () => {
     const data = {
-      email: talkEmail,
+      email: userEmail,
       depth: nowdepth,
       bundle: nowbundle,
       content: modiRef.current.value
@@ -82,7 +86,8 @@ function TalkComment({
     <div className="comment flex">
       {/* 프로필 이미지 */}
       <div className="comment_img">
-        <img src={profileImg} alt="프로필이미지" />
+        {profileImg !== null && <img src={profileImg} alt="프로필이미지" />}
+        {profileImg === null && <img src={dummyProfile} alt="프로필이미지" />}
       </div>
       {/* 나머지 부분 */}
       <div className="comment_extra flex ">
@@ -120,6 +125,7 @@ function TalkComment({
             <button
               type="button"
               className="comment_extra_true_update notoReg fs-14"
+              onClick={onClickModi}
             >
               수정하기
             </button>
@@ -135,19 +141,23 @@ function TalkComment({
           )}
         </div>
         <div className="comment_extra_update notoReg fs-14">
-          <textarea
-            type="textarea"
-            className="comment_extra_update_text"
-            ref={modiRef}
-            placeholder={content}
-          />
-          <button
-            type="button"
-            className="comment_extra_update_btn"
-            onClick={modiComment}
-          >
-            입력
-          </button>
+          { content !== "" && ifClick === "true" && (
+            <textarea
+              type="textarea"
+              className="comment_extra_update_text"
+              ref={modiRef}
+              placeholder={content}
+            />
+          )}
+          {content !== "" && ifClick === "true" && (
+            <button
+              type="button"
+              className="comment_extra_update_btn"
+              onClick={modiComment}
+            >
+              입력
+            </button>
+          )}
         </div>
         {/* <div className="comment_extra_input notoReg fs-14">
           <textarea
