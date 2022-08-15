@@ -2,6 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./TalkCard.scss";
+import dummyProfile from "@images/person.png";
 
 function TalkCard({
   blobFile,
@@ -27,7 +28,8 @@ function TalkCard({
         <div className="talkcard_infoma flex">
           <div className="talkcard_infoma_profile flex">
             <div className="talkcard_infoma_profile_img">
-              <img src={profileImgPath} alt="프로필이미지" title="profile" />
+              {profileImgPath !== null && <img src={profileImgPath} alt="프로필이미지" title="profile" />}
+              {profileImgPath === null && <img src={dummyProfile} alt="프로필이미지" title="profile" />}
             </div>
             <p className="talkcard_infoma_profile_name notoMid fs-13">
               {nickname}

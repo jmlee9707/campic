@@ -1,104 +1,93 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { v4 } from "uuid";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import moment from "moment";
 import "moment/locale/ko";
 import "./TalkDetail.scss";
-import navLogo from "@images/logo/logo_icon_green.svg";
+// import navLogo from "@images/logo/logo_icon_green.svg";
+import dummyProfile from "@images/person.png";
 import good from "@images/icon/favorite_black.svg";
 import nogood from "@images/icon/favorite_border_black_24dp.svg";
-import TalkComments from "@components/community/TalkComments";
+// import TalkComments from "@components/community/TalkComments";
+import TalkComment from "@components/community/TalkComment";
 // import InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import {
   getTalkDetail,
+  getTalkProfile,
   talkLike,
   talkDisLike,
   talkDelete,
   isTalkLike,
+  getComment,
   writeComment,
 } from "../../apis/talk";
 
 function TalkDetail() {
   const [talkDetail, setTalkDetail] = useState({ contents: null });
+  const userEmail = useSelector(state => state.user.email);
+  const nickname = useSelector(state => state.user.nickname);
   const { id } = useParams();
   const navigate = useNavigate();
   const uploadDay = moment(talkDetail.uploadDate).format("ll");
   const [talkLikeNum, setTalkLikeNum] = useState();
   // const [talkViewNum, setTalkViewNum] = useState();
   const [isLiked, setIsLiked] = useState(0);
-  const talkEmail = useSelector(state => state.user.email);
-  const nickname = useSelector(state => state.user.nickname);
-  // const nickname = useSelector(state => state.user.nickname);
-  const params = {
-    talkId: id,
-    // eslint-disable-next-line object-shorthand
-    email: talkEmail
-  };
+  const [talkNickname, setTalkNickname] = useState("");
+  const [viewNum, setViewNum] = useState(0);
+  const [talkProfile, setTalkProfile] = useState();
   const commentRef = useRef();
-  async function getTalkInfo() {
+  const [talkComments, setTalkComments] = useState([]);
+
+  const total = async () => {
     const res = await getTalkDetail(id);
-    setTalkDetail(res);
     // console.log(res);
-  }
-  useEffect(() => {
-    getTalkInfo();
-    setTalkLikeNum(talkDetail.like);
-    // setTalkViewNum(talkDetail.click);
-    // console.log(likeCnt);
-  }, [talkLikeNum]);
-  // const submitComment = async () => {
-  async function submitComment() {
-    const data = {
-      email: talkEmail,
-      depth: 0,
-      bundle: -1,
-      content: commentRef.current.value
-    };
-    try {
-      const res = await writeComment(id, data);
-      if (res.message === "success") {
-        console.log("success");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    setTalkLikeNum(res.like);
+    setViewNum(res.click);
+    setTalkDetail(res);
+
+    const res1 = await isTalkLike({talkId: id, email: userEmail});
+    // console.log(res1);
+    setIsLiked(res1.isLike);
+
+    const res2 = await getTalkProfile(res.email);
+    // console.log(res2);
+    setTalkNickname(res2.userInfo);
+    setTalkProfile(res2.profile);
+
+    const res3 = await getComment(id);
+    setTalkComments(res3);
+    // console.log(res3);
   };
-  // async function submitComment() {
-  //   const data = {
-  //     email: talkEmail,
-  //     depth: 0,
-  //     bundle: -1,
-  //     content: commentRef.current.value
-  //   };
-  //   const res = await writeComment(id, data);
-  //   console.log(res)
+  // const toComment() => {
+  //   const commentData = getComment(id);
+  //   setTalkComments(commentData);
   // };
   useEffect(() => {
-    async function getLikeInfo() {
-      // eslint-disable-next-line no-use-before-define
-      const res = await isTalkLike(params);
-      // console.log(res);
-      setIsLiked(res.isLike);
-    }
-    getLikeInfo();
-    // setTalkLikeNum(talkDetail.like);
-  }, []);
-  async function checkTalkLike() {
-    const res = await talkLike(params);
-    if (res.message === "success") {
-      setTalkLikeNum(res.like + 1);
-      setIsLiked(1);
-    }
-  }
-  async function noTalkLike() {
-    const res = await talkDisLike(params);
-    if (res.message === "success") {
-      setTalkLikeNum(talkLikeNum - 1);
-      setIsLiked(0);
-    }
-  }
+    total();
+  }, [])
+  const params = {
+    talkId: id,
+    email: userEmail
+  };
+  // async function getTalkInfo() {
+  //   const res = await getTalkDetail(id);
+  //   setTalkDetail(res);
+  // }
+  // useEffect(() => {
+  //   getTalkInfo();
+  //   setTalkLikeNum(talkDetail.like);
+  // }, [talkLikeNum]);
+  // useEffect(() => {
+  //   async function getLikeInfo() {
+  //     // eslint-disable-next-line no-use-before-define
+  //     const res = await isTalkLike(params);
+  //     setIsLiked(res.isLike);
+  //   }
+  //   getLikeInfo();
+  // }, []);
   const updateTalk = () => {
     navigate(`/board/talk/modi/${id}`);
   };
@@ -112,6 +101,51 @@ function TalkDetail() {
         console.log(res.message);
       }
       navigate("/board/talk/home");
+    }
+  };
+  async function checkTalkLike() {
+    const res = await talkLike(params);
+    if (res.message === "success") {
+      setTalkLikeNum(res.like);
+      setIsLiked(1);
+    }
+  }
+  async function noTalkLike() {
+    const res = await talkDisLike(params);
+    if (res.message === "success") {
+      setTalkLikeNum(talkLikeNum - 1);
+      setIsLiked(0);
+    }
+  }
+  // async function submitComment() {
+  //   const data = {
+  //     email: userEmail,
+  //     depth: 0,
+  //     bundle: -1,
+  //     content: commentRef.current.value
+  //   };
+  //   try {
+  //     const res = await writeComment(id, data);
+  //     console.log(res);
+  //     if (res.message === "success") {
+  //       console.log("success");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  async function submitComment() {
+    const data = {
+      email: userEmail,
+      depth: 0,
+      bundle: -1,
+      content: commentRef.current.value
+    };
+    const res = await writeComment(id, data);
+    // console.log(res);
+    if (res===200) {
+      const reRes = await getComment(id);
+      setTalkComments(reRes);
     }
   };
   return (
@@ -130,13 +164,15 @@ function TalkDetail() {
             {/* 작성자 프로필 */}
             <div className="detail_talk_profile flex">
               <div className="detail_talk_profile_img">
-                <img src={[talkDetail.profileImgPath]} alt="프로필이미지" />
+                {talkProfile !== null && <img src={talkProfile} alt="프로필이미지" />}
+                {talkProfile === null && <img src={dummyProfile} alt="프로필이미지" />}
               </div>
               {/* 이름, 게시일 */}
               <div className="detail_talk_profile_extra flex">
                 {/* 이름 */}
                 <div className="detail_talk_profile_extra_name notoMid fs-26">
-                  {talkDetail.nickname}
+                  {talkDetail.nickname !== "" && <div> {talkNickname} </div>}
+                  {talkDetail.nickname === "" && <div>캠픽사용자</div>}
                 </div>
                 {/* 게시일 */}
                 <div className="detail_talk_profile_extra_date notoMid fs-18">
@@ -151,7 +187,7 @@ function TalkDetail() {
                   editor={ClassicEditor}
                   data=""
                   onReady={editor => {
-                    console.log(talkDetail.contents);
+                    // console.log(talkDetail.contents);
                     editor.setData(talkDetail.contents);
                     editor.enableReadOnlyMode(editor.id);
                   }}
@@ -199,7 +235,7 @@ function TalkDetail() {
                 </div>
                 <div className="detail_talk_count_view_num roMid fs-18">
                   {/* {talkViewNum} */}
-                  {talkDetail.click}
+                  {viewNum}
                 </div>
               </div>
               {/* 좋아요 */}
@@ -208,12 +244,12 @@ function TalkDetail() {
                   좋아요
                 </div>
                 <div className="detail_talk_count_like_num roMid fs-18">
-                  {talkDetail.like}
+                  {talkLikeNum}
                 </div>
               </div>
             </div>
             <div className="divide" />
-            {nickname === talkDetail.nickname && (
+            {nickname === talkNickname && (
               <div className="detail_talk_btns flex">
                 <button
                   type="button"
@@ -236,13 +272,14 @@ function TalkDetail() {
               <div className="detail_talk_comment_cnt_text notoBold fs-24">
                 댓글
               </div>
-              <div className="detail_talk_comment_cnt_num roMid fs-24">40</div>
+              {/* <div className="detail_talk_comment_cnt_num roMid fs-24">40</div> */}
             </div>
             {/* 댓글작성공간 */}
             <div className="detail_talk_comment_input flex align-center">
               {/* 프로필 이미지 */}
               <div className="detail_talk_comment_input_img">
-                <img src={navLogo} alt="프로필이미지" />
+                {talkProfile !== null && <img src={talkProfile} alt="프로필이미지" />}
+                {talkProfile === null && <img src={dummyProfile} alt="프로필이미지" />}
               </div>
               {/* 댓글입력부분 */}
               <textarea
@@ -264,7 +301,30 @@ function TalkDetail() {
             </div>
             {/* 댓글 */}
             <div className="detail_talk_comment">
-              <TalkComments />
+              {/* <TalkComments /> */}
+              {talkComments.length !== 0 &&
+                talkComments.map(
+                  ({
+                    depth,
+                    bundle,
+                    content,
+                    uploadDate,
+                    profileImg,
+                    commentId
+                  }) => (
+                    <TalkComment
+                      key={v4()}
+                      talkId={id}
+                      commentId={commentId}
+                      nickname={nickname}
+                      depth={depth}
+                      bundle={bundle}
+                      content={content}
+                      uploadDate={uploadDate}
+                      profileImg={profileImg}
+                    />
+                  )
+                )}
             </div>
             {/* 대댓글 */}
             {/* <div className="detail_talk_commentRe" /> */}

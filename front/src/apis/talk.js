@@ -14,6 +14,11 @@ export const getTalkDetail = async talkId => {
   // console.log(res.data);
   return res.data;
 };
+// Writer Profile
+export const getWriterProfile = async email => {
+  const res = await API.get(`/user/profile/${email}`);
+  return res.data;
+};
 // TALK IF Like
 export const isTalkLike = async params => {
   const res = await API.get(
@@ -43,7 +48,6 @@ export const updateTalk = async body => {
   const res = await API.put("/talk", body, {
     headers: { "Content-Type": "multipart/form-data" }
   });
-  // console.log(res.data);
   return res.data;
 };
 // TALK Delete
@@ -53,8 +57,14 @@ export const talkDelete = async params => {
 };
 // TALK Home
 export const getTalk = async page => {
-  const res = await API.get(`/talk?page=${page}`, {
-    headers: { "Content-Type": "multipart/form-data" }
+  const res = await API.get("/talk",
+  // {
+  //   headers: { "Content-Type": "multipart/form-data" }
+  // },
+  {
+    params: {
+      page
+    }
   });
   return res.data;
 };
@@ -65,29 +75,36 @@ export const getTalkBest = async () => {
   });
   return res.data;
 };
-// User Photo
+// User TALK
 export const getMyTalk = async email => {
   const res = await API.get(`talk/${email}`);
   return res.data;
-}
+};
+// User Profile
+export const getTalkProfile = async params => {
+  const res = await API.get(`user/profile/${params}`);
+  return res.data;
+};
 // Comment Regist
 export const writeComment = async (talkId, body) => {
   const res = await API.post(`/talk/comments/${talkId}`, body);
-  return res.data;
+  // console.log(res);
+  // return res.message;
+  return res.status;
 };
 // Comment GET
 export const getComment = async talkId => {
   const res = await API.get(`/talk/comments/${talkId}`);
-  // console.log(res.data);
+  console.log(res);
   return res.data;
 };
+// Comment Update
 export const updateComment = async (commentId, body) => {
   const res = await API.put(`/talk/comments/${commentId}`, body);
   return res.data;
 };
+// Comment Delete
 export const deleteComment = async (commentId, body) => {
   const res = await API.put(`talk/comments/${commentId}`, body);
   return res.data;
-}
-
-export const ex = () => {};
+};

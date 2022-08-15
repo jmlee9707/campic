@@ -53,11 +53,12 @@
     }
   }
 }
-.list {
+.comp {
   width: vw(1170px);
-  flex-direction: column;
-  &_row {
-    justify-content: space-between;
-    flex-direction: row;
-  }
+  justify-content: space-between;
+  flex-wrap: wrap;
+  // flex-direction: column;
+  // &_row {
+  //   justify-content: space-between;
+  //   flex-direction: row;
 }
