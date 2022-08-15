@@ -14,7 +14,7 @@ function MyTalkCard({blobFile, title, talkId}) {
           <img src={[blobFile]} alt="썸네일" />
         </div>
         <div className="talkCard_title notoBold fs-18">
-          {title}
+          { title }
         </div>
       </div>
     </button>

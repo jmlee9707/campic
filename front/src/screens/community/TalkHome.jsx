@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./TalkHome.scss";
-import TalkMain from "@components/community/TalkMain";
+import BestTalkList from "@components/community/BestTalkList";
 import TalkList from "@components/community/TalkList";
 import MainBanner from "@components/community/MainBanner";
 
@@ -10,21 +10,21 @@ import MainBanner from "@components/community/MainBanner";
 function TalkHome() {
   return (
     <div className="container flex">
-      <div className="talk flex">
+      <div className="talk flex align-center">
         <div className="talk_titleImg">
           <MainBanner />
         </div>
         {/* week best */}
         <div className="talk_best">
-          <p className="talk_best_title notoBold fs-32">BEST TALK</p>
+          <p className="talk_best_title notoBold fs-32">WEEKLY BEST TALK</p>
           <p className="talk_best_sub notoMid fs-22">
             이번 주에 HOT한 감성 사진
           </p>
           <div className="talk_best_card flex">
-            <TalkMain />
+            <BestTalkList />
           </div>
         </div>
-        {/* 캠핑포토 */}
+        {/* 캠핑토크 */}
         <div className="talk_camp">
           {/* 상단 타이틀바 */}
           <div className="talk_camp_title flex">
@@ -37,11 +37,7 @@ function TalkHome() {
             </Link>
           </div>
         </div>
-        <div className="list flex">
-          <div className="list_row flex">
-            <TalkList />
-          </div>
-        </div>
+        <TalkList />
       </div>
     </div>
   );

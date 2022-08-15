@@ -2,7 +2,7 @@ import React from "react";
 import "./CommunityMain.scss";
 import { Link } from "react-router-dom";
 // import coco from "@images/coco.jpeg";
-import TalkMain from "@components/community/TalkMain";
+import BestTalkList from "@components/community/BestTalkList";
 import PhotoMainList from "@components/community/PhotoMainList";
 // import BestPhoto from "@components/community/BestPhoto";
 import MainBanner from "@components/community/MainBanner";
@@ -38,7 +38,7 @@ function CommunityMain() {
             <Link to="/board/talk/home" className="commu_besttalk_extra_more notoMid fs-22">더보기</Link>
           </div>
           <div className="commu_besttalk_comp">
-            <TalkMain />
+            <BestTalkList />
           </div>
         </div>
       </div>
