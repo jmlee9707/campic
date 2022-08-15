@@ -7,6 +7,7 @@ import com.web.curation.service.ScheduleService;
 import com.web.curation.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,8 @@ import java.util.List;
 @RequestMapping("/talk/comments")
 @RestController
 public class CommentController {
+    private static final String SUCCESS = "success";
+    private static final String FAIL = "fail";
 
     private final CommentService commentService;
 
@@ -32,8 +35,12 @@ public class CommentController {
 
     /* CREATE */
     @PostMapping("/{talkId}")
-    public ResponseEntity save(@PathVariable int talkId, @RequestBody CommentDto.ComDto dto) {
-        return ResponseEntity.ok(commentService.save(talkId, dto));
+    public ResponseEntity<String> save(@PathVariable int talkId, @RequestBody CommentDto.ComDto dto) {
+        int result = commentService.save(talkId, dto);
+        if (result != 0) {
+            return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+        }
+        return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
     }
 
     /* UPDATE */
