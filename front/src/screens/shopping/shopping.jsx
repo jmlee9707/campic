@@ -49,7 +49,6 @@ function Shopping() {
       searchItem();
     }
   }
-
   return (
     <div className="container flex">
       <div className="shop">

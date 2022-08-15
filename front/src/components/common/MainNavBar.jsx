@@ -9,6 +9,8 @@ import dummyicon from "@images/icon/dummyicon.jpg";
 import logoWhite from "@images/logo/logo_text_white.svg";
 import menuIcon from "@images/icon/menu.svg";
 // import temp from "@images/cute.jpeg";
+// 날씨 컴포넌트
+import Weather from "../weather/Weather";
 import { reset, selectProfile } from "../../store/user";
 import "./NavTooltip.scss";
 
@@ -185,7 +187,9 @@ function MainNavBar() {
                 </>
               )}
             </nav>
+
             <nav className="right_nav notoReg flex align-center">
+              <Weather />
               {Profile.email === null ? (
                 <>
                   <NavLink

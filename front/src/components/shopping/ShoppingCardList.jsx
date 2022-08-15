@@ -56,7 +56,6 @@ function ShoppingCardList() {
             image={image}
             link={link}
             lprice={lprice}
-
           />
         ))}
       {loading ? <Loading /> : <div ref={ref} className="obe" />}
