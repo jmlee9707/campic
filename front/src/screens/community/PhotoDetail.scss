@@ -3,17 +3,15 @@
 }
 
 .campPhoto {
-  width: vw(720px);
-  // height: vw(1027px);
+  width: (720px);
 
   &_profile {
-    height: vw(74px);
-    margin-top: vw(100px);
-    margin-bottom: vw(45px);
+    margin-top: (100px);
+    margin-bottom: (60px);
 
     &_img {
-      width: vw(74px);
-      height: vw(74px);
+      width: (74px);
+      height: (74px);
       border-radius: 70%;
       overflow: hidden;
 
@@ -26,38 +24,39 @@
 
     &_extra {
       justify-content: space-between;
-      width: vw(626px);
-      height: vw(68px);
-      margin-left: vw(20px);
+      width: (626px);
+      margin-left: (25px);
 
       &_text {
-        margin: vw(4px) 0 vw(4px) 0;
-
         &_name {
           color: $GRAY-40;
-          margin-top: vw(2px);
+          margin-top: (10px);
+          line-height: 20px;
         }
 
         &_time {
           color: $GRAY-40;
-          margin-bottom: vw(2px);
+          line-height: 18px;
         }
       }
 
       &_good {
-        border-radius: vw(17px);
-        // margin: vw(17px) 0 vw(17px) 0;
-        width: vw(106px);
-        height: vw(40px);
-        background-color: $MAIN;
+        border-radius: (17px);
+        // margin: (17px) 0 (17px) 0;
+        width: (106px);
+        height: (40px);
+        background-color: $GRAY-BF;
         color: $WHITE;
+        &_click {
+          background-color: $MAIN;
+        }
       }
     }
   }
 
   &_cover {
-    width: vw(720px);
-    height: vw(720px);
+    width: (720px);
+    height: (720px);
     overflow: hidden; // 넘어가면 감춘다
 
     img {
@@ -65,40 +64,21 @@
       height: 100%; // 이미지 비율 맞추기
       object-fit: fill;
     }
-    // justify-content: center;
-    // margin-bottom: vw(24px);
   }
 
   &_count {
-    height: vw(26px);
-    width: vw(216px);
-    margin-bottom: vw(22px);
-    margin-top: vw(24px);
+    margin: (32px) 0;
 
-    &_view {
-      height: vw(26px);
-      width: vw(100px);
-      flex-direction: row;
-      margin-right: vw(16px);
-
-      &_name {
-        color: $GRAY-67;
-        margin-right: vw(8px);
-      }
-
-      &_num {
-        color: $GRAY-67;
-      }
-    }
-
+    &_view,
     &_like {
-      height: vw(26px);
-      width: vw(100px);
+      // height: (26px);
+      width: (100px);
       flex-direction: row;
+      margin-right: (16px);
 
       &_name {
         color: $GRAY-67;
-        margin-right: vw(8px);
+        margin-right: (8px);
       }
 
       &_num {
@@ -108,39 +88,376 @@
   }
 
   &_text {
-    margin-top: vw(22px);
-    margin-bottom: vw(12px);
+    margin-top: (42px);
+    margin-bottom: (60px);
     color: $GRAY-40;
   }
 
   &_tag {
-    margin-top: vw(12px);
-    margin-bottom: vw(32px); // 하단 임시 마진
-
+    margin-top: (12px);
+    margin-bottom: (120px); // 하단 임시 마진
     color: $MAIN;
   }
 
   &_myPhotoOpt {
-    margin-bottom: vw(50px);
+    margin-bottom: (50px);
     justify-content: end;
-    &_modify {
-      color: $WHITE;
-      background-color: $GRAY-BF;
-      width: vw(106px);
-      height: vw(40px);
-      border-radius: vw(17px);
-      margin-right: vw(32px);
-      // margin-left: vw(672px);
-    }
-
+    &_modify,
     &_delete {
       color: $WHITE;
       background-color: $GRAY-BF;
-      width: vw(106px);
-      height: vw(40px);
-      border-radius: vw(17px);
-      // margin-right: vw(68px);
+      width: (106px);
+      height: (40px);
+      border-radius: (17px);
+      margin-left: (32px);
       // margin-left: vw(672px);
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .campPhoto {
+    width: vw(720px);
+
+    &_profile {
+      margin-top: vw(100px);
+      margin-bottom: vw(60px);
+
+      &_img {
+        width: vw(74px);
+        height: vw(74px);
+        border-radius: 70%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%; // 이미지 비율 맞추기
+          object-fit: cover;
+        }
+      }
+
+      &_extra {
+        justify-content: space-between;
+        width: vw(626px);
+        margin-left: vw(25px);
+
+        &_text {
+          &_name {
+            color: $GRAY-40;
+            margin-top: vw(10px);
+            line-height: 20px;
+          }
+
+          &_time {
+            color: $GRAY-40;
+            line-height: 18px;
+          }
+        }
+
+        &_good {
+          border-radius: vw(17px);
+          // margin: vw(17px) 0 vw(17px) 0;
+          width: vw(106px);
+          height: vw(40px);
+          background-color: $GRAY-BF;
+          color: $WHITE;
+          &_click {
+            background-color: $MAIN;
+          }
+        }
+      }
+    }
+
+    &_cover {
+      width: vw(720px);
+      height: vw(720px);
+      overflow: hidden; // 넘어가면 감춘다
+
+      img {
+        width: 100%;
+        height: 100%; // 이미지 비율 맞추기
+        object-fit: fill;
+      }
+    }
+
+    &_count {
+      margin: vw(32px) 0;
+
+      &_view,
+      &_like {
+        // height: vw(26px);
+        width: vw(100px);
+        flex-direction: row;
+        margin-right: vw(16px);
+
+        &_name {
+          color: $GRAY-67;
+          margin-right: vw(8px);
+        }
+
+        &_num {
+          color: $GRAY-67;
+        }
+      }
+    }
+
+    &_text {
+      margin-top: vw(42px);
+      margin-bottom: vw(60px);
+      color: $GRAY-40;
+    }
+
+    &_tag {
+      margin-top: vw(12px);
+      margin-bottom: vw(120px); // 하단 임시 마진
+      color: $MAIN;
+    }
+
+    &_myPhotoOpt {
+      margin-bottom: vw(50px);
+      justify-content: end;
+      &_modify,
+      &_delete {
+        color: $WHITE;
+        background-color: $GRAY-BF;
+        width: vw(106px);
+        height: vw(40px);
+        border-radius: vw(17px);
+        margin-left: vw(32px);
+        // margin-left: vw(672px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .campPhoto {
+    width: vw-t(720px);
+
+    &_profile {
+      margin-top: vw-t(100px);
+      margin-bottom: vw-t(60px);
+
+      &_img {
+        width: vw-t(74px);
+        height: vw-t(74px);
+        border-radius: 70%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%; // 이미지 비율 맞추기
+          object-fit: cover;
+        }
+      }
+
+      &_extra {
+        justify-content: space-between;
+        width: vw-t(626px);
+        margin-left: vw-t(25px);
+
+        &_text {
+          &_name {
+            color: $GRAY-40;
+            margin-top: vw-t(10px);
+            line-height: 20px;
+          }
+
+          &_time {
+            color: $GRAY-40;
+            line-height: 18px;
+          }
+        }
+
+        &_good {
+          border-radius: vw-t(17px);
+          // margin: vw-t(17px) 0 vw-t(17px) 0;
+          width: vw-t(106px);
+          height: vw-t(40px);
+          background-color: $GRAY-BF;
+          color: $WHITE;
+          &_click {
+            background-color: $MAIN;
+          }
+        }
+      }
+    }
+
+    &_cover {
+      width: vw-t(720px);
+      height: vw-t(720px);
+      overflow: hidden; // 넘어가면 감춘다
+
+      img {
+        width: 100%;
+        height: 100%; // 이미지 비율 맞추기
+        object-fit: fill;
+      }
+    }
+
+    &_count {
+      margin: vw-t(32px) 0;
+
+      &_view,
+      &_like {
+        // height: vw-t(26px);
+        width: vw-t(100px);
+        flex-direction: row;
+        margin-right: vw-t(16px);
+
+        &_name {
+          color: $GRAY-67;
+          margin-right: vw-t(8px);
+        }
+
+        &_num {
+          color: $GRAY-67;
+        }
+      }
+    }
+
+    &_text {
+      margin-top: vw-t(42px);
+      margin-bottom: vw-t(60px);
+      color: $GRAY-40;
+    }
+
+    &_tag {
+      margin-top: vw-t(12px);
+      margin-bottom: vw-t(120px); // 하단 임시 마진
+      color: $MAIN;
+    }
+
+    &_myPhotoOpt {
+      margin-bottom: vw-t(50px);
+      justify-content: end;
+      &_modify,
+      &_delete {
+        color: $WHITE;
+        background-color: $GRAY-BF;
+        width: vw-t(106px);
+        height: vw-t(40px);
+        border-radius: vw-t(17px);
+        margin-left: vw-t(32px);
+        // margin-left: vw(672px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .campPhoto {
+    width: vw-p(530px);
+
+    &_profile {
+      // height: vw-p(74px);
+      align-items: center;
+      margin-top: vw-p(60px);
+      margin-bottom: vw-p(60px);
+
+      &_img {
+        width: vw-p(72px);
+        height: vw-p(72px);
+        border-radius: 70%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%; // 이미지 비율 맞추기
+          object-fit: cover;
+        }
+      }
+
+      &_extra {
+        justify-content: space-between;
+        width: vw-p(440px);
+        margin-left: vw-p(25px);
+
+        &_text {
+          &_name {
+            color: $GRAY-40;
+            margin-top: vw-p(10px);
+            line-height: 20px;
+          }
+
+          &_time {
+            color: $GRAY-40;
+            line-height: 18px;
+          }
+        }
+
+        &_good {
+          border-radius: vw-p(17px);
+          // margin: vw-p(17px) 0 vw-p(17px) 0;
+          width: vw-p(106px);
+          height: vw-p(40px);
+          background-color: $GRAY-BF;
+          color: $WHITE;
+          &_click {
+            background-color: $MAIN;
+          }
+        }
+      }
+    }
+
+    &_cover {
+      width: vw-p(530px);
+      height: vw-p(530px);
+      overflow: hidden; // 넘어가면 감춘다
+
+      img {
+        width: 100%;
+        height: 100%; // 이미지 비율 맞추기
+        object-fit: fill;
+      }
+    }
+
+    &_count {
+      margin: vw-p(32px) 0;
+
+      &_view,
+      &_like {
+        // height: vw-p(26px);
+        width: vw-p(100px);
+        flex-direction: row;
+        margin-right: vw-p(16px);
+
+        &_name {
+          color: $GRAY-67;
+          margin-right: vw-p(8px);
+        }
+
+        &_num {
+          color: $GRAY-67;
+        }
+      }
+    }
+
+    &_text {
+      margin-top: vw-p(42px);
+      margin-bottom: vw-p(60px);
+      color: $GRAY-40;
+    }
+
+    &_tag {
+      margin-top: vw-p(12px);
+      margin-bottom: vw-p(120px); // 하단 임시 마진
+      color: $MAIN;
+    }
+
+    &_myPhotoOpt {
+      margin-bottom: vw-p(50px);
+      justify-content: end;
+      &_modify,
+      &_delete {
+        color: $WHITE;
+        background-color: $GRAY-BF;
+        width: vw-p(106px);
+        height: vw-p(40px);
+        border-radius: vw-p(17px);
+        margin-left: vw-p(32px);
+        // margin-left: vw-p(672px);
+      }
     }
   }
 }

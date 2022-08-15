@@ -15,7 +15,6 @@ import {
   photoDelete
 } from "../../apis/photo";
 
-
 function PhotoDetail() {
   // 유저정보 가져오기 - 수정, 삭제를 위한
   const userId = useSelector(state => state.user.email);
@@ -36,15 +35,11 @@ function PhotoDetail() {
   const [likeCnt, setLikeCnt] = useState(0);
   const [viewCnt, setViewCnt] = useState(0);
 
-
   const uploadTime = moment(photoDetails.uploadDate).fromNow();
-
 
   const [photoNickname, setPhotoNickname] = useState("");
   const [photoProfile, setPhotoProfile] = useState();
 
-  
-  
   const integrated = async () => {
     // 포토 정보 받아오기
     const res = await getPhotoDetail(id);
@@ -53,13 +48,11 @@ function PhotoDetail() {
     setPhotoDetail(res);
 
     // 좋아요 여부 체크
-    const res1 = await getIsLiked({boardId: id, email: userId});
+    const res1 = await getIsLiked({ boardId: id, email: userId });
     await setIsLiked(res1.isLike);
-    console.log("res1", res1)
 
     // 포토 프로필 받아오기
     const res2 = await getPhotoProfile(res.email);
-    console.log("res2", res2)
     setPhotoNickname(res2.userInfo);
     setPhotoProfile(res2.profile);
   };
@@ -67,7 +60,7 @@ function PhotoDetail() {
     integrated();
   }, []);
 
-    // 좋아요
+  // 좋아요
   // const [like, setLike] = useState(false);
   const params = {
     boardId: id,
@@ -79,24 +72,24 @@ function PhotoDetail() {
       // setLike(true);
       setLikeCnt(res.like);
       setIsLiked(1);
-      }
     }
-    //   // console.log(photoDetail.nickname);
+  }
+  //   // console.log(photoDetail.nickname);
   // 싫어요
   async function disLiked() {
     const res = await photoDisLike(params);
     if (res.message === "success") {
       // setLike(false);
       setLikeCnt(likeCnt - 1);
-        // console.log(likeCnt);
+      // console.log(likeCnt);
       setIsLiked(0);
     }
   }
-      
+
   const deleteParams = {
     boardId: id
   };
-      
+
   async function deletePhoto() {
     if (window.confirm("정말로 삭제하시겠습니까?")) {
       const res = await photoDelete(deleteParams);
@@ -107,31 +100,27 @@ function PhotoDetail() {
     }
   }
 
-
-
-  
   return (
     <div className="container flex">
       {Object.keys(photoDetails).length !== 0 && (
         <div className="campPhoto">
           {/* 상단 프로필 */}
-          <div className="campPhoto_profile flex">
+          <div className="campPhoto_profile flex align-center">
             <div className="campPhoto_profile_img">
-              {photoProfile !== null && 
+              {photoProfile !== null && (
                 <img
-                className="campPhoto_profile_proimg"
-                src={photoProfile}
-                alt="프로필이미지"
+                  className="campPhoto_profile_proimg"
+                  src={photoProfile}
+                  alt="프로필이미지"
                 />
-              }
-              {photoProfile === null && 
+              )}
+              {photoProfile === null && (
                 <img
-                className="campPhoto_profile_proimg"
-                src={dummyLogo}
-                alt="프로필이미지"
+                  className="campPhoto_profile_proimg"
+                  src={dummyLogo}
+                  alt="프로필이미지"
                 />
-              }
-              
+              )}
             </div>
             <div className="campPhoto_profile_extra flex align-center">
               <div className="campPhoto_profile_extra_text align-center">

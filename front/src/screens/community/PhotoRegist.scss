@@ -2,40 +2,40 @@
   justify-content: center;
 }
 
-.regist {
-  width: vw(1170px);
-  height: vw(737px);
+.photo_regist,
+.photo_modify {
+  width: (1150px);
+  // height: (737px);
 
   &_title {
-    margin: vw(60px) 0 vw(60px);
+    margin: (60px) 0 (60px) 0;
   }
 
   &_content {
-    width: vw(1170px);
-    height: vw(611px);
     justify-content: space-between;
+    display: flex;
 
     &_img {
-      width: vw(570px);
-      height: vw(480px);
+      width: (570px);
+      height: (480px);
       background-color: $GRAY-679;
-      border-radius: vw(15px);
+      border-radius: (15px);
       flex-direction: column;
 
       &_sub {
         color: $GRAY-DB;
-        margin-top: vw(12px);
+        margin-top: (12px);
       }
 
       .camera {
-        width: vw(88px);
-        height: vw(77px);
+        width: (88px);
+        height: (77px);
       }
 
       &_priv {
-        width: vw(570px);
-        height: vw(480px);
-        border-radius: vw(15px);
+        width: (570px);
+        height: (480px);
+        border-radius: (15px);
         overflow: hidden;
 
         img {
@@ -47,20 +47,18 @@
     }
 
     &_text {
-      width: vw(532px);
-      height: vw(611px);
       flex-direction: column;
 
       &_input_box {
-        width: vw(532px);
-        height: vw(401px);
+        width: (532px);
+        height: (401px);
         color: $GRAY-76;
-        margin-bottom: vw(13px);
-        padding-left: vw(28px);
-        padding-top: vw(41px);
+        margin-bottom: (13px);
+        padding-left: (28px);
+        padding-top: (41px);
         background-color: $GRAY-679;
         border: none;
-        border-radius: vw(15px);
+        border-radius: (15px);
         resize: none;
         overflow-x: hidden;
 
@@ -70,12 +68,12 @@
       }
 
       &_tag {
-        width: vw(532px);
-        height: vw(53px);
-        margin-top: vw(13px);
+        width: (532px);
+        height: (53px);
+        margin-top: (13px);
         background-color: $GRAY-679;
-        border-radius: vw(15px);
-        padding: vw(12px) vw(24px);
+        border-radius: (15px);
+        padding: (12px) (24px);
         color: $GRAY-76;
 
         &:focus {
@@ -88,12 +86,209 @@
       }
 
       &_btn {
-        width: vw(180px);
-        height: vw(64px);
-        border-radius: vw(15px);
+        width: (180px);
+        height: (64px);
+        border-radius: (15px);
         background-color: $MAIN;
-        margin: vw(67px) 0 vw(72px) 0;
+        margin: (67px) 0 (72px) 0;
         color: $WHITE;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .photo_regist,
+  .photo_modify {
+    width: vw(1150px);
+    // height: vw(737px);
+
+    &_title {
+      margin: vw(60px) 0 vw(60px) 0;
+    }
+
+    &_content {
+      &_img {
+        width: vw(570px);
+        height: vw(480px);
+        border-radius: vw(15px);
+
+        &_sub {
+          margin-top: vw(12px);
+        }
+
+        .camera {
+          width: vw(88px);
+          height: vw(77px);
+        }
+
+        &_priv {
+          width: vw(570px);
+          height: vw(480px);
+          border-radius: vw(15px);
+        }
+      }
+
+      &_text {
+        &_input_box {
+          width: vw(532px);
+          height: vw(401px);
+          margin-bottom: vw(13px);
+          padding-left: vw(28px);
+          padding-top: vw(41px);
+          border-radius: vw(15px);
+        }
+
+        &_tag {
+          width: vw(532px);
+          height: vw(53px);
+          margin-top: vw(13px);
+          border-radius: vw(15px);
+          padding: vw(12px) vw(24px);
+        }
+
+        &_btn {
+          width: vw(180px);
+          height: vw(64px);
+          border-radius: vw(15px);
+          margin: vw(67px) 0 vw(72px) 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .photo_regist,
+  .photo_modify {
+    width: vw-t(950px);
+    // height: vw-t(737px);
+
+    &_title {
+      margin: vw-t(60px) 0 vw-t(60px) 0;
+    }
+
+    &_content {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &_img {
+        width: vw-t(800px);
+        height: vw-t(480px);
+        border-radius: vw-t(15px);
+        margin-bottom: vw-t(60px);
+
+        &_sub {
+          margin-top: vw-t(12px);
+        }
+
+        .camera {
+          width: vw-t(88px);
+          height: vw-t(77px);
+        }
+
+        &_priv {
+          width: vw-t(570px);
+          height: vw-t(480px);
+          border-radius: vw-t(15px);
+        }
+      }
+
+      &_text {
+        height: vw-t(611px);
+
+        &_input_box {
+          width: vw-t(800px);
+          height: vw-t(401px);
+          margin-bottom: vw-t(13px);
+          padding-left: vw-t(28px);
+          padding-top: vw-t(41px);
+          border-radius: vw-t(15px);
+        }
+
+        &_tag {
+          width: vw-t(800px);
+          height: vw-t(53px);
+          margin-top: vw-t(13px);
+          border-radius: vw-t(15px);
+          padding: vw-t(12px) vw-t(24px);
+        }
+
+        &_btn {
+          width: vw-t(180px);
+          height: vw-t(64px);
+          border-radius: vw-t(15px);
+          margin: vw-t(67px) 0 vw-t(72px) 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .photo_regist,
+  .photo_modify {
+    width: vw-p(570px);
+    // height: vw-p(737px);
+
+    &_title {
+      margin: vw-p(60px) 0 vw-p(60px) 0;
+    }
+
+    &_content {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &_img {
+        width: vw-p(550px);
+        height: vw-p(350px);
+        border-radius: vw-p(15px);
+        margin-bottom: vw-p(60px);
+
+        &_sub {
+          margin-top: vw-p(12px);
+        }
+
+        .camera {
+          width: vw-p(88px);
+          height: vw-p(77px);
+        }
+
+        &_priv {
+          width: vw-p(570px);
+          height: vw-p(480px);
+          border-radius: vw-p(15px);
+        }
+      }
+
+      &_text {
+        height: vw-p(611px);
+
+        &_input_box {
+          width: vw-p(550px);
+          height: vw-p(300px);
+          margin-bottom: vw-p(13px);
+          padding-left: vw-p(28px);
+          padding-top: vw-p(41px);
+          border-radius: vw-p(15px);
+        }
+
+        &_tag {
+          width: vw-p(550px);
+          height: vw-p(53px);
+          margin-top: vw-p(13px);
+          border-radius: vw-p(15px);
+          padding: vw-p(12px) vw-p(24px);
+        }
+
+        &_btn {
+          width: vw-p(180px);
+          height: vw-p(64px);
+          border-radius: vw-p(15px);
+          margin: vw-p(67px) 0 vw-p(72px) 0;
+        }
       }
     }
   }

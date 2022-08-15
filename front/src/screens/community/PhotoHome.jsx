@@ -15,14 +15,14 @@ function PhotoHome() {
           <p className="picture_best_title notoMid fs-22">
             이번 주에 HOT한 감성 사진
           </p>
-          <div className="picture_best_pic">
-            <BestPhotoList />
-          </div>
+          {/* <div className="picture_best_pic"> */}
+          <BestPhotoList />
+          {/* </div> */}
         </div>
         {/* 캠핑포토 */}
         <div className="picture_camp">
           {/* 상단 타이틀바 */}
-          <div className="picture_camp_title flex">
+          <div className="picture_camp_title flex align-center">
             <p className="picture_camp_title_text notoBold fs-32">
               CAMPING PHOTO
             </p>
@@ -33,9 +33,8 @@ function PhotoHome() {
               글쓰기
             </Link>
           </div>
+          <CommunityPhotoList />
         </div>
-
-        <CommunityPhotoList />
       </div>
     </div>
   );

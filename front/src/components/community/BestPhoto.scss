@@ -1,18 +1,47 @@
-.bestPhoto {
-  width: vw(270px);
-  height: vw(270px);
+.best_photo {
+  width: (270px);
+  height: (270px);
   overflow: hidden;
+  margin-bottom: 32px;
 
   img {
     width: 100%;
     height: 100%;
-    border-radius: vw(15px);
+    object-fit: cover;
+    border-radius: (15px);
   }
 }
 
-.piclist {
-  // background-color: rebeccapurple;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: vw(1173px);
+@media screen and (max-width: $DESKTOP-VW) {
+  .best_photo {
+    width: vw(270px);
+    height: vw(270px);
+    margin-bottom: vw(32px);
+
+    img {
+      border-radius: vw(15px);
+    }
+  }
+}
+@media screen and (max-width: $TABLET-VW) {
+  .best_photo {
+    width: vw-t(220px);
+    height: vw-t(220px);
+    margin-bottom: vw-t(28px);
+
+    img {
+      border-radius: vw-t(15px);
+    }
+  }
+}
+@media screen and (max-width: $PHONE-VW) {
+  .best_photo {
+    width: vw-p(110px);
+    height: vw-p(110px);
+    margin-bottom: vw-p(24px);
+
+    img {
+      border-radius: vw-p(8px);
+    }
+  }
 }

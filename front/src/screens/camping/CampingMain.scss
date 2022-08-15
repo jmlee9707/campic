@@ -36,11 +36,12 @@
       opacity: 0.2;
     }
     &_title {
+      line-height: 0%;
       color: $WHITE;
       text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
       p {
         position: relative;
-        margin-bottom: (8px);
+        margin-bottom: (16px);
       }
     }
     &_favo {

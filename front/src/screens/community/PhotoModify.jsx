@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useRef, useState, useEffect } from "react";
-import "./PhotoModify.scss";
+import "./PhotoRegist.scss";
 import imageCompression from "browser-image-compression";
 import { useNavigate, useParams } from "react-router-dom";
 // import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
@@ -19,7 +19,7 @@ function PhotoModify() {
   // 사진 미리보기
 
   const [fileImage, setFileImage] = useState(""); // 파일이미지
-  console.log(fileImage)
+  console.log(fileImage);
   const saveFileImage = event => {
     // @ts-ignore
     // setFileImage(URL.createObjectURL(event.target.files[0]));
@@ -29,8 +29,8 @@ function PhotoModify() {
   const textareaRef = useRef(); // 본문 ref
   const tagRef = useRef(); // 태그 ref
 
-  // 기존 정보 가져오기 
-  const {id} = useParams()
+  // 기존 정보 가져오기
+  const { id } = useParams();
   const [photoDetail, setPhotoDetail] = useState([]);
   useEffect(() => {
     // await 를 사용하기 위해서 Async 선언
@@ -98,7 +98,7 @@ function PhotoModify() {
     const formData = new FormData();
 
     // 필요시 더 추가합니다.
-    formData.append("boardId", id)
+    formData.append("boardId", id);
     formData.append("nickname", "tiger");
     formData.append("email", "jmlee0707@gmail.com");
     formData.append("content", textareaRef.current.value);
@@ -114,7 +114,7 @@ function PhotoModify() {
     try {
       const res = await updatePhoto(formData);
       if (res === "success") {
-        console.log('22222')
+        console.log("22222");
         navigate(`/board/photo/detail/${id}`);
       }
     } catch (error) {
@@ -125,30 +125,28 @@ function PhotoModify() {
   return (
     <div className="container flex">
       {/* 커뮤니티 네브바 들어가야 함 */}
-      <div className="modify">
-        <div className="modify_title notoBold fs-32">사진 수정하기</div>
-        <div className="modify_content flex">
+      <div className="photo_modify">
+        <div className="photo_modify_title notoBold fs-32">사진 수정하기</div>
+        <div className="photo_modify_content flex">
           {/* 사진 업로드 박스 */}
           <div
-            className="modify_content_img flex align-center justify-center"
+            className="photo_modify_content_img flex align-center justify-center"
             onClick={handleclick}
           >
             {/* {!fileImage && <Camera className="camera" fill="#DBDBDB" />} */}
             {/* {!fileImage && ( */}
-              {/* <div className="modify_content_img_sub fs-28 notoBold"> */}
-                {/* Upload */}
-              {/* </div> */}
+            {/* <div className="photo_modify_content_img_sub fs-28 notoBold"> */}
+            {/* Upload */}
+            {/* </div> */}
             {/* )} */}
-            
-            <div className="modify_content_img_priv">
-              {!fileImage && 
+
+            <div className="photo_modify_content_img_priv">
+              {!fileImage && (
                 <img alt="수정이미지" src={[photoDetail.blobFile]} />
-              }
-              {fileImage && 
-                <img alt="수정이미지" src={fileImage} />
-              }
+              )}
+              {fileImage && <img alt="수정이미지" src={fileImage} />}
             </div>
-            
+
             <input
               type="file"
               multiple="multiple"
@@ -162,16 +160,15 @@ function PhotoModify() {
             />
           </div>
 
-          <div className="modify_content_text">
+          <div className="photo_modify_content_text">
             {/* 사진 설명 박스 */}
 
             <textarea
               type="textarea"
-              className="modify_content_text_input_box notoMid fs-20"
+              className="photo_modify_content_text_input_box notoMid fs-20"
               ref={textareaRef}
               defaultValue={photoDetail.content}
             />
-            
 
             {/* 태그 입력 박스 */}
 
@@ -179,15 +176,15 @@ function PhotoModify() {
               ref={tagRef}
               type="text"
               defaultValue={photoDetail.hashtag}
-              className="modify_content_text_tag flex notoMid fs-20"
+              className="photo_modify_content_text_tag flex notoMid fs-20"
               // maxLength={30} // 일단 maxlength지정 해둠
             />
 
             {/* 등록하기 버튼 */}
-            <div className="modify_content_text_box flex">
+            <div className="photo_modify_content_text_box flex">
               <button
                 type="button"
-                className="modify_content_text_btn notoBold fs-24"
+                className="photo_modify_content_text_btn notoBold fs-24"
                 onClick={submit}
               >
                 수정하기
