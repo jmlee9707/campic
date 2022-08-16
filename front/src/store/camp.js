@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialCampState = {
-  arrange: 0,
+  arrange: 1,
   page: 0,
   campList: [],
   keyword: null,
@@ -20,8 +20,14 @@ const campReducer = createSlice({
     // 초기화
     reset: state => {
       state.page = initialCampState.page;
-      // state.campList = initialCampState.campList;
       state.campList = initialCampState.campList;
+      // Object.assign(state.page, initialCampState.page);
+      // Object.assign(state.campList, initialCampState.campList);
+      // // Object.assign(state, initialCampState);
+    },
+    resetLoca: state => {
+      state.sido = initialCampState.sido;
+      state.gugun = initialCampState.gugun;
     },
     setCampList: (state, { payload }) => {
       state.campList = [...state.campList, ...payload.campList];
@@ -51,6 +57,7 @@ export const selectLocation = state => state.campSearch;
 
 export const {
   reset,
+  resetLoca,
   setCampList,
   setTagConditions,
   setLocaConditions,

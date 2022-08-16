@@ -62,16 +62,7 @@ function Shopping() {
   return (
     <div className="container flex">
       <div className="shop">
-        <div className="shop_search flex column align-center justify-center">
-          {/* <div className="opac" /> */}
-          <div className="shop_search_tit flex column align-center justify-center">
-            <div className="shop_search_title1 notoBold fs-32">
-              캠핑에 필요한 준비물?
-            </div>
-            <div className="shop_search_title2 notoBold fs-40">
-              캠픽에서 찾아보세요!
-            </div>
-          </div>
+        <div className="shop_search flex column align-center">
           <div className="shop_search_input flex align-center">
             <input
               onKeyPress={handleOnKeyPress}
@@ -88,7 +79,7 @@ function Shopping() {
               <img src={search} alt="search" />
             </button>
           </div>
-          <div className="shop_search_hot ">
+          <div className="shop_search_hot">
             <div className="shop_search_hot_searchname flex">
               {top5 &&
                 top5.map(item => (
