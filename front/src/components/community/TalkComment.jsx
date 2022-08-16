@@ -16,20 +16,24 @@ function TalkComment({
   bundle,
   content,
   uploadDate,
-  profileImg
+  profileImg,
+  commentEmail,
+  toComment
 }) {
-  // console.log(talkId, email, depth, bundle, content, uploadDate);
+  // console.log(depth, bundle, content, uploadDate);
   // const { id } = useParams();
   const uploadTime = moment(uploadDate).add(9, 'h').fromNow();
   // const [makeReply, setMakeReply] = useState("답글달기");
   const modiRef = useRef();
   // const recommentRef = useRef();
   const userEmail = useSelector(state => state.user.email);
+  // const userNickname = useSelector(state => state.user.nickname);
+  // console.log(userNickname);
   const nowdepth = depth;
   const nowbundle = bundle;
   const [ifClick, setIfClick] = useState(false);
   const onClickModi = () => {
-    setIfClick(!ifClick);
+    setIfClick((click) => !click);
   };
   const modiComment = async () => {
     const data = {
@@ -41,7 +45,8 @@ function TalkComment({
     try {
       const res = await updateComment(commentId, data);
       if (res === commentId) {
-        console.log(res);
+        // console.log(res);
+        toComment();
       }
     } catch (error) {
       console.log(error);
@@ -70,23 +75,26 @@ function TalkComment({
   //   }
   // };
   const delComment = async () => {
-    const data = {
-      content: "",
-    };
-    try {
-      const res = await deleteComment(commentId, data);
-      if (res === commentId) {
-        console.log(res);
+    if (window.confirm("댓글을 삭제하시겠습니까?")) {
+      const data = {
+        content: "",
+      };
+      try {
+        const res = await deleteComment(commentId, data);
+        if (res === commentId) {
+          // console.log(res);
+          toComment();
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
   return (
     <div className="comment flex">
       {/* 프로필 이미지 */}
       <div className="comment_img">
-        {profileImg !== null && <img src={profileImg} alt="프로필이미지" />}
+        {profileImg !== null && <img src={`data:image/png;base64,${profileImg}`} alt="프로필이미지" />}
         {profileImg === null && <img src={dummyProfile} alt="프로필이미지" />}
       </div>
       {/* 나머지 부분 */}
@@ -121,7 +129,7 @@ function TalkComment({
               {makeReply}
             </button>
           )} */}
-          { content !== "" && (
+          { content !== "" && commentEmail === userEmail && (
             <button
               type="button"
               className="comment_extra_true_update notoReg fs-14"
@@ -130,7 +138,7 @@ function TalkComment({
               수정하기
             </button>
           )}
-          { content !== "" && (
+          { content !== "" && commentEmail === userEmail && (
             <button
               type="button"
               className="comment_extra_true_del notoReg fs-14"
@@ -141,7 +149,7 @@ function TalkComment({
           )}
         </div>
         <div className="comment_extra_update notoReg fs-14">
-          { content !== "" && ifClick === "true" && (
+          { content !== "" && ifClick === true && (
             <textarea
               type="textarea"
               className="comment_extra_update_text"
@@ -149,7 +157,7 @@ function TalkComment({
               placeholder={content}
             />
           )}
-          {content !== "" && ifClick === "true" && (
+          {content !== "" && ifClick === true && (
             <button
               type="button"
               className="comment_extra_update_btn"

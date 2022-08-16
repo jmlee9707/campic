@@ -181,11 +181,11 @@
         }
       }
     }
+    &_list {
+      margin-top: vw(97px) 0 vw(40px) 0;
+    }
   }
 
-  &_list {
-    margin-top: vw(97px) 0 vw(40px) 0;
-  }
 }
 @media screen and (max-width: $TABLET-VW) {
   .camp {
@@ -253,7 +253,6 @@
         }
       }
     }
-
     &_list {
       margin-top: vw-t(40px) 0 vw-t(40px) 0;
     }

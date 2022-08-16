@@ -89,13 +89,12 @@ export const getTalkProfile = async params => {
 export const writeComment = async (talkId, body) => {
   const res = await API.post(`/talk/comments/${talkId}`, body);
   // console.log(res);
-  // return res.message;
-  return res.status;
+  return res.data;
+  // return res.status;
 };
 // Comment GET
 export const getComment = async talkId => {
   const res = await API.get(`/talk/comments/${talkId}`);
-  console.log(res);
   return res.data;
 };
 // Comment Update

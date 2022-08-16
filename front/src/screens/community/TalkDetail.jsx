@@ -28,7 +28,7 @@ import {
 function TalkDetail() {
   const [talkDetail, setTalkDetail] = useState({ contents: null });
   const userEmail = useSelector(state => state.user.email);
-  const nickname = useSelector(state => state.user.nickname);
+  const userNickname = useSelector(state => state.user.nickname);
   const { id } = useParams();
   const navigate = useNavigate();
   const uploadDay = moment(talkDetail.uploadDate).format("ll");
@@ -58,13 +58,13 @@ function TalkDetail() {
     setTalkProfile(res2.profile);
 
     const res3 = await getComment(id);
-    setTalkComments(res3);
     // console.log(res3);
+    setTalkComments(res3);
   };
-  // const toComment() => {
-  //   const commentData = getComment(id);
-  //   setTalkComments(commentData);
-  // };
+  const toComment = async () => {
+    const commentData = await getComment(id);
+    setTalkComments(commentData);
+  };
   useEffect(() => {
     total();
   }, [])
@@ -143,10 +143,11 @@ function TalkDetail() {
     };
     const res = await writeComment(id, data);
     // console.log(res);
-    if (res===200) {
+    if (res==="success") {
       const reRes = await getComment(id);
       setTalkComments(reRes);
     }
+    commentRef.current.value = "";
   };
   return (
     <div className="container flex justify-center">
@@ -180,22 +181,22 @@ function TalkDetail() {
                 </div>
               </div>
             </div>
-            {/* eslint-disable-next-line react/no-danger */}
             <div className="detail_talk_content_box">
               {talkDetail.contents !== null && (
                 <CKEditor
                   editor={ClassicEditor}
                   data=""
                   onReady={editor => {
-                    // console.log(talkDetail.contents);
                     editor.setData(talkDetail.contents);
+                    // console.log(talkDetail.contents);
                     editor.enableReadOnlyMode(editor.id);
                   }}
                   config={{
                     toolbar: []
                   }}
                 />
-              )}
+              )
+              }
             </div>
             {/* 태그, 좋아요버튼 */}
             <div className="detail_talk_tag flex align-center">
@@ -204,7 +205,7 @@ function TalkDetail() {
                 {talkDetail.hashtag}
               </div>
               {/* 좋아요버튼 */}
-              {nickname !== null && (
+              {userNickname !== null && (
                 <div className="detail_talk_tag_good flex align-center justify-center">
                   {isLiked === 0 && (
                     <button
@@ -249,7 +250,7 @@ function TalkDetail() {
               </div>
             </div>
             <div className="divide" />
-            {nickname === talkNickname && (
+            {userNickname === talkNickname && (
               <div className="detail_talk_btns flex">
                 <button
                   type="button"
@@ -272,7 +273,7 @@ function TalkDetail() {
               <div className="detail_talk_comment_cnt_text notoBold fs-24">
                 댓글
               </div>
-              {/* <div className="detail_talk_comment_cnt_num roMid fs-24">40</div> */}
+              <div className="detail_talk_comment_cnt_num roMid fs-24">{talkComments.length}</div>
             </div>
             {/* 댓글작성공간 */}
             <div className="detail_talk_comment_input flex align-center">
@@ -293,7 +294,7 @@ function TalkDetail() {
                   type="button"
                   className="fs-16"
                   onClick={submitComment}
-                  // disabled={!commentRef.current.value}
+                  // disabled={!commentRef.current.value===0}
                 >
                   입력
                 </button>
@@ -310,9 +311,12 @@ function TalkDetail() {
                     content,
                     uploadDate,
                     profileImg,
-                    commentId
+                    commentId,
+                    nickname,
+                    email
                   }) => (
                     <TalkComment
+                      toComment={toComment}
                       key={v4()}
                       talkId={id}
                       commentId={commentId}
@@ -322,6 +326,7 @@ function TalkDetail() {
                       content={content}
                       uploadDate={uploadDate}
                       profileImg={profileImg}
+                      commentEmail={email}
                     />
                   )
                 )}
