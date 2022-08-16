@@ -19,8 +19,6 @@ function CampingMain() {
   const [fold, setFold] = useState(false);
   const [isFold, setIsFold] = useState("상세 접기");
 
-
-
   const tops = ["싸피 캠핑장", "프로젝트 캠핑장", "연관검색어3", "연관검색어4"];
   const topList = tops.map(top => (
     <div

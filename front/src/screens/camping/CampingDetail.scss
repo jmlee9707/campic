@@ -3,7 +3,7 @@
   //   align-items: center;
 }
 
-.detail {
+.camping_detail {
   width: (720px);
   .divide {
     width: 100%;
@@ -31,6 +31,7 @@
     &_intro {
       padding-bottom: (32px);
       color: $GRAY-40;
+      width: 720px;
     }
 
     &_sub {
@@ -101,7 +102,7 @@
 }
 
 @media screen and (max-width: $DESKTOP-VW) {
-  .detail {
+  .camping_detail {
     width: vw(720px);
 
     .divide {
@@ -116,16 +117,11 @@
         width: vw(720px);
         height: vw(480px);
         padding-bottom: vw(36px);
-        overflow: hidden;
-        img {
-          width: 100%; // 원본비율 유지
-          height: 100%;
-          object-fit: cover; // 상위 div 크기에 딱 맞아 들어가도록
-        }
       }
 
       &_intro {
         padding-bottom: vw(32px);
+        width: vw(720px);
       }
 
       &_sub {
@@ -181,7 +177,7 @@
   }
 }
 @media screen and (max-width: $TABLET-VW) {
-  .detail {
+  .camping_detail {
     width: vw-t(720px);
 
     .divide {
@@ -200,6 +196,7 @@
 
       &_intro {
         padding-bottom: vw-t(32px);
+        width: vw-t(720px);
       }
 
       &_sub {
@@ -256,7 +253,7 @@
 }
 
 @media screen and (max-width: $PHONE-VW) {
-  .detail {
+  .camping_detail {
     width: vw-p(570px);
 
     .divide {
@@ -275,6 +272,7 @@
 
       &_intro {
         padding-bottom: vw-p(32px);
+        width: vw-p(570px);
       }
 
       &_sub {
@@ -286,10 +284,10 @@
 
         &_plan,
         &_site {
-          width: vw-p(182px);
+          width: vw-p(212px);
           height: vw-p(50px);
           border-radius: vw-p(15px);
-          margin: 0 vw-p(24px) 0 vw-p(24px);
+          margin: 0 vw-p(12px);
         }
 
         &_plan {

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "./CommunityPhotoCard.scss";
 
 import dummyLogo from "@images/person.png";
-// import friend from "@images/friend.jpeg";
 
 function CommunityPhotoCard({
   blobFile,
@@ -30,10 +29,16 @@ function CommunityPhotoCard({
           {/* 프로필 이미지 */}
           <div className="image_header_profile flex">
             <div className="image_header_profile_pic">
-              {profileImgPath !== null && <img src={[profileImgPath]} alt="프로필이미지" />}
-              {profileImgPath === null && <img src={dummyLogo} alt="프로필이미지" />}
+              {profileImgPath !== null && (
+                <img src={[profileImgPath]} alt="프로필이미지" />
+              )}
+              {profileImgPath === null && (
+                <img src={dummyLogo} alt="프로필이미지" />
+              )}
             </div>
-            <div className="image_header_profile_name notoMid fs-20">{nickname}</div>
+            <div className="image_header_profile_name notoMid fs-20">
+              {nickname}
+            </div>
           </div>
           {/* 프로필 나머지 */}
           <div className="image_header_extra flex fs-13 justify-center align-center">
@@ -48,9 +53,7 @@ function CommunityPhotoCard({
           <img src={[blobFile]} alt="메인이미지" />
         </div>
         {/* 본문 */}
-        <div className="image_text flex notoMid fs-16">
-          {content}
-        </div>
+        <div className="image_text flex notoMid fs-16">{content}</div>
       </button>
     </div>
   );

@@ -55,7 +55,6 @@ function PhotoRegist() {
       reader.onloadend = () => {
         // 변환 완료!
         const base64data = reader.result;
-        console.log(base64data);
 
         // formData 만드는 함수
         // eslint-disable-next-line no-use-before-define
@@ -115,22 +114,22 @@ function PhotoRegist() {
   return (
     <div className="container flex">
       {userId !== null && (
-        <div className="regist">
-          <div className="regist_title notoBold fs-32">사진 등록하기</div>
-          <div className="regist_content flex">
+        <div className="photo_regist">
+          <div className="photo_regist_title notoBold fs-32">사진 등록하기</div>
+          <div className="photo_regist_content">
             {/* 사진 업로드 박스 */}
             <div
-              className="regist_content_img flex align-center justify-center"
+              className="photo_regist_content_img flex align-center justify-center"
               onClick={handleclick}
             >
               {!fileImage && <Camera className="camera" fill="#DBDBDB" />}
               {!fileImage && (
-                <div className="regist_content_img_sub fs-28 notoBold">
+                <div className="photo_regist_content_img_sub fs-28 notoBold">
                   Upload
                 </div>
               )}
               {fileImage && (
-                <div className="regist_content_img_priv">
+                <div className="photo_regist_content_img_priv">
                   <img alt="sample" src={fileImage} />
                 </div>
               )}
@@ -147,13 +146,13 @@ function PhotoRegist() {
               />
             </div>
 
-            <div className="regist_content_text">
+            <div className="photo_regist_content_text">
               {/* 사진 설명 박스 */}
 
               <textarea
                 type="textarea"
                 placeholder="사진에 대해 설명해주세요."
-                className="regist_content_text_input_box notoMid fs-20"
+                className="photo_regist_content_text_input_box notoMid fs-20"
                 ref={textareaRef}
               />
 
@@ -163,15 +162,15 @@ function PhotoRegist() {
                 ref={tagRef}
                 type="text"
                 placeholder="#태그입력"
-                className="regist_content_text_tag flex notoMid fs-20"
+                className="photo_regist_content_text_tag flex notoMid fs-20"
                 // maxLength={30} // 일단 maxlength지정 해둠
               />
 
               {/* 등록하기 버튼 */}
-              <div className="regist_content_text_box flex">
+              <div className="photo_regist_content_text_box flex">
                 <button
                   type="button"
-                  className="regist_content_text_btn notoBold fs-24"
+                  className="photo_regist_content_text_btn notoBold fs-24"
                   onClick={submit}
                 >
                   등록하기

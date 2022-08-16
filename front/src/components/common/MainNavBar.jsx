@@ -154,7 +154,7 @@ function MainNavBar() {
                     to="/shopping"
                   >
                     준비물
-                  </NavLink>                  
+                  </NavLink>
                 </>
               )}
               {pathname !== "/" && (
@@ -183,7 +183,6 @@ function MainNavBar() {
                   >
                     준비물
                   </NavLink>
-
                 </>
               )}
             </nav>

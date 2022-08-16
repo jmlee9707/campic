@@ -3,9 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { v4 } from "uuid";
 import BestPhoto from "./BestPhoto";
-import "./BestPhoto.scss";
 import { getBestPhoto } from "../../apis/photo";
-// import { Link } from "react-router-dom";
+import "./BestPhoto.scss";
 
 function BestPhotoList() {
   const [bestPhotoList, setBestPhotoList] = useState([]); // 불러온 데이터 저장
@@ -24,7 +23,7 @@ function BestPhotoList() {
   // const newBestPhotoList = BestPhotoList.slice(0[ 4]);
 
   return (
-    <div className="maincomupiclist flex">
+    <div className="best_photo_list flex">
       {bestPhotoList.length !== 0 &&
         bestPhotoList.map(
           ({ blobFile, profileImgPath, boardId, nickname, content }) => (

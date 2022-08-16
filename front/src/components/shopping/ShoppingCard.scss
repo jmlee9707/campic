@@ -1,19 +1,26 @@
 .shop_card {
-  width: vw(370px);
+  // background-color: red;
+  width: (530px);
+  // height : ()
   flex-direction: column;
   &_img {
-    height: vw(370px);
+    height: (350px);
+    width: (530px);
     overflow: hidden;
-    border-radius: vw(17px);
-    margin-bottom: vw(60px);
-    img{
+    border-radius: (17px);
+    margin-bottom: (60px);
+    img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
   &_name {
     color: $GRAY-40;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
   }
   &_etc {
     justify-content: space-between;
@@ -22,15 +29,92 @@
       color: $GRAY-67;
     }
     &_btn {
-      height: vw(50px);
       color: $WHITE;
-      background-color: $MAIN;
-      border-radius: vw(15px);
+      background-color: $GRAY-BF;
+      border-radius: (15px);
+      padding: 10px 24px;
     }
-
+    margin-bottom: 10px;
   }
+  margin: (20px) 0;
+  border-bottom: 1px solid $GRAY-DB;
 }
 
 .shopCardList {
   justify-content: space-around;
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .shop_card {
+    width: vw(530px);
+    &_img {
+      height: vw(350px);
+      width: vw(530px);
+      border-radius: vw(17px);
+      margin-bottom: vw(60px);
+    }
+
+    &_name {
+      margin-bottom: vw(10px);
+    }
+    &_etc {
+      &_btn {
+        border-radius: vw(15px);
+        padding: vw(10px) vw(24px);
+      }
+      margin-bottom: vw(10px);
+    }
+    margin: vw(20px) 0;
+    border-bottom: 1px solid $GRAY-DB;
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .shop_card {
+    width: vw-t(450px);
+    &_img {
+      height: vw-t(320px);
+      width: vw-t(450px);
+      border-radius: vw-t(17px);
+      margin-bottom: vw-t(60px);
+    }
+
+    &_name {
+      margin-bottom: vw-t(10px);
+    }
+    &_etc {
+      &_btn {
+        border-radius: vw-t(15px);
+        padding: vw-t(10px) vw-t(24px);
+      }
+      margin-bottom: vw-t(10px);
+    }
+    margin: vw-t(20px) 0;
+    border-bottom: 1px solid $GRAY-DB;
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .shop_card {
+    width: vw-p(570px);
+    &_img {
+      height: vw-p(320px);
+      width: vw-p(570px);
+      border-radius: vw-p(17px);
+      margin-bottom: vw-p(60px);
+    }
+
+    &_name {
+      margin-bottom: vw-p(10px);
+    }
+    &_etc {
+      &_btn {
+        border-radius: vw-p(15px);
+        padding: vw-p(10px) vw-p(24px);
+      }
+      margin-bottom: vw-p(10px);
+    }
+    margin: vw-p(20px) 0;
+    border-bottom: 1px solid $GRAY-DB;
+  }
 }

@@ -11,7 +11,7 @@ function BestPhoto({ blobFile, boardId }) {
 
   return (
     <button type="button" onClick={onClickImg}>
-      <div className="MainPhoto">
+      <div className="best_photo">
         <img src={[blobFile]} alt="베스트이미지" />
       </div>
     </button>
