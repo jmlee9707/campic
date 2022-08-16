@@ -89,14 +89,14 @@ function TalkRegist() {
     const file = new File([blob], "image.jpg");
     const formData = new FormData();
     formData.append("nickname", profile.nickname);
-    formData.append("profileImg", profile.profileImg);
-    formData.append("email", profile.userId);
+    // formData.append("profileImg", profile.profileImg);
+    // formData.append("email", talkEmail);
     formData.append("title", titleRef.current.value);
     formData.append("hashtag", tagRef.current.value);
     formData.append("fileName", "baek");
     formData.append("file", file);
     formData.append("contents", talkContent.content);
-    // console.log(formData)
+    console.log(formData)
     try {
       const res = await writeTalk(formData);
       if (res.message === "success") {
@@ -217,7 +217,7 @@ function TalkRegist() {
                 // onChange = {(e) => {console.log(e.editor.getData()) }}
                 onChange={e => {
                   const data = e.editor.getData();
-                  console.log(e);
+                  // console.log(e);
                   setTalkContent({
                     ...talkContent,
                     content: data

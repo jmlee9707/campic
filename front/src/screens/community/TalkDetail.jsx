@@ -28,6 +28,7 @@ import {
 function TalkDetail() {
   const [talkDetail, setTalkDetail] = useState({ contents: null });
   const userEmail = useSelector(state => state.user.email);
+  const userProfile = useSelector(state => state.user.profileImg);
   const userNickname = useSelector(state => state.user.nickname);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -279,8 +280,8 @@ function TalkDetail() {
             <div className="detail_talk_comment_input flex align-center">
               {/* 프로필 이미지 */}
               <div className="detail_talk_comment_input_img">
-                {talkProfile !== null && <img src={talkProfile} alt="프로필이미지" />}
-                {talkProfile === null && <img src={dummyProfile} alt="프로필이미지" />}
+                {userProfile !== null && <img src={userProfile} alt="프로필이미지" />}
+                {userProfile === null && <img src={dummyProfile} alt="프로필이미지" />}
               </div>
               {/* 댓글입력부분 */}
               <textarea
