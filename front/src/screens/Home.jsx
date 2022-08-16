@@ -1,4 +1,4 @@
-import React,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setLocation } from "@store/camp";
 
@@ -7,8 +7,8 @@ import "./Home.scss";
 function Home() {
   const dispatch = useDispatch();
 
-   // 위도 경도 받아오기 함수
-   function getLocation() {
+  // 위도 경도 받아오기 함수
+  function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
@@ -37,7 +37,7 @@ function Home() {
 
   return (
     <div className="container">
-      <div className="home_back flex justify-center">
+      <div className="home_back  flex justify-center">
         {/* <img src={mainImg} alt="main"> */}
         <div className="home">
           <div className="home_title fs-60 notoBold">
@@ -48,10 +48,6 @@ function Home() {
             캠핑 일정 정리와 캠핑장 검색을 한번에!
           </div>
         </div>
-        {/* </img> */}
-      </div>
-      <div className="home_page">
-        <div className="home">캠픽 어떤 서비스 인가요?</div>
       </div>
     </div>
   );

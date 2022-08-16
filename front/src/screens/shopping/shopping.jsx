@@ -6,7 +6,7 @@ import {
   setfirstShoppingList,
   setSearchKeyword
 } from "@store/shopping";
-import { v4 } from "uuid";
+// import { v4 } from "uuid";
 // import { setTop5, setSearchKeyword } from "@store/shopping";
 import "./shopping.scss";
 import ShoppingCardList from "@components/shopping/ShoppingCardList";
