@@ -214,7 +214,6 @@ public class TalkService {
 //        return true;
     }
     @CacheEvict(value = "talk", allEntries = true)
-    @Transactional
     public boolean deleteTalk(int talkId) {
         // 게시글 삭제
         Talk talk = talkRepository.findByTalkId(talkId);
