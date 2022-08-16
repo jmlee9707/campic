@@ -34,5 +34,6 @@ public class TotalCampList {
     private String firstImageUrl;
     private String sbrsCl;
     private String posblFcltyCl;
+    private int lclcount;
 
 }

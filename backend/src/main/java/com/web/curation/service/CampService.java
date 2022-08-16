@@ -115,6 +115,8 @@ public class CampService{
 
             if(searchList.getArrange() == 0){
                 criteriaQuery.orderBy(criteriaBuilder.asc(cl.get("facltNm")));  // 가나다순 정렬
+            }if(searchList.getArrange() == 1){
+                criteriaQuery.orderBy(criteriaBuilder.asc(cl.get("lclcount"))); // 인기순 정렬
             }
 
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
@@ -157,6 +159,8 @@ public class CampService{
         User user = userRepository.getByEmail(email); // email로?
         dto.setUserId(user);
         TotalCampList camp = campRepository.getById(campId);
+        int lclcount = camp.getLclcount();
+        camp.setLclcount(lclcount+1);
         dto.setCampId(camp);
 
         LikedCampList likedCampList = dto.toEntity();
