@@ -23,34 +23,19 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-image: url("../../assets/images/campfire.jpg");
+    background-image: url("../../assets/images/banner.png");
     // opacity: 0.1;
-
+    justify-content: end;
     margin-bottom: (80px);
     position: relative;
-    .opac {
-      background-color: $WHITE;
-      position: absolute;
-      height: (500px);
-      width: 100%;
-      opacity: 0.2;
-    }
-    &_title {
-      line-height: 0%;
-      color: $WHITE;
-      text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-      p {
-        position: relative;
-        margin-bottom: (16px);
-      }
-    }
+
     &_favo {
       position: relative;
-      margin-top: 60px;
+      margin-bottom: 100px;
       &_camp {
         width: 160px;
         height: 40px;
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: $WHITE;
         color: $GRAY-67;
         border-radius: 20px;
         margin-bottom: 20px;
@@ -59,7 +44,7 @@
           padding: 6px 16px;
           border-radius: 14px;
           margin: 0 8px;
-          background-color: rgba(255, 255, 255, 0.8);
+          background-color: $WHITE;
         }
       }
     }
@@ -130,19 +115,9 @@
       // opacity: 0.1;
 
       margin-bottom: vw(80px);
-      .opac {
-        height: vw(500px);
-        width: 100%;
-        opacity: 0.2;
-      }
-      &_title {
-        text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-        p {
-          margin-bottom: vw(8px);
-        }
-      }
+
       &_favo {
-        margin-top: vw(60px);
+        margin-bottom: vw(100px);
         &_camp {
           width: vw(160px);
           height: vw(40px);
@@ -200,19 +175,9 @@
       // opacity: 0.1;
 
       margin-bottom: vw-t(80px);
-      .opac {
-        height: vw-t(500px);
-        width: 100%;
-        opacity: 0.2;
-      }
-      &_title {
-        text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-        p {
-          margin-bottom: vw-t(8px);
-        }
-      }
+
       &_favo {
-        margin-top: vw-t(60px);
+        margin-bottom: vw-t(100px);
         &_camp {
           width: vw-t(160px);
           height: vw-t(40px);
@@ -268,23 +233,13 @@
       height: vw-p(1px);
     }
     &_top_banner {
-      height: vw-p(400px);
+      height: vw-p(300px);
       // opacity: 0.1;
 
       margin-bottom: vw-p(80px);
-      .opac {
-        height: vw-p(500px);
-        width: 100%;
-        opacity: 0.2;
-      }
-      &_title {
-        text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-        p {
-          margin-bottom: vw-p(8px);
-        }
-      }
+
       &_favo {
-        margin-top: vw-p(30px);
+        margin-bottom: vw-p(80px);
         &_camp {
           display: none;
           width: vw-p(160px);

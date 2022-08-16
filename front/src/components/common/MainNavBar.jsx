@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+// import OffCanvas from "react-aria-offcanvas";
 // style import
 import "./MainNavBar.scss";
 import logoGreen from "@images/logo/logo_text_green.svg";
@@ -45,7 +46,8 @@ function MainNavBar() {
     setOpenTool(!openTool);
   };
   const openMobile = () => {
-    setOpenMenu(!openMenu);
+    console.log(openMenu);
+    setOpenMenu(true);
   };
   const moveEdit = () => {
     navigate("/infoedit");
@@ -110,6 +112,11 @@ function MainNavBar() {
       setOpenMenu(!openMenu);
     }
   };
+
+  // useEffect(() => {
+  //   showButton();
+  // }, []);
+  // window.addEventListener("resize", showButton);
 
   return (
     <div className="wrapper flex align-center">
@@ -218,15 +225,11 @@ function MainNavBar() {
                     className="right_nav__link_user_img fs-16"
                     onClick={openTooltip}
                   >
-                    {/* <img src={userInfo.profileImg} alt="userProfile" /> */}
-                    {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
                     {Profile ? (
                       <img src={Profile.profileImg} alt="" />
                     ) : (
                       <img src={dummyicon} alt="" />
                     )}
-                    {/* {Profile.profileImg && <img src={dummyicon} alt="" />} */}
-                    {/* <img src={Profile.profileImg} alt={dummyicon} /> */}
                   </button>
                 </>
               )}
@@ -270,7 +273,7 @@ function MainNavBar() {
               </div>
             </div>
           )}
-          {openMenu && (
+          {openMenu === true && (
             <div className="mobile_menu flex column ">
               <button
                 type="button"
@@ -300,7 +303,7 @@ function MainNavBar() {
               >
                 준비물
               </button>
-              {Profile.email === null && (
+              {Profile.email !== null && (
                 <>
                   <div className="divide" />
                   <button
