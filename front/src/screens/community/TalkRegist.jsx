@@ -217,6 +217,7 @@ function TalkRegist() {
                 // onChange = {(e) => {console.log(e.editor.getData()) }}
                 onChange={e => {
                   const data = e.editor.getData();
+                  console.log(e);
                   setTalkContent({
                     ...talkContent,
                     content: data
