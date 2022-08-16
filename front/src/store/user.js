@@ -18,6 +18,12 @@ export const userSlice = createSlice({
     setEmail: (state, action) => {
       state.email = action.payload.email;
     },
+    setNickname: (state, action) => {
+      state.nickname = action.payload.nickname;
+    },
+    setTel: (state, action) => {
+      state.tel = action.payload.tel;
+    },
     setProfileImg: (state, action) => {
       state.profileImg = action.payload;
     },
@@ -59,6 +65,8 @@ export const {
   updateUserInfo, 
   reset,
   setEmail,  
+  setTel,
+  setNickname,
   findId, 
   findPw, 
 } = userSlice.actions;

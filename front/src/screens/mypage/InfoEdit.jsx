@@ -7,7 +7,7 @@ import "./InfoEdit.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 import { modifyUserInfo, modifyUserProfileImg } from "@apis/user";
-import { selectProfile, updateUserInfo, setProfileImg } from "@store/user";
+import { selectProfile, updateUserInfo, setProfileImg, setNickname, setTel } from "@store/user";
 
 function InfoEdit() {
   const dispatch = useDispatch();
@@ -32,8 +32,8 @@ function InfoEdit() {
       const userInfo = {
         birth: `${startDate.getFullYear()}/${startDate.getMonth() + 1}/${startDate.getDate()}`,
         email: Profile.email,
-        nickname:nickRef.current.value,
-        tel: phoneRef.current.value
+        nickname: Profile.nickname,
+        tel: Profile.tel
       };
 
       const res = await modifyUserInfo(userInfo);
@@ -76,6 +76,7 @@ function InfoEdit() {
       setNickMess("2~8자리의 문자로 입력해주세요");
       setNickError(true); // 에러발생
     } else {
+      dispatch(setNickname({nickname: nickRef.current.value}));
       setNickMess(" ");
       setNickError(false);
     }
@@ -88,6 +89,7 @@ function InfoEdit() {
       setPhoneMess("10~11자리 숫자만 입력해주세요");
       setPhoneError(true); // 에러발생
     } else {
+      dispatch(setTel({tel : phoneRef.current.value}));
       setPhoneMess(" ");
       setPhoneError(false);
     }
