@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,6 +19,9 @@ public class Community {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
+    @OneToMany(mappedBy = "community", cascade = {CascadeType.REMOVE})
+    private List<CommunityLike> communityLikes = new ArrayList<>();
 
     private LocalDateTime uploadDate;
 
