@@ -68,6 +68,7 @@ public class CommentDto {
         private int talkId;
         private int depth;
         private int bundle;
+        private String email;
         /* Entity -> Dto*/
         public Response(Comment comment) {
             this.commentId = comment.getCommentId();
@@ -79,6 +80,7 @@ public class CommentDto {
             this.talkId = comment.getTalk().getTalkId();
             this.depth = comment.getDepth();
             this.bundle = comment.getBundle();
+            this.email = comment.getUser().getEmail();
         }
     }
 }
