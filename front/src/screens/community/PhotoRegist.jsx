@@ -62,6 +62,7 @@ function PhotoRegist() {
       };
     } catch (error) {
       console.log(error);
+      window.alert("사진을 등록해주세요!")
     }
   };
 
