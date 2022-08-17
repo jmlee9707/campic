@@ -78,22 +78,26 @@ function Router() {
         <Route path="/join/*">
           <Route index element={<Join />} />
           <Route path="finish" element={<JoinFinish />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         {/* find ID/PW  */}
         <Route path="/findid/*">
           <Route index element={<FindId />} />
           <Route path="finish" element={<FindIdFinish />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/findpw/*">
           <Route index element={<FindPw />} />
           <Route path="change" element={<FindPwCh />} />
           <Route path="finish" element={<FindPwFinish />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         {/* info edit */}
         <Route path="/infoedit/*">
           <Route index element={<InfoEdit />} />
           <Route path="pwch" element={<PwCh />} />
           <Route path="pwedit" element={<PwEdit />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         {/* { isLogined &&
           <Route path="/infoedit/*">
@@ -112,6 +116,7 @@ function Router() {
         <Route path="/drop/*">
           <Route index element={<Drop />} />
           <Route path="finish" element={<DropFinish />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         {/* { isLogined &&
           <Route path="/drop/*">
@@ -139,11 +144,13 @@ function Router() {
         <Route path="/camping/*">
           <Route index element={<CampingMain />} />
           <Route path="detail/:id" element={<CampingDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         {/* plan */}
         <Route path="/plan/*">
           <Route index element={<PlanMain />} />
           <Route path="detail/:id" element={<PlanDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         {/* { isLogined &&
           <Route path="/plan/*">
@@ -169,6 +176,7 @@ function Router() {
           <Route path="pwch" element={<PwCh />} />
           <Route path="pwch/edit" element={<PwEdit />} />
           <Route path="info/edit" element={<InfoEdit />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
 
         {/* 날씨 테스트

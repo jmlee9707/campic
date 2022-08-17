@@ -12,6 +12,7 @@ import PhotoModify from "@screens/community/PhotoModify";
 import TalkDetail from "@screens/community/TalkDetail";
 import TalkUpdate from "@screens/community/TalkUpdate";
 // import PhotoModify from "../screens/community/PhotoModify";
+import NotFound from "@screens/NotFound";
 
 function Community() {
   return (
@@ -30,6 +31,8 @@ function Community() {
         <Route path="talk/detail/:id" element={<TalkDetail />} />
         <Route path="talk/detail" element={<TalkDetail />} />
         <Route path="talk/modi/:id" element={<TalkUpdate />} />
+        
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
