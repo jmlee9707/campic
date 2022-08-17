@@ -16,9 +16,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-image: url("../../assets/images/campfire.jpg");
+    background-image: url("../../assets/images/banner_night.png");
     margin-bottom: (80px);
     position: relative;
+    justify-content: end;
+    padding-bottom: (85px);
 
     .opac {
       background-color: $WHITE;
@@ -26,15 +28,6 @@
       height: (500px);
       width: 100%;
       opacity: 0.1;
-    }
-    &_tit {
-      color: $WHITE;
-      text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      margin-bottom: (50px);
-      &_title1 {
-        margin-bottom: (16px);
-      }
     }
 
     &_input {
@@ -64,7 +57,7 @@
     }
 
     &_hot {
-      margin-top: (50px);
+      margin-top: (30px);
       &_searchname {
         justify-content: space-between;
 
@@ -104,17 +97,10 @@
     &_search {
       height: vw(500px);
       margin-bottom: vw(80px);
+      padding-bottom: vw(85px);
 
       .opac {
         height: vw(500px);
-      }
-      &_tit {
-        color: $WHITE;
-        text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-        margin-bottom: vw(50px);
-        &_title1 {
-          margin-bottom: (16px);
-        }
       }
 
       &_input {
@@ -134,7 +120,7 @@
       }
 
       &_hot {
-        margin-top: vw(50px);
+        margin-top: vw(30px);
         &_searchname {
           &_word {
             padding: vw(10px) vw(24px);
@@ -162,17 +148,10 @@
     &_search {
       height: vw-t(500px);
       margin-bottom: vw-t(80px);
+      padding-bottom: vw-t(85px);
 
       .opac {
         height: vw-t(500px);
-      }
-      &_tit {
-        color: $WHITE;
-        text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-        margin-bottom: vw-t(50px);
-        &_title1 {
-          margin-bottom: vw-t(16px);
-        }
       }
 
       &_input {
@@ -192,7 +171,7 @@
       }
 
       &_hot {
-        margin-top: vw-t(50px);
+        margin-top: vw-t(30px);
         &_searchname {
           &_word {
             padding: vw-t(10px) vw-t(20px);
@@ -218,19 +197,12 @@
       height: vw-p(1px);
     }
     &_search {
-      height: vw-p(400px);
+      height: vw-p(350px);
       margin-bottom: vw-p(50px);
+      padding-bottom: vw-p(85px);
 
       .opac {
         height: vw-p(400px);
-      }
-      &_tit {
-        color: $WHITE;
-        text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-        margin-bottom: vw-p(30px);
-        &_title1 {
-          margin-bottom: vw-p(16px);
-        }
       }
 
       &_input {
@@ -251,7 +223,7 @@
 
       &_hot {
         display: none;
-        // margin-top: vw-p(50px);
+        margin-top: vw-p(50px);
       }
     }
 

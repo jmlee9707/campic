@@ -18,8 +18,19 @@ export const addPlan = async (
         email
       }
     }
-    // { data: startDate, endDate, savedTitle }
   );
+  console.log(res.data);
+  return res.data;
+};
+// 플랜 수장하기
+export const changePlan = async (saveId, startDate, endDate, savedTitle) => {
+  //   console.log("Aaaa");
+  console.log(saveId, startDate, endDate, savedTitle);
+  const res = await API_USER.put(`/schedule/${saveId}`, {
+    startDate,
+    endDate,
+    savedTitle
+  });
   console.log(res.data);
   return res.data;
 };

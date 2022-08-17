@@ -12,6 +12,7 @@ function ShoppingCardList() {
   const dispatch = useDispatch();
   const searchKeyword = useSelector(state => state.shopping.searchKeyword);
   const list = useSelector(state => state.shopping.shoppingList);
+  const isEnd = useSelector(state => state.shopping.isEnd);
 
   const [ref, inView] = useInView();
   const [page, setPage] = useState(0);
@@ -59,7 +60,8 @@ function ShoppingCardList() {
             lprice={lprice}
           />
         ))}
-      {loading ? <Loading /> : <div ref={ref} className="obe" />}
+      {!isEnd && loading ? <Loading /> : <div ref={ref} className="obe" />}
+      {isEnd && <div>더 이상 검색 결과가 없습니다.</div>}
     </div>
   );
 }

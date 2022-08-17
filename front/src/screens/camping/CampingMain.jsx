@@ -9,12 +9,13 @@ import {
   CampingSearchTag,
   CampingSearchAll
 } from "@components/camping/CampingSearch";
-import { reset, setArrangeConditions } from "@store/camp";
+import { reset, resetLoca, setArrangeConditions } from "@store/camp";
 
 function CampingMain() {
   const dispatch = useDispatch();
   // campInfo 생성
-  dispatch(reset()); // reduc 초기화
+  dispatch(reset()); // redux 초기화
+  dispatch(resetLoca());
   // setCampInfo(result);
   const [fold, setFold] = useState(false);
   const [isFold, setIsFold] = useState("상세 접기");
@@ -35,8 +36,9 @@ function CampingMain() {
   // 정렬 어떻게 할것인지?
   const arrangeClick = e => {
     const arrange = e.target.value;
-    dispatch(reset());
+
     dispatch(setArrangeConditions({ arrange })); // 왜 정렬이 안될까요?
+    clickCamp();
   };
   const foldTag = () => {
     if (fold === true) {
@@ -51,12 +53,11 @@ function CampingMain() {
   return (
     <div className="container flex justify-center">
       <div className="camp">
-        <div className="camp_top_banner flex column align-center justify-center">
-          <div className="opac" />
-          <div className="camp_top_banner_title flex column align-center notoBold fs-40">
+        <div className="camp_top_banner flex column ">
+          {/* <div className="camp_top_banner_title flex column align-center notoBold fs-40">
             <p>캠핑 준비하세요?</p>
             <p>맞춤 검색으로 찾아보세요!</p>
-          </div>
+          </div> */}
           <div className="camp_top_banner_favo flex column align-center">
             <div className="camp_top_banner_favo_camp notoBold fs-14 flex align-center justify-center">
               인기 캠핑장
@@ -130,7 +131,9 @@ function CampingMain() {
             className="camp_list_sort fs-20 notoMid"
           >
             <option value="0">가나다순</option>
-            <option value="1">인기순</option>
+            <option value="1" selected>
+              인기순
+            </option>
             <option value="2">거리순</option>
           </select>
         </div>

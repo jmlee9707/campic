@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
+import { v4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import search from "@images/icon/search_black_24dp.svg";
 import {
@@ -17,7 +18,6 @@ function Shopping() {
   const keywordRef = useRef();
   const top5 = useSelector(state => state.shopping.top5);
   const searchKeyword = useSelector(state => state.shopping.searchKeyword);
-  const [resKeyword, setResKeyword] = useState("검색 결과가 없습니다");
   // 인기 검색어 받아오기
   const getTop5 = () => {
     // 검색어 top5 받아오기
@@ -43,7 +43,6 @@ function Shopping() {
       .then(res => {
         // console.log("정보", res.data);
         dispatch(setfirstShoppingList({ shoppingList: res.data }));
-        setResKeyword(`${keywordRef.current.value}에 대한 검색 결과입니다`);
       })
       .catch(err => console.log(err));
   };
@@ -62,16 +61,7 @@ function Shopping() {
   return (
     <div className="container flex">
       <div className="shop">
-        <div className="shop_search flex column align-center justify-center">
-          {/* <div className="opac" /> */}
-          <div className="shop_search_tit flex column align-center justify-center">
-            <div className="shop_search_title1 notoBold fs-32">
-              캠핑에 필요한 준비물?
-            </div>
-            <div className="shop_search_title2 notoBold fs-40">
-              캠픽에서 찾아보세요!
-            </div>
-          </div>
+        <div className="shop_search flex column align-center">
           <div className="shop_search_input flex align-center">
             <input
               onKeyPress={handleOnKeyPress}
@@ -88,11 +78,11 @@ function Shopping() {
               <img src={search} alt="search" />
             </button>
           </div>
-          <div className="shop_search_hot ">
+          <div className="shop_search_hot">
             <div className="shop_search_hot_searchname flex">
               {top5 &&
                 top5.map(item => (
-                  <div className="shop_search_hot_searchname_word notoMid flex fs-16">
+                  <div key={v4()} className="shop_search_hot_searchname_word notoMid flex fs-16">
                     <div>{item}</div>
                   </div>
                 ))}
@@ -102,7 +92,7 @@ function Shopping() {
         {searchKeyword && (
           <div className="shop_res">
             <div className="shop_res_title">
-              <p className="shop_res_title_tit1 notoBold fs-32">{resKeyword}</p>
+              <p className="shop_res_title_tit1 notoBold fs-32">{`${searchKeyword}에 대한 검색 결과입니다`}</p>
             </div>
             <div className="divide" />
             <div className="shop_res_comp">

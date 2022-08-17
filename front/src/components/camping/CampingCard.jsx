@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./CampingCard.scss";
 import AddPlanModal from "@components/camping/AddPlanModal";
-import coverImg from "@images/temp_1.jpeg"; // url string으로 가져오기
+import coverImg from "@images/noimage.png"; // url string으로 가져오기
 import placeIcon from "@images/icon/place_black_24dp.svg";
 
 function CampingCard({ campId, facltNm, addr1, homepage, firstImageUrl }) {
@@ -10,6 +10,7 @@ function CampingCard({ campId, facltNm, addr1, homepage, firstImageUrl }) {
     window.open(`${homepage}`);
   };
 
+  // console.log(homepage);
   const detailUrl = `/camping/detail/${campId}`;
   // console.log(firstImageUrl);
 

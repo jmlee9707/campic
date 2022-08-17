@@ -6,6 +6,7 @@ export const initialshoppingState = {
   shoppingList: [],
   top5: [],
   searchKeyword: "",
+  isEnd: false,
 };
 
 const shoppingReducer = createSlice({
@@ -16,10 +17,16 @@ const shoppingReducer = createSlice({
       Object.assign(state, initialshoppingState);
     },
     setShoppingList: (state, { payload }) => {
+      if (payload.shoppingList.length < 10) {
+        state.isEnd = true;
+      }
       state.shoppingList = [...state.shoppingList, ...payload.shoppingList];
       state.page += 1;
     },
     setfirstShoppingList: (state, { payload }) => {
+      if (payload.shoppingList.length < 10) {
+        state.isEnd = true;
+      }
       state.shoppingList = [...payload.shoppingList];
       state.page = 0;
     },

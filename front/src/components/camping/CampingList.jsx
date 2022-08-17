@@ -12,12 +12,15 @@ function CampingList({ searchClick }) {
   const dispatch = useDispatch();
   // const [viewList, setViewList] = useState([]);
   const campInfo = useSelector(state => state.campSearch); // redux의 선택 정보
-  const [page, setPage] = useState(0); // 현재 페이지
+  // const [page, setPage] = useState(0); // 현재 페이지
+  const page = useSelector(state => state.campSearch.page);
+  const [newPage, setNewPage] = useState(page);
   const [loading, setLoading] = useState(false);
   const list = useSelector(state => state.campSearch.campList);
   const [ref, inView] = useInView();
 
   async function getAndSetCampList() {
+    // console.log(page);
     const res = await getCamplist({
       arrange: campInfo.arrange,
       keyword: campInfo.keyword,
@@ -27,23 +30,19 @@ function CampingList({ searchClick }) {
       page
     });
     dispatch(setCampList({ campList: res }));
-    // dispatch(setCampList({ campList: [...list, res] }));
-    // dispatch(setCampList({ page }));
     setLoading(false);
+    console.log(res);
   }
   // page 달라질때마다 요청보내기
   useEffect(() => {
-    // setLoading(false);
     getAndSetCampList();
-  }, [page]);
+  }, [newPage]);
 
   // 사용자가 마지막 요소를 보고 있고 로딩 중이 아니라면
   useEffect(() => {
     if (inView && !loading) {
       setLoading(true);
-      setPage(page + 1);
-      // getAndSetCampList();
-      // setLoading(false);
+      setNewPage(newPage + 1);
     }
   }, [inView, loading]);
 
@@ -61,7 +60,12 @@ function CampingList({ searchClick }) {
             firstImageUrl={firstImageUrl}
           />
         ))}
-      {loading ? <Loading /> : <div ref={ref} className="obe" />}
+      {list.length !== 0 && loading ? (
+        <Loading />
+      ) : (
+        <div ref={ref} className="obe" />
+      )}
+      {list.length === 0 && <div>마지막입니다.</div>}
     </div>
   );
 }
