@@ -96,7 +96,7 @@ function TalkRegist() {
     formData.append("fileName", "baek");
     formData.append("file", file);
     formData.append("contents", talkContent.content);
-    console.log(formData)
+    // console.log(formData);
     try {
       const res = await writeTalk(formData);
       if (res.message === "success") {
@@ -155,7 +155,9 @@ function TalkRegist() {
             >
               {!fileImage && <Camera className="camera" fill="#DBDBDB" />}
               {!fileImage && (
-                <div className="regist_img_cover_sub fs-28 notoBold">Upload</div>
+                <div className="regist_img_cover_sub fs-28 notoBold">
+                  Upload
+                </div>
               )}
               {fileImage && (
                 <div className="regist_img_cover_priv">
@@ -256,7 +258,10 @@ function TalkRegist() {
             <div className="divide" />
           </div>
           <div className="regist_btn flex align-center justify-center">
-            <Link to="/board/talk/home" className="regist_btn_back notoBold fs-24">
+            <Link
+              to="/board/talk/home"
+              className="regist_btn_back notoBold fs-24"
+            >
               뒤로가기
             </Link>
             <button
