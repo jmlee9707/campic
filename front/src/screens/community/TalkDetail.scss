@@ -193,9 +193,17 @@
         width: vw(106px);
         height: vw(40px);
         border-radius: vw(17px);
-        margin-right: vw(32px);
+        margin-right: vw(24px);
       }
       &_delete {
+        color: $WHITE;
+        background-color: $GRAY-BF;
+        width: vw(106px);
+        height: vw(40px);
+        border-radius: vw(17px);
+        margin-right: vw(24px);
+      }
+      &_home {
         color: $WHITE;
         background-color: $GRAY-BF;
         width: vw(106px);

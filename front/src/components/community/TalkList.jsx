@@ -30,7 +30,7 @@ function TalkList() {
     if (inView && !loading) {
       setLoading(true);
       setPage(page + 1);
-      console.log(page);
+      // console.log(page);
       getTalkList();
     }
   }, [inView, loading]);
@@ -59,7 +59,7 @@ function TalkList() {
             />
           )
         )}
-        {loading ? <div>로딩중</div> : <div ref={ref} className="observer" />}
+      {loading ? <div>로딩중</div> : <div ref={ref} className="observer" />}
     </div>
   );
 }
