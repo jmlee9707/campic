@@ -62,5 +62,10 @@ public class CampController {
         return ResponseEntity.ok(campService.save(dto,email,campId));
     }
 
+    /* bestcamp */
+    @GetMapping()
+    public ResponseEntity<List<String>> bestCamp(){
+        return new ResponseEntity<List<String>>(campService.getBestCamps(),HttpStatus.OK);
+    }
 
 }
