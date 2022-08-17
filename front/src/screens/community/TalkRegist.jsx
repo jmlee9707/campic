@@ -52,8 +52,23 @@ function TalkRegist() {
   //   console.log(nameLength);
   // };
   const submit = async () => {
-    // eslint-disable-next-line no-use-before-define
-    actionImgCompress(photoInput.current.files[0]);
+    // const photoIn = photoInput.current.files[0].value.lastIndexOf(".");
+    // const fileIn = photoInput.current.files[0].value.substring(
+    //   photoIn + 1,
+    //   photoInput.current.files[0].length
+    // );
+    // const fileInput = fileIn.toLowerCase();
+    // if (fileInput === "jpg" || fileInput === "png" || fileInput === "jpeg") {
+    if (
+      photoInput.current.files[0].name.slice(-3).toLowerCase() === "jpg" ||
+      photoInput.current.files[0].name.slice(-3).toLowerCase() === "png" ||
+      photoInput.current.files[0].name.slice(-4).toLowerCase() === "jpeg"
+    ) {
+      // eslint-disable-next-line no-use-before-define
+      actionImgCompress(photoInput.current.files[0]);
+    } else {
+      window.alert("이미지 파일로 등록해주세요");
+    }
   };
   const actionImgCompress = async fileImage => {
     const options = {
@@ -72,7 +87,7 @@ function TalkRegist() {
         handlingDataForm(base64data);
       };
     } catch (error) {
-      console.log(error);
+      window.alert("썸네일을 등록해주세요");
     }
   };
   const handlingDataForm = async dataURI => {
@@ -86,23 +101,31 @@ function TalkRegist() {
     const blob = new Blob([ia], {
       type: "image/jpeg"
     });
-    const file = new File([blob], "image.jpg");
-    const formData = new FormData();
-    formData.append("nickname", profile.nickname);
-    formData.append("title", titleRef.current.value);
-    formData.append("hashtag", tagRef.current.value);
-    formData.append("fileName", "baek");
-    formData.append("file", file);
-    formData.append("contents", talkContent.content);
-    // console.log(formData);
-    try {
-      const res = await writeTalk(formData);
-      if (res.message === "success") {
-        navigate(`/board/talk/detail/${res.talkId}`);
-        // console.log(res);
+    if (
+      titleRef.current.value === "" ||
+      talkContent.content === "" ||
+      tagRef.current.value === ""
+    ) {
+      window.alert("내용을 채워주세요!");
+    } else {
+      const file = new File([blob], "image.jpg");
+      const formData = new FormData();
+      formData.append("nickname", profile.nickname);
+      formData.append("title", titleRef.current.value);
+      formData.append("hashtag", tagRef.current.value);
+      formData.append("fileName", "baek");
+      formData.append("file", file);
+      formData.append("contents", talkContent.content);
+      // console.log(formData);
+      try {
+        const res = await writeTalk(formData);
+        if (res.message === "success") {
+          navigate(`/board/talk/detail/${res.talkId}`);
+          // console.log(res);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
   useBeforeunload(event => event.preventDefault());
@@ -166,7 +189,7 @@ function TalkRegist() {
                 type="file"
                 multiple="multiple"
                 encType="multipart/form-data"
-                accept="image/jpg, image.jpeg, image.png"
+                accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG"
                 ref={photoInput}
                 style={{ display: "none" }}
                 name="imgFile"

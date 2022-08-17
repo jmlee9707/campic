@@ -12,7 +12,7 @@ function BestTalkList() {
     // await 를 사용하기 위해서 Async 선언
     async function getAndSetBestTalk() {
       const res = await getTalkBest();
-      console.log(res);
+      // console.log(res);
       setBestTalkList(res);
     }
     getAndSetBestTalk();
@@ -23,18 +23,16 @@ function BestTalkList() {
   return (
     <div className="bestTalkList flex">
       {bestTalkList.length !== 0 &&
-        bestTalkList.map(
-          ({ blobFile, talkId, nickname, content, title }) => (
-            <BestTalk
-              key={v4()}
-              talkId={talkId}
-              title={title}
-              blobFile={blobFile}
-              nickname={nickname}
-              content={content}
-            />
-          )
-        )}
+        bestTalkList.map(({ blobFile, talkId, nickname, content, title }) => (
+          <BestTalk
+            key={v4()}
+            talkId={talkId}
+            title={title}
+            blobFile={blobFile}
+            nickname={nickname}
+            content={content}
+          />
+        ))}
     </div>
   );
 }

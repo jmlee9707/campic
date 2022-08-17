@@ -92,6 +92,9 @@ function TalkDetail() {
   const updateTalk = () => {
     navigate(`/board/talk/modi/${id}`);
   };
+  const toHome = () => {
+    navigate(`/board/talk/home`);
+  };
   const deleteParams = {
     talkId: id
   };
@@ -255,8 +258,8 @@ function TalkDetail() {
                 </div>
               </div>
               <div className="divide" />
-              {userNickname === talkNickname && (
-                <div className="detail_talk_btns flex">
+              <div className="detail_talk_btns flex">
+                {userNickname === talkNickname && (
                   <button
                     type="button"
                     className="detail_talk_btns_update notoBold fs-18"
@@ -264,6 +267,8 @@ function TalkDetail() {
                   >
                     수정
                   </button>
+                )}
+                {userNickname === talkNickname && (
                   <button
                     type="button"
                     className="detail_talk_btns_delete notoBold fs-18"
@@ -271,8 +276,15 @@ function TalkDetail() {
                   >
                     삭제
                   </button>
-                </div>
-              )}
+                )}
+                <button
+                  type="button"
+                  className="detail_talk_btns_home notoBold fs-18"
+                  onClick={toHome}
+                >
+                  홈으로
+                </button>
+              </div>
               {/* 댓글 갯수 */}
               <div className="detail_talk_comment_cnt flex">
                 <div className="detail_talk_comment_cnt_text notoBold fs-24">
@@ -283,34 +295,36 @@ function TalkDetail() {
                 </div>
               </div>
               {/* 댓글작성공간 */}
-              <div className="detail_talk_comment_input flex align-center">
-                {/* 프로필 이미지 */}
-                <div className="detail_talk_comment_input_img">
-                  {userProfile !== null && (
-                    <img src={userProfile} alt="프로필이미지" />
-                  )}
-                  {userProfile === null && (
-                    <img src={dummyProfile} alt="프로필이미지" />
-                  )}
+              {userNickname !== null && (
+                <div className="detail_talk_comment_input flex align-center">
+                  {/* 프로필 이미지 */}
+                  <div className="detail_talk_comment_input_img">
+                    {userProfile !== null && (
+                      <img src={userProfile} alt="프로필이미지" />
+                    )}
+                    {userProfile === null && (
+                      <img src={dummyProfile} alt="프로필이미지" />
+                    )}
+                  </div>
+                  {/* 댓글입력부분 */}
+                  <textarea
+                    type="textarea"
+                    className="detail_talk_comment_input_text fs-18 notoReg"
+                    ref={commentRef}
+                  />
+                  {/* 댓글입력버튼 */}
+                  <div className="detail_talk_comment_input_btn notoBold flex align-center justify-center">
+                    <button
+                      type="button"
+                      className="fs-16"
+                      onClick={submitComment}
+                      // disabled={!commentRef.current.value===0}
+                    >
+                      입력
+                    </button>
+                  </div>
                 </div>
-                {/* 댓글입력부분 */}
-                <textarea
-                  type="textarea"
-                  className="detail_talk_comment_input_text fs-18 notoReg"
-                  ref={commentRef}
-                />
-                {/* 댓글입력버튼 */}
-                <div className="detail_talk_comment_input_btn notoBold flex align-center justify-center">
-                  <button
-                    type="button"
-                    className="fs-16"
-                    onClick={submitComment}
-                    // disabled={!commentRef.current.value===0}
-                  >
-                    입력
-                  </button>
-                </div>
-              </div>
+              )}
               {/* 댓글 */}
               <div className="detail_talk_comment">
                 {/* <TalkComments /> */}

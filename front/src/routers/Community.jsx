@@ -3,15 +3,15 @@ import { Routes, Route } from "react-router-dom";
 import CommunityNavBar from "@components/community/CommunityNavBar";
 // community
 import CommunityMain from "@screens/community/CommunityMain";
-import PhotoHome from "@screens/community/PhotoHome"
-import TalkHome from "@screens/community/TalkHome"
+import PhotoHome from "@screens/community/PhotoHome";
+import TalkHome from "@screens/community/TalkHome";
 import PhotoRegist from "@screens/community/PhotoRegist";
 import TalkRegist from "@screens/community/TalkRegist";
 import PhotoDetail from "@screens/community/PhotoDetail";
 import PhotoModify from "@screens/community/PhotoModify";
 import TalkDetail from "@screens/community/TalkDetail";
+import TalkUpdate from "@screens/community/TalkUpdate";
 // import PhotoModify from "../screens/community/PhotoModify";
-
 
 function Community() {
   return (
@@ -24,11 +24,12 @@ function Community() {
         <Route path="photo/detail/:id" element={<PhotoDetail />} />
         <Route path="photo/modi/:id" element={<PhotoModify />} />
         <Route path="photo/detail" element={<PhotoDetail />} />
-        
+
         <Route path="talk/home" element={<TalkHome />} />
         <Route path="talk/regist" element={<TalkRegist />} />
         <Route path="talk/detail/:id" element={<TalkDetail />} />
         <Route path="talk/detail" element={<TalkDetail />} />
+        <Route path="talk/modi/:id" element={<TalkUpdate />} />
       </Routes>
     </>
   );

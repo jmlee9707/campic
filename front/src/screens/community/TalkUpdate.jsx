@@ -22,11 +22,13 @@ function TalkUpdate() {
   const titleRef = useRef();
   const tagRef = useRef();
   const [talkContent, setTalkContent] = useState({
-    content: null
+    contents: null
   });
   async function bringTalkInfo() {
     const res = await getTalkDetail(id);
     setTalkContent(res);
+    // eslint-disable-next-line no-use-before-define
+    setTitleLength(res.title.length);
   }
   useEffect(() => {
     bringTalkInfo();
@@ -38,6 +40,8 @@ function TalkUpdate() {
       console.log("30자를 초과합니다.");
     }
   };
+  console.log(photoInput.current);
+  console.log(talkContent.contents);
   const submit = async () => {
     // eslint-disable-next-line no-use-before-define
     actionImgCompress(photoInput.current.files[0]);
@@ -76,12 +80,12 @@ function TalkUpdate() {
     });
     const file = new File([blob], "image.jpg");
     const formData = new FormData();
-    formData.append("nickname", "test");
+    formData.append("talkId", id);
     formData.append("title", titleRef.current.value);
     formData.append("hashtag", tagRef.current.value);
     formData.append("fileName", "baek");
     formData.append("file", file);
-    formData.append("contents", talkContent.content);
+    formData.append("contents", talkContent.contents);
     // formData.append("talkId", id);
     // eslint-disable-next-line no-restricted-syntax
     try {
@@ -158,7 +162,7 @@ function TalkUpdate() {
               <CKEditor
                 style={{ borderColor: "#467264" }}
                 onReady={editor => {
-                  editor.setData(talkContent.content);
+                  editor.setData(talkContent.contents);
                 }}
                 onChange={e => {
                   const data = e.editor.getData();
@@ -201,7 +205,10 @@ function TalkUpdate() {
           <div className="divide" />
         </div>
         <div className="modifyTalk_btn flex align-center justify-center">
-          <Link to={`/board/talk/detail/${id}`} className="modifyTalk_btn_back notoBold fs-24">
+          <Link
+            to={`/board/talk/detail/${id}`}
+            className="modifyTalk_btn_back notoBold fs-24"
+          >
             뒤로가기
           </Link>
           <button

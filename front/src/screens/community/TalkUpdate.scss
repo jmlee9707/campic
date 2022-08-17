@@ -20,41 +20,41 @@
     margin: vw(60px) 0 vw(46px) 0;
     padding-left: vw(200px);
   }
-
-  &_img {
-    &_cover {
-      width: vw(480px);
-      height: vw(320px);
-      background-color: $GRAY-679;
-      border-radius: vw(15px);
-      flex-direction: column;
-
-      // img {
-      //   width: vw(70px);
-      //   height: vw(65px);
-
-      // }
-      .camera {
-        width: vw(84px);
-        height: vw(77px);
-        fill: $GRAY-DB;
-      }
-
-      &_sub {
-        color: $GRAY-DB;
-        margin-top: vw(16px);
-      }
-
-      &_priv {
-        width: vw(570px);
+  &_content {
+    &_img {
+      &_cover {
+        width: vw(1170px);
         height: vw(480px);
+        background-color: $GRAY-679;
         border-radius: vw(15px);
-        overflow: hidden;
+        flex-direction: column;
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        // img {
+        //   width: vw(70px);
+        //   height: vw(65px);
+        // }
+        // .camera {
+        //   width: vw(84px);
+        //   height: vw(77px);
+        //   fill: $GRAY-DB;
+        // }
+
+        &_sub {
+          color: $GRAY-DB;
+          margin-top: vw(16px);
+        }
+
+        &_priv {
+          width: vw(570px);
+          height: vw(480px);
+          border-radius: vw(15px);
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
       }
     }
