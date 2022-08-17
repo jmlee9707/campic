@@ -4,10 +4,11 @@ import "./PwEdit.scss";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { changePw } from "@apis/user";
-
+import PlzLogin from "@screens/PlzLogin" 
 import { selectProfile } from "@store/user";
 
 function PwEdit() {
+  const userId = useSelector(state => state.user.email);
   const navigate = useNavigate();
   const passRef = useRef();
   const passSameRef = useRef();
@@ -62,7 +63,7 @@ function PwEdit() {
 
   return (
     <div className="container column flex align-center justify-center">
-      <div className="pwedit">
+      {userId !== null && <div className="pwedit">
         <div className="pwedit_top flex column justify-center align-center">
           <div className="pwedit_top_title notoBold fs-28">비밀번호 수정</div>
           <img src={Profile.profileImg} alt="Profile_Image" className="pwedit1_img" />
@@ -124,7 +125,8 @@ function PwEdit() {
             수정 완료
           </button>
         </div>
-      </div>
+      </div>}
+      {userId === null && <PlzLogin/>}
     </div>
   );
 }

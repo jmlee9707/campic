@@ -4,11 +4,14 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./TalkUpdate.scss";
 import imageCompression from "browser-image-compression";
+import { useSelector } from "react-redux";
 import { CKEditor } from "ckeditor4-react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import PlzLogin from "@screens/PlzLogin" 
 import { updateTalk, getTalkDetail } from "../../apis/talk";
 
 function TalkUpdate() {
+  const userId = useSelector(state => state.user.email);
   const { id } = useParams();
   const navigate = useNavigate();
   const photoInput = useRef();
@@ -101,7 +104,7 @@ function TalkUpdate() {
   return (
     <div className="container flex">
       {/* 커뮤니티 네브바 들어가야 함 */}
-      <div className="modifyTalk">
+      {userId !== null && <div className="modifyTalk">
         <div className="modifyTalk_title notoBold fs-32">글 수정하기</div>
         <div className="modifyTalk_content flex justify-center">
           {/* 사진 업로드 박스 */}
@@ -219,7 +222,8 @@ function TalkUpdate() {
             수정하기
           </button>
         </div>
-      </div>
+      </div>}
+      {userId === null && <PlzLogin/>}
     </div>
   );
 }

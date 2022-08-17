@@ -8,8 +8,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { modifyUserInfo, modifyUserProfileImg } from "@apis/user";
 import { selectProfile, updateUserInfo, setProfileImg, setNickname, setTel } from "@store/user";
+import PlzLogin from "@screens/PlzLogin" 
 
 function InfoEdit() {
+  const userId = useSelector(state => state.user.email);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const nickRef = useRef();
@@ -125,7 +127,7 @@ function InfoEdit() {
 
   return (
     <div className="container flex justify-center">
-      <div className="infoedit ">
+      {userId !== null && <div className="infoedit ">
         <div className="infoedit_top flex justify-center">
           <div className="infoedit_top_title notoBold fs-28">개인정보 수정</div>
             <div>
@@ -238,7 +240,8 @@ function InfoEdit() {
             <Link to="/mypage/drop">탈퇴하기</Link>
           </div>
         </div>
-      </div>
+      </div>}
+      {userId === null && <PlzLogin/>}
     </div>
   );
 }

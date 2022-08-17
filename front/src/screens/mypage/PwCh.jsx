@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectProfile } from "@store/user";
 import { checkPw } from "@apis/user";
+import PlzLogin from "@screens/PlzLogin" 
 
 function PwCh() {
+  const userId = useSelector(state => state.user.email);
   const navigate = useNavigate();
 
   const Profile = useSelector(selectProfile);
@@ -47,7 +49,7 @@ function PwCh() {
   };
   return (
     <div className="container flex justify-center">
-      <div className="pwch flex column">
+      {userId !== null && <div className="pwch flex column">
         <div className="pwch_top flex column align-center justify-center">
           <div className="pwch_top_title notoBold fs-28">비밀번호 수정</div>
           <img src={Profile.profileImg} alt="Profile_Image" className="pwch1_img" />
@@ -82,7 +84,8 @@ function PwCh() {
             </button>
           </div>
         </div>
-      </div>
+      </div>}
+      {userId === null && <PlzLogin/>}
     </div>
   );
 }

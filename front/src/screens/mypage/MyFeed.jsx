@@ -3,6 +3,7 @@ import "./MyFeed.scss";
 import MyPhotoList from "@components/mypage/MyPhotoCardList";
 import MyTalkList from "@components/mypage/MyTalkCardList";
 // import navLogo from "@images/logo/logo_icon_green.svg";
+import PlzLogin from "@screens/PlzLogin" 
 
 import { useSelector } from "react-redux";
 import { selectProfile } from '@store/user';
@@ -10,6 +11,7 @@ import { getMyPhoto } from "../../apis/photo";
 import { getMyTalk } from "../../apis/talk";
 
 function MyFeed() {
+  const userId = useSelector(state => state.user.email);
   const [photoClick, setPhotoClick] = useState(true);
   const [talkClick, setTalkClick] = useState(false);
   const Profile = useSelector(selectProfile);
@@ -47,7 +49,7 @@ function MyFeed() {
 
   return (
     <div className="container flex">
-      <div className="myfeed flex">
+      {userId !== null && <div className="myfeed flex">
         <div className="myfeed_profile flex">
           <div className="myfeed_profile_pic">
             <img src={ Profile.profileImg } alt="프로필이미지" />
@@ -97,7 +99,8 @@ function MyFeed() {
           {photoClick && <MyPhotoList />}
           {talkClick && <MyTalkList />}
         </div>
-      </div>
+      </div>}
+      {userId === null && <PlzLogin/>}
     </div>
   );
 }

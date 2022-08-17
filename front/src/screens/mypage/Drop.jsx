@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { reset, selectEmail, selectProfile } from "@store/user";
 import { checkPw, dropUser } from "@apis/user";
+import PlzLogin from "@screens/PlzLogin"
 
 function Drop() {
+  const userId = useSelector(state => state.user.email);
   const Profile = useSelector(selectProfile);
   const pwRef = useRef();
   const dispatch = useDispatch();
@@ -30,7 +32,7 @@ function Drop() {
 
   return (
     <div className="container flex justify-center">
-      <div id="drop" className="drop">
+      {userId !== null && <div id="drop" className="drop">
         <div id="drop1" className="drop1 flex justify-center">
           <div className="drop1_title notoBold fs-28">탈퇴하기</div>
           <img src={Profile.profileImg} alt="Profile_Image" className="drop1_img" />
@@ -52,7 +54,8 @@ function Drop() {
             탈퇴하기
           </button>
         </div>
-      </div>
+      </div>}
+      {userId === null && <PlzLogin/>}
     </div>
   );
 }

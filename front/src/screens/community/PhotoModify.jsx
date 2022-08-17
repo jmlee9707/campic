@@ -6,9 +6,12 @@ import "./PhotoRegist.scss";
 import imageCompression from "browser-image-compression";
 import { useNavigate, useParams } from "react-router-dom";
 // import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
+import { useSelector } from "react-redux";
+import PlzLogin from "@screens/PlzLogin" 
 import { updatePhoto, getPhotoDetail } from "@apis/photo";
 
 function PhotoModify() {
+  const userId = useSelector(state => state.user.email);
   const navigate = useNavigate(); // 네비게이트, 작성 시 포토 상세페이지로 이동
   // 카메라 이미지에 파일 인풋 달기
   const photoInput = useRef(); // 포토ref
@@ -125,7 +128,7 @@ function PhotoModify() {
   return (
     <div className="container flex">
       {/* 커뮤니티 네브바 들어가야 함 */}
-      <div className="photo_modify">
+      {userId !== null && <div className="photo_modify">
         <div className="photo_modify_title notoBold fs-32">사진 수정하기</div>
         <div className="photo_modify_content flex">
           {/* 사진 업로드 박스 */}
@@ -192,7 +195,8 @@ function PhotoModify() {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
+      {userId === null && <PlzLogin/>}
     </div>
   );
 }

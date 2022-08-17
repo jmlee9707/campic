@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import checkCircle from "@images/icon/check_circle.svg";
+import PlzLogin from "@screens/PlzLogin" 
 import "./DropFinish.scss";
 
 function DropFinish() {
+  const userId = useSelector(state => state.user.email);
   return (
     <div className="container flex justify-center">
-      <div id="dropfin" className="dropfin flex justify-center">
+      {userId !== null && <div id="dropfin" className="dropfin flex justify-center">
         <div className="dropfin_img">
           <img
             src={checkCircle}
@@ -28,7 +31,8 @@ function DropFinish() {
             홈으로 돌아가기
           </Link>
         </div>
-      </div>
+      </div>}
+      {userId === null && <PlzLogin/>}
     </div>
   );
 }

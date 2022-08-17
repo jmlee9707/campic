@@ -9,6 +9,7 @@ import "./TalkRegist.scss";
 // import camera from "@images/logo/logo_photo_black.svg";
 import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
 import { CKEditor } from "ckeditor4-react";
+import PlzLogin from "@screens/PlzLogin" 
 import { selectProfile } from "../../store/user";
 import { writeTalk } from "../../apis/talk";
 // import CommunityNavBar from "@components/community/CommunityNavBar";
@@ -298,7 +299,7 @@ function TalkRegist() {
           </div>
         </div>
       )}
-      {talkEmail === null && window.alert("로그인 후 이용해주세요!!")}
+      {talkEmail === null && <PlzLogin/>}
     </div>
     // </div>
   );

@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Camera } from "@images/logo/logo_photo_black.svg";
 import { useSelector } from "react-redux";
 import { useBeforeunload } from "react-beforeunload";
-import { selectProfile } from "../../store/user";
-import { writePhoto } from "../../apis/photo"; // 포토등록 api
+import PlzLogin from "@screens/PlzLogin" 
+import { selectProfile } from "@store/user";
+import { writePhoto } from "@apis/photo"; // 포토등록 api
 
 function PhotoRegist() {
   // 유저정보 파악
@@ -180,7 +181,7 @@ function PhotoRegist() {
           </div>
         </div>
       )}
-      {userId === null && window.alert("로그인 후 이용해주세요!!")}
+     {userId === null && <PlzLogin/>}
     </div>
   );
 }
