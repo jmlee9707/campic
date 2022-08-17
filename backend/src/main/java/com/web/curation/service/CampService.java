@@ -67,18 +67,18 @@ public class CampService{
             filterCampList.add(tcl);
         }
 
-        CampDto.CampList last = new CampDto.CampList();
-        last.setCampId(-1);
-        last.setFacltNm("last");
-        last.setAddr1("last");
-        last.setFirstImageUrl("last");
-        last.setHomepage("last");
-        last.setMapX("last");
-        last.setMapY("last");
-
-        if ((start + pageable.getPageSize()) >= totalCampLists.size()){
-            filterCampList.add(last);
-        }
+//        CampDto.CampList last = new CampDto.CampList();
+//        last.setCampId(-1);
+//        last.setFacltNm("last");
+//        last.setAddr1("last");
+//        last.setFirstImageUrl("last");
+//        last.setHomepage("last");
+//        last.setMapX("last");
+//        last.setMapY("last");
+//
+//        if ((start + pageable.getPageSize()) >= totalCampLists.size()){
+//            filterCampList.add(last);
+//        }
 
         return filterCampList;
 
@@ -121,6 +121,17 @@ public class CampService{
 
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         });
+    }
+
+    /* best camping */
+    public List<String> getBestCamps(){
+        List<TotalCampList> bestcamp = likedCampRepository.findTopSelectedList(PageRequest.of(0,5));
+        List<String> bestcampname = new ArrayList<>();
+        for ( TotalCampList b : bestcamp) {
+            bestcampname.add(campRepository.getByCampId(b.getCampId()).getFacltNm());
+        }
+
+        return bestcampname;
     }
 
 
