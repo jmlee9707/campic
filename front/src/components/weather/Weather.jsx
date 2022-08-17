@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Weather.scss'
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import {
   TiWeatherSunny,
@@ -15,11 +15,13 @@ import { BsCloudFog } from "react-icons/bs";
 function Weather() {
   // 날씨정보
   const [apiData, setApiData] = useState("");
-  // const lat = useSelector(state => state.lati);
-  // const lon = useSelector(state => state.longi);
+  const lat = useSelector(state => state.campSearch.lati);
+  const lon = useSelector(state => state.campSearch.longi);
+  console.log(lat)
+  console.log(lon)
   const apiKey = process.env.REACT_APP_OPEN_WEATHER_MAP_API;
-  // const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-  const weatherSeoulURL = `https://api.openweathermap.org/data/2.5/weather?lat=37&lon=127&appid=${apiKey}`;
+  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  // const weatherSeoulURL = `https://api.openweathermap.org/data/2.5/weather?lat=37&lon=127&appid=${apiKey}`;
 
   // console.log(weatherSeoulURL);
   // useEffect(() => {
@@ -39,18 +41,20 @@ function Weather() {
   //   });
   // });
 
-  useEffect(() => {    
-    axios.get(weatherSeoulURL)
-    .then(response => {
-      console.log(response.data);
-      setApiData({
-        id: response.data.weather[0].id,
-        temperature: response.data.main.temp,
-        main: response.data.weather[0].main,
-        loading: false,
-      });
-    })    
-  }, [weatherSeoulURL]);
+  useEffect(() => {
+    if (lat !== null) {
+      axios.get(weatherURL)
+      .then(response => {
+        console.log(response.data);
+        setApiData({
+          id: response.data.weather[0].id,
+          temperature: response.data.main.temp,
+          main: response.data.weather[0].main,
+          loading: false,
+        });
+      })    
+    }    
+  }, [weatherURL]);
   const temp = Math.ceil(apiData.temperature-273.15)
 
 
@@ -80,13 +84,17 @@ function Weather() {
 
   return (
     <div className="weather flex">
-      <div className="weather_icon">
-        {selectIcon()}
+        {lat !== null && 
+        <>
+          <div className="weather_icon">
+            {selectIcon()}
+          </div>
+          <div className="weather_celc notoMid fs-16">
+            {temp}℃
+          </div>
+        </>
+        }
       </div>
-      <div className="weather_celc notoMid fs-16">
-        {temp}℃
-      </div>
-    </div>
   )
 }
 
