@@ -8,8 +8,8 @@ export const initialCampState = {
   tag: [],
   sido: null,
   gugun: null,
-  lati: null,
-  longi: null
+  lati: 37.547889,
+  longi: 126.997128
 };
 
 // camp store 생성

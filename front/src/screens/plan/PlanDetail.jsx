@@ -14,6 +14,7 @@ function PlanDetail() {
   const { id: planId } = useParams();
   const navigate = useNavigate();
   const userId = useSelector(state => state.user.email);
+  const isSocial = useSelector(state => state.user.isSocial);
   const [modalVisible, setModalVisible] = useState(false);
 
   // const [start, setStart] = useState("");
@@ -171,7 +172,7 @@ function PlanDetail() {
             // beforeEndDate={planInfo.startDate}
           />
         )}
-        <button type="button" onClick={shareKakao}>카카오 공유하기 테스트</button>
+        {isSocial === "kakao" && <button type="button" onClick={shareKakao}>카카오 공유하기 테스트</button>}
       </div>
 
     </div>
