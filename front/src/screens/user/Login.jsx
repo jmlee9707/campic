@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import logo from "@images/logo/logo_text_green.svg";
 import kakao from "@images/icon/kakao.svg";
 import naver from "@images/icon/naver.svg";
@@ -14,6 +14,7 @@ import { login, getUserInfo, exchangeImg } from "@apis/user"; // login api
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [emailMess, setEmailMess] = useState("");
   const { sessionStorage } = window;
   // const wait = (sec) => {
   //   const start = Date.now()
@@ -47,8 +48,9 @@ function Login() {
     }
     dispatch(setUserInfo(userRes.userInfo));
     navigate("/");
+    setEmailMess("");
     } catch {
-      alert("로그인 실패")
+      setEmailMess("아이디 또는 비밀번호를 잘못 입력했습니다.");
     }
   };
   const handleOnKeyPress = (e) => {
@@ -76,6 +78,9 @@ function Login() {
             placeholder="비밀번호"
             onKeyPress={handleOnKeyPress}
           />
+          <div className="login_check notoMid fs-12">
+            {emailMess}
+          </div>
         </div>
         <div className="login_btn flex align-center justify-center">
           <button className="fs-18 notoBold" type="button" onClick={canLogin}>

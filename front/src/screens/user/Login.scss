@@ -76,6 +76,9 @@
       justify-content: space-between;
     }
   }
+  &_check {
+    color: $RED;
+  }
 }
 
 @media screen and (max-width: $DESKTOP-VW) {
