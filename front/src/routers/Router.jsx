@@ -58,7 +58,7 @@ import Community from "./Community";
 // import TalkUpdate from "@screens/community/TalkUpdate";
 
 // 날씨 일단 테스트
-import Weather from "../components/weather/Weather";
+// import Weather from "../components/weather/Weather";
 
 function Router() {
   // const isLogined = useSelector(state => state.user.email);
@@ -171,8 +171,8 @@ function Router() {
           <Route path="info/edit" element={<InfoEdit />} />
         </Route>
 
-        {/* 날씨 테스트 */}
-        <Route path="/weather" element={<Weather />} />
+        {/* 날씨 테스트
+        <Route path="/weather" element={<Weather />} /> */}
         
         {/* shopping */}
         <Route path="/shopping" element={<Shopping />} />
