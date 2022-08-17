@@ -39,7 +39,7 @@ function Drop() {
           <div className="drop2_title notoBold fs-15">비밀번호</div>
           <input
             ref={pwRef}
-            type="text"
+            type="password"
             className="drop2_input notoMid fs-14"
             placeholder="탈퇴를 위해선 비밀번호를 입력하세요"
           />
