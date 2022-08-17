@@ -4,6 +4,8 @@ import userReducer from "./user";
 import findReducer from "./find";
 import photoReducer from "./photo";
 import shoppingReducer from "./shopping";
+import weatherReducer  from "./weather";
+
 
 //-----------------------------------------------------------------
 // 객체 전달, 하나의 거대한 store, 모든 state 관리
@@ -14,7 +16,8 @@ const store = configureStore({
     user: userReducer,
     find: findReducer,
     photos: photoReducer,
-    shopping: shoppingReducer
+    shopping: shoppingReducer,
+    weather: weatherReducer
   }
 });
 
