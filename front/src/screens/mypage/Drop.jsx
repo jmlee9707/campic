@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
-import logo from "@images/logo/logo_icon_green.svg";
+// import logo from "@images/logo/logo_icon_green.svg";
 import "./Drop.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reset, selectEmail } from "@store/user";
+import { reset, selectEmail, selectProfile } from "@store/user";
 import { checkPw, dropUser } from "@apis/user";
 
 function Drop() {
+  const Profile = useSelector(selectProfile);
   const pwRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,14 +33,14 @@ function Drop() {
       <div id="drop" className="drop">
         <div id="drop1" className="drop1 flex justify-center">
           <div className="drop1_title notoBold fs-28">탈퇴하기</div>
-          <img src={logo} alt="Profile_Image" className="drop1_img" />
+          <img src={Profile.profileImg} alt="Profile_Image" className="drop1_img" />
           <div className="divide" />
         </div>
         <div id="drop2" className="drop2">
           <div className="drop2_title notoBold fs-15">비밀번호</div>
           <input
             ref={pwRef}
-            type="text"
+            type="password"
             className="drop2_input notoMid fs-14"
             placeholder="탈퇴를 위해선 비밀번호를 입력하세요"
           />

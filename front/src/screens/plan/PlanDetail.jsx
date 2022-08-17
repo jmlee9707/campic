@@ -14,6 +14,7 @@ function PlanDetail() {
   const { id: planId } = useParams();
   const navigate = useNavigate();
   const userId = useSelector(state => state.user.email);
+  const isSocial = useSelector(state => state.user.isSocial);
   const [modalVisible, setModalVisible] = useState(false);
 
   // const [start, setStart] = useState("");
@@ -52,6 +53,43 @@ function PlanDetail() {
       navigate("/plan");
     }
   };
+
+  // 카카오톡 공유하기 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async =true;
+    document.body.appendChild(script);
+
+    return () => document.body.removeChild(script);
+  
+}, []);
+
+  // 버튼으로 공유하기
+   const shareKakao = () => {
+    // console.log("url테스트", window.location.href);
+    if (window.Kakao) {
+      const kakao = window.Kakao;
+      if (!kakao.isInitialized()) {
+        kakao.init(process.env.REACT_APP_KAKAO_JAVASCRIPT_KEY);
+      }
+      kakao.Link.sendDefault({
+        objectType : "feed",
+        content : {
+          title: `${planInfo.savedTitle}`,
+          description: `${planInfo.campName}\n주소 : ${planInfo.campAdd1}`,
+          imageUrl : `${planInfo.firstImageUrl}`,
+          link: {
+            mobileWebUrl: `${window.location.href}`,
+            webUrl: `${window.location.href}`,
+          }
+        }
+      })
+
+    }
+   };
+
+
   return (
     <div className="container flex justify-center">
       <div className="plan_detail">
@@ -134,7 +172,9 @@ function PlanDetail() {
             // beforeEndDate={planInfo.startDate}
           />
         )}
+        {isSocial === "kakao" && <button type="button" onClick={shareKakao}>카카오 공유하기 테스트</button>}
       </div>
+
     </div>
   );
 }
