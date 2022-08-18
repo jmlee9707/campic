@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CampingList from "@components/camping/CampingList";
 import "./CampingMain.scss";
 // import { getCampList } from "@apis/camp";
@@ -9,6 +9,7 @@ import {
   CampingSearchTag,
   CampingSearchAll
 } from "@components/camping/CampingSearch";
+import { searchBest } from "@apis/camp";
 import { reset, resetLoca, setArrangeConditions } from "@store/camp";
 
 function CampingMain() {
@@ -20,7 +21,14 @@ function CampingMain() {
   const [fold, setFold] = useState(false);
   const [isFold, setIsFold] = useState("상세 접기");
 
-  const tops = ["싸피 캠핑장", "프로젝트 캠핑장", "연관검색어3", "연관검색어4"];
+  const [tops, setTops] = useState([]);
+  useEffect(() => {
+    async function getTops() {
+      const res = await searchBest();
+      setTops(res);
+    }
+    getTops();
+  }, []);
   const topList = tops.map(top => (
     <div
       className="camp_top_banner_favo_camp_list notoMid fs-14 flex align-center justify-center"
@@ -53,7 +61,7 @@ function CampingMain() {
   return (
     <div className="container flex justify-center">
       <div className="camp">
-        <div className="camp_top_banner flex column ">
+        <div className="camp_top_banner flex column">
           {/* <div className="camp_top_banner_title flex column align-center notoBold fs-40">
             <p>캠핑 준비하세요?</p>
             <p>맞춤 검색으로 찾아보세요!</p>
@@ -134,7 +142,6 @@ function CampingMain() {
             <option value="1" selected>
               인기순
             </option>
-            <option value="2">거리순</option>
           </select>
         </div>
         <div className="divide" />

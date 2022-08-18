@@ -52,6 +52,18 @@
       // margin-right: vw(40px);
     }
   }
+  .weather {
+    &_icon {
+      svg {
+        height: (28px);
+        width: (28px);
+      }
+    }
+
+    &_celc {
+      margin: 0 (24px) 0 (24px);
+    }
+  }
 
   .right_nav {
     &__link {
@@ -101,7 +113,8 @@
   }
   .left_nav__link,
   .right_nav__link_none,
-  .right_nav__link_user {
+  .right_nav__link_user,
+  .weather {
     color: $WHITE;
   }
 }
@@ -150,7 +163,11 @@
         // margin-right: vw-t(40px);
       }
     }
-
+    .weather {
+      &_celc {
+        margin: 0 vw-t(12px) 0 vw-t(24px);
+      }
+    }
     .right_nav {
       &__link {
         &_none {
@@ -233,7 +250,18 @@
         overflow: hidden;
       }
     }
+    .weather {
+      &_icon {
+        svg {
+          fill: $GRAY-76;
+        }
+      }
 
+      &_celc {
+        margin: 0 (12px) 0 (12px);
+        color: $GRAY-76;
+      }
+    }
     .right_nav {
       &__link {
         &_none {
@@ -280,6 +308,13 @@
     .right_nav__link_none,
     .right_nav__link_user {
       color: $GRAY-67;
+    }
+    .weather {
+      &_icon {
+        svg {
+          fill: $WHITE;
+        }
+      }
     }
   }
   .mobile_menu {

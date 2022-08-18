@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./TalkHome.scss";
 import BestTalkList from "@components/community/BestTalkList";
 import TalkList from "@components/community/TalkList";
-import MainBanner from "@components/community/MainBanner";
+// import MainBanner from "@components/community/MainBanner";
 
 // import coco from "@images/coco.jpeg";
 
@@ -11,9 +11,6 @@ function TalkHome() {
   return (
     <div className="container flex">
       <div className="talk flex align-center">
-        <div className="talk_titleImg">
-          <MainBanner />
-        </div>
         {/* week best */}
         <div className="talk_best">
           <p className="talk_best_title notoBold fs-32">WEEKLY BEST TALK</p>
@@ -23,6 +20,7 @@ function TalkHome() {
           <div className="talk_best_card flex">
             <BestTalkList />
           </div>
+          x
         </div>
         {/* 캠핑토크 */}
         <div className="talk_camp">

@@ -4,6 +4,7 @@ import { v4 } from "uuid";
 import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "@components/common/Loading";
+import LastList from "@components/common/LastList";
 import { getCamplist } from "../../apis/camp";
 import CampingCard from "./CampingCard";
 import { reset, setCampList } from "../../store/camp";
@@ -18,7 +19,7 @@ function CampingList({ searchClick }) {
   const [loading, setLoading] = useState(false);
   const list = useSelector(state => state.campSearch.campList);
   const [ref, inView] = useInView();
-
+  const [last, setLast] = useState(false);
   async function getAndSetCampList() {
     // console.log(page);
     const res = await getCamplist({
@@ -31,16 +32,21 @@ function CampingList({ searchClick }) {
     });
     dispatch(setCampList({ campList: res }));
     setLoading(false);
-    console.log(res);
+    if (res.length >= 0 && res.length < 10) {
+      setLast(true);
+      setLoading(false);
+    }
   }
   // page 달라질때마다 요청보내기
   useEffect(() => {
     getAndSetCampList();
+    console.log(list.length);
+    console.log(newPage);
   }, [newPage]);
 
   // 사용자가 마지막 요소를 보고 있고 로딩 중이 아니라면
   useEffect(() => {
-    if (inView && !loading) {
+    if (inView && !loading && !last) {
       setLoading(true);
       setNewPage(newPage + 1);
     }
@@ -60,12 +66,12 @@ function CampingList({ searchClick }) {
             firstImageUrl={firstImageUrl}
           />
         ))}
-      {list.length !== 0 && loading ? (
+      {!last && list.length !== 0 && loading ? (
         <Loading />
       ) : (
         <div ref={ref} className="obe" />
       )}
-      {list.length === 0 && <div>마지막입니다.</div>}
+      {last && <LastList />}
     </div>
   );
 }

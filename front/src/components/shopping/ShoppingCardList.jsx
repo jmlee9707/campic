@@ -6,6 +6,7 @@ import Loading from "@components/common/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
+import LastList from "@components/common/LastList";
 import ShoppingCard from "./ShoppingCard";
 
 function ShoppingCardList() {
@@ -49,19 +50,21 @@ function ShoppingCardList() {
   }, [inView, loading]);
 
   return (
-    <div className="flex justify-space-between flex-wrap">
-      {list.length !== 0 &&
-        list.map(({ title, image, link, lprice }) => (
-          <ShoppingCard
-            key={v4()}
-            title={title}
-            image={image}
-            link={link}
-            lprice={lprice}
-          />
-        ))}
-      {!isEnd && loading ? <Loading /> : <div ref={ref} className="obe" />}
-      {isEnd && <div>더 이상 검색 결과가 없습니다.</div>}
+    <div>
+      <div className="flex justify-space-between flex-wrap">
+        {list.length !== 0 &&
+          list.map(({ title, image, link, lprice }) => (
+            <ShoppingCard
+              key={v4()}
+              title={title}
+              image={image}
+              link={link}
+              lprice={lprice}
+            />
+          ))}
+        {!isEnd && loading ? <Loading /> : <div ref={ref} className="obe" />}
+      </div>
+      {isEnd && <LastList />}
     </div>
   );
 }

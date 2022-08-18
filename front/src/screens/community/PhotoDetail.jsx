@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./PhotoDetail.scss";
 import moment from "moment";
 import "moment/locale/ko";
+import good from "@images/icon/favorite_like.svg";
+import dislike from "@images/icon/favorite_black.svg";
+
 // import temp111 from "@images/car.jpeg";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -56,6 +59,7 @@ function PhotoDetail() {
     setPhotoNickname(res2.userInfo);
     setPhotoProfile(res2.profile);
   };
+
   useEffect(() => {
     integrated();
   }, []);
@@ -137,19 +141,19 @@ function PhotoDetail() {
                   {isLiked === 0 && (
                     <button
                       type="button"
-                      className="notoBold fs-18"
+                      className="campPhoto_profile_extra_good_un flex align-center justify-center"
                       onClick={liked}
                     >
-                      좋아요
+                      <img src={dislike} alt="good" />
                     </button>
                   )}
                   {isLiked === 1 && (
                     <button
                       type="button"
-                      className="notoBold fs-18"
+                      className="campPhoto_profile_extra_good_done flex align-center justify-center"
                       onClick={disLiked}
                     >
-                      좋아요 취소
+                      <img src={good} alt="good" />
                     </button>
                   )}
                 </div>

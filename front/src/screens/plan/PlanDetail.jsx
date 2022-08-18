@@ -47,26 +47,29 @@ function PlanDetail() {
 
   const deletePlanInfo = async () => {
     // 일정 삭제
-    const res = await deletePlan(planId);
-    console.log(res);
-    if (res === "fail") {
-      navigate("/plan");
+    const check = window.confirm("정말로 삭제하시겠습니까?");
+    if (check) {
+      const res = await deletePlan(planId);
+      console.log(res);
+      if (res === "fail") {
+        navigate("/plan");
+      }
+    } else {
+      console.log("none");
     }
   };
-
-  // 카카오톡 공유하기 
+  // 카카오톡 공유하기
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://developers.kakao.com/sdk/js/kakao.js";
-    script.async =true;
+    script.async = true;
     document.body.appendChild(script);
 
     return () => document.body.removeChild(script);
-  
-}, []);
+  }, []);
 
   // 버튼으로 공유하기
-   const shareKakao = () => {
+  const shareKakao = () => {
     // console.log("url테스트", window.location.href);
     if (window.Kakao) {
       const kakao = window.Kakao;
@@ -74,21 +77,19 @@ function PlanDetail() {
         kakao.init(process.env.REACT_APP_KAKAO_JAVASCRIPT_KEY);
       }
       kakao.Link.sendDefault({
-        objectType : "feed",
-        content : {
+        objectType: "feed",
+        content: {
           title: `${planInfo.savedTitle}`,
           description: `${planInfo.campName}\n주소 : ${planInfo.campAdd1}`,
-          imageUrl : `${planInfo.firstImageUrl}`,
+          imageUrl: `${planInfo.firstImageUrl}`,
           link: {
             mobileWebUrl: `${window.location.href}`,
-            webUrl: `${window.location.href}`,
+            webUrl: `${window.location.href}`
           }
         }
-      })
-
+      });
     }
-   };
-
+  };
 
   return (
     <div className="container flex justify-center">
@@ -172,9 +173,12 @@ function PlanDetail() {
             // beforeEndDate={planInfo.startDate}
           />
         )}
-        {isSocial === "kakao" && <button type="button" onClick={shareKakao}>카카오 공유하기 테스트</button>}
+        {isSocial === "kakao" && (
+          <button type="button" onClick={shareKakao}>
+            카카오 공유하기 테스트
+          </button>
+        )}
       </div>
-
     </div>
   );
 }
