@@ -15,7 +15,7 @@ const store = configureStore({
     campSearch: campReducer,
     user: userReducer,
     find: findReducer,
-    photos: photoReducer,
+    photo: photoReducer,
     shopping: shoppingReducer,
     weather: weatherReducer
   }
