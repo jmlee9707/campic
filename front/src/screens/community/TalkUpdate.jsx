@@ -172,9 +172,10 @@ function TalkUpdate() {
             {talkContent.contents != null && (
               <CKEditor
                 style={{ borderColor: "#467264" }}
-                onReady={editor => {
-                  editor.setData(talkContent.contents);
-                }}
+                // onReady={editor => {
+                //   editor.setData(talkContent.contents);
+                // }}
+                initData={talkContent.contents}
                 onChange={e => {
                   const data = e.editor.getData();
                   setTalkContent({
@@ -191,7 +192,7 @@ function TalkUpdate() {
                   resize_enabled: false,
                   toolbar: [
                     // ["Source"],
-                    ["Styles", "Format", "Font", "FontSize"],
+                    ["Format", "Font", "FontSize"],
                     ["Bold", "Italic"],
                     ["Undo", "Redo"],
                     ["EasyImageUpload"]
