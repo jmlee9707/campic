@@ -82,7 +82,10 @@ function Shopping() {
             <div className="shop_search_hot_searchname flex">
               {top5 &&
                 top5.map(item => (
-                  <div key={v4()} className="shop_search_hot_searchname_word notoMid flex fs-16">
+                  <div
+                    key={v4()}
+                    className="shop_search_hot_searchname_word notoMid flex fs-16"
+                  >
                     <div>{item}</div>
                   </div>
                 ))}

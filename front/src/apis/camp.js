@@ -19,6 +19,12 @@ export const campDetailInfo = async campId => {
 //   return res.data;
 // };
 
+// 캠프 top 5 검색어 가져오기
+export const searchBest = async () => {
+  const res = await API.get("/camp");
+  return res.data;
+};
+
 export const searchLocation = async (doName, gunName) => {
   const res = await API.get(`/camp/search/${doName}/${gunName}`);
   return res.data;

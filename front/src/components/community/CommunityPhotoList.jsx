@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { v4 } from "uuid";
 import Loading from "@components/common/Loading";
 import { useInView } from "react-intersection-observer";
+import LastList from "@components/common/LastList";
 import CommunityPhotoCard from "./CommunityPhotoCard";
 
 import { getPhoto } from "../../apis/photo";
@@ -12,11 +13,15 @@ function CommunityPhotoList() {
   const [page, setPage] = useState(0); // 현재페이지
   const [loading, setLoading] = useState(false);
   const [ref, inView] = useInView();
+  const [last, setLast] = useState(false);
 
   async function getPhotoList() {
     const res = await getPhoto(page);
     setPhotoList([...photoList, ...res]);
     setLoading(false);
+    if (res.length >= 0 && res.length < 15) {
+      setLast(true);
+    }
   }
   useEffect(() => {
     if (inView && !loading) {
@@ -52,8 +57,8 @@ function CommunityPhotoList() {
             />
           )
         )}
-      {loading ? <Loading /> : <div ref={ref} className="observer" />}
-      {/* <div ref={ref} className="observer" /> */}
+      {!last && loading ? <Loading /> : <div ref={ref} className="observer" />}
+      {last && <LastList />}
     </div>
   );
 }

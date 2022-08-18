@@ -11,7 +11,7 @@ import logoWhite from "@images/logo/logo_text_white.svg";
 import menuIcon from "@images/icon/menu.svg";
 // import temp from "@images/cute.jpeg";
 // 날씨 컴포넌트
-import Weather from "../weather/Weather";
+import Weather from "@components/common/Weather";
 import { reset, selectProfile } from "../../store/user";
 import "./NavTooltip.scss";
 
