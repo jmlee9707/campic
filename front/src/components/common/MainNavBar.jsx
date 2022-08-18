@@ -275,7 +275,7 @@ function MainNavBar() {
           )}
           
         {openMenu === true && (
-            <div className="mobile_menu flex column ">
+            <div className="mobile_menu flex column p-none">
               <button
                 type="button"
                 className="mobile_menu__link fs-16"

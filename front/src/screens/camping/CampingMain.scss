@@ -19,6 +19,7 @@
     background-color: $GRAY-E4;
   }
   &_top_banner {
+    z-index: -1;
     height: (500px);
     background-repeat: no-repeat;
     background-size: cover;
