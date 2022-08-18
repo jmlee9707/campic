@@ -125,7 +125,7 @@ public class CampService{
 
     /* best camping */
     public List<String> getBestCamps(){
-        List<TotalCampList> bestcamp = likedCampRepository.findTopSelectedList(PageRequest.of(0,5));
+        List<TotalCampList> bestcamp = likedCampRepository.findTopSelectedList(PageRequest.of(0,4));
         List<String> bestcampname = new ArrayList<>();
         for ( TotalCampList b : bestcamp) {
             bestcampname.add(campRepository.getByCampId(b.getCampId()).getFacltNm());
