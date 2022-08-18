@@ -256,7 +256,7 @@ function TalkRegist() {
                   resize_enabled: false,
                   toolbar: [
                     // ["Source"],
-                    ["Styles", "Format", "Font", "FontSize"],
+                    ["Format", "Font", "FontSize"],
                     ["Bold", "Italic"],
                     ["Undo", "Redo"],
                     ["EasyImageUpload"]
