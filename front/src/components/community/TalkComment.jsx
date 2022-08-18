@@ -109,7 +109,7 @@ function TalkComment({
         )}
         {content === "" && (
           <div className="comment_extra_text notoReg fs-18">
-            - 삭제된 메세지입니다 -
+            - 삭제된 댓글입니다 -
           </div>
         )}
         {/* 찐 나머지 */}

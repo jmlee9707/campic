@@ -20,7 +20,6 @@ function TalkHome() {
           <div className="talk_best_card flex">
             <BestTalkList />
           </div>
-          x
         </div>
         {/* 캠핑토크 */}
         <div className="talk_camp">

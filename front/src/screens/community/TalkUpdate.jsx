@@ -43,8 +43,6 @@ function TalkUpdate() {
       console.log("30자를 초과합니다.");
     }
   };
-  console.log(photoInput.current);
-  console.log(talkContent.contents);
   const submit = async () => {
     // eslint-disable-next-line no-use-before-define
     actionImgCompress(photoInput.current.files[0]);
