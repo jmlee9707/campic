@@ -11,9 +11,7 @@ import { reset, setCampList } from "../../store/camp";
 
 function CampingList({ searchClick }) {
   const dispatch = useDispatch();
-  // const [viewList, setViewList] = useState([]);
-  const campInfo = useSelector(state => state.campSearch); // redux의 선택 정보
-  // const [page, setPage] = useState(0); // 현재 페이지
+  const campInfo = useSelector(state => state.campSearch);
   const page = useSelector(state => state.campSearch.page);
   const [newPage, setNewPage] = useState(page);
   const [loading, setLoading] = useState(false);
@@ -21,7 +19,6 @@ function CampingList({ searchClick }) {
   const [ref, inView] = useInView();
   const [last, setLast] = useState(false);
   async function getAndSetCampList() {
-    // console.log(page);
     const res = await getCamplist({
       arrange: campInfo.arrange,
       keyword: campInfo.keyword,
@@ -40,8 +37,6 @@ function CampingList({ searchClick }) {
   // page 달라질때마다 요청보내기
   useEffect(() => {
     getAndSetCampList();
-    console.log(list.length);
-    console.log(newPage);
   }, [newPage]);
 
   // 사용자가 마지막 요소를 보고 있고 로딩 중이 아니라면
@@ -54,7 +49,6 @@ function CampingList({ searchClick }) {
 
   return (
     <div className="">
-      {/* <Loading /> */}
       {list.length !== 0 &&
         list.map(({ campId, facltNm, addr1, homepage, firstImageUrl }) => (
           <CampingCard

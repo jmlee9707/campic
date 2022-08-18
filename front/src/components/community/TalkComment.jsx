@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/ko";
 import "./TalkComment.scss";
@@ -9,7 +8,6 @@ import dummyProfile from "@images/person.png";
 import { updateComment, deleteComment } from "../../apis/talk";
 
 function TalkComment({
-  // talkId,
   commentId,
   nickname,
   depth,
@@ -20,15 +18,9 @@ function TalkComment({
   commentEmail,
   toComment
 }) {
-  // console.log(depth, bundle, content, uploadDate);
-  // const { id } = useParams();
   const uploadTime = moment(uploadDate).add(9, "h").fromNow();
-  // const [makeReply, setMakeReply] = useState("답글달기");
   const modiRef = useRef();
-  // const recommentRef = useRef();
   const userEmail = useSelector(state => state.user.email);
-  // const userNickname = useSelector(state => state.user.nickname);
-  // console.log(userNickname);
   const nowdepth = depth;
   const nowbundle = bundle;
   const [ifClick, setIfClick] = useState(false);
@@ -45,35 +37,13 @@ function TalkComment({
     try {
       const res = await updateComment(commentId, data);
       if (res === commentId) {
-        // console.log(res);
         toComment();
       }
     } catch (error) {
       console.log(error);
     }
   };
-  // useEffect(() => {
-  //   if (depth === 1) {
-  //     setMakeReply(bundle);
-  //   }
-  //   // console.log(talkId);
-  // }, []);
-  // const submitRecomment = async () => {
-  //   const data = {
-  //     email: talkEmail,
-  //     depth: 1,
-  //     bundle: commentId,
-  //     content: recommentRef.current.value
-  //   };
-  //   try {
-  //     const res = await writeComment(id, data);
-  //     if (res === commentId) {
-  //       console.log(res);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+
   const delComment = async () => {
     if (window.confirm("댓글을 삭제하시겠습니까?")) {
       const data = {
@@ -82,7 +52,6 @@ function TalkComment({
       try {
         const res = await deleteComment(commentId, data);
         if (res === commentId) {
-          // console.log(res);
           toComment();
         }
       } catch (error) {
@@ -92,18 +61,14 @@ function TalkComment({
   };
   return (
     <div className="comment flex">
-      {/* 프로필 이미지 */}
       <div className="comment_img">
         {profileImg !== null && (
           <img src={`data:image/png;base64,${profileImg}`} alt="프로필이미지" />
         )}
         {profileImg === null && <img src={dummyProfile} alt="프로필이미지" />}
       </div>
-      {/* 나머지 부분 */}
       <div className="comment_extra flex ">
-        {/* 이름 */}
         <div className="comment_extra_name notoMid fs-20">{nickname}</div>
-        {/* 내용 */}
         {content !== "" && (
           <div className="comment_extra_text notoReg fs-18">{content}</div>
         )}
@@ -112,23 +77,12 @@ function TalkComment({
             - 삭제된 댓글입니다 -
           </div>
         )}
-        {/* 찐 나머지 */}
         <div className="comment_extra_true flex">
-          {/* 작성시간 */}
           {content !== "" && (
             <div className="comment_extra_true_time notoReg fs-14">
               {uploadTime}
             </div>
           )}
-          {/* 대댓글
-          { content !== "" && (
-            <button
-              type="button"
-              className="comment_extra_true_makere notoReg fs-14"
-            >
-              {makeReply}
-            </button>
-          )} */}
           {content !== "" && commentEmail === userEmail && (
             <button
               type="button"
@@ -176,20 +130,6 @@ function TalkComment({
             </button>
           )}
         </div>
-        {/* <div className="comment_extra_input notoReg fs-14">
-          <textarea
-            type="textarea"
-            className="comment_extra_input_text"
-            ref={recommentRef}
-          />
-          <button
-            type="button"
-            className="comment_extra_input_btn"
-            onClick={submitRecomment}
-          >
-            입력
-          </button>
-        </div> */}
       </div>
     </div>
   );

@@ -7,8 +7,6 @@ import {
   setfirstShoppingList,
   setSearchKeyword
 } from "@store/shopping";
-// import { v4 } from "uuid";
-// import { setTop5, setSearchKeyword } from "@store/shopping";
 import "./shopping.scss";
 import ShoppingCardList from "@components/shopping/ShoppingCardList";
 import axios from "axios";
@@ -18,9 +16,8 @@ function Shopping() {
   const keywordRef = useRef();
   const top5 = useSelector(state => state.shopping.top5);
   const searchKeyword = useSelector(state => state.shopping.searchKeyword);
-  // 인기 검색어 받아오기
+
   const getTop5 = () => {
-    // 검색어 top5 받아오기
     axios
       .get("https://campic.site:8080/shop/best")
       .then(res => {
@@ -29,11 +26,9 @@ function Shopping() {
       .catch(err => console.log(err));
   };
 
-  // 검색 정보 받아오기
+
   const searchItem = async () => {
-    // 검색어 저장
     dispatch(setSearchKeyword({ searchKeyword: keywordRef.current.value }));
-    // 백엔드에서 받아오기
     axios
       .post("https://campic.site:8080/shop/", {
         query: keywordRef.current.value,
@@ -41,13 +36,11 @@ function Shopping() {
         display: 10
       })
       .then(res => {
-        // console.log("정보", res.data);
         dispatch(setfirstShoppingList({ shoppingList: res.data }));
       })
       .catch(err => console.log(err));
   };
 
-  // 처음 인기검색어 받아오기
   useEffect(() => {
     getTop5();
   }, []);

@@ -1,11 +1,9 @@
 import React from "react";
 import "./PlanCard.scss";
-// import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import planImg from "@images/temp_1.jpeg";
 
 function PlanCard({ savedTitle, startDate, endDate, saveId, firstImageUrl }) {
-  // console.log(place);
   return (
     <Link to={`/plan/detail/${saveId}`}>
       <div className="card">

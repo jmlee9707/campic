@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-// 달력 api
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import { ko } from "date-fns/esm/locale";
 import "./AddPlanModal.scss";
 import { useSelector } from "react-redux";
 import { addPlan } from "../../apis/plan";
@@ -17,19 +15,17 @@ function Modal({ onClose, campId, facltNm }) {
     onClose();
   };
   const modalRef = useRef(null);
-  const tripRef = useRef(""); // 여행 제목 입력 값
-  // const email = sessionStorage.getItem("email");
+  const tripRef = useRef(""); 
 
-  useOutSideClick(modalRef, handleClose); // ref 밖의 요소 선택하면 함수 실행
 
-  // 현재 날짜값으로 초기화
+  useOutSideClick(modalRef, handleClose); 
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
   const movePlan = async () => {
     const savedTitle = tripRef.current.value;
     if (savedTitle !== "" && savedTitle != null) {
-      console.log(email);
       const saveId = await addPlan(
         campId,
         email,
@@ -45,7 +41,6 @@ function Modal({ onClose, campId, facltNm }) {
     } else {
       alert("여행 이름을 입력해주세요");
     }
-    // console.log(campId);
   };
 
   return (
@@ -69,7 +64,6 @@ function Modal({ onClose, campId, facltNm }) {
                     selectsStart
                     startDate={startDate}
                     endDate={endDate}
-                    // locale={ko}
                     dateFormat="yyyy/MM/dd"
                     className="calen notoMid fs-22"
                   />
@@ -81,7 +75,6 @@ function Modal({ onClose, campId, facltNm }) {
                     startDate={startDate}
                     endDate={endDate}
                     minDate={startDate}
-                    // locale={ko}
                     dateFormat="yyyy/MM/dd"
                     className="calen notoMid fs-22"
                   />

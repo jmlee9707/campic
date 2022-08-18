@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CampingList from "@components/camping/CampingList";
 import "./CampingMain.scss";
-// import { getCampList } from "@apis/camp";
 import { useDispatch } from "react-redux";
 import { v4 } from "uuid";
 import {
@@ -14,10 +13,9 @@ import { reset, resetLoca, setArrangeConditions } from "@store/camp";
 
 function CampingMain() {
   const dispatch = useDispatch();
-  // campInfo 생성
-  dispatch(reset()); // redux 초기화
+  dispatch(reset()); 
   dispatch(resetLoca());
-  // setCampInfo(result);
+
   const [fold, setFold] = useState(false);
   const [isFold, setIsFold] = useState("상세 접기");
 
@@ -39,13 +37,13 @@ function CampingMain() {
   ));
 
   const clickCamp = () => {
-    dispatch(reset()); // 페이지와 리스트 0으로 돌리기
+    dispatch(reset()); 
   };
-  // 정렬 어떻게 할것인지?
+
   const arrangeClick = e => {
     const arrange = e.target.value;
 
-    dispatch(setArrangeConditions({ arrange })); // 왜 정렬이 안될까요?
+    dispatch(setArrangeConditions({ arrange })); 
     clickCamp();
   };
   const foldTag = () => {
@@ -62,10 +60,6 @@ function CampingMain() {
     <div className="container flex justify-center">
       <div className="camp">
         <div className="camp_top_banner flex column">
-          {/* <div className="camp_top_banner_title flex column align-center notoBold fs-40">
-            <p>캠핑 준비하세요?</p>
-            <p>맞춤 검색으로 찾아보세요!</p>
-          </div> */}
           <div className="camp_top_banner_favo flex column align-center">
             <div className="camp_top_banner_favo_camp notoBold fs-14 flex align-center justify-center">
               인기 캠핑장
@@ -145,7 +139,6 @@ function CampingMain() {
           </select>
         </div>
         <div className="divide" />
-        {/* {allList && <CampingList />} */}
         <CampingList searchClick={clickCamp} />
       </div>
     </div>

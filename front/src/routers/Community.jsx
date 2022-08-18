@@ -11,7 +11,6 @@ import PhotoDetail from "@screens/community/PhotoDetail";
 import PhotoModify from "@screens/community/PhotoModify";
 import TalkDetail from "@screens/community/TalkDetail";
 import TalkUpdate from "@screens/community/TalkUpdate";
-// import PhotoModify from "../screens/community/PhotoModify";
 import NotFound from "@screens/NotFound";
 
 function Community() {

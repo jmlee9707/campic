@@ -1,7 +1,6 @@
 import { API_PHOTO, API_USER } from "./index";
 
 // 포토 등록
-// eslint-disable-next-line import/prefer-default-export
 export const writePhoto = async body => {
   const res = await API_PHOTO.post("/photo", body); // POST날릴거임
   return res.data;
@@ -43,7 +42,6 @@ export const photoDisLike = async params => {
 };
 
 // 포토 메인페이지 컴포넌트
-// photo?page=0
 export const getPhoto = async page => {
   const res = await API_PHOTO.get("/photo", {
     params: {

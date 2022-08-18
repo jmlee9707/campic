@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import logo from "@images/logo/logo_icon_green.svg";
 import DatePicker from "react-datepicker";
 import imageCompression from "browser-image-compression"
 import "./InfoEdit.scss";
@@ -16,7 +15,6 @@ function InfoEdit() {
   const navigate = useNavigate();
   const nickRef = useRef();
   const phoneRef = useRef();
-  // const birthRef = useRef();
   const inputRef = useRef();
 
   const Profile = useSelector(selectProfile);
@@ -27,7 +25,7 @@ function InfoEdit() {
   const [nickMess, setNickMess] = useState("");
   const [phoneMess, setPhoneMess] = useState("");
 
-  // 생일 달력
+
   const [startDate, setStartDate] = useState( Profile.birth ? new Date(Profile.birth) : new Date());
   const canEdit = async () => {
     if (!nickError && !phoneError) {
@@ -40,11 +38,9 @@ function InfoEdit() {
 
       const res = await modifyUserInfo(userInfo);
       if (imgBase64) {
-        // 이미지 저장 api 호출
         const formData = new FormData();
         const byteString = atob(imgBase64.split(",")[1]);
     
-        // Blob를 구성하기 위한 준비, 이 내용은 저도 잘 이해가 안가서 기술하지 않았습니다.
         const ab = new ArrayBuffer(byteString.length);
         const ia = new Uint8Array(ab);
         // eslint-disable-next-line no-plusplus
@@ -63,20 +59,19 @@ function InfoEdit() {
 
       if (res === "success") {
         dispatch(updateUserInfo(userInfo));
-        navigate("/mypage/myfeed"); // 다음페이지로 이동xw
+        navigate("/mypage/myfeed"); 
       }
     } else {
       alert("입력된 값을 다시 한번 확인해주세요");
     }
   };
-  // 비밀번호 변경 페이지로 이동
 
-  // 닉네임 유효성 확인
+
   const checkNick = e => {
     const regNick = /^[가-힣ㄱ-ㅎa-zA-Z0-9._ -]{2,8}$/;
     if (regNick.test(e.target.value) === false) {
       setNickMess("2~8자리의 문자로 입력해주세요");
-      setNickError(true); // 에러발생
+      setNickError(true); 
     } else {
       dispatch(setNickname({nickname: nickRef.current.value}));
       setNickMess(" ");
@@ -84,7 +79,7 @@ function InfoEdit() {
     }
   };
 
-  // 전화번호 유효성 확인
+
   const checkPhone = e => {
     const regPhone = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
     if (regPhone.test(e.target.value) === false) {
@@ -96,7 +91,7 @@ function InfoEdit() {
       setPhoneError(false);
     }
   };
-  // 이미지 받기
+
   const handleChangeFile = async (event) => {
     const reader = new FileReader();
     reader.onloadend = () => {

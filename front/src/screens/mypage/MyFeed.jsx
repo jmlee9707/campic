@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./MyFeed.scss";
 import MyPhotoList from "@components/mypage/MyPhotoCardList";
 import MyTalkList from "@components/mypage/MyTalkCardList";
-// import navLogo from "@images/logo/logo_icon_green.svg";
 import PlzLogin from "@screens/PlzLogin" 
 
 import { useSelector } from "react-redux";
@@ -25,15 +24,12 @@ function MyFeed() {
   };
 
 
-  // 포토 등록 개수 불러오기
+
   const email = useSelector(state => state.user.email);
   const [myPhotoList, setMyPhotoList] = useState([]);
   useEffect(() => {
-    // await 를 사용하기 위해서 Async 선언
     async function getAndSetMyPhotoList() {
       const res = await getMyPhoto(email);
-      // console.log(res);
-      // console.log("11111");
       setMyPhotoList(res);
     }
     getAndSetMyPhotoList();

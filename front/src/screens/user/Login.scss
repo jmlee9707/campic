@@ -3,7 +3,6 @@
   margin-bottom: 150px;
 }
 .login {
-  // width: (350px);
   align-items: center;
   flex-direction: column;
   .divide {
@@ -36,7 +35,6 @@
   }
   &_btn {
     width: (350px);
-    // height: (52px);
     color: $WHITE;
     background-color: $MAIN;
     margin: (24px) 0 (40px);
@@ -146,7 +144,6 @@
 
 @media screen and (max-width: $TABLET-VW) {
   .login {
-    // background-color: red;
     .divide {
       width: 100%;
       height: vw-t(1px);
@@ -209,7 +206,6 @@
 }
 @media screen and (max-width: $PHONE-VW) {
   .login {
-    // background-color: red;
     .divide {
       width: 100%;
       height: vw-p(1px);

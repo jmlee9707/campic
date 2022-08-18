@@ -13,9 +13,7 @@
     margin: 0 (135px) 0 (135px);
     align-content: center;
     height: 100%;
-    // width: 1440px;
     background-color: $WHITE;
-    // padding-left: vw(135px);
     box-shadow: 0 (2px) 0 rgba(211, 211, 211, 0.1);
     color: $GRAY-76;
 
@@ -34,7 +32,6 @@
 
     .commu_nav_inner {
       margin: 0 (135px) 0 (135px);
-      // padding-left: vw(135px);
       box-shadow: 0 vw(2px) 0 rgba(211, 211, 211, 0.1);
 
       &__link {
@@ -52,7 +49,6 @@
 
     .commu_nav_inner {
       margin: 0 vw-t(135px) 0 vw-t(135px);
-      // padding-left: vw-t(135px);
       box-shadow: 0 vw-t(2px) 0 rgba(211, 211, 211, 0.1);
 
       &__link {
@@ -70,7 +66,6 @@
 
     .commu_nav_inner {
       margin: 0 vw-p(80px);
-      // padding-left: vw-p(135px);
       box-shadow: 0 vw-p(2px) 0 rgba(211, 211, 211, 0.1);
 
       &__link {

@@ -8,9 +8,9 @@ import CommunityPhotoCard from "./CommunityPhotoCard";
 import { getPhoto } from "../../apis/photo";
 
 function CommunityPhotoList() {
-  const [photoList, setPhotoList] = useState([]); // 불러온 데이터 저장
+  const [photoList, setPhotoList] = useState([]); 
 
-  const [page, setPage] = useState(0); // 현재페이지
+  const [page, setPage] = useState(0); 
   const [loading, setLoading] = useState(false);
   const [ref, inView] = useInView();
   const [last, setLast] = useState(false);
@@ -30,7 +30,6 @@ function CommunityPhotoList() {
       getPhotoList();
     }
   }, [inView, loading]);
-  // console.log(ref);
 
   return (
     <div className="commu_photo_list flex">

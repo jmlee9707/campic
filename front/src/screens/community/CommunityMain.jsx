@@ -9,11 +9,9 @@ function CommunityMain() {
   return (
     <div className="container flex">
       <div className="commu flex">
-        {/* 상단 배너 컴포넌트 */}
         <div className="commu_ban">
           <MainBanner />
         </div>
-        {/* 베스트포토 */}
         <div className="commu_bestpic">
           <p className="commu_bestpic_week notoBold fs-32">BEST PHOTO</p>
           <div className="commu_bestpic_extra flex">
@@ -31,7 +29,6 @@ function CommunityMain() {
             <PhotoMainList />
           </div>
         </div>
-        {/* 베스트 톡 */}
         <div className="commu_besttalk ">
           <p className="commu_besttalk_week notoBold fs-32">BEST TALK</p>
           <div className="commu_besttalk_extra flex">

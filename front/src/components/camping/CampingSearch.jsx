@@ -10,9 +10,7 @@ import {
 } from "../../store/camp";
 import {
   getSido,
-  // searchAll,
   getGun,
-  // searchLocation,
   searchTag
 } from "../../apis/camp";
 
@@ -21,9 +19,7 @@ export function CampingSearchAll() {
   const keywordRef = useRef();
   const searchKeyword = async () => {
     const keyword = keywordRef.current.value;
-    // async function searchCampWord() {
     dispatch(setKeyword({ keyword }));
-    // }
   };
   return (
     <div className="search_keyword flex">
@@ -42,32 +38,28 @@ export function CampingSearchAll() {
 // 지역별 검색 컴포넌트
 export function CampingSearchLoca() {
   const dispatch = useDispatch();
-  const [doCodeList, setDoCodeList] = useState([]); // 시코드
-  const [gunCodeList, setGunCodeList] = useState([]); // 군구 코드
+  const [doCodeList, setDoCodeList] = useState([]); 
+  const [gunCodeList, setGunCodeList] = useState([]);
   const [doName, setDoName] = useState("");
   const [gunName, setGunName] = useState("");
 
   useEffect(() => {
-    //  1. 처음 select box중 처음 시군 셀렉트 옵션에 전국 도 이름을 담음
     async function getSidoCode() {
-      setDoCodeList([]); // 초기화
+      setDoCodeList([]); 
       const res = await getSido();
       setDoCodeList(res);
     }
     getSidoCode();
   }, []);
 
-  // 시 선택 변화
   const onSiChange = async e => {
-    const doCode = e.target.value; // 도코드
+    const doCode = e.target.value; 
     const res = await getGun(doCode.substr(0, 2));
     await setGunCodeList(res);
     const tempName = document.getElementById("sido_select");
     setDoName(tempName.options[tempName.selectedIndex].text);
-    // console.log(doName);
   };
 
-  // 군구 선택 변화
   const onGunChange = async () => {
     const tempName = document.getElementById("gugun_select");
     await setGunName(tempName.options[tempName.selectedIndex].text);
@@ -75,7 +67,6 @@ export function CampingSearchLoca() {
 
   useEffect(() => {
     dispatch(setLocaConditions({ sido: doName, gugun: gunName }));
-    // console.log(useSelector(state => state.campSearch.doName));
   }, [gunName]);
 
   return (
@@ -85,7 +76,6 @@ export function CampingSearchLoca() {
         onChange={onSiChange}
         type="text"
         className="fs-16 notoMid"
-        // multiple="false"
         defaultValue="도"
       >
         <option value="default">시/도</option>
@@ -99,7 +89,6 @@ export function CampingSearchLoca() {
       <select
         onChange={onGunChange}
         id="gugun_select"
-        // mutiple="false"
         type="text"
         className="fs-16 notoMid"
         defaultValue="시/군/구"
@@ -164,24 +153,17 @@ export function CampingSearchTag() {
     "자동차야영장"
   ];
 
-  // const [selectTags, setSelectTags] = useState([]); // 선택된 태그들 보내기
   const selectTags = useSelector(state => state.campSearch.tag);
 
   const tagSelects = value => {
     const index = selectTags.indexOf(value);
-    // 선택되지 않았다면
     if (index === -1) {
-      // setSelectTags([...selectTags, value]);
-      // console.log([...selectTags, value]);
-      // dispatch(setTagConditions(value)); // dispatch로 tags 관리
       dispatch(setTagConditions([...selectTags, value]));
     } else {
-      // setSelectTags(selectTags.filter(tag => tag !== value));
       dispatch(setTagConditions(selectTags.filter(tag => tag !== value)));
     }
   };
 
-  // tag class 이름
   const selectTagClass = value => {
     const prefix = "fs-18 notoMid";
     if (selectTags.indexOf(value) === -1) {
@@ -190,7 +172,6 @@ export function CampingSearchTag() {
     return `${prefix} selected`;
   };
 
-  // 태그 리스트 컴포넌트
   const tagList = tagsData.map(tag => (
     <button
       type="button"

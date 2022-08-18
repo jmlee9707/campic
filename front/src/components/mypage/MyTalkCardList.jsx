@@ -12,7 +12,6 @@ function MyTalkCardList() {
     async function getAndSetMyTalkList() {
       const res = await getMyTalk(email);
       setMyTalkList(res);
-      console.log(res);
     }
     getAndSetMyTalkList();
   }, []);

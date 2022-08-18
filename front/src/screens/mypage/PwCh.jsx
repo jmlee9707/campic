@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-// import logo from "@images/logo/logo_icon_green.svg";
 import "./PwCh.scss";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -17,12 +16,11 @@ function PwCh() {
   const [passMess, setPassMess] = useState("");
   const passRef = useRef();
 
-  // 비밀번호 유효성 검사
   const checkPass = e => {
     const regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
     if (regPass.test(e.target.value) === false) {
       setPassMess("영문, 숫자를 혼합하여 8~16자로 입력해주세요");
-      setPassError(true); // 에러발생
+      setPassError(true); 
     } else {
       setPassMess(" ");
       setPassError(false);
@@ -30,7 +28,6 @@ function PwCh() {
   };
 
   const canEditPw = async () => {
-    // if (!passError) {
     try {
       const res = await checkPw({
         email: Profile.email,
@@ -44,8 +41,6 @@ function PwCh() {
       setPassMess("비밀번호가 일치하지 않습니다");
       setPassError(true);
     }
-
-    // }
   };
   return (
     <div className="container flex justify-center">

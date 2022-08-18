@@ -1,6 +1,5 @@
 import React from "react";
 import "./ShoppingCard.scss";
-// import dummy from "@images/coco.jpeg";
 
 function ShoppingCard({ title, image, link, lprice }) {
   return (

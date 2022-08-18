@@ -18,7 +18,7 @@
 
       img {
         width: 100%;
-        height: 100%; // 이미지 비율 맞추기
+        height: 100%;
         object-fit: cover;
       }
     }
@@ -43,7 +43,6 @@
 
       &_good {
         border-radius: 70%;
-        // margin: (17px) 0 (17px) 0;
         width: (48px);
         height: (48px);
         background-color: $GRAY-679;
@@ -64,11 +63,11 @@
   &_cover {
     width: (720px);
     height: (720px);
-    overflow: hidden; // 넘어가면 감춘다
+    overflow: hidden;
 
     img {
       width: 100%;
-      height: 100%; // 이미지 비율 맞추기
+      height: 100%;
       object-fit: fill;
     }
   }
@@ -78,7 +77,6 @@
 
     &_view,
     &_like {
-      // height: (26px);
       width: (100px);
       flex-direction: row;
       margin-right: (16px);
@@ -102,7 +100,7 @@
 
   &_tag {
     margin-top: (12px);
-    margin-bottom: (120px); // 하단 임시 마진
+    margin-bottom: (120px);
     color: $MAIN;
   }
 
@@ -117,7 +115,6 @@
       height: (40px);
       border-radius: (17px);
       margin-left: (32px);
-      // margin-left: vw(672px);
       &:hover {
         background-color: $MAIN;
         box-shadow: 0px 0px 5px $MAIN;
@@ -143,7 +140,7 @@
 
         img {
           width: 100%;
-          height: 100%; // 이미지 비율 맞추기
+          height: 100%; 
           object-fit: cover;
         }
       }
@@ -168,7 +165,6 @@
 
         &_good {
           border-radius: vw(17px);
-          // margin: vw(17px) 0 vw(17px) 0;
           width: vw(106px);
           height: vw(40px);
           background-color: $GRAY-BF;
@@ -183,11 +179,11 @@
     &_cover {
       width: vw(720px);
       height: vw(720px);
-      overflow: hidden; // 넘어가면 감춘다
+      overflow: hidden; 
 
       img {
         width: 100%;
-        height: 100%; // 이미지 비율 맞추기
+        height: 100%; 
         object-fit: fill;
       }
     }
@@ -221,7 +217,7 @@
 
     &_tag {
       margin-top: vw(12px);
-      margin-bottom: vw(120px); // 하단 임시 마진
+      margin-bottom: vw(120px); 
       color: $MAIN;
     }
 
@@ -236,7 +232,6 @@
         height: vw(40px);
         border-radius: vw(17px);
         margin-left: vw(32px);
-        // margin-left: vw(672px);
       }
     }
   }
@@ -258,7 +253,7 @@
 
         img {
           width: 100%;
-          height: 100%; // 이미지 비율 맞추기
+          height: 100%; 
           object-fit: cover;
         }
       }
@@ -283,7 +278,6 @@
 
         &_good {
           border-radius: vw-t(17px);
-          // margin: vw-t(17px) 0 vw-t(17px) 0;
           width: vw-t(106px);
           height: vw-t(40px);
           background-color: $GRAY-BF;
@@ -298,11 +292,11 @@
     &_cover {
       width: vw-t(720px);
       height: vw-t(720px);
-      overflow: hidden; // 넘어가면 감춘다
+      overflow: hidden; 
 
       img {
         width: 100%;
-        height: 100%; // 이미지 비율 맞추기
+        height: 100%; 
         object-fit: fill;
       }
     }
@@ -312,7 +306,6 @@
 
       &_view,
       &_like {
-        // height: vw-t(26px);
         width: vw-t(100px);
         flex-direction: row;
         margin-right: vw-t(16px);
@@ -336,7 +329,7 @@
 
     &_tag {
       margin-top: vw-t(12px);
-      margin-bottom: vw-t(120px); // 하단 임시 마진
+      margin-bottom: vw-t(120px);
       color: $MAIN;
     }
 
@@ -351,7 +344,6 @@
         height: vw-t(40px);
         border-radius: vw-t(17px);
         margin-left: vw-t(32px);
-        // margin-left: vw(672px);
       }
     }
   }
@@ -362,7 +354,6 @@
     width: vw-p(530px);
 
     &_profile {
-      // height: vw-p(74px);
       align-items: center;
       margin-top: vw-p(60px);
       margin-bottom: vw-p(60px);
@@ -375,7 +366,7 @@
 
         img {
           width: 100%;
-          height: 100%; // 이미지 비율 맞추기
+          height: 100%; 
           object-fit: cover;
         }
       }
@@ -400,7 +391,6 @@
 
         &_good {
           border-radius: vw-p(17px);
-          // margin: vw-p(17px) 0 vw-p(17px) 0;
           width: vw-p(106px);
           height: vw-p(40px);
           background-color: $GRAY-BF;
@@ -415,11 +405,11 @@
     &_cover {
       width: vw-p(530px);
       height: vw-p(530px);
-      overflow: hidden; // 넘어가면 감춘다
+      overflow: hidden;
 
       img {
         width: 100%;
-        height: 100%; // 이미지 비율 맞추기
+        height: 100%;
         object-fit: fill;
       }
     }
@@ -429,7 +419,6 @@
 
       &_view,
       &_like {
-        // height: vw-p(26px);
         width: vw-p(100px);
         flex-direction: row;
         margin-right: vw-p(16px);
@@ -468,7 +457,6 @@
         height: vw-p(40px);
         border-radius: vw-p(17px);
         margin-left: vw-p(32px);
-        // margin-left: vw-p(672px);
       }
     }
   }

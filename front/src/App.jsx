@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import React from 'react';
 import "@styles/reset.css";
 import "@styles/_typography.scss";
 import "@styles/_common.scss";
@@ -14,7 +13,6 @@ const DEFAULTIMG = "iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsT
 function App() {
   const dispatch = useDispatch();
 
-  // 위도 경도 받아오기 함수
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -39,7 +37,6 @@ function App() {
   };  
 
 
-  // 유저 아이디가 세션에 있고 유저 정보가 없을 경우에 유저 정보 받아와야함
   const reqUser = async () => {
     const userRes = await getUserInfo(sessionStorage.getItem("userEmail"));
     if (userRes.userInfo.profileImg === null) {

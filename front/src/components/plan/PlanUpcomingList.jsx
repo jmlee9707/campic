@@ -7,12 +7,11 @@ import PlanCard from "./PlanCard";
 function PlanUpcomingList() {
   const userId = useSelector(state => state.user.email);
 
-  const [list, setList] = useState([]); // 리스트 불러오기
-  const now = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0]; // 현재시간
+  const [list, setList] = useState([]); 
+  const now = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0]; 
   useEffect(() => {
     async function getList() {
       const res = await getUpcomingPlan(userId, now);
-      console.log(res);
       setList(res);
     }
     getList();
@@ -27,7 +26,6 @@ function PlanUpcomingList() {
           list.map(
             ({
               savedTitle,
-              // place,
               startDate,
               endDate,
               campId,
@@ -37,9 +35,8 @@ function PlanUpcomingList() {
               <PlanCard
                 key={v4()}
                 savedTitle={savedTitle}
-                // place={place}
-                startDate={startDate.substr(0, 10)} // 문자열 자르기
-                endDate={endDate.substr(0, 10)} // 문자열 자르기
+                startDate={startDate.substr(0, 10)}
+                endDate={endDate.substr(0, 10)} 
                 campId={campId}
                 saveId={saveId}
                 firstImageUrl={firstImageUrl}
@@ -54,8 +51,6 @@ function PlanUpcomingList() {
           </div>
         )}
       </div>
-
-      {/* <PlanCard /> */}
     </div>
   );
 }

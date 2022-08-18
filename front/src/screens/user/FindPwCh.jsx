@@ -20,12 +20,11 @@ function FindPwCh() {
   const [passMess, setPassMess] = useState("");
   const [passSameMess, setPassSameMess] = useState("");
 
-  // 유효성 검사
   const checkPass = e => {
     const regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
     if (regPass.test(e.target.value) === false) {
       setPassMess("영문, 숫자를 혼합하여 8~16자로 입력해주세요");
-      setPassError(true); // 에러발생
+      setPassError(true); 
     } else {
       setPassMess(" ");
       setPassError(false);
@@ -86,7 +85,6 @@ function FindPwCh() {
               onChange={checkPassSame}
             />
             <div className="findpwch_pw2_check notoMid fs-12">
-              {/* 비밀번호가 일치하지 않습니다. */}
               {passSameMess}
             </div>
           </form>

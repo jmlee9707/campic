@@ -13,12 +13,11 @@ function FindId() {
   const [phoneError, setPhoneError] = useState(false);
   const [phoneMess, setPhoneMess] = useState("");
 
-  // 전화번호 유효성 확인
   const checkPhone = e => {
     const regPhone = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
     if (regPhone.test(e.target.value) === false) {
       setPhoneMess("10~11자리 숫자만 입력해주세요");
-      setPhoneError(true); // 에러발생
+      setPhoneError(true); 
     } else {
       setPhoneMess(" ");
       setPhoneError(false);
@@ -27,14 +26,10 @@ function FindId() {
 
   const canFind = async () => {
     if (!phoneError) {
-      // try {
         const res = await findId(phoneRef.current.value);
         console.log("비번찾기", res)
         dispatch(setEmail({ email: res.email }));
         navigate("/findid/finish");
-      // } catch {
-      //   setPhoneMess("계정이 존재하지 않습니다.")
-      // }
     }
   };
 

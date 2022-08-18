@@ -2,15 +2,11 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import OffCanvas from "react-aria-offcanvas";
-// style import
 import "./MainNavBar.scss";
 import logoGreen from "@images/logo/logo_text_green.svg";
 import dummyicon from "@images/icon/dummyicon.jpg";
 import logoWhite from "@images/logo/logo_text_white.svg";
 import menuIcon from "@images/icon/menu.svg";
-// import temp from "@images/cute.jpeg";
-// 날씨 컴포넌트
 import Weather from "@components/common/Weather";
 import { reset, selectProfile } from "../../store/user";
 import "./NavTooltip.scss";
@@ -26,17 +22,10 @@ function MainNavBar() {
     return active ? `${prefix}active` : `${prefix}unactive`;
   };
 
-  // const activeHome = active => {
-  //   const prefix = "left_nav__link flex";
-  //   return active ? `${prefix}active` : `${prefix}unactive`;
-  // };
-
   const logoutClick = () => {
-    // 토큰 삭제를 위해서 클리어
     sessionStorage.clear();
-    // 리덕스 유저 스토어 초기화
     dispatch(reset());
-    navigate("/"); // 홈으로 이동
+    navigate("/");
   };
 
   const [openTool, setOpenTool] = useState(false);
@@ -112,11 +101,6 @@ function MainNavBar() {
       setOpenMenu(!openMenu);
     }
   };
-
-  // useEffect(() => {
-  //   showButton();
-  // }, []);
-  // window.addEventListener("resize", showButton);
 
   return (
     <div className="wrapper flex align-center">

@@ -6,15 +6,13 @@ import { getIngPlan } from "../../apis/plan";
 
 function PlanIngList() {
   const userId = useSelector(state => state.user.email);
-  console.log(userId);
-  //   const past = true;
-  const [list, setList] = useState([]); // 리스트 불러오기
+
+  const [list, setList] = useState([]);
   const now = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0]; // 현재시간
   useEffect(() => {
     async function getList() {
       const res = await getIngPlan(userId, now);
       setList(res);
-      console.log(res);
     }
 
     getList();
@@ -27,7 +25,6 @@ function PlanIngList() {
           list.map(
             ({
               savedTitle,
-              // place,
               startDate,
               endDate,
               campId,
@@ -35,12 +32,10 @@ function PlanIngList() {
               firstImageUrl
             }) => (
               <PlanCard
-                // className="past_img"
                 key={v4()}
                 savedTitle={savedTitle}
-                // place={place}
-                startDate={startDate.substr(0, 10)} // 문자열 자르기
-                endDate={endDate.substr(0, 10)} // 문자열 자르기
+                startDate={startDate.substr(0, 10)} 
+                endDate={endDate.substr(0, 10)} 
                 campId={campId}
                 saveId={saveId}
                 firstImageUrl={firstImageUrl}

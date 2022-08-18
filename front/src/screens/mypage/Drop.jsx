@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-// import logo from "@images/logo/logo_icon_green.svg";
 import "./Drop.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -17,9 +16,7 @@ function Drop() {
 
   const checkDrop = async () => {
     const pw = pwRef.current.value;
-    // console.log(storeEmail)
     const res = await checkPw({ email: storeEmail, password: pw });
-    // 비밀번호 일치 여부
     if (res === "success") {
       await dropUser(storeEmail);
       sessionStorage.clear();
