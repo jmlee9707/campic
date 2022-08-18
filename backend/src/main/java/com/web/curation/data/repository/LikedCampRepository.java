@@ -18,5 +18,5 @@ public interface LikedCampRepository  extends JpaRepository<LikedCampList, Integ
     List<ScheduleDto.Response> findAllByUserAndEndDateBeforeOrderByEndDateAsc(User user, String now);
 
     @Query("SELECT lcl.totalCampList FROM LikedCampList lcl Group By lcl.totalCampList order by count(lcl.totalCampList) desc")
-    List<TotalCampList> findTopSelectedList(Pageable limit5);
+    List<TotalCampList> findTopSelectedList(Pageable limit4);
 }
