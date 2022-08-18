@@ -23,18 +23,18 @@ function TalkCard({
         <div className="talkcard_img">
           <img src={[blobFile]} alt="메인이미지" title="cardImg" />
         </div>
-        <div className="talkcard_subject notoBold fs-18">{title}</div>
-        <div className="talkcard_infoma flex">
+        <div className="talkcard_subject flex notoBold fs-18">{title}</div>
+        <div className="talkcard_infoma flex align-center">
           <div className="talkcard_infoma_profile flex">
             <div className="talkcard_infoma_profile_img">
               {profileImgPath !== null && <img src={profileImgPath} alt="프로필이미지" title="profile" />}
               {profileImgPath === null && <img src={dummyProfile} alt="프로필이미지" title="profile" />}
             </div>
-            <p className="talkcard_infoma_profile_name notoMid fs-13">
+            <div className="talkcard_infoma_profile_name notoMid fs-16">
               {nickname}
-            </p>
+            </div>
           </div>
-          <div className="talkcard_infoma_txt flex align-center">
+          <div className="talkcard_infoma_txt flex justify-center align-center">
             <p className="talkcard_infoma_txt_look notoMid fs-13">조회수</p>
             <p className="talkcard_infoma_txt_look_cnt notoMid fs-13">
               {click}

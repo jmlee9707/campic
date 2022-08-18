@@ -1,56 +1,149 @@
 .container {
   justify-content: center;
 }
-
+.observer {
+  margin-top: vw(20px);
+  height: 300px;
+  width: 300px;
+}
 .talk {
-  margin-top: vw(60px);
-  width: vw(1173px);
   flex-direction: column;
-  &_titleImg {
-    margin-bottom: vw(60px);
-    width: vw(1170px);
-    height: vw(432px);
-    overflow: hidden;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
+  width: (1150px);
+  // margin-top: vw(60px);
+  // &_titleImg {
+  //   margin-bottom: vw(60px);
+  //   width: vw(1170px);
+  //   height: vw(432px);
+  //   overflow: hidden;
+  //   img {
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+  // }
   &_best {
-    width: vw(1170px);
-    margin-bottom: vw(40px);
+    margin-top: (60px);
+    margin-bottom: (90px);
     &_title {
-      margin-bottom: vw(8px);
       color: $GRAY-40;
+      margin-bottom: (8px);
     }
     &_sub {
       color: $GRAY-67;
-      margin-bottom: vw(40px);
+      margin-bottom: (40px);
     }
-    &_card {
-      justify-content: space-between;
-    }
+    // &_card {
+    //   justify-content: space-between;
+    // }
   }
   &_camp {
-    width: vw(1170px);
-    flex-direction: column;
     &_title {
-      margin-bottom: vw(60px);
+      margin-bottom: (60px);
       justify-content: space-between;
-      align-items: center;
+      flex-direction: row;
+      // align-items: center;
       &_btn {
-        background-color: $MAIN;
+        padding: (7px) (28px);
+        height: (40px);
         color: $WHITE;
-        height: vw(40px);
-        padding: vw(7px) vw(28px);
-        border-radius: vw(17px);
+        background-color: $MAIN;
+        border-radius: (17px);
       }
     }
   }
 }
-.comp {
-  width: vw(1170px);
+.best_talk_list,
+.talkcard_list {
+  width: (1150px);
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .talk {
+    width: vw(1150px);
+    &_best {
+      margin-top: vw(60px);
+      margin-bottom: vw(90px);
+      &_title {
+        margin-bottom: vw(8px);
+      }
+      &_sub {
+        margin-bottom: vw(40px);
+      }
+    }
+    &_camp {
+      &_title {
+        margin-bottom: vw(60px);
+        &_btn {
+          padding: vw(7px) vw(28px);
+          height: vw(40px);
+          border-radius: vw(17px);
+        }
+      }
+    }
+  }
+  .best_talk_list,
+  .talkcard_list {
+    width: vw(1150px);
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .talk {
+    width: vw-t(950px);
+    &_best {
+      margin-top: vw-t(60px);
+      margin-bottom: vw-t(90px);
+      &_title {
+        margin-bottom: vw-t(8px);
+      }
+      &_sub {
+        margin-bottom: vw-t(40px);
+      }
+    }
+    &_camp {
+      &_title {
+        margin-bottom: vw-t(60px);
+        &_btn {
+          padding: vw-t(7px) vw-t(28px);
+          height: vw-t(40px);
+          border-radius: vw-t(17px);
+        }
+      }
+    }
+  }
+  .best_talk_list,
+  .talkcard_list {
+    width: vw-t(950px);
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .talk {
+    width: vw-p(570px);
+    &_best {
+      margin-top: vw-p(20px);
+      margin-bottom: vw-p(60px);
+      &_title {
+        margin-bottom: vw-p(8px);
+      }
+      &_sub {
+        margin-bottom: vw-p(40px);
+      }
+    }
+    &_camp {
+      &_title {
+        margin-bottom: vw-p(30px);
+        &_btn {
+          padding: vw-p(7px) vw-p(28px);
+          height: vw-p(40px);
+          border-radius: vw-p(17px);
+        }
+      }
+    }
+  }
+  .best_talk_list,
+  .talkcard_list {
+    width: vw-p(570px);
+  }
 }

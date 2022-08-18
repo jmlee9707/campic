@@ -13,14 +13,14 @@ function BestTalk({
     navigate(`/board/talk/detail/${talkId}`);
   };
   return (
-    <div className="bestTalk">
-      <button type="button" onClick={onClickThumbnail}>
-        <div className="bestTalk_img">
-          <img src={[blobFile]} alt="메인이미지" title="cardImg" />
+    <button type="button" onClick={onClickThumbnail}>
+      <div className="best_talk">
+        <div className="best_talk_img">
+          <img src={[blobFile]} alt="메인이미지" />
         </div>
-        <div className="bestTalk_title notoBold fs-18">{title}</div>
-      </button>
-    </div>
+        <div className="best_talk_title flex notoBold fs-18">{title}</div>
+      </div>
+    </button>
   );
 }
 
