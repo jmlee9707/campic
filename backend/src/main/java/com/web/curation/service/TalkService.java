@@ -199,13 +199,13 @@ public class TalkService {
         talkRepository.save(talk);
 
         // file 이미지 변경하기
-        ThumbnailFile thumbnailFile = thumbnailFileRepository.findByTalk(talk);
-
-        thumbnailFile.setTalk(talk);
-        thumbnailFile.setName(talkDto.getFileName());
-        thumbnailFile.setFile(talkDto.getSaveFile());
-
-        thumbnailFileRepository.save(thumbnailFile);
+//        ThumbnailFile thumbnailFile = thumbnailFileRepository.findByTalk(talk);
+//
+//        thumbnailFile.setTalk(talk);
+//        thumbnailFile.setName(talkDto.getFileName());
+//        thumbnailFile.setFile(talkDto.getSaveFile());
+//
+//        thumbnailFileRepository.save(thumbnailFile);
 
         if(talk.getTitle().equals(talkDto.getTitle()) && talk.getHashtag().equals(talkDto.getHashtag())){
             return true;
