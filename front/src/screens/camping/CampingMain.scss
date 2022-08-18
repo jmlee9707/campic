@@ -241,8 +241,9 @@
 
       &_favo {
         margin-bottom: vw-p(80px);
+        display: none;
         &_camp {
-          display: none;
+          // display: none;
           width: vw-p(160px);
           height: vw-p(40px);
           border-radius: vw-p(20px);

@@ -1,5 +1,4 @@
 .main_banner {
-  z-index: -1;
   background-image: url("../../assets/images/commuMain.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -21,6 +20,37 @@
       background-color: $WHITE;
       border-radius: vw(20px);
       margin: 0 vw(16px);
+    }
+  }
+}
+
+
+@media screen and (max-width: $PHONE-VW) {
+  .main_banner {
+    z-index: -1; // 위치 조절
+    background-image: url("../../assets/images/commuMain.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: vw(17px);
+    width: vw(1100px);
+    height: vw(500px);
+    overflow: hidden;
+    margin-bottom: (80px);
+    position: relative;
+    flex-direction: column;
+    &_btn {
+      display: none; // 안보이게 만들기
+      margin-top: vw(180px);
+      a {
+        // border: vw(2px) solid $WHITE;
+        height: vw(57px);
+        width: vw(168px);
+        color: $MAIN;
+        background-color: $WHITE;
+        border-radius: vw(20px);
+        margin: 0 vw(16px);
+      }
     }
   }
 }
