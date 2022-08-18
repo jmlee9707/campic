@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import check from "@images/icon/done_black.svg";
-// import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
 import TodoItem from "./TodoItem";
 
@@ -10,11 +9,8 @@ function TodoItemList({ listId, writer }) {
   const todoRef = useRef();
   const [todoList, setTodoList] = useState([]);
   const [text, setText] = useState("");
-  // const todoListId = listId;
-  // writer = 작성자
   async function getTodoList() {
     const res = await getTodo(listId);
-    console.log(res);
     setTodoList(res);
   }
   const addTask = async () => {
@@ -32,10 +28,9 @@ function TodoItemList({ listId, writer }) {
     setText(e.target.value);
   };
   useEffect(() => {
-    // todoList 불러오기
     getTodoList();
   }, []);
-  console.log(todoList);
+  
 
   return (
     <>

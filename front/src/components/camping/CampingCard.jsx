@@ -10,9 +10,7 @@ function CampingCard({ campId, facltNm, addr1, homepage, firstImageUrl }) {
     window.open(`${homepage}`);
   };
 
-  // console.log(homepage);
   const detailUrl = `/camping/detail/${campId}`;
-  // console.log(firstImageUrl);
 
   const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => {
@@ -71,7 +69,6 @@ function CampingCard({ campId, facltNm, addr1, homepage, firstImageUrl }) {
         </div>
       </div>
       <div className="divide" />
-      {/* 모달창 띄우기 */}
       {modalVisible && (
         <AddPlanModal
           visible={modalVisible}
@@ -83,12 +80,7 @@ function CampingCard({ campId, facltNm, addr1, homepage, firstImageUrl }) {
         />
       )}
     </div>
-    // <>dd</>
   );
 }
-
-// CampingCard.PropTypes = {
-//   campingInfo : PropTypes.objectOf(PropTypes.string).isRequired
-// };
 
 export default CampingCard;

@@ -5,13 +5,11 @@ export const writeTalk = async body => {
   const res = await API.post("/talk", body, {
     headers: { "Content-Type": "multipart/form-data" }
   });
-  // console.log(res.data);
   return res.data;
 };
 // TALK Detail
 export const getTalkDetail = async talkId => {
   const res = await API.get(`/talk/detail/${talkId}`);
-  // console.log(res.data);
   return res.data;
 };
 // Writer Profile
@@ -39,7 +37,6 @@ export const talkLike = async params => {
 export const talkDisLike = async params => {
   const res = await API.delete(
     `/talk/like?talkId=${params.talkId}&email=${params.email}`
-    // , {headers: { "Content-Type": "multipart/form-data" }}
   );
   return res.data;
 };
@@ -58,9 +55,6 @@ export const talkDelete = async params => {
 // TALK Home
 export const getTalk = async page => {
   const res = await API.get("/talk",
-  // {
-  //   headers: { "Content-Type": "multipart/form-data" }
-  // },
   {
     params: {
       page
@@ -88,9 +82,7 @@ export const getTalkProfile = async params => {
 // Comment Regist
 export const writeComment = async (talkId, body) => {
   const res = await API.post(`/talk/comments/${talkId}`, body);
-  // console.log(res);
   return res.data;
-  // return res.status;
 };
 // Comment GET
 export const getComment = async talkId => {

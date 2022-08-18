@@ -6,9 +6,7 @@
   margin-top: vw(60px);
   width: vw(1173px);
   flex-direction: column;
-  //   background-color: aqua;
   &_titleImg {
-    // background-color: red;
     margin-bottom: vw(60px);
     width: vw(1170px);
     height: vw(432px);
@@ -32,13 +30,11 @@
     }
     &_card {
       justify-content: space-between;
-      // flex-wrap: wrap;
     }
   }
   &_camp {
     width: vw(1170px);
     flex-direction: column;
-    // background-color: red;
     &_title {
       margin-bottom: vw(60px);
       justify-content: space-between;
@@ -57,8 +53,4 @@
   width: vw(1170px);
   justify-content: space-between;
   flex-wrap: wrap;
-  // flex-direction: column;
-  // &_row {
-  //   justify-content: space-between;
-  //   flex-direction: row;
 }

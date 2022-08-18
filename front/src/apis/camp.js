@@ -9,15 +9,9 @@ export const getCamplist = async body => {
 // 캠핑장 상세페이지 불러오기
 export const campDetailInfo = async campId => {
   const res = await API.get(`/camp/${campId}`);
-  // console.log(res.data);
   return res.data;
 };
 
-// 캠핑장 전체 검색
-// export const searchAll = async keyword => {
-//   const res = await API.get(`/camp/search/${keyword}`);
-//   return res.data;
-// };
 
 // 캠프 top 5 검색어 가져오기
 export const searchBest = async () => {
@@ -36,7 +30,6 @@ export const searchTag = async tag => {
 };
 export const getSido = async () => {
   const res = await API.get("/region");
-
   return res.data;
 };
 

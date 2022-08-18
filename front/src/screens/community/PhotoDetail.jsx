@@ -5,7 +5,6 @@ import "moment/locale/ko";
 import good from "@images/icon/favorite_like.svg";
 import dislike from "@images/icon/favorite_black.svg";
 
-// import temp111 from "@images/car.jpeg";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dummyLogo from "@images/person.png";
@@ -28,7 +27,7 @@ function PhotoDetail() {
   const { id } = useParams();
 
   // 좋아요 유무 파악
-  const [isLiked, setIsLiked] = useState(0);
+  const [isLiked, setIsLiked] = useState();
   const [photoDetails, setPhotoDetail] = useState("");
   // 수정
   const updatePhoto = () => {
@@ -43,8 +42,6 @@ function PhotoDetail() {
   date.setHours(date.getHours() + 9)
 
   const uploadTime = moment(date).fromNow();
-  console.log("여기")
-  console.log(photoDetails.uploadDate)
 
   const [photoNickname, setPhotoNickname] = useState("");
   const [photoProfile, setPhotoProfile] = useState();
@@ -71,27 +68,23 @@ function PhotoDetail() {
   }, []);
 
   // 좋아요
-  // const [like, setLike] = useState(false);
   const params = {
     boardId: id,
-    email: userId // 값 똑같으면 이름 지정 안해도 됨
+    email: userId 
   };
   async function liked() {
     const res = await photoLike(params);
     if (res.message === "success") {
-      // setLike(true);
       setLikeCnt(res.like);
       setIsLiked(1);
     }
   }
-  //   // console.log(photoDetail.nickname);
+
   // 싫어요
   async function disLiked() {
     const res = await photoDisLike(params);
     if (res.message === "success") {
-      // setLike(false);
       setLikeCnt(likeCnt - 1);
-      // console.log(likeCnt);
       setIsLiked(0);
     }
   }
@@ -104,9 +97,8 @@ function PhotoDetail() {
     if (window.confirm("정말로 삭제하시겠습니까?")) {
       const res = await photoDelete(deleteParams);
       if (res.message === "success") {
-        console.log(res.message);
+        navigate("/board/photo/home");
       }
-      navigate("/board/photo/home");
     }
   }
 

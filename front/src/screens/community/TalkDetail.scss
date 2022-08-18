@@ -12,12 +12,10 @@
   justify-content: center;
   width: vw(1170px);
   flex-direction: column;
-  // background-color: red;
   &_thumbnail {
     width: 100%;
     height: vw(480px);
     overflow: hidden;
-    // margin-bottom: vw(30px);
     margin-top: vw(60px);
 
     img {
@@ -40,7 +38,6 @@
     }
 
     &_profile {
-      // height: vw(68px);
       margin-bottom: vw(64px);
 
       &_img {
@@ -72,7 +69,6 @@
 
     &_text {
       width: vw(970px);
-      // background-color: $GRAY-679;
       color: $GRAY-40;
       margin-bottom: vw(36px);
     }
@@ -175,16 +171,6 @@
         }
       }
     }
-
-    // &_comment {
-    //   margin-left: vw(12px);
-    //   margin-bottom: vw(24px);
-    // }
-
-    // &_commentRe {
-    //   margin-left: vw(60px);
-    //   margin-bottom: vw(24px);
-    // }
 
     &_btns {
       margin-bottom: vw(50px);

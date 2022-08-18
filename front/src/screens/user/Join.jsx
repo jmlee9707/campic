@@ -8,9 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { duplicateEmail, join } from "../../apis/join";
 
 function Join() {
-  const navigate = useNavigate(); // 모두 작성시 회원가입 완료페이지로 이동
+  const navigate = useNavigate();
 
-  // 오류 확인
   const [emailError, setEmailError] = useState(false);
   const [codeError, setCodeError] = useState(false);
   const [passError, setPassError] = useState(false);
@@ -18,7 +17,6 @@ function Join() {
   const [nickError, setNickError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
-  // 오류 메세지 상태 저장
   const [emailMess, setEmailMess] = useState("");
   const [codeMess, setCodeMess] = useState("");
   const [passMess, setPassMess] = useState("");
@@ -26,7 +24,6 @@ function Join() {
   const [nickMess, setNickMess] = useState("");
   const [phoneMess, setPhoneMess] = useState("");
 
-  // ref 값
   const emailRef = useRef();
   const codeRef = useRef();
   const passRef = useRef();
@@ -38,50 +35,44 @@ function Join() {
   const [open, setOpen] = useState("");
   const [isMailChecked, setIsMailChecked] = useState(false);
 
-  // 타이머 변수 저장
   const [tick, setTick] = useState(0);
   const [flag, setFlag] = useState(true);
-  // 타이머
+
   useEffect(() => {
     let countdown = null;
-    // 타이머 시작
-     if (tick > 0) {
+    if (tick > 0) {
       countdown = setInterval(() => {
         setTick(tick - 1);
       }, 1000);
-    // 타이머 끝
     } else if (tick <= 0) {
       setFlag(false);
     }
     return () => clearInterval(countdown);
   }, [tick]);
 
-  // 유효성 검사
-  // 이메일 유효성 검사
   const checkEmail = e => {
     const regEmail =
       /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     if (regEmail.test(e.target.value) === false) {
       setEmailMess("이메일 형식으로 입력해주세요");
-      setEmailError(true); // 에러발생
+      setEmailError(true);
     } else {
       setEmailMess("");
       setEmailError(false);
     }
   };
-  // 비밀번호 유효성 검사
+
   const checkPass = e => {
     const regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
     if (regPass.test(e.target.value) === false) {
       setPassMess("영문, 숫자를 혼합하여 8~16자로 입력해주세요");
-      setPassError(true); // 에러발생
+      setPassError(true); 
     } else {
       setPassMess(" ");
       setPassError(false);
     }
   };
 
-  // 비밀번호 일치여부 확인
   const checkPassSame = () => {
     if (passRef.current.value !== passSameRef.current.value) {
       setPassSameMess("비밀번호가 일치하지 않습니다");
@@ -92,24 +83,22 @@ function Join() {
     }
   };
 
-  // 닉네임 유효성 확인
   const checkNick = e => {
     const regNick = /^[가-힣ㄱ-ㅎa-zA-Z0-9._ -]{2,8}$/;
     if (regNick.test(e.target.value) === false) {
       setNickMess("2~8자리의 문자로 입력해주세요");
-      setNickError(true); // 에러발생
+      setNickError(true); 
     } else {
       setNickMess(" ");
       setNickError(false);
     }
   };
 
-  // 전화번호 유효성 확인
   const checkPhone = e => {
     const regPhone = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
     if (regPhone.test(e.target.value) === false) {
       setPhoneMess("10~11자리 숫자만 입력해주세요");
-      setPhoneError(true); // 에러발생
+      setPhoneError(true); 
     } else {
       setPhoneMess(" ");
       setPhoneError(false);
@@ -118,8 +107,7 @@ function Join() {
 
   const checkCode = () => {
     if (codeRef.current.value !== code) {
-      // 코드가 일치하지 않는다면
-      setCodeError(true); // 에러 발생
+      setCodeError(true); 
       setCodeMess("인증번호가 일치하지 않습니다");
     } else if (codeRef.current.value === code) {
       setCodeError(false);
@@ -135,11 +123,10 @@ function Join() {
     if (result.message === "duplicate") {
       setEmailMess("이미 가입된 이메일 입니다");
     } else if (result.message === "success") {
-      // 코드번호 비교
       setTick(180);
       setFlag(true);
       setcode(result.emailCode);
-      setOpen(true); // 모듈창 오픈
+      setOpen(true); 
     }
   };
 
@@ -244,23 +231,36 @@ function Join() {
                     ref={codeRef}
                   />
                 </div>
-                { flag && <button
-                  className="join_input_email_cert_btn fs-14 notoBold flex justify-center align-center"
-                  type="button"
-                  onClick={checkCode}
-                >
-                  인증코드 확인
-                </button>
-                }
-                { !flag && <button
-                  className="join_input_email_cert_btn fs-14 notoBold flex justify-center align-center"
-                  type="button"
-                  onClick={ (e) => {e.preventDefault();} }
-                >
-                  인증코드 만료
-                </button> 
-                }
-                {flag && <div className="fs-13 notoBold flex justify-center align-center">  남은 시간 : { Math.floor(tick / 60) > 0 ? `${Math.floor(tick / 60)} 분` : '' } {tick % 60 } 초 </div>}
+                {flag && (
+                  <button
+                    className="join_input_email_cert_btn fs-14 notoBold flex justify-center align-center"
+                    type="button"
+                    onClick={checkCode}
+                  >
+                    인증코드 확인
+                  </button>
+                )}
+                {!flag && (
+                  <button
+                    className="join_input_email_cert_btn fs-14 notoBold flex justify-center align-center"
+                    type="button"
+                    onClick={e => {
+                      e.preventDefault();
+                    }}
+                  >
+                    인증코드 만료
+                  </button>
+                )}
+                {flag && (
+                  <div className="fs-13 notoBold flex justify-center align-center">
+                    {" "}
+                    남은 시간 :{" "}
+                    {Math.floor(tick / 60) > 0
+                      ? `${Math.floor(tick / 60)} 분`
+                      : ""}{" "}
+                    {tick % 60} 초{" "}
+                  </div>
+                )}
                 <div
                   className={
                     codeError

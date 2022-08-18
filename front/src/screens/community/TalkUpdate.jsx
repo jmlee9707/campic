@@ -31,9 +31,6 @@ function TalkUpdate() {
   const [titleLength, setTitleLength] = useState(0);
   const getValue = e => {
     setTitleLength(e.target.value.length);
-    if (e.target.value.length > 30) {
-      console.log("30자를 초과합니다.");
-    }
   };
   const modiTalk = async () => {
     if (
@@ -63,7 +60,6 @@ function TalkUpdate() {
   };
   return (
     <div className="container flex">
-      {/* 커뮤니티 네브바 들어가야 함 */}
       {userId !== null && <div className="modifyTalk">
         <div className="modifyTalk_title notoBold fs-32">글 수정하기</div>
         <div className="modifyTalk_content flex justify-center">

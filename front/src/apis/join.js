@@ -5,10 +5,6 @@ export const duplicateEmail = async userId => {
   return res.data;
 };
 
-// export const reSendMail  = async body => {
-//     const res = await API.get()
-// }
-
 export const join = async body => {
   const res = await API.post("/user/register", body);
   return res.data;

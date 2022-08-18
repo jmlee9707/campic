@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.scss";
-// import mainImg from "@images/main.jpeg";
+
 function Home() {
   return (
     <div className="container">

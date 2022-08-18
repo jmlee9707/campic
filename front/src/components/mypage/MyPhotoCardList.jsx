@@ -3,7 +3,6 @@ import { v4 } from "uuid";
 import { useSelector } from "react-redux";
 import MyPhotoCard from "./MyPhotoCard";
 import "./MyPhotoCard.scss";
-// import { selectEmail } from "../../store/user";
 import { getMyPhoto } from "../../apis/photo";
 
 function PhotoCardList() {
@@ -12,16 +11,12 @@ function PhotoCardList() {
   const [myPhotoList, setMyPhotoList] = useState([]);
 
   useEffect(() => {
-    // await 를 사용하기 위해서 Async 선언
     async function getAndSetMyPhotoList() {
       const res = await getMyPhoto(email);
-      // console.log(res);
-      // console.log("11111");
       setMyPhotoList(res);
     }
     getAndSetMyPhotoList();
   }, []);
-  // console.log(myPhotoList);
 
   return (
     <div className="photoList flex">

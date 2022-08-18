@@ -7,7 +7,6 @@ import PlanEndList from "@components/plan/PlanEndList";
 import PlanIngList from "@components/plan/PlanIngList";
 
 function PlanMain() {
-  // const dispatch = useDispatch();
   const userId = useSelector(state => state.user.email);
   useEffect(() => {
     console.log(userId);

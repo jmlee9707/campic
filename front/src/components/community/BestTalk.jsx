@@ -10,7 +10,6 @@ function BestTalk({
 }) {
   const navigate = useNavigate();
   const onClickThumbnail = () => {
-    // eslint-disable-next-line no-undef
     navigate(`/board/talk/detail/${talkId}`);
   };
   return (

@@ -10,25 +10,21 @@ import { campDetailInfo } from "@apis/camp";
 
 function CampingDetail() {
   const pos = useSelector(selectLocation);
-  const [dist, setDist] = useState(0); // 거리 정보
-  const [campInfo, setCampInfo] = useState(); // 캠핑장 정보
-  const { id: campId } = useParams(); // 파라미터 정보 가져오기
+  const [dist, setDist] = useState(0);
+  const [campInfo, setCampInfo] = useState();
+  const { id: campId } = useParams();
 
   const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => {
     setModalVisible(true);
   };
 
-  // 사이트로 이동
-  const moveSite = () => {
-    // window.open(`${campInfo.homepage}`);
-  };
+  const moveSite = () => {};
   // 예약 사이트로 이동
   const moveReserve = () => {
     window.open(`${campInfo.resveUrl}`);
   };
 
-  // 거리 계산 함수
   const calDist = (curLati, curLongi, targetLati, targetLongi) => {
     const RADIUS = 6371;
     const LAD = Math.PI / 180;
@@ -42,17 +38,14 @@ function CampingDetail() {
         Math.sin(DELTALONGI / 2);
     return Math.floor(2 * RADIUS * Math.asin(Math.sqrt(innervalue)));
   };
-  // 캠핑장 정보 가져오기
+
   const getCampDetailInfo = async () => {
     const res = await campDetailInfo(campId);
-    // 현재 위치 받아오기
-    // 캠핑장 위치와 함께 계산하기
     setDist(calDist(pos.lati, pos.longi, res.mapY, res.mapX));
     setCampInfo(res);
   };
 
   useEffect(() => {
-    // console.log(campId);
     getCampDetailInfo(); // 초기에 정보 받아오기
   }, [campId]);
 
@@ -122,7 +115,6 @@ function CampingDetail() {
                 </button>
               )}
             </div>
-            {/* 모달창 띄우기 */}
             {modalVisible && (
               <AddPlanModal
                 visible={modalVisible}

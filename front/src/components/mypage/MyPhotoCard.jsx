@@ -2,8 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./MyPhotoCard.scss";
 
-// import coco from "@images/coco.jpeg";
-
 function MyPhotoCard({blobFile, boardId}) {
   const navigate = useNavigate();
   const onClickPhoto = () => {

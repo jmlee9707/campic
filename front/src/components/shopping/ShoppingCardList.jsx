@@ -20,8 +20,6 @@ function ShoppingCardList() {
   const [loading, setLoading] = useState(false);
 
   async function getAndSetCampList() {
-    // console.log(searchKeyword);
-    // 리스트 받아오기
     axios
       .post("https://campic.site:8080/shop/", {
         query: searchKeyword,
@@ -29,7 +27,6 @@ function ShoppingCardList() {
         display: 10
       })
       .then(res => {
-        // dispatch(setfirstShoppingList({ shoppingList: [{"test" : 1}, {"test": 2}] }))
         dispatch(setShoppingList({ shoppingList: res.data }));
         setLoading(false);
       })

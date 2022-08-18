@@ -1,6 +1,5 @@
 .talkcard {
   width: vw(370px);
-  // background-color: red;
   margin-bottom: vw(48px);
   &_img {
     width: vw(370px);
@@ -21,7 +20,6 @@
     overflow: hidden;
   }
   &_infoma {
-    // background-color: red;
     justify-content: space-between;
     width: vw(370px);
     &_profile {
@@ -42,7 +40,6 @@
     }
     &_txt {
       color: $GRAY-67;
-      // background-color: red;
       &_look,
       &_like {
         margin-left: vw(16px);
@@ -59,5 +56,4 @@
 .talkCardList {
   flex-wrap: wrap;
   justify-content: space-between;
-  // width: vw(1170px);
 }

@@ -12,18 +12,14 @@ export const initialCampState = {
   longi: 126.997128
 };
 
-// camp store 생성
 const campReducer = createSlice({
-  name: "campSearch", // action type으로 사용될 이름
+  name: "campSearch", 
   initialState: initialCampState,
   reducers: {
     // 초기화
     reset: state => {
       state.page = initialCampState.page;
       state.campList = initialCampState.campList;
-      // Object.assign(state.page, initialCampState.page);
-      // Object.assign(state.campList, initialCampState.campList);
-      // // Object.assign(state, initialCampState);
     },
     resetLoca: state => {
       state.sido = initialCampState.sido;
@@ -31,10 +27,9 @@ const campReducer = createSlice({
     },
     setCampList: (state, { payload }) => {
       state.campList = [...state.campList, ...payload.campList];
-      state.page += 1; // 페이지 하나씩 증가
+      state.page += 1; 
     },
     setTagConditions: (state, { payload }) => {
-      // state.tag = [...state.tag, payload];
       state.tag = payload;
     },
     setLocaConditions: (state, { payload }) => {

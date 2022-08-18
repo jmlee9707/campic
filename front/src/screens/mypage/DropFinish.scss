@@ -3,7 +3,6 @@
 }
 .dropfin {
   width: (350px);
-  //   background-color: $KAKAO-YELLOW;
   align-items: center;
   flex-direction: column;
   &_img {
@@ -42,7 +41,6 @@
 @media screen and (max-width: $DESKTOP-VW) {
   .dropfin {
     width: vw(350px);
-    //   background-color: $KAKAO-YELLOW;
     align-items: center;
     flex-direction: column;
     &_img {
@@ -82,7 +80,6 @@
 @media screen and (max-width: $TABLET-VW) {
   .dropfin {
     width: vw-t(350px);
-    //   background-color: $KAKAO-YELLOW;
     align-items: center;
     flex-direction: column;
     &_img {

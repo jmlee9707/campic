@@ -14,7 +14,6 @@
   }
   &_title {
     color: $GRAY-40;
-    // margin-bottom: vw(10px);
     width: vw(370px);
     height: vw(26px);
     overflow: hidden;
@@ -22,7 +21,6 @@
 }
 
 .talkList {
-  //   background-color: rebeccapurple;
   flex-wrap: wrap;
   justify-content: space-between;
   width: vw(830px);

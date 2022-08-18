@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-// import logo from "@images/logo/logo_icon_green.svg";
 import "./PwEdit.scss";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -20,19 +19,17 @@ function PwEdit() {
   const [passError, setPassError] = useState(false);
   const [passSameError, setPassSameError] = useState(false);
 
-  // 비밀번호 유효성 검사
   const checkPass = e => {
     const regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
     if (regPass.test(e.target.value) === false) {
       setPassMess("영문, 숫자를 혼합하여 8~16자로 입력해주세요");
-      setPassError(true); // 에러발생
+      setPassError(true); 
     } else {
       setPassMess(" ");
       setPassError(false);
     }
   };
 
-  // 비밀번호 일치여부 확인
   const checkPassSame = () => {
     if (passRef.current.value !== passSameRef.current.value) {
       setPassSameMess("비밀번호가 일치하지 않습니다");
@@ -45,8 +42,6 @@ function PwEdit() {
 
   const canEdit = async () => {
     if (!passError && !passSameError) {
-      
-      // try {
       const res = await changePw({
           email: Profile.email,
           password: passRef.current.value

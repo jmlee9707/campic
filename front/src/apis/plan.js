@@ -8,7 +8,6 @@ export const addPlan = async (
   endDate,
   savedTitle
 ) => {
-  //   console.log("Aaaa");
   const res = await API_USER.post(
     `/camp/${campId}`,
     { startDate, endDate, savedTitle },
@@ -19,32 +18,25 @@ export const addPlan = async (
       }
     }
   );
-  console.log(res.data);
   return res.data;
 };
 // 플랜 수장하기
 export const changePlan = async (saveId, startDate, endDate, savedTitle) => {
-  //   console.log("Aaaa");
-  console.log(saveId, startDate, endDate, savedTitle);
   const res = await API_USER.put(`/schedule/${saveId}`, {
     startDate,
     endDate,
     savedTitle
   });
-  console.log(res.data);
   return res.data;
 };
 
 // 플랜 삭제하기
 export const deletePlan = async saveId => {
   const res = await API_USER.delete(`schedule/${saveId}`);
-  console.log(res);
-  console.log(res.data);
   return res.data;
 };
 
 export const getPlanDetail = async saveId => {
-  // console.log(saveId);
   const res = await API_USER.get(`schedule/${saveId}`);
   return res.data;
 };
@@ -57,10 +49,7 @@ export const getTodo = async saveId => {
 
 // todolist 추가하기
 export const addTodo = async (todoId, task) => {
-  console.log(task);
-  console.log(todoId);
   const res = await API_USER.post(`/schedule/${todoId}/todo`, { task });
-  console.log(res.data);
   return res.data;
 };
 
@@ -82,12 +71,7 @@ export const deleteTodo = async (todoId, saveId) => {
 export const getUpcomingPlan = async (email, now) => {
   const res = await API_USER.get(
     `/schedule/upcomming?email=${email}&now=${now}`
-    // "/schedule/upcoming",
-    // {
-    //   params: { email, now }
-    // }
   );
-  // console.log(res.data);
   return res.data;
 };
 // 현재 진행중인 캠핑 조회하기
@@ -99,12 +83,7 @@ export const getIngPlan = async (email, now) => {
 export const getEndPlan = async (email, now) => {
   const res = await API_USER.get(
     `/schedule/endlist?email=${email}&now=${now}`
-    // "/schedule/upcoming",
-    // {
-    //   params: { email, now }
-    // }
   );
-  console.log(res.data);
   return res.data;
 };
 

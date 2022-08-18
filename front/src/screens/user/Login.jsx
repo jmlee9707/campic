@@ -7,22 +7,13 @@ import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setEmail, setUserInfo } from "@store/user";
-import { login, getUserInfo, exchangeImg } from "@apis/user"; // login api
-// import { setEmail } from '@store/user';
-// import { login } from "@apis/user"; // login api
+import { login, getUserInfo, exchangeImg } from "@apis/user"; 
 
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [emailMess, setEmailMess] = useState("");
   const { sessionStorage } = window;
-  // const wait = (sec) => {
-  //   const start = Date.now()
-  //   let now = start;
-  //   while (now - start < sec * 1000) {
-  //       now = Date.now();
-  //   }
-  // };
   const emailRef = useRef();
   const passRef = useRef();
   const canLogin = async () => {
@@ -32,17 +23,14 @@ function Login() {
       email: userEmail,
       password: passRef.current.value
     });
-    // 리덕스 스토어에 이메일 저장
+
     dispatch(setEmail({ email: userEmail }));
-    // 세션스토리지에 토큰 저장
     sessionStorage.setItem("refreshToken", res.refreshToken);
     sessionStorage.setItem("userEmail", userEmail);
     sessionStorage.setItem("accessToken", res.Authorization);
-    // 유저 정보 가져오기
-    // console.log("유저 정보 가져오기")
+
     let userRes = await getUserInfo(userEmail);
-    // console.log(userRes.userInfo);
-    // 유저 정보 스토어에 저장
+    
     if (userRes.userInfo.profileImg === null) {
       userRes = exchangeImg(userRes);
     }

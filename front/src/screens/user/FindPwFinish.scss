@@ -28,7 +28,6 @@
     background-color: $MAIN;
     border-radius: (4px);
     margin-top: (24px);
-    // padding-bottom: 24px;
   }
   &_home_btn:hover,
   &_login_btn:hover {
@@ -123,7 +122,6 @@
     &_info {
       margin: vw-p(46px) 0 vw-p(60px) 0;
       color: $GRAY-76;
-      // margin: vw-p(70px);
       flex-direction: column;
     }
     &_home_btn,

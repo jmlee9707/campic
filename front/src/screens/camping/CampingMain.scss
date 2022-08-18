@@ -1,9 +1,6 @@
 .obe {
   margin-top: vw(60px);
   padding-top: vw(30px);
-  // width: 100px;
-  // height: 5px;
-  // background-color: red;
 }
 .container {
   justify-content: center;
@@ -25,7 +22,6 @@
     background-size: cover;
     background-position: center;
     background-image: url("../../assets/images/banner.png");
-    // opacity: 0.1;
     justify-content: end;
     margin-bottom: (80px);
     position: relative;
@@ -63,7 +59,6 @@
           width: 100px;
           height: 44px;
           border-radius: (20px);
-          // margin-left: 30px;
         }
         &_btn_fold {
           display: none;
@@ -74,7 +69,6 @@
         border-radius: (20px);
         &_box {
           &_btn {
-            // background-color: $GRAY-DB;
             background-color: $MAIN;
             color: $WHITE;
             width: 100px;
@@ -97,7 +91,6 @@
 
     &_sort {
       color: $GRAY-67;
-      // appearance: none;
       border: none;
     }
   }
@@ -113,7 +106,6 @@
     }
     &_top_banner {
       height: vw(500px);
-      // opacity: 0.1;
 
       margin-bottom: vw(80px);
 
@@ -141,7 +133,6 @@
           width: vw(100px);
           height: vw(44px);
           border-radius: vw(20px);
-          // margin-right: vw(30px);
         }
       }
 
@@ -173,7 +164,6 @@
     }
     &_top_banner {
       height: vw-t(500px);
-      // opacity: 0.1;
 
       margin-bottom: vw-t(80px);
 
@@ -202,7 +192,6 @@
             width: vw-t(100px);
             height: vw-t(44px);
             border-radius: vw-t(20px);
-            // margin-right: vw-t(30px);
           }
         }
 
@@ -235,7 +224,6 @@
     }
     &_top_banner {
       height: vw-p(300px);
-      // opacity: 0.1;
 
       margin-bottom: vw-p(80px);
 
@@ -266,7 +254,6 @@
             width: vw-p(100px);
             height: vw-p(44px);
             border-radius: vw-p(20px);
-            // margin-right: vw-p(30px);
           }
           &_btn_fold {
             display: block;

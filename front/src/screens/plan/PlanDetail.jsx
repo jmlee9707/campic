@@ -7,7 +7,7 @@ import Location from "@components/common/Location";
 import { getPlanDetail, deletePlan } from "@apis/plan";
 import { useSelector } from "react-redux";
 import ModifyPlanModal from "@components/camping/ModifyPlanModal";
-// import TodoItemList from "@components/plan/TodoItemList";
+
 
 function PlanDetail() {
   const [planInfo, setPlanInfo] = useState("");
@@ -17,13 +17,6 @@ function PlanDetail() {
   const isSocial = useSelector(state => state.user.isSocial);
   const [modalVisible, setModalVisible] = useState(false);
 
-  // const [start, setStart] = useState("");
-  // const [end, setEnd] = useState("");
-
-  // const getPlanInfo = async () => {
-  //   const res = await getPlanDetail(planId);
-  //   setPlanInfo(res);
-  // };
   async function getPlanInfo() {
     try {
       const res = await getPlanDetail(planId);
@@ -35,18 +28,13 @@ function PlanDetail() {
 
   useEffect(() => {
     getPlanInfo(); // 초기 일정정보 받아오기
-    // setStart(planInfo.startDate);
-    // setEnd(planInfo.endDate);
   }, []);
 
   const openModify = () => {
-    console.log(planInfo.savedTitle);
-    // console.log(planInfo.startDate.substr(0, 10));
     setModalVisible(true);
   };
 
   const deletePlanInfo = async () => {
-    // 일정 삭제
     const check = window.confirm("정말로 삭제하시겠습니까?");
     if (check) {
       const res = await deletePlan(planId);
@@ -58,7 +46,7 @@ function PlanDetail() {
       console.log("none");
     }
   };
-  // 카카오톡 공유하기
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://developers.kakao.com/sdk/js/kakao.js";
@@ -68,9 +56,9 @@ function PlanDetail() {
     return () => document.body.removeChild(script);
   }, []);
 
-  // 버튼으로 공유하기
+
   const shareKakao = () => {
-    // console.log("url테스트", window.location.href);
+
     if (window.Kakao) {
       const kakao = window.Kakao;
       if (!kakao.isInitialized()) {
@@ -99,10 +87,8 @@ function PlanDetail() {
         </div>
         <div className="plan_detail_subtitle">
           <div className="plan_detail_subtitle_days roBold fs-20">
-            {/* {start} ~ {end} */}
             {planInfo && planInfo.startDate.substr(0, 10)} ~
-            {planInfo && planInfo.endDate.substr(0, 10)}
-            {/* 2022-07-14 ~ 2022-08-12 */}
+            {planInfo && planInfo.endDate.substr(0, 10)}ㅊ
           </div>
           <div className="plan_detail_subtitle_writer notoMid fs-18">
             작성자 : {planInfo.email}
@@ -177,8 +163,6 @@ function PlanDetail() {
             }}
             planId={planId}
             planName={planInfo.savedTitle}
-            // beforeStartDate={planInfo.startDate}
-            // beforeEndDate={planInfo.startDate}
           />
         )}
 

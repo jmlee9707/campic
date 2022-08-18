@@ -7,54 +7,43 @@ import { findPw } from "@apis/user";
 
 function FindPw() {
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // action 보내기
+  const dispatch = useDispatch(); 
 
-  // message setting
   const [subTitle, setSubTitle] = useState("이메일을 입력해주세요!");
 
-  // page, compinent 진행
   const [next, setNext] = useState(false);
 
-  // 오류 확인
   const [emailError, setEmailError] = useState(false);
-  // const [codeError, setCodeError] = useState(false);
   const [emailMess, setEmailMess] = useState("");
   const [inputName, setInputName] = useState("이메일");
   const [codeMess, setCodeMess] = useState("");
 
-  // ref 값
   const emailRef = useRef();
   const codeRef = useRef();
   const [userId, setUserId] = useState("");
   const [code, setCode] = useState("");
 
-  // 타이머 변수 저장
   const [tick, setTick] = useState(0);
   const [flag, setFlag] = useState(true);
-  // 타이머
+
   useEffect(() => {
     let countdown = null;
-    // 타이머 시작
-     if (tick > 0) {
+    if (tick > 0) {
       countdown = setInterval(() => {
         setTick(tick - 1);
       }, 1000);
-    // 타이머 끝
     } else if (tick <= 0) {
       setFlag(false);
     }
     return () => clearInterval(countdown);
   }, [tick]);
 
-
-
-  // 이메일 유효성 검사
   const checkEmail = e => {
     const regEmail =
       /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     if (regEmail.test(e.target.value) === false) {
       setEmailMess("이메일 형식으로 입력해주세요");
-      setEmailError(true); // 에러발생
+      setEmailError(true); 
     } else {
       setEmailMess("");
       setEmailError(false);
@@ -63,15 +52,10 @@ function FindPw() {
 
   const isJoined = async () => {
     if (!emailError) {
-      // setTick(10);
-      // setFlag(true);
-      // setNext(true);
-      // setInputName("인증번호");
-
       const res = await findPw(emailRef.current.value);
       if (res.message === "success") {
-        setUserId(emailRef.current.value); // 아이디값 저장
-        setCode(res.emailCode); // code 입력
+        setUserId(emailRef.current.value); 
+        setCode(res.emailCode); 
         setSubTitle("인증번호를 입력해주세요!");
         setInputName("인증번호");
         setNext(true);
@@ -86,7 +70,7 @@ function FindPw() {
   const reSend = async () => {
     const res = await findPw(userId);
     if (res.message === "success") {
-      setCode(res.emailCode); // code 입력
+      setCode(res.emailCode); 
       setSubTitle("인증번호를 입력해주세요!");
       setInputName("인증번호");
       setNext(true);
@@ -111,13 +95,11 @@ function FindPw() {
       <div className="findpw">
         <div className="findpw_title notoBold fs-28">비밀번호 찾기</div>
         <div className="findpw_sub1 notoBold fs-20">{subTitle}</div>
-        {/* 첫번째 컴포넌트  */}
         {!next && (
           <div className="findpw_sub2 notoMid fs-14">
             입력하신 이메일로 인증번호를 보내드릴게요
           </div>
         )}
-        {/* 두번째 컴포넌트  */}
         {next && (
           <div className="findpw_sub2 notoMid fs-14">
             입력하신 이메일이 {userId} 가 맞으신가요?
@@ -125,7 +107,6 @@ function FindPw() {
         )}
         <div className="findpw_email">
           <div className="findpw_email_title notoBold fs-15">{inputName}</div>
-          {/* 첫번째 컴포넌트  */}
           {!next && (
             <>
               <input
@@ -140,7 +121,6 @@ function FindPw() {
               </div>
             </>
           )}
-          {/* 두번째 컴포넌트  */}
           {next && (
             <>
               <input
@@ -153,7 +133,6 @@ function FindPw() {
             </>
           )}
         </div>
-        {/* 첫번째 컴포넌트  */}
         {!flag && !next && (
           <button
             className="findpw_btn notoBold fs-18"
@@ -163,7 +142,6 @@ function FindPw() {
             인증번호 보내기
           </button>
         )}
-        {/* 두번째 컴포넌트  */}
         {flag && next && (
           <button
           className="findpw_btn notoBold fs-18"
@@ -182,7 +160,6 @@ function FindPw() {
             인증번호 재전송
           </button>
         )}        
-        {/* 인증번호 만료 확인 */}
         {flag && <div className="fs-12 notoMid flex justify-center align-center"> 남은 시간 : { Math.floor(tick / 60) > 0 ? `${Math.floor(tick / 60)} 분` : '' } {tick % 60 } 초 </div>}
         <div className="findpw_ask notoMid fs-12 flex justify-center">
           이미 계정이 있으신가요?
