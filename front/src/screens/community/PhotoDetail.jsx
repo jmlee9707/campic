@@ -37,9 +37,9 @@ function PhotoDetail() {
   const [likeCnt, setLikeCnt] = useState(0);
   const [viewCnt, setViewCnt] = useState(0);
 
-  const date = new Date(photoDetails.uploadDate)
+  const date = new Date(photoDetails.uploadDate);
 
-  date.setHours(date.getHours() + 9)
+  date.setHours(date.getHours() + 9);
 
   const uploadTime = moment(date).fromNow();
 
@@ -70,7 +70,7 @@ function PhotoDetail() {
   // 좋아요
   const params = {
     boardId: id,
-    email: userId 
+    email: userId
   };
   async function liked() {
     const res = await photoLike(params);
@@ -93,14 +93,17 @@ function PhotoDetail() {
     boardId: id
   };
 
-  async function deletePhoto() {
-    if (window.confirm("정말로 삭제하시겠습니까?")) {
+  const deletePhoto = async () => {
+    const check = window.confirm("정말로 삭제시겠습니까?");
+    if (check) {
       const res = await photoDelete(deleteParams);
       if (res.message === "success") {
         navigate("/board/photo/home");
       }
+    } else {
+      console.log("none");
     }
-  }
+  };
 
   return (
     <div className="container flex">

@@ -8,7 +8,6 @@ import { getPlanDetail, deletePlan } from "@apis/plan";
 import { useSelector } from "react-redux";
 import ModifyPlanModal from "@components/camping/ModifyPlanModal";
 
-
 function PlanDetail() {
   const [planInfo, setPlanInfo] = useState("");
   const { id: planId } = useParams();
@@ -56,9 +55,7 @@ function PlanDetail() {
     return () => document.body.removeChild(script);
   }, []);
 
-
   const shareKakao = () => {
-
     if (window.Kakao) {
       const kakao = window.Kakao;
       if (!kakao.isInitialized()) {
@@ -88,7 +85,7 @@ function PlanDetail() {
         <div className="plan_detail_subtitle">
           <div className="plan_detail_subtitle_days roBold fs-20">
             {planInfo && planInfo.startDate.substr(0, 10)} ~
-            {planInfo && planInfo.endDate.substr(0, 10)}ㅊ
+            {planInfo && planInfo.endDate.substr(0, 10)}
           </div>
           <div className="plan_detail_subtitle_writer notoMid fs-18">
             작성자 : {planInfo.email}
@@ -146,11 +143,12 @@ function PlanDetail() {
               일정 수정
             </button>
             {isSocial === "kakao" && (
-              <button type="button"
+              <button
+                type="button"
                 onClick={shareKakao}
                 className="plan_detail_btn_kakao fs-20 notoMid flex align-center justify-center"
-                >
-                  카카오톡 공유하기
+              >
+                카카오톡 공유하기
               </button>
             )}
           </div>
@@ -165,7 +163,6 @@ function PlanDetail() {
             planName={planInfo.savedTitle}
           />
         )}
-
       </div>
     </div>
   );
