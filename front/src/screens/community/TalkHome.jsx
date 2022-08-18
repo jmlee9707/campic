@@ -13,12 +13,13 @@ function TalkHome() {
           <p className="talk_best_sub notoMid fs-22">
             이번 주에 HOT한 감성 사진
           </p>
-          <div className="talk_best_card flex">
-            <BestTalkList />
-          </div>
+          {/* <div className="talk_best_card flex"> */}
+          <BestTalkList />
+          {/* </div> */}
         </div>
         <div className="talk_camp">
-          <div className="talk_camp_title flex">
+          {/* 상단 타이틀바 */}
+          <div className="talk_camp_title flex align-center">
             <p className="talk_camp_title_text notoBold fs-32">CAMPING TALK</p>
             <Link
               to="/board/talk/regist"
@@ -27,8 +28,8 @@ function TalkHome() {
               글쓰기
             </Link>
           </div>
+          <TalkList />
         </div>
-        <TalkList />
       </div>
     </div>
   );

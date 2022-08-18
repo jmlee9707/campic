@@ -75,14 +75,17 @@ function TalkDetail() {
   const deleteParams = {
     talkId: id
   };
-  async function deleteTalk() {
-    if (window.confirm("정말로 삭제하시겠습니까?")) {
+  const deleteTalk = async () => {
+    const check = window.confirm("정말로 삭제하시겠습니까?");
+    if (check) {
       const res = await talkDelete(deleteParams);
       if (res.message === "success") {
         navigate("/board/talk/home");
       }
+    } else {
+        console.log("none");
     }
-  }
+  };
   async function checkTalkLike() {
     const res = await talkLike(params);
     if (res.message === "success") {

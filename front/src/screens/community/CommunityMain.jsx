@@ -42,7 +42,7 @@ function CommunityMain() {
               더보기
             </Link>
           </div>
-          <div className="commu_besttalk_comp">
+          <div className="commu_besttalk_comp flex align-center column justify-center">
             <BestTalkList />
           </div>
         </div>

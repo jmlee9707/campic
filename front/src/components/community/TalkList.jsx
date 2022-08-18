@@ -29,7 +29,7 @@ function TalkList() {
     }
   }, [inView, loading]);
   return (
-    <div className="talkCardList flex">
+    <div className="talkcard_list flex">
       {talkList.length !== 0 &&
         talkList.map(
           ({
