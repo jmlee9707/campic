@@ -116,7 +116,7 @@ public class CampService{
             if(searchList.getArrange() == 0){
                 criteriaQuery.orderBy(criteriaBuilder.asc(cl.get("facltNm")));  // 가나다순 정렬
             }else if(searchList.getArrange() == 1){
-                criteriaQuery.orderBy(criteriaBuilder.asc(cl.get("lclcount"))); // 인기순 정렬
+                criteriaQuery.orderBy(criteriaBuilder.desc(cl.get("lclcount"))); // 인기순 정렬
             }
 
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
