@@ -1,26 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialPhotoState = {
-  value: {
-    img: "",
-    content: "",
-    tag: ""
-  }
+  page: 0,
+  photoList: [],
+  isEnd: false
 };
 
-export const photoSlice = createSlice({
+const photoReducer = createSlice({
   name: "photo",
   initialState: initialPhotoState,
   reducers: {
-    write: (state, action) => {
-      state.value = action.payload;
-    },
     reset: state => {
-      Object.assign(state, initialPhotoState) // 포토스테이트 초기값으로 할당
+      Object.assign(state, initialPhotoState);
+    },
+    setPhotoList: (state, { payload }) => {
+      if (payload.photoList.length < 15) {
+        state.isEnd = true;
+      }
+      state.photoList = [...state.photoList, ...payload.photoList];
+      state.page = 0;
     }
   }
 });
 
-export const {write, reset} = photoSlice.actions;
+export const {
+  reset,
+  setfirstPhotoList,
+  setPhotoList
+} = photoReducer.actions;
 
-export default photoSlice.reducer;
+export default photoReducer.reducer;

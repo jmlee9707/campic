@@ -4,7 +4,6 @@ import { API_PHOTO, API_USER } from "./index";
 // eslint-disable-next-line import/prefer-default-export
 export const writePhoto = async body => {
   const res = await API_PHOTO.post("/photo", body); // POST날릴거임
-
   return res.data;
 };
 
@@ -32,7 +31,6 @@ export const photoLike = async params => {
   const res = await API_PHOTO.post(
     `/photo/like?boardId=${params.boardId}&email=${params.email}`
   );
-  console.log(res.data);
   return res.data;
 };
 
@@ -64,7 +62,7 @@ export const getBestPhoto = async () => {
 
 // 포토 수정
 export const updatePhoto = async body => {
-  const res = await API_PHOTO.put("/photo", body); // POST날릴거임
+  const res = await API_PHOTO.put("/photo", body); 
   return res.data;
 };
 
@@ -83,11 +81,6 @@ export const getMyPhoto = async email => {
 
 // 유저 프로필이미지, 닉네임
 export const getPhotoProfile = async params => {
-  console.log(1111)
-  console.log(params)
-  console.log('왜왜오애ㅗ애왜왜ㅗㅇ')
-  console.log(params)
   const res = await API_USER.get(`/user/profile/${params}`);
-  console.log(2222)
   return res.data;
 };
