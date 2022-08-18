@@ -205,7 +205,7 @@ public class PhotoServiceimpl implements PhotoService {
         community.setHashtag(photoDto.getHashtag());
 
         communityRepository.save(community);
-        LOGGER.info("update photo 목록 : ", photoDto.getBoardId(), photoDto.getContent(), photoDto.getHashtag(), photoDto.getFileName());
+        LOGGER.info("update photo 목록 : ", photoDto.getBoardId(), photoDto.getContent(), photoDto.getHashtag());
         // file 이미지 변경하기
 //        CommunityFile communityFile = communityFileRepository.findByCommunity(community);
 //

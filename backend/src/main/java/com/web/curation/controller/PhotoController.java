@@ -102,20 +102,20 @@ public class PhotoController {
 
 
     @PutMapping
-    public ResponseEntity<String> updatePhoto(PhotoDto photoDto, MultipartFile file) {
+    public ResponseEntity<String> updatePhoto(PhotoDto photoDto) {
         LOGGER.info("updatePhoto - 호출");
 
-        String fileName = file.getOriginalFilename();
-        photoDto.setFileName(fileName);
-        byte[] bytes;
+//        String fileName = file.getOriginalFilename();
+//        photoDto.setFileName(fileName);
+//        byte[] bytes;
 
-        try{
-            bytes = file.getBytes();
-            photoDto.setSaveFile(bytes);
-//            LOGGER.info("bytes 파일 {}", bytes.toString().substring(0,11));
-        }  catch (IOException e2){
-            e2.printStackTrace();
-        }
+//        try{
+//            bytes = file.getBytes();
+//            photoDto.setSaveFile(bytes);
+////            LOGGER.info("bytes 파일 {}", bytes.toString().substring(0,11));
+//        }  catch (IOException e2){
+//            e2.printStackTrace();
+//        }
 
         if (photoService.updatePhoto(photoDto)) {
             return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
