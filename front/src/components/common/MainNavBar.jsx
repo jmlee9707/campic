@@ -46,8 +46,8 @@ function MainNavBar() {
     setOpenTool(!openTool);
   };
   const openMobile = () => {
-    console.log(openMenu);
-    setOpenMenu(true);
+    console.log("openMobile",openMenu);
+    setOpenMenu((e) => !e);
   };
   const moveEdit = () => {
     navigate("/infoedit");
@@ -273,7 +273,8 @@ function MainNavBar() {
               </div>
             </div>
           )}
-          {openMenu === true && (
+          
+        {openMenu === true && (
             <div className="mobile_menu flex column ">
               <button
                 type="button"

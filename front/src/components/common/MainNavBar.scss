@@ -119,9 +119,6 @@
   }
 }
 
-.mobile_menu {
-  display: none;
-}
 
 @media screen and (max-width: $TABLET-VW) {
   #MainNavBar {
@@ -319,8 +316,9 @@
   }
   .mobile_menu {
     // height: vw-p(300px);
+    z-index: 1;
     background-color: rgba(255, 255, 255, 0.95);
-    padding: vw-p(30px) vw-p(100px);
+    padding: vw-p(5px) vw-p(100px);
     .divide {
       margin: vw-p(10px) 0;
       height: 1px;
@@ -328,7 +326,7 @@
       color: $GRAY-DB;
     }
     button {
-      margin: vw-p(8px) vw-p(20px);
+      // margin: vw-p(8px) vw-p(20px);
       padding: vw-p(10px) 0;
       // background-color: $GRAY-DB;
       // border-radius: vw(16px);
