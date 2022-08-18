@@ -81,24 +81,32 @@ function TalkUpdate() {
     const blob = new Blob([ia], {
       type: "image/jpeg"
     });
-    const file = new File([blob], "image.jpg");
-    const formData = new FormData();
-    formData.append("talkId", id);
-    formData.append("title", titleRef.current.value);
-    formData.append("hashtag", tagRef.current.value);
-    formData.append("fileName", "baek");
-    formData.append("file", file);
-    formData.append("contents", talkContent.contents);
-    // formData.append("talkId", id);
-    // eslint-disable-next-line no-restricted-syntax
-    try {
-      const res = await updateTalk(formData);
-      if (res === "success") {
-        console.log("success");
+    if (
+      titleRef.current.value === "" ||
+      talkContent.contents === "" ||
+      tagRef.current.value === ""
+    ) {
+      window.alert("내용을 채워주세요!");
+    } else {
+      const file = new File([blob], "image.jpg");
+      const formData = new FormData();
+      formData.append("talkId", id);
+      formData.append("title", titleRef.current.value);
+      formData.append("hashtag", tagRef.current.value);
+      formData.append("fileName", "baek");
+      formData.append("file", file);
+      formData.append("contents", talkContent.contents);
+      // formData.append("talkId", id);
+      // eslint-disable-next-line no-restricted-syntax
+      try {
+        const res = await updateTalk(formData);
+        if (res === "success") {
+          console.log("success");
+        }
+        navigate(`/board/talk/detail/${id}`);
+      } catch (error) {
+        console.log(error);
       }
-      navigate(`/board/talk/detail/${id}`);
-    } catch (error) {
-      console.log(error);
     }
   };
   return (
