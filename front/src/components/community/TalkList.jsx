@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { v4 } from "uuid";
+import Loading from "@components/common/Loading";
+import LastList from "@components/common/LastList";
 import TalkCard from "./TalkCard";
 import { getTalk } from "../../apis/talk";
 import "./TalkCard.scss";
@@ -10,27 +12,19 @@ function TalkList() {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const [ref, inView] = useInView();
+  const [last, setLast] = useState(false);
   async function getTalkList() {
     const res = await getTalk(page);
-    // console.log(res)
     setTalkList([...talkList, ...res]);
-    // console.log(talkList);
     setLoading(false);
+    if (res.length >= 0 && res.length < 15) {
+      setLast(true);
+    }
   }
-  // useEffect(() => {
-  //   async function setTalk() {
-  //     const page = 1;
-  //     const res = await getTalk(page);
-  //     // console.log(res);
-  //     setTalkList([...talkList, ...res]);
-  //   }
-  //   setTalk();
-  // }, []);
   useEffect(() => {
     if (inView && !loading) {
       setLoading(true);
       setPage(page + 1);
-      // console.log(page);
       getTalkList();
     }
   }, [inView, loading]);
@@ -59,7 +53,8 @@ function TalkList() {
             />
           )
         )}
-      {loading ? <div>로딩중</div> : <div ref={ref} className="observer" />}
+      {!last && loading ? <Loading /> : <div ref={ref} className="observer" />}
+      {last && <LastList />}
     </div>
   );
 }

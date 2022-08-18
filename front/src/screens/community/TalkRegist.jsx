@@ -265,9 +265,9 @@ function TalkRegist() {
                   extraPlugins: "easyimage",
                   removePlugins: "image, elementspath",
                   cloudServices_uploadUrl:
-                    "https://91146.cke-cs.com/easyimage/upload/",
+                    "https://91303.cke-cs.com/easyimage/upload/",
                   cloudServices_tokenUrl:
-                    "https://91146.cke-cs.com/token/dev/dhX4bynkAsQH3fJCt5hcTqSXRmjWtPGhgE2f?limit=10"
+                    "https://91303.cke-cs.com/token/dev/YKWXTv96VvydZrqmu2LT57Ln33mQdHh10Kfe?limit=10"
                 }}
               />
             </div>
