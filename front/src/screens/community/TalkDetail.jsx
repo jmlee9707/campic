@@ -3,7 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { v4 } from "uuid";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import moment from "moment";
 import "moment/locale/ko";
 import "./TalkDetail.scss";
@@ -13,7 +14,6 @@ import good from "@images/icon/favorite_black.svg";
 import nogood from "@images/icon/favorite_border_black_24dp.svg";
 // import TalkComments from "@components/community/TalkComments";
 import TalkComment from "@components/community/TalkComment";
-// import InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import {
   getTalkDetail,
   getTalkProfile,
@@ -73,6 +73,7 @@ function TalkDetail() {
     talkId: id,
     email: userEmail
   };
+  
   // async function getTalkInfo() {
   //   const res = await getTalkDetail(id);
   //   setTalkDetail(res);
@@ -139,6 +140,9 @@ function TalkDetail() {
   //   }
   // };
   async function submitComment() {
+    if (commentRef.current.value === "") {
+      window.alert("댓글 내용을 입력해주세요");
+    } else {
     const data = {
       email: userEmail,
       depth: 0,
@@ -152,7 +156,7 @@ function TalkDetail() {
       setTalkComments(reRes);
     }
     commentRef.current.value = "";
-  }
+  }}
   return (
     <div className="container flex justify-center">
       <div>
@@ -193,8 +197,9 @@ function TalkDetail() {
               <div className="detail_talk_content_box">
                 {talkDetail.contents !== null && (
                   <CKEditor
-                    editor={ClassicEditor}
+                    editor={InlineEditor}
                     data=""
+                    // style={{ color: "#AADC6E" }}
                     onReady={editor => {
                       editor.setData(talkDetail.contents);
                       // console.log(talkDetail.contents);
