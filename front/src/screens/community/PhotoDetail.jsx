@@ -38,7 +38,13 @@ function PhotoDetail() {
   const [likeCnt, setLikeCnt] = useState(0);
   const [viewCnt, setViewCnt] = useState(0);
 
-  const uploadTime = moment(photoDetails.uploadDate).fromNow();
+  const date = new Date(photoDetails.uploadDate)
+
+  date.setHours(date.getHours() + 9)
+
+  const uploadTime = moment(date).fromNow();
+  console.log("여기")
+  console.log(photoDetails.uploadDate)
 
   const [photoNickname, setPhotoNickname] = useState("");
   const [photoProfile, setPhotoProfile] = useState();
