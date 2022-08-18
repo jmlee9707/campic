@@ -35,7 +35,6 @@ function MainNavBar() {
     setOpenTool(!openTool);
   };
   const openMobile = () => {
-    console.log("openMobile",openMenu);
     setOpenMenu((e) => !e);
   };
   const moveEdit = () => {

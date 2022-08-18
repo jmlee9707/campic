@@ -13,6 +13,7 @@ import { writeTalk } from "../../apis/talk";
 
 
 function TalkRegist() {
+  const windowWidth = window.innerWidth;
   const profile = useSelector(selectProfile);
   const talkEmail = useSelector(state => state.user.email);
   const navigate = useNavigate();
@@ -160,7 +161,7 @@ function TalkRegist() {
             <div className="regist_text_content_box" id="editor">
               <CKEditor
                 initData=""
-                style={{ borderColor: "#467264" }}
+                style={{ borderColor: "#ffffff" }}
                 onChange={e => {
                   const data = e.editor.getData();
                   setTalkContent({
@@ -170,10 +171,9 @@ function TalkRegist() {
                 }}
                 config={{
                   readOnly: false,
-                  uiColor: "#AADC6E",
+                  uiColor: "#467264",
+                  width: windowWidth * 0.618,
                   height: 500,
-                  fontSize_sizes: 100,
-                  width: 900,
                   resize_enabled: false,
                   toolbar: [
                     ["Format", "Font", "FontSize"],
