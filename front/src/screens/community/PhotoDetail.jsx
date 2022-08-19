@@ -96,12 +96,14 @@ function PhotoDetail() {
   const deletePhoto = async () => {
     const check = window.confirm("정말로 삭제시겠습니까?");
     if (check) {
-      const res = await photoDelete(deleteParams);
-      if (res.message === "success") {
+      try {
+        // eslint-disable-next-line
+        const res = await photoDelete(deleteParams);
         navigate("/board/photo/home");
       }
-    } else {
-      console.log("none");
+      catch {
+        navigate("/board/photo/home");
+      }
     }
   };
 
