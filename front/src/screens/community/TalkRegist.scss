@@ -1,46 +1,40 @@
 .container {
   justify-content: center;
 }
-
 .divide {
   height: vw(1px);
   width: vw(800px);
   background-color: $GRAY-DB;
 }
-.regist {
-  width: vw(1200px);
-  margin-bottom: vw(300px); 
-
+.regist, .modifyTalk {
+  width: (1150px);
+  // margin-bottom: (300px); 
   &_title {
-    margin: vw(60px) 0 vw(46px) 0;
-    padding-left: vw(200px);
+    margin: (60px) 0 (46px) 0;
+    padding-left: (200px);
   }
-
   &_img {
+    justify-content: space-between;
+    display: flex;
     &_cover {
-      width: vw(480px);
-      height: vw(320px);
+      width: (570px);
+      height: (480px);
       background-color: $GRAY-679;
-      border-radius: vw(15px);
+      border-radius: (15px);
       flex-direction: column;
-
-      .camera {
-        width: vw(84px);
-        height: vw(77px);
-        fill: $GRAY-DB;
-      }
-
       &_sub {
         color: $GRAY-DB;
-        margin-top: vw(16px);
+        margin-top: (12px);
       }
-
+      .camera {
+        width: (88px);
+        height: (77px);
+      }
       &_priv {
-        width: vw(570px);
-        height: vw(480px);
-        border-radius: vw(15px);
+        width: (570px);
+        height: (480px);
+        border-radius: (15px);
         overflow: hidden;
-
         img {
           width: 100%;
           height: 100%;
@@ -49,50 +43,44 @@
       }
     }
   }
-
   &_text {
-    margin: vw(100px) 0 vw(80px) 0;
+    margin: (100px) 0 (80px) 0;
     flex-direction: column;
-
     &_name {
-      width: vw(800px);
+      width: (800px);
       justify-content: space-between;
       align-items: center;
-      margin-bottom: vw(6px);
+      margin-bottom: (6px);
       &_input {
         width: 85%;
         color: $GRAY-67;
       }
-
       &_count {
         color: $GRAY-DB;
       }
     }
-
     &_content {
       &_box {
-        margin-bottom: vw(40px);
+        margin-bottom: (40px);
       }
       &_tag {
         justify-content: flex-start;
-        width: vw(800px);
+        width: (800px);
         align-items: center;
         color: $GRAY-76;
-        margin-bottom: vw(20px);
+        margin-bottom: (20px);
       }
     }
   }
-
   &_btn {
     &_back,
     &_ok {
-      border-radius: vw(15px);
+      border-radius: (15px);
       color: $WHITE;
-      width: vw(180px);
-      height: vw(64px);
-      margin: 0 vw(34px) vw(10px) vw(34px);
+      width: (180px);
+      height: (64px);
+      margin: 0 (34px) (10px) (34px);
     }
-
     &_back {
       background-color: $GRAY-DB;
       display: flex;
@@ -102,14 +90,195 @@
     &_back:hover {
       color: $WHITE;
       background-color: $MAIN;
-      box-shadow: 0 0 vw(5px) $MAIN;
+      box-shadow: 0 0 (5px) $MAIN;
     }
-
     &_ok {
       background-color: $MAIN;
     }
     &_ok:hover {
-      box-shadow: 0 0 vw(5px) $MAIN;
+      box-shadow: 0 0 (5px) $MAIN;
+    }
+  }
+}
+@media screen and (max-width: $DESKTOP-VW) {
+  // .divide {
+  //   height: vw(1px);
+  //   width: vw(800px);
+  // }
+  .regist, .modifyTalk {
+    width: vw(1150px);
+    &_title {
+      margin: vw(60px) 0 vw(46px) 0;
+      padding-left: vw(200px);
+    }
+    &_img {
+      &_cover {
+        width: vw(570px);
+        height: vw(480px);
+        border-radius: vw(15px);
+        &_sub {
+          margin-top: vw(12px);
+        }
+        .camera {
+          width: vw(88px);
+          height: vw(77px);
+        }
+        &_priv {
+          width: vw(570px);
+          height: vw(480px);
+          border-radius: vw(15px);
+        }
+      }
+    }
+    &_text {
+      margin: vw(100px) 0 vw(80px) 0;
+      &_name {
+        width: vw(800px);
+        margin-bottom: vw(6px);
+        &_input {
+          width: 85%;
+        }
+      }
+      &_content {
+        &_box {
+          margin-bottom: vw(40px);
+        }
+        &_tag {
+          width: vw(800px);
+          margin-bottom: vw(20px);
+        }
+      }
+    }
+    &_btn {
+      &_back,
+      &_ok {
+        border-radius: vw(15px);
+        width: vw(180px);
+        height: vw(64px);
+        margin: 0 vw(34px) vw(10px) vw(34px);
+      }
+    }
+  }
+}
+@media screen and (max-width: $TABLET-VW) {
+  // .divide {
+  //   height: vw-t(1px);
+  //   width: vw-t(1350px);
+  // }
+  .regist, .modifyTalk {
+    width: vw-t(950px);
+    // margin-bottom: vw-t(300px); 
+    &_title {
+      margin: vw-t(60px) 0 vw-t(46px) 0;
+      padding-left: vw-t(150px);
+    }
+    &_img {
+      &_cover {
+        width: vw-t(800px);
+        height: vw-t(480px);
+        border-radius: vw-t(15px);
+        &_sub {
+          margin-top: vw-t(12px);
+        }
+        .camera {
+          width: vw-t(88px);
+          height: vw-t(77px);
+        }
+        &_priv {
+          width: vw-t(570px);
+          height: vw-t(480px);
+          border-radius: vw-t(15px);
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    &_text {
+      margin: vw-t(100px) 0 vw-t(80px) 0;
+      &_name {
+        width: vw-t(800px);
+        margin-bottom: vw-t(6px);
+        &_input {
+          width: 85%;
+        }
+      }
+      &_content {
+        &_box {
+          margin-bottom: vw-t(40px);
+        }
+        &_tag {
+          width: vw-t(800px);
+          margin-bottom: vw-t(20px);
+        }
+      }
+    }
+    &_btn {
+      &_back,
+      &_ok {
+        border-radius: vw-t(15px);
+        width: vw-t(180px);
+        height: vw-t(64px);
+        margin: 0 vw-t(34px) vw-t(10px) vw-t(34px);
+      }
+    }
+  }
+}
+@media screen and (max-width: $PHONE-VW) {
+  .regist, .modifyTalk {
+    width: vw-p(570px);
+    // margin-bottom: vw-p(300px); 
+    &_title {
+      margin: vw-p(60px) 0 vw-p(46px) 0;
+      padding-left: vw-p(200px);
+    }
+    &_img {
+      &_cover {
+        width: vw-p(550px);
+        height: vw-p(350px);
+        border-radius: vw-p(15px);
+        &_sub {
+          margin-top: vw-p(12px);
+        }
+        .camera {
+          width: vw-p(88px);
+          height: vw-p(77px);
+        }
+        &_priv {
+          width: vw-p(570px);
+          height: vw-p(480px);
+          border-radius: vw-p(15px);
+        }
+      }
+    }
+    &_text {
+      margin: vw-p(50px) 0 vw-p(40px) 0;
+      &_name {
+        width: vw-p(550px);
+        margin-bottom: vw-p(6px);
+        &_input {
+          width: 85%;
+        }
+      }
+      &_content {
+        &_box {
+          margin-bottom: vw-p(40px);
+        }
+        &_tag {
+          width: vw-p(550px);
+          margin-bottom: vw-p(20px);
+        }
+      }
+    }
+    &_btn {
+      &_back,
+      &_ok {
+        border-radius: vw-p(15px);
+        width: vw-p(180px);
+        height: vw-p(64px);
+        margin: 0 vw-p(24px) vw-p(10px) vw-p(24px);
+      }
     }
   }
 }

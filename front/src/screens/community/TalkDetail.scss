@@ -2,60 +2,53 @@
   justify-content: center;
 }
 .divide {
-  height: vw(1px);
-  width: vw(970px);
-  margin-bottom: vw(58px);
+  height: (1px);
+  width: (970px);
+  margin-bottom: (58px);
   background-color: $GRAY-679;
 }
-
 .detail {
   justify-content: center;
-  width: vw(1170px);
   flex-direction: column;
+  width: (720px);
   &_thumbnail {
-    width: 100%;
-    height: vw(480px);
+    width: (720px);
+    height: (480px);
     overflow: hidden;
-    margin-top: vw(60px);
-
+    margin-top: (60px);
     img {
       height: 100%;
       width: 100%;
       object-fit: cover;
     }
   }
-
   &_talk {
-    width: vw(970px);
+    // width: (970px);
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
     &_title {
-      margin-top: vw(60px);
-      margin-bottom: vw(36px);
+      justify-content: center;
+      margin-top: (60px);
+      margin-bottom: (36px);
       color: $GRAY-40;
     }
-
     &_profile {
-      margin-bottom: vw(64px);
-
+      margin-bottom: (60px);
       &_img {
-        width: vw(68px);
-        height: vw(68px);
-        margin-right: vw(28px);
+        width: (74px);
+        height: (74px);
+        margin-right: (28px);
         border-radius: 70%;
         overflow: hidden;
-
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
       }
-
       &_extra {
-        width: vw(870px);
+        width: 100%;
         justify-content: space-between;
         align-items: center;
         &_name {
@@ -66,137 +59,651 @@
         }
       }
     }
-
-    &_text {
-      width: vw(970px);
-      color: $GRAY-40;
-      margin-bottom: vw(36px);
-    }
-
     &_tag {
-      margin-top: vw(38px);
-      width: 100%;
-      margin-bottom: vw(100px);
+      margin-top: (38px);
+      // width: 100%;
+      margin-bottom: (100px);
       justify-content: space-between;
-
       &_name {
         color: $MAIN;
       }
-
       &_good {
         border-radius: 70%;
-        width: vw(48px);
-        height: vw(48px);
+        width: (48px);
+        height: (48px);
         background-color: $GRAY-679;
         justify-content: center;
         align-items: center;
         img {
-          height: vw(40px);
-          width: vw(40px);
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          // height: (40px);
+          // width: (40px);
         }
         &:hover {
           box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
         }
       }
     }
-
     &_count {
-      margin-bottom: vw(30px);
-
+      margin-bottom: (30px);
       &_view,
       &_like {
-        margin-right: vw(20px);
-
+        margin-right: (20px);
         &_name {
           color: $GRAY-67;
-          margin-right: vw(8px);
+          margin-right: (8px);
         }
-
         &_num {
           color: $GRAY-67;
         }
       }
     }
-
     &_comment {
       &_cnt {
-        margin-bottom: vw(48px);
-
+        margin-bottom: (48px);
         &_text,
         &_num {
           color: $GRAY-40;
-          margin-right: vw(8px);
+          margin-right: (8px);
         }
       }
       &_input {
-        margin-bottom: vw(48px);
-        margin-left: vw(12px);
-
+        margin-bottom: (48px);
+        margin-left: (12px);
         &_img {
-          width: vw(48px);
-          height: vw(48px);
-          margin-right: vw(16px);
+          width: (48px);
+          height: (48px);
+          margin-right: (16px);
           border-radius: 70%;
           overflow: hidden;
-
           img {
             width: 100%;
             height: 100%;
             object-fit: cover;
           }
         }
-
         &_text {
-          width: vw(800px);
-          height: vw(60px);
-          padding: vw(13px) vw(16px);
-          border: vw(1.5px) solid $GRAY-DB;
-          border-radius: vw(6px);
+          width: (800px);
+          height: (60px);
+          padding: (13px) (16px);
+          border: (1.5px) solid $GRAY-DB;
+          border-radius: (6px);
           resize: none;
           color: $GRAY-40;
-          margin-right: vw(16px);
+          margin-right: (16px);
           overflow: hidden;
-
           &:focus {
             outline: none;
           }
         }
-
         &_btn {
-          height: vw(60px);
-          border-radius: vw(15px);
+          height: (60px);
+          border-radius: (15px);
           color: $WHITE;
           background-color: $GRAY-DB;
-          width: vw(70px);
+          width: (70px);
         }
       }
     }
-
     &_btns {
-      margin-bottom: vw(50px);
+      margin-bottom: (50px);
       justify-content: end;
       &_update {
         color: $WHITE;
         background-color: $GRAY-BF;
-        width: vw(106px);
-        height: vw(40px);
-        border-radius: vw(17px);
-        margin-right: vw(24px);
+        width: (106px);
+        height: (40px);
+        border-radius: (17px);
+        margin-right: (24px);
       }
       &_delete {
         color: $WHITE;
         background-color: $GRAY-BF;
-        width: vw(106px);
-        height: vw(40px);
-        border-radius: vw(17px);
-        margin-right: vw(24px);
+        width: (106px);
+        height: (40px);
+        border-radius: (17px);
+        margin-right: (24px);
       }
       &_home {
         color: $WHITE;
         background-color: $GRAY-BF;
-        width: vw(106px);
-        height: vw(40px);
-        border-radius: vw(17px);
+        width: (106px);
+        height: (40px);
+        border-radius: (17px);
+      }
+    }
+  }
+}
+@media screen and (max-width: $DESKTOP-VW) {
+  .divide {
+    height: vw(1px);
+    width: vw(970px);
+    margin-bottom: vw(58px);
+    background-color: $GRAY-679;
+  }
+  .detail {
+    justify-content: center;
+    flex-direction: column;
+    width: vw(720px);
+    &_thumbnail {
+      width: vw(720px);
+      height: vw(480px);
+      overflow: hidden;
+      margin-top: vw(60px);
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    &_talk {
+      // width: vw(970px);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      &_title {
+        justify-content: center;
+        margin-top: vw(60px);
+        margin-bottom: vw(36px);
+        color: $GRAY-40;
+      }
+      &_profile {
+        margin-bottom: vw(60px);
+        &_img {
+          width: vw(74px);
+          height: vw(74px);
+          margin-right: vw(28px);
+          border-radius: 70%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        &_extra {
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          &_name {
+            color: $GRAY-40;
+          }
+          &_date {
+            color: $GRAY-67;
+          }
+        }
+      }
+      &_tag {
+        margin-top: vw(38px);
+        // width: 100%;
+        margin-bottom: vw(100px);
+        justify-content: space-between;
+        &_name {
+          color: $MAIN;
+        }
+        &_good {
+          border-radius: 70%;
+          width: vw(48px);
+          height: vw(48px);
+          background-color: $GRAY-679;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            // height: vw(40px);
+            // width: vw(40px);
+          }
+          &:hover {
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+          }
+        }
+      }
+      &_count {
+        margin-bottom: vw(30px);
+        &_view,
+        &_like {
+          margin-right: vw(20px);
+          &_name {
+            color: $GRAY-67;
+            margin-right: vw(8px);
+          }
+          &_num {
+            color: $GRAY-67;
+          }
+        }
+      }
+      &_comment {
+        &_cnt {
+          margin-bottom: vw(48px);
+          &_text,
+          &_num {
+            color: $GRAY-40;
+            margin-right: vw(8px);
+          }
+        }
+        &_input {
+          margin-bottom: vw(48px);
+          margin-left: vw(12px);
+          &_img {
+            width: vw(48px);
+            height: vw(48px);
+            margin-right: vw(16px);
+            border-radius: 70%;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          &_text {
+            width: vw(800px);
+            height: vw(60px);
+            padding: vw(13px) vw(16px);
+            border: vw(1.5px) solid $GRAY-DB;
+            border-radius: vw(6px);
+            resize: none;
+            color: $GRAY-40;
+            margin-right: vw(16px);
+            overflow: hidden;
+            &:focus {
+              outline: none;
+            }
+          }
+          &_btn {
+            height: vw(60px);
+            border-radius: vw(15px);
+            color: $WHITE;
+            background-color: $GRAY-DB;
+            width: vw(70px);
+          }
+        }
+      }
+      &_btns {
+        margin-bottom: vw(50px);
+        justify-content: end;
+        &_update {
+          color: $WHITE;
+          background-color: $GRAY-BF;
+          width: vw(106px);
+          height: vw(40px);
+          border-radius: vw(17px);
+          margin-right: vw(24px);
+        }
+        &_delete {
+          color: $WHITE;
+          background-color: $GRAY-BF;
+          width: vw(106px);
+          height: vw(40px);
+          border-radius: vw(17px);
+          margin-right: vw(24px);
+        }
+        &_home {
+          color: $WHITE;
+          background-color: $GRAY-BF;
+          width: vw(106px);
+          height: vw(40px);
+          border-radius: vw(17px);
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $TABLET-VW) {
+  .divide {
+    height: vw-t(1px);
+    width: vw-t(970px);
+    margin-bottom: vw-t(58px);
+    background-color: $GRAY-679;
+  }
+  .detail {
+    justify-content: center;
+    flex-direction: column;
+    width: vw-t(720px);
+    &_thumbnail {
+      width: vw-t(720px);
+      height: vw-t(480px);
+      overflow: hidden;
+      margin-top: vw-t(60px);
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    &_talk {
+      width: vw-t(720px);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      &_title {
+        justify-content: center;
+        margin-top: vw-t(60px);
+        margin-bottom: vw-t(36px);
+        color: $GRAY-40;
+      }
+      &_profile {
+        margin-bottom: vw-t(60px);
+        &_img {
+          width: vw-t(74px);
+          height: vw-t(74px);
+          margin-right: vw-t(28px);
+          border-radius: 70%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        &_extra {
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          &_name {
+            color: $GRAY-40;
+          }
+          &_date {
+            color: $GRAY-67;
+          }
+        }
+      }
+      &_tag {
+        margin-top: vw-t(38px);
+        // width: 100%;
+        margin-bottom: vw-t(100px);
+        justify-content: space-between;
+        &_name {
+          color: $MAIN;
+        }
+        &_good {
+          border-radius: 70%;
+          width: vw-t(90px);
+          height: vw-t(90px);
+          background-color: $GRAY-679;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            // height: vw-t(40px);
+            // width: vw-t(40px);
+          }
+          &:hover {
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+          }
+        }
+      }
+      &_count {
+        margin-bottom: vw-t(30px);
+        &_view,
+        &_like {
+          margin-right: vw-t(20px);
+          &_name {
+            color: $GRAY-67;
+            margin-right: vw-t(8px);
+          }
+          &_num {
+            color: $GRAY-67;
+          }
+        }
+      }
+      &_comment {
+        &_cnt {
+          margin-bottom: vw-t(48px);
+          &_text,
+          &_num {
+            color: $GRAY-40;
+            margin-right: vw-t(8px);
+          }
+        }
+        &_input {
+          margin-bottom: vw-t(48px);
+          margin-left: vw-t(12px);
+          &_img {
+            width: vw-t(48px);
+            height: vw-t(48px);
+            margin-right: vw-t(16px);
+            border-radius: 70%;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          &_text {
+            width: vw-t(800px);
+            height: vw-t(60px);
+            padding: vw-t(13px) vw-t(16px);
+            border: vw-t(1.5px) solid $GRAY-DB;
+            border-radius: vw-t(6px);
+            resize: none;
+            color: $GRAY-40;
+            margin-right: vw-t(16px);
+            overflow: hidden;
+            &:focus {
+              outline: none;
+            }
+          }
+          &_btn {
+            height: vw-t(60px);
+            border-radius: vw-t(15px);
+            color: $WHITE;
+            background-color: $GRAY-DB;
+            width: vw-t(70px);
+          }
+        }
+      }
+      &_btns {
+        margin-bottom: vw-t(50px);
+        justify-content: end;
+        &_update {
+          color: $WHITE;
+          background-color: $GRAY-BF;
+          width: vw-t(106px);
+          height: vw-t(40px);
+          border-radius: vw-t(17px);
+          margin-right: vw-t(24px);
+        }
+        &_delete {
+          color: $WHITE;
+          background-color: $GRAY-BF;
+          width: vw-t(106px);
+          height: vw-t(40px);
+          border-radius: vw-t(17px);
+          margin-right: vw-t(24px);
+        }
+        &_home {
+          color: $WHITE;
+          background-color: $GRAY-BF;
+          width: vw-t(106px);
+          height: vw-t(40px);
+          border-radius: vw-t(17px);
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $PHONE-VW) {
+  .divide {
+    height: vw-p(1px);
+    width: vw-p(700px);
+    margin-bottom: vw-p(58px);
+    background-color: $GRAY-679;
+  }
+  .detail {
+    justify-content: center;
+    flex-direction: column;
+    width: vw-p(530px);
+    &_thumbnail {
+      width: vw-p(530px);
+      height: vw-p(360px);
+      overflow: hidden;
+      margin-top: vw-p(60px);
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    &_talk {
+      // width: vw-p(970px);
+      width: vw-p(530px);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      &_title {
+        justify-content: center;
+        margin-top: vw-p(60px);
+        margin-bottom: vw-p(36px);
+        color: $GRAY-40;
+      }
+      &_profile {
+        margin-bottom: vw-p(60px);
+        &_img {
+          width: vw-p(74px);
+          height: vw-p(74px);
+          margin-right: vw-p(28px);
+          border-radius: 70%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        &_extra {
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          &_name {
+            color: $GRAY-40;
+          }
+          &_date {
+            color: $GRAY-67;
+          }
+        }
+      }
+      &_tag {
+        margin-top: vw-p(38px);
+        // width: 100%;
+        margin-bottom: vw-p(100px);
+        justify-content: space-between;
+        &_name {
+          color: $MAIN;
+        }
+        &_good {
+          border-radius: 70%;
+          width: vw-p(75px);
+          height: vw-p(75px);
+          background-color: $GRAY-679;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            // height: vw-p(40px);
+            // width: vw-p(40px);
+          }
+          &:hover {
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+          }
+        }
+      }
+      &_count {
+        margin-bottom: vw-p(30px);
+        &_view,
+        &_like {
+          margin-right: vw-p(20px);
+          &_name {
+            color: $GRAY-67;
+            margin-right: vw-p(8px);
+          }
+          &_num {
+            color: $GRAY-67;
+          }
+        }
+      }
+      &_comment {
+        &_cnt {
+          margin-bottom: vw-p(48px);
+          &_text,
+          &_num {
+            color: $GRAY-40;
+            margin-right: vw-p(8px);
+          }
+        }
+        &_input {
+          margin-bottom: vw-p(48px);
+          margin-left: vw-p(12px);
+          &_img {
+            width: vw-p(48px);
+            height: vw-p(48px);
+            margin-right: vw-p(16px);
+            border-radius: 70%;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          &_text {
+            width: vw-p(530px);
+            height: vw-p(60px);
+            padding: vw-p(13px) vw-p(16px);
+            border: vw-p(1.5px) solid $GRAY-DB;
+            border-radius: vw-p(6px);
+            resize: none;
+            color: $GRAY-40;
+            margin-right: vw-p(16px);
+            overflow: hidden;
+            &:focus {
+              outline: none;
+            }
+          }
+          &_btn {
+            height: vw-p(60px);
+            border-radius: vw-p(15px);
+            color: $WHITE;
+            background-color: $GRAY-DB;
+            width: vw-p(70px);
+          }
+        }
+      }
+      &_btns {
+        margin-bottom: vw-p(50px);
+        justify-content: end;
+        &_update {
+          color: $WHITE;
+          background-color: $GRAY-BF;
+          width: vw-p(106px);
+          height: vw-p(40px);
+          border-radius: vw-p(17px);
+          margin-right: vw-p(24px);
+        }
+        &_delete {
+          color: $WHITE;
+          background-color: $GRAY-BF;
+          width: vw-p(106px);
+          height: vw-p(40px);
+          border-radius: vw-p(17px);
+          margin-right: vw-p(24px);
+        }
+        &_home {
+          color: $WHITE;
+          background-color: $GRAY-BF;
+          width: vw-p(106px);
+          height: vw-p(40px);
+          border-radius: vw-p(17px);
+        }
       }
     }
   }

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import React, { useRef, useState, useEffect } from "react";
-import "./TalkUpdate.scss";
+import "./TalkRegist.scss";
 // import imageCompression from "browser-image-compression";
 import { useSelector } from "react-redux";
 import { CKEditor } from "ckeditor4-react";
@@ -63,10 +63,10 @@ function TalkUpdate() {
     <div className="container flex">
       {userId !== null && <div className="modifyTalk">
         <div className="modifyTalk_title notoBold fs-32">글 수정하기</div>
-        <div className="modifyTalk_content flex justify-center">
+        <div className="modifyTalk_img flex justify-center">
           {/* 사진 업로드 박스 */}
           {/* eslint-disable no-shadow */}
-            <div className="modifyTalk_content_img_priv">
+            <div className="modifyTalk_img_cover_priv">
               <img alt="수정이미지" src={[talkContent.blobFile]} />
             </div>
         </div>

@@ -78,12 +78,14 @@ function TalkDetail() {
   const deleteTalk = async () => {
     const check = window.confirm("정말로 삭제하시겠습니까?");
     if (check) {
-      const res = await talkDelete(deleteParams);
-      if (res.message === "success") {
+      try {
+        // eslint-disable-next-line
+        const res = await talkDelete(deleteParams);
         navigate("/board/talk/home");
       }
-    } else {
-        console.log("none");
+      catch {
+        navigate("/board/talk/home");
+      }
     }
   };
   async function checkTalkLike() {
@@ -127,7 +129,7 @@ function TalkDetail() {
               <img src={[talkDetail.blobFile]} alt="상단배너" />
             </div>
             <div className="detail_talk">
-              <div className="detail_talk_title notoBold fs-40">
+              <div className="detail_talk_title flex notoBold fs-40">
                 {talkDetail.title}
               </div>
               <div className="detail_talk_profile flex">
