@@ -3,52 +3,70 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border-radius: vw(17px);
-  width: vw(1100px);
-  height: vw(500px);
+  border-radius: (17px);
+  width: (1100px);
+  height: (500px);
   overflow: hidden;
   margin-bottom: (80px);
   position: relative;
   flex-direction: column;
   &_btn {
-    margin-top: vw(180px);
+    margin-top: (180px);
     a {
-      height: vw(57px);
-      width: vw(168px);
+      padding: 12px 24px;
       color: $MAIN;
       background-color: $WHITE;
-      border-radius: vw(20px);
-      margin: 0 vw(16px);
+      border-radius: (20px);
+      margin: 0 (16px);
     }
   }
 }
 
-
-@media screen and (max-width: $PHONE-VW) {
+@media screen and (max-width: $DESKTOP-VW) {
   .main_banner {
-    z-index: -1; // 위치 조절
-    background-image: url("../../assets/images/commuMain.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     border-radius: vw(17px);
     width: vw(1100px);
     height: vw(500px);
-    overflow: hidden;
     margin-bottom: (80px);
-    position: relative;
-    flex-direction: column;
     &_btn {
-      display: none; // 안보이게 만들기
       margin-top: vw(180px);
       a {
-        // border: vw(2px) solid $WHITE;
-        height: vw(57px);
-        width: vw(168px);
-        color: $MAIN;
-        background-color: $WHITE;
+        padding: vw(12px) vw(24px);
         border-radius: vw(20px);
         margin: 0 vw(16px);
+      }
+    }
+  }
+}
+@media screen and (max-width: $TABLET-VW) {
+  .main_banner {
+    border-radius: vw-t(17px);
+    width: vw-t(950px);
+    height: vw-t(500px);
+    margin-bottom: (80px);
+    &_btn {
+      margin-top: vw-t(180px);
+      a {
+        padding: vw-t(12px) vw-t(24px);
+        border-radius: vw-t(20px);
+        margin: 0 vw-t(16px);
+      }
+    }
+  }
+}
+@media screen and (max-width: $PHONE-VW) {
+  .main_banner {
+    border-radius: vw-p(17px);
+    width: vw-p(570px);
+    height: vw-p(300px);
+    margin-bottom: (80px);
+    &_btn {
+      // display: none; // 안보이게 만들기
+      margin-top: vw-p(100px);
+      a {
+        padding: vw-p(8px) vw-p(12px);
+        border-radius: vw-p(20px);
+        margin: 0 vw-p(16px);
       }
     }
   }

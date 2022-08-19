@@ -27,14 +27,6 @@
     text-align: left;
   }
 }
-// .button {
-//   padding: vw(0px);
-// }
-// .best_talkList {
-//   flex-wrap: wrap;
-//   justify-content: space-between;
-//   width: (1170px);
-// }
 
 @media screen and (max-width: $DESKTOP-VW) {
   .best_talk {
@@ -98,7 +90,7 @@
 }
 @media screen and (max-width: $PHONE-VW) {
   .best_talk {
-    width: vw-p(240px);
+    width: vw-p(250px);
     height: vw-p(240px);
     margin-bottom: vw-p(40px);
     &_img {
