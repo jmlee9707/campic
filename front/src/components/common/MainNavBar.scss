@@ -1,0 +1,329 @@
+
+
+.wrapper {
+  justify-content: center;
+}
+
+#MainNavBar {
+  .p-none {
+    display: hidden;
+  }
+  width: 100%;
+  height: (100px);
+  align-items: center;
+  color: $GRAY-67;
+
+  .container {
+    height: 100%;
+    &_inner {
+      margin: 0 (135px) 0 (135px);
+      align-content: center;
+      height: 100%;
+      justify-content: space-between;
+    }
+  }
+  .left_nav__img {
+    width: (129px);
+    margin-right: (56px);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .logo_mobile {
+      display: none;
+    }
+  }
+
+  .left_nav {
+    &__link + .left_nav__link {
+      margin-left: vw(40px);
+    }
+
+    .btn--active {
+      color: $MAIN;
+    }
+
+    .btn--unactive {
+      color: $GRAY-67;
+    }
+  }
+  .weather {
+    &_icon {
+      svg {
+        height: (28px);
+        width: (28px);
+      }
+    }
+
+    &_celc {
+      margin: 0 (24px) 0 (24px);
+    }
+  }
+
+  .right_nav {
+    &__link {
+      &_none {
+        &_join,
+        &login {
+          margin-left: (24px);
+        }
+      }
+      &_user {
+        margin: 0 (24px) 0 (24px);
+        &_img {
+          width: (32px);
+          height: (32px);
+          padding: 0;
+          overflow: hidden;
+          border-radius: 70%;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+    &_menu {
+      display: none;
+    }
+  }
+}
+.none_click {
+  box-shadow: 0 (1px) 0 rgba(181, 146, 146, 0.25);
+  position: relative;
+  top: 0;
+}
+
+.home_click {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: none;
+  box-shadow: none;
+  color: $WHITE;
+  a {
+    color: $WHITE;
+  }
+  .left_nav__link,
+  .right_nav__link_none,
+  .right_nav__link_user,
+  .weather {
+    color: $WHITE;
+  }
+}
+// .mobile_menu {
+//   display: none;
+// }
+
+@media screen and (max-width: $TABLET-VW) {
+  #MainNavBar {
+    width: 100%;
+    height: vw-t(100px);
+
+    align-items: center;
+    color: $GRAY-67;
+
+    .container {
+      width: 100%;
+      height: 100%;
+      &_inner {
+        margin: 0 vw-t(135px) 0 vw-t(135px);
+        align-content: center;
+        height: 100%;
+        justify-content: space-between;
+      }
+    }
+    .left_nav__img {
+      width: vw-t(129px);
+      margin-right: vw-t(56px);
+    }
+    .left_nav {
+      &__link + .left_nav__link {
+        margin-left: vw-t(40px);
+      }
+
+      .btn--active {
+        color: $MAIN;
+      }
+
+      .btn--unactive {
+        color: $GRAY-67;
+      }
+    }
+    .weather {
+      &_celc {
+        margin: 0 vw-t(12px) 0 vw-t(24px);
+      }
+    }
+    .right_nav {
+      &__link {
+        &_none {
+          &_join,
+          &login {
+            margin-left: vw-t(24px);
+          }
+        }
+        &_user {
+          margin: 0 vw-t(24px);
+          &_img {
+            width: vw-t(32px);
+            height: vw-t(32px);
+            padding: 0;
+            overflow: hidden;
+            border-radius: 70%;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+      &_menu {
+        display: none;
+      }
+    }
+  }
+  .none_click {
+    position: relative;
+    top: 0;
+  }
+
+  .home_click {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+    color: $WHITE;
+    a {
+      color: $WHITE;
+    }
+    .left_nav__link {
+      p {
+        color: $WHITE;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  #MainNavBar {
+    .p-none {
+      visibility: visible;
+    }
+    width: 100%;
+    height: (60px);
+
+    .container {
+      &_inner {
+        margin: 0 (42px);
+      }
+    }
+    .left_nav__img {
+      width: (70px);
+      .logo {
+        display: none;
+      }
+      .logo_mobile {
+        display: block;
+      }
+    }
+
+    .left_nav {
+      .left_nav__link {
+        margin-left: (40px);
+        display: none;
+      }
+      &__link {
+        overflow: hidden;
+      }
+    }
+    .weather {
+      &_icon {
+        svg {
+          fill: $GRAY-76;
+        }
+      }
+
+      &_celc {
+        margin: 0 (12px) 0 (12px);
+        color: $GRAY-76;
+      }
+    }
+    .right_nav {
+      &__link {
+        &_none {
+          &_join {
+            margin-left: vw-p(24px);
+            display: none;
+          }
+        }
+        &_user {
+          &_img {
+            display: none;
+          }
+        }
+      }
+      &_menu {
+        display: block;
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  .none_click {
+    position: relative;
+    top: 0;
+  }
+
+  .home_click {
+    position: relative;
+    background-color: $WHITE;
+    color: $GRAY-67;
+    box-shadow: 0 (2px) 0 rgba(181, 146, 146, 0.25);
+    a {
+      color: $GRAY-67;
+    }
+    .left_nav__link,
+    .right_nav__link_none,
+    .right_nav__link_user {
+      color: $GRAY-67;
+    }
+    .weather {
+      &_icon {
+        svg {
+          fill: $WHITE;
+        }
+      }
+    }
+  }
+  .mobile_menu {
+    // height: vw-p(300px);
+    visibility: visible;
+    padding: vw-p(5px) vw-p(100px);
+    background-color: rgba(255, 255, 255, 0.95);   
+
+    .divide {
+      margin: vw-p(10px) 0;
+      height: 1px;
+      width: 100%;
+      color: $GRAY-DB;
+    }
+    button {
+      // margin: vw-p(8px) vw-p(20px);
+      padding: vw-p(10px) 0;
+
+      &:hover {
+        color: $MAIN;
+      }
+    }
+  }
+}

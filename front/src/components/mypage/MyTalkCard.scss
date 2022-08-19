@@ -1,0 +1,32 @@
+.talkCard {
+  width: vw(370px);
+  margin-bottom: vw(24px);
+  &_img {
+    width: vw(370px);
+    height: vw(230px);
+    overflow: hidden;
+    margin-bottom: vw(24px);
+    border-radius: vw(8px);
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &_title {
+    color: $GRAY-40;
+    width: vw(370px);
+    height: vw(26px);
+    overflow: hidden;
+  }
+}
+
+.talkList {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: vw(830px);
+  &_nope {
+    color: $GRAY-DB;
+    justify-content: center;
+    margin-left: vw(240px);
+  }
+}

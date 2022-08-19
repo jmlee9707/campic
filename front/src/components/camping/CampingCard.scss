@@ -1,0 +1,239 @@
+.camping_card {
+  margin-top: (48px);
+  width: (1100px);
+
+  &_img {
+    margin-bottom: (40px);
+    width: (1100px);
+    height: (480px);
+    &_cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: (20px);
+      border: none;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &_info {
+    justify-content: space-between;
+    padding-bottom: (53px);
+    align-items: center;
+    &_txt {
+      &_name {
+        color: $GRAY-40;
+        margin-bottom: (12px);
+      }
+
+      &_place {
+        &_icon {
+          margin-right: (8px);
+          width: (32px);
+          height: (32px);
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        &_text {
+          color: $GRAY-67;
+        }
+      }
+    }
+
+    &_btn {
+      &_plan,
+      &_move {
+        width: (182px);
+        height: (50px);
+        border-radius: (15px);
+        border: (1px) solid $MAIN;
+        margin-left: (20px);
+        box-shadow: 0 0 (5px) $MAIN;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      &_plan {
+        color: $MAIN;
+      }
+      &_move {
+        background-color: $MAIN;
+        color: $WHITE;
+      }
+    }
+  }
+
+  .divide {
+    width: 100%;
+    height: (1px);
+    background-color: $GRAY-E4;
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .camping_card {
+    margin-top: vw(48px);
+    width: vw(1100px);
+
+    &_img {
+      margin-bottom: vw(40px);
+      width: vw(1100px);
+      height: vw(480px);
+      &_cover {
+        border-radius: vw(20px);
+      }
+    }
+
+    &_info {
+      padding-bottom: vw(53px);
+
+      &_txt {
+        &_name {
+          margin-bottom: vw(12px);
+        }
+
+        &_place {
+          &_icon {
+            margin-right: vw(8px);
+            width: vw(32px);
+            height: vw(32px);
+          }
+        }
+      }
+
+      &_btn {
+        &_plan,
+        &_move {
+          width: vw(182px);
+          height: vw(50px);
+          border-radius: vw(15px);
+          border: vw(1px) solid $MAIN;
+          margin-left: vw(20px);
+          box-shadow: 0 0 vw(5px) $MAIN;
+        }
+      }
+    }
+
+    .divide {
+      width: 100%;
+      height: vw(1px);
+      background-color: $GRAY-E4;
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .camping_card {
+    margin-top: vw-t(48px);
+    width: vw-t(950px);
+
+    &_img {
+      margin-bottom: vw-t(40px);
+      width: vw-t(950px);
+      height: vw-t(480px);
+      &_cover {
+        border-radius: vw-t(20px);
+      }
+    }
+
+    &_info {
+      padding-bottom: vw-t(53px);
+
+      &_txt {
+        &_name {
+          margin-bottom: vw-t(12px);
+        }
+
+        &_place {
+          &_icon {
+            margin-right: vw-t(8px);
+            width: vw-t(32px);
+            height: vw-t(32px);
+          }
+        }
+      }
+
+      &_btn {
+        &_plan,
+        &_move {
+          width: vw-t(182px);
+          height: vw-t(50px);
+          border-radius: vw-t(15px);
+          border: vw-t(1px) solid $MAIN;
+          margin-left: vw-t(20px);
+          box-shadow: 0 0 vw-t(5px) $MAIN;
+        }
+      }
+    }
+
+    .divide {
+      width: 100%;
+      height: vw-t(1px);
+      background-color: $GRAY-E4;
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .camping_card {
+    margin-top: vw-p(48px);
+    width: vw-p(570px);
+
+    &_img {
+      margin-bottom: vw-p(40px);
+      width: vw-p(570px);
+      height: vw-p(320px);
+      &_cover {
+        border-radius: vw-p(20px);
+      }
+    }
+
+    &_info {
+      padding-bottom: vw-p(53px);
+      display: block;
+      // flex-direction: column;
+      // align-items: flex-start;
+      // justify-content: flex-start;
+
+      &_txt {
+        &_name {
+          margin-bottom: vw-p(12px);
+        }
+
+        &_place {
+          &_icon {
+            margin-right: vw-p(8px);
+            width: vw-p(32px);
+            height: vw-p(32px);
+          }
+        }
+      }
+
+      &_btn {
+        margin-top: vw-t(60px);
+        &_plan,
+        &_move {
+          width: vw-p(182px);
+          height: vw-p(50px);
+          border-radius: vw-p(15px);
+          border: vw-p(1px) solid $MAIN;
+          margin-right: vw-p(20px);
+          box-shadow: 0 0 vw-p(5px) $MAIN;
+        }
+      }
+    }
+
+    .divide {
+      width: 100%;
+      height: vw-p(1px);
+      background-color: $GRAY-E4;
+    }
+  }
+}

@@ -1,0 +1,578 @@
+.container {
+  justify-content: center;
+}
+
+.plan_detail {
+  width: (1150px);
+  .divide {
+    margin-top: 100px;
+    width: 100%;
+    height: (1px);
+    background-color: $GRAY-E4;
+  }
+  &_title {
+    margin-top: (60px);
+    color: $GRAY-40;
+  }
+  &_subtitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &_writer {
+      color: $GRAY-67;
+    }
+    &_days {
+      color: $GRAY-67;
+      background-color: $GRAY-F3;
+      border-radius: (27px);
+      padding: (9px) (28px);
+      margin: (40px) 0 (44px) 0;
+      width: (300px);
+    }
+  }
+  &_box {
+    margin-bottom: 100px;
+    &_right {
+      width: (600px);
+      &_img {
+        width: (570px);
+        height: (480px);
+        overflow: hidden;
+        margin-bottom: (40px);
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      &_campName {
+        margin-bottom: (32px);
+        color: $GRAY-40;
+      }
+      &_address,
+      &_phone {
+        margin-bottom: (12px);
+        color: $GRAY-67;
+      }
+    }
+    &_left {
+      margin-left: (24px);
+      &_title {
+        color: $GRAY-40;
+        margin-bottom: (40px);
+      }
+      &_input {
+        margin-bottom: (44px);
+        input {
+          width: (477px);
+          height: (52px);
+          padding: (14px) (20px);
+          border: (1.5px) solid $MAIN;
+          border-radius: (15px);
+          color: $GRAY-67;
+          margin-right: (16px);
+          &:hover,
+          &:focus {
+            box-shadow: 0px 0px 5px $MAIN;
+          }
+        }
+        button {
+          width: (52px);
+          height: (52px);
+          background-color: $MAIN;
+          border-radius: (15px);
+          img {
+            width: (40px);
+            height: (40px);
+          }
+          &:hover {
+            box-shadow: 0px 0px 5px $MAIN;
+          }
+        }
+      }
+    }
+  }
+  #map {
+    width: (1150px);
+    height: (720px);
+  }
+  &_btn {
+    margin-top: 80px;
+    &_kakao,
+    &_delete,
+    &_modify {
+      border-radius: 20px;
+      background-color: $GRAY-DB;
+      width: 180px;
+      height: 52px;
+      margin: 0 40px;
+      color: $WHITE;
+      margin-bottom: 80px;
+      &:hover {
+        background-color: $MAIN;
+        box-shadow: 0px 0px 5px $MAIN;
+        color: $WHITE;
+      }
+    }
+  }
+}
+
+.todo_box {
+  margin-bottom: (20px);
+  button {
+    width: (40px);
+    height: (40px);
+    border-radius: (12px);
+    margin-right: (20px);
+
+    img {
+      width: (28px);
+      height: (28px);
+    }
+  }
+  &_btn {
+    &_done {
+      border: 2px solid $MAIN;
+      background-color: $MAIN;
+      opacity: 0.8;
+      &:hover {
+        box-shadow: 0px 0px 5px $MAIN;
+      }
+    }
+    &_yet {
+      border: 2px solid $GRAY-E4;
+      background-color: $WHITE;
+      &:hover {
+        box-shadow: 0px 0px 5px $GRAY-E4;
+      }
+    }
+  }
+  &_content {
+    display: flex;
+    align-items: center;
+    &_text {
+      background-color: $GRAY-F3;
+      border-radius: (12px);
+      padding: (11px) (18px);
+      width: (483px);
+      color: $GRAY-67;
+      &_done {
+        text-decoration: line-through 2px;
+      }
+    }
+    &_delete {
+      color: $RED;
+      margin-left: vw(50px);
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .plan_detail {
+    width: vw(1150px);
+    .divide {
+      margin-top: vw(100px);
+      height: vw(1px);
+    }
+    &_title {
+      margin-top: (60px);
+    }
+    &_subtitle {
+      &_days {
+        border-radius: vw(27px);
+        padding: vw(9px) vw(28px);
+        margin: vw(40px) 0 vw(44px) 0;
+        width: vw(300px);
+      }
+    }
+    &_box {
+      margin-bottom: vw(100px);
+      &_right {
+        width: vw(600px);
+        &_img {
+          width: vw(570px);
+          height: vw(480px);
+          margin-bottom: vw(40px);
+        }
+        &_campName {
+          margin-bottom: vw(32px);
+        }
+        &_address,
+        &_phone {
+          margin-bottom: vw(12px);
+        }
+      }
+      &_left {
+        margin-left: vw(24px);
+        &_title {
+          margin-bottom: vw(40px);
+        }
+        &_input {
+          margin-bottom: vw(44px);
+          input {
+            width: vw(477px);
+            height: vw(52px);
+            padding: vw(14px) vw(20px);
+            border: vw(1.5px) solid $MAIN;
+            border-radius: vw(15px);
+            margin-right: vw(16px);
+            &:hover,
+            &:focus {
+              box-shadow: 0px 0px vw(5px) $MAIN;
+            }
+          }
+          button {
+            width: vw(52px);
+            height: vw(52px);
+            border-radius: vw(15px);
+            img {
+              width: vw(40px);
+              height: vw(40px);
+            }
+            &:hover {
+              box-shadow: 0px 0px vw(5px) $MAIN;
+            }
+          }
+        }
+      }
+    }
+    #map {
+      width: vw(1170px);
+      height: vw(720px);
+    }
+    &_btn {
+      margin-top: vw(80px);
+      &_delete,
+      &_modify {
+        border-radius: vw(20px);
+        width: vw(180px);
+        height: vw(52px);
+        margin: 0 vw(40px);
+        margin-bottom: vw(80px);
+      }
+    }
+  }
+
+  .todo_box {
+    margin-bottom: vw(20px);
+    button {
+      width: vw(40px);
+      height: vw(40px);
+      border-radius: vw(12px);
+      margin-right: vw(20px);
+
+      img {
+        width: vw(28px);
+        height: vw(28px);
+      }
+    }
+    &_btn {
+      &_done {
+        border: vw(2px) solid $MAIN;
+        &:hover {
+          box-shadow: 0 0 vw(5px) $MAIN;
+        }
+      }
+      &_yet {
+        border: vw(2px) solid $GRAY-E4;
+        &:hover {
+          box-shadow: 0 0 vw(5px) $GRAY-E4;
+        }
+      }
+    }
+    &_content {
+      &_text {
+        border-radius: vw(12px);
+        padding: vw(11px) vw(18px);
+        width: vw(483px);
+        &_done {
+          text-decoration: line-through vw(2px);
+        }
+      }
+      &_delete {
+        margin-left: vw(50px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .plan_detail {
+    width: vw-t(950px);
+    .divide {
+      margin-top: vw-t(100px);
+      height: vw-t(1px);
+    }
+    &_title {
+      margin-top: (60px);
+    }
+    &_subtitle {
+      align-items: center;
+      &_days {
+        border-radius: vw-t(27px);
+        padding: vw-t(9px) vw-t(28px);
+        margin: vw-t(30px) 0 vw-t(44px) 0;
+        width: vw-t(300px);
+      }
+    }
+    &_box {
+      flex-direction: column;
+      margin-bottom: vw-t(70px);
+      border-top: vw-t(1px) solid $GRAY-E4;
+      &_right {
+        width: vw-t(600px);
+        margin: 0 0 vw-t(30px) 0;
+        &_img {
+          width: vw-t(950px);
+          height: vw-t(650px);
+          margin-bottom: vw-t(40px);
+        }
+        &_campName {
+          margin-bottom: vw-t(32px);
+        }
+        &_address,
+        &_phone {
+          margin-bottom: vw-t(12px);
+        }
+      }
+      &_left {
+        border-top: vw-t(1px) solid $GRAY-E4;
+        margin: vw-t(20px) 0 0 0;
+
+        &_title {
+          margin: vw-t(64px) 0 vw-t(40px) 0;
+        }
+        &_input {
+          margin-bottom: vw-t(44px);
+          input {
+            width: vw-t(900px);
+            height: vw-t(52px);
+            padding: vw-t(14px) vw-t(20px);
+            border: vw-t(1.5px) solid $MAIN;
+            border-radius: vw-t(15px);
+            margin-right: vw-t(16px);
+            &:hover,
+            &:focus {
+              box-shadow: 0px 0px vw-t(5px) $MAIN;
+            }
+          }
+          button {
+            width: vw-t(52px);
+            height: vw-t(52px);
+            border-radius: vw-t(15px);
+            img {
+              width: vw-t(40px);
+              height: vw-t(40px);
+            }
+            &:hover {
+              box-shadow: 0px 0px vw-t(5px) $MAIN;
+            }
+          }
+        }
+      }
+    }
+    &_map {
+      padding-top: vw-t(20px);
+    }
+    #map {
+      width: vw-t(950px);
+      height: vw-t(720px);
+    }
+    &_btn {
+      margin-top: vw-t(80px);
+      &_delete,
+      &_modify {
+        border-radius: vw-t(20px);
+        width: vw-t(200px);
+        height: vw-t(52px);
+        margin: 0 vw-t(40px);
+        margin-bottom: vw-t(80px);
+      }
+    }
+  }
+
+  .todo_box {
+    margin-bottom: vw-t(20px);
+    button {
+      width: vw-t(40px);
+      height: vw-t(40px);
+      border-radius: vw-t(12px);
+      margin-right: vw-t(20px);
+
+      img {
+        width: vw-t(28px);
+        height: vw-t(28px);
+      }
+    }
+    &_btn {
+      &_done {
+        border: vw-t(2px) solid $MAIN;
+        &:hover {
+          box-shadow: 0 0 vw-t(5px) $MAIN;
+        }
+      }
+      &_yet {
+        border: vw-t(2px) solid $GRAY-E4;
+        &:hover {
+          box-shadow: 0 0 vw-t(5px) $GRAY-E4;
+        }
+      }
+    }
+    &_content {
+      &_text {
+        border-radius: vw-t(12px);
+        padding: vw-t(11px) vw-t(18px);
+        width: vw-t(483px);
+        &_done {
+          text-decoration: line-through vw-t(2px);
+        }
+      }
+      &_delete {
+        margin-left: vw-t(50px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .plan_detail {
+    width: vw-p(570px);
+    .divide {
+      margin-top: vw-p(80px);
+      height: vw-p(1px);
+    }
+    &_title {
+      margin-top: (60px);
+    }
+    &_subtitle {
+      display: block;
+      flex-direction: column;
+      align-items: center;
+      &_days {
+        border-radius: vw-p(27px);
+        padding: vw-p(4px) vw-p(20px);
+        margin: vw-p(30px) 0 vw-p(14px) 0;
+        width: vw-p(300px);
+      }
+      &_writer {
+        margin: vw-p(20px) 0;
+      }
+    }
+    &_box {
+      flex-direction: column;
+      margin-bottom: vw-p(70px);
+      border-top: vw-p(1px) solid $GRAY-E4;
+      &_right {
+        width: vw-p(600px);
+        margin: 0 0 vw-p(30px) 0;
+        &_img {
+          width: vw-p(570px);
+          height: vw-p(570px);
+          margin-bottom: vw-p(40px);
+        }
+        &_campName {
+          margin-bottom: vw-p(32px);
+        }
+        &_address,
+        &_phone {
+          margin-bottom: vw-p(12px);
+        }
+      }
+      &_left {
+        border-top: vw-p(1px) solid $GRAY-E4;
+        margin: vw-p(20px) 0 0 0;
+
+        &_title {
+          margin: vw-p(64px) 0 vw-p(40px) 0;
+        }
+        &_input {
+          margin-bottom: vw-p(44px);
+          input {
+            width: vw-p(520px);
+            height: vw-p(52px);
+            padding: vw-p(14px) vw-p(20px);
+            border: vw-p(1.5px) solid $MAIN;
+            border-radius: vw-p(15px);
+            margin-right: vw-p(16px);
+            &:hover,
+            &:focus {
+              box-shadow: 0px 0px vw-p(5px) $MAIN;
+            }
+          }
+          button {
+            width: vw-p(52px);
+            height: vw-p(52px);
+            border-radius: vw-p(15px);
+            img {
+              width: vw-p(40px);
+              height: vw-p(40px);
+            }
+            &:hover {
+              box-shadow: 0px 0px vw-p(5px) $MAIN;
+            }
+          }
+        }
+      }
+    }
+    &_map {
+      padding-top: vw-p(20px);
+    }
+    #map {
+      width: vw-p(570px);
+      height: vw-p(500px);
+    }
+    &_btn {
+      margin-top: vw-p(50px);
+      &_delete,
+      &_modify {
+        border-radius: vw-p(20px);
+        width: vw-p(180px);
+        height: vw-p(52px);
+        margin: 0 vw-p(20px);
+        margin-bottom: vw-p(80px);
+      }
+    }
+  }
+
+  .todo_box {
+    margin-bottom: vw-p(20px);
+    button {
+      width: vw-p(40px);
+      height: vw-p(40px);
+      border-radius: vw-p(12px);
+      margin-right: vw-p(20px);
+
+      img {
+        width: vw-p(28px);
+        height: vw-p(28px);
+      }
+    }
+    &_btn {
+      &_done {
+        border: vw-p(2px) solid $MAIN;
+        &:hover {
+          box-shadow: 0 0 vw-p(5px) $MAIN;
+        }
+      }
+      &_yet {
+        border: vw-p(2px) solid $GRAY-E4;
+        &:hover {
+          box-shadow: 0 0 vw-p(5px) $GRAY-E4;
+        }
+      }
+    }
+    &_content {
+      &_text {
+        border-radius: vw-p(12px);
+        padding: vw-p(11px) vw-p(18px);
+        width: vw-p(483px);
+        &_done {
+          text-decoration: line-through vw-p(2px);
+        }
+      }
+      &_delete {
+        margin-left: vw-p(50px);
+      }
+    }
+  }
+}

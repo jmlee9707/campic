@@ -1,0 +1,211 @@
+.search {
+  &_keyword,
+  &_loca,
+  &_tag {
+    margin-bottom: 30px;
+  }
+  &_keyword {
+    &_input {
+      width: (450px);
+      height: (44px);
+      border: (1.5px) solid $GRAY-BF;
+      border-radius: (18px);
+      padding: 0 (20px);
+      color: $GRAY-67;
+    }
+  }
+  &_loca {
+    select {
+      border: (1.5px) solid $GRAY-BF;
+      height: (46px);
+      border-radius: (18px);
+      &:hover,
+      &:focus {
+        box-shadow: 0 0 (5px) $MAIN;
+      }
+    }
+    select {
+      width: (200px);
+      height: 44px;
+      color: $GRAY-BF;
+      padding: 0 (16px);
+      margin-right: (32px);
+      appearance: none;
+    }
+  }
+
+  &_tag {
+    align-items: flex-end;
+    width: 1000px;
+    &_list {
+      justify-content: center;
+      flex-wrap: wrap;
+      button {
+        color: $GRAY-BF;
+        border: (1.5px) solid $GRAY-BF;
+        padding: (7px) (20px);
+        border-radius: (20px);
+        margin: 0 (12px) (16px) 0;
+      }
+      .selected {
+        background-color: $MAIN;
+        color: $WHITE;
+        opacity: 0.8;
+        border: (1.5px) solid $MAIN;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $DESKTOP-VW) {
+  .search {
+    &_keyword,
+    &_loca,
+    &_tag {
+      margin-bottom: vw(30px);
+    }
+    &_keyword {
+      &_input {
+        width: vw(450px);
+        height: vw(44px);
+        border: vw(1.5px) solid $GRAY-BF;
+        border-radius: vw(18px);
+        padding: 0 vw(20px);
+      }
+    }
+    &_loca {
+      select {
+        border: vw(1.5px) solid $GRAY-BF;
+        height: vw(46px);
+        border-radius: vw(18px);
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 vw(5px) $MAIN;
+        }
+      }
+      select {
+        width: vw(200px);
+        height: vw(44px);
+        padding: 0 vw(16px);
+        margin-right: vw(32px);
+      }
+    }
+
+    &_tag {
+      width: vw(1000px);
+      &_list {
+        button {
+          border: vw(1.5px) solid $GRAY-BF;
+          padding: vw(7px) vw(20px);
+          border-radius: vw(20px);
+          margin: 0 vw(12px) vw(16px) 0;
+        }
+        .selected {
+          border: vw(1.5px) solid $MAIN;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .search {
+    &_keyword,
+    &_loca,
+    &_tag {
+      margin-bottom: vw-t(30px);
+    }
+    &_keyword {
+      &_input {
+        width: vw-t(450px);
+        height: vw-t(44px);
+        border: vw-t(1.5px) solid $GRAY-BF;
+        border-radius: vw-t(18px);
+        padding: 0 vw-t(20px);
+      }
+    }
+    &_loca {
+      select {
+        border: vw-t(1.5px) solid $GRAY-BF;
+        height: vw-t(46px);
+        border-radius: vw-t(18px);
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 vw-t(5px) $MAIN;
+        }
+      }
+      select {
+        width: vw-t(200px);
+        height: vw-t(44px);
+        padding: 0 vw-t(16px);
+        margin-right: vw-t(32px);
+      }
+    }
+
+    &_tag {
+      width: vw-t(1000px);
+      &_list {
+        button {
+          border: vw-t(1.5px) solid $GRAY-BF;
+          padding: vw-t(7px) vw-t(20px);
+          border-radius: vw-t(20px);
+          margin: 0 vw-t(12px) vw-t(16px) 0;
+        }
+        .selected {
+          border: vw-t(1.5px) solid $MAIN;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .search {
+    &_keyword,
+    &_loca,
+    &_tag {
+      margin-bottom: vw-p(20px);
+    }
+    &_keyword {
+      &_input {
+        width: vw-p(380px);
+        height: vw-p(44px);
+        border: vw-p(1.5px) solid $GRAY-BF;
+        border-radius: vw-p(18px);
+        padding: 0 vw-p(20px);
+      }
+    }
+    &_loca {
+      select {
+        border: vw-p(1.5px) solid $GRAY-BF;
+        height: vw-p(46px);
+        border-radius: vw-p(18px);
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 vw-p(5px) $MAIN;
+        }
+      }
+      select {
+        width: vw-p(180px);
+        height: vw-p(44px);
+        padding: 0 vw-p(16px);
+        margin-right: vw-p(20px);
+      }
+    }
+
+    &_tag {
+      width: vw-p(420px);
+      &_list {
+        button {
+          border: vw-p(1.5px) solid $GRAY-BF;
+          padding: vw-p(7px) vw-p(10px);
+          border-radius: vw-p(18px);
+          margin: 0 vw-p(8px) vw-p(14px) 0;
+        }
+        .selected {
+          border: vw-p(1.5px) solid $MAIN;
+        }
+      }
+    }
+  }
+}
