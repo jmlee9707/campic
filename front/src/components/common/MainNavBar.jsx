@@ -83,7 +83,7 @@ function MainNavBar() {
     }
   };
   const moveInfo = () => {
-    navigate("/infoedit");
+    window.open("https://scratch-octopus-16f.notion.site/500f89ec3f964ea1bb07589d251f5fc8");
     if (openTool === true) {
       setOpenTool(!openTool);
     }
