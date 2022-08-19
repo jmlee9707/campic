@@ -11,6 +11,7 @@ import PlzLogin from "@screens/PlzLogin"
 import { updateTalk, getTalkDetail } from "../../apis/talk";
 
 function TalkUpdate() {
+  const windowWidth = window.innerWidth;
   const userId = useSelector(state => state.user.email);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -90,7 +91,7 @@ function TalkUpdate() {
           <div className="modifyTalk_text_content_box" id="editor">
             {talkContent.contents != null && (
               <CKEditor
-                style={{ borderColor: "#467264" }}
+                style={{ borderColor: "#ffffff" }}
                 initData={talkContent.contents}
                 onChange={e => {
                   const data = e.editor.getData();
@@ -101,10 +102,10 @@ function TalkUpdate() {
                 }}
                 config={{
                   readOnly: false,
-                  uiColor: "#AADC6E",
+                  uiColor: "#467264",
+                  width: windowWidth * 0.618,
                   height: 500,
                   fontSize_sizes: 100,
-                  width: 900,
                   resize_enabled: false,
                   toolbar: [
                     ["Format", "Font", "FontSize"],
