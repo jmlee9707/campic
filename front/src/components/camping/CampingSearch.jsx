@@ -184,8 +184,7 @@ export function CampingSearchTag() {
   ));
 
   const searchTags = async () => {
-    const res = await searchTag(`${encodeURIComponent(selectTags)}`);
-    console.log(res);
+    await searchTag(`${encodeURIComponent(selectTags)}`);
   };
   return (
     <div className="search_tag flex">

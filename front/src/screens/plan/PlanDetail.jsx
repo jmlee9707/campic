@@ -37,7 +37,6 @@ function PlanDetail() {
     const check = window.confirm("정말로 삭제하시겠습니까?");
     if (check) {
       const res = await deletePlan(planId);
-      console.log(res);
       if (res === "fail") {
         navigate("/plan");
       }

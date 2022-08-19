@@ -10,7 +10,6 @@ import useOutSideClick from "../../utils/useOutSideClick";
 function Modal({ onClose, campId, facltNm }) {
   const navigate = useNavigate();
   const email = useSelector(state => state.user.email);
-  console.log(email);
   const handleClose = () => {
     onClose();
   };

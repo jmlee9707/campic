@@ -10,7 +10,6 @@ function TalkMain() {
   useEffect(() => {
     async function getTalk() {
       const res = await getTalkBest();
-      console.log(res);
       setMainTalk(res);
     }
     getTalk();

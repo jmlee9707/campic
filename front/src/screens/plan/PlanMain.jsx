@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./PlanMain.scss";
@@ -8,9 +8,6 @@ import PlanIngList from "@components/plan/PlanIngList";
 
 function PlanMain() {
   const userId = useSelector(state => state.user.email);
-  useEffect(() => {
-    console.log(userId);
-  });
   return (
     <div className="container flex justify-center">
       <div className="plan">

@@ -18,7 +18,6 @@ function NaverLogin () {
 
     axios.get(`https://nid.naver.com/oauth2.0/token?grant_type=${process.env.REACT_APP_GRANT_TYPE}&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&client_secret=${process.env.REACT_APP_NAVER_CLIENT_SECRET}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URL}&state=${code1[1]}&code=${code1[0]}`)
     .then((res) => {
-      console.log("네이버 버그 테스트", res)
       axios.post(`${BASE_URL}/social/naver`, {Authorization: res.data.access_token})
       .then(res1 => {
         dispatch(setEmail({email: res1.data.email}))

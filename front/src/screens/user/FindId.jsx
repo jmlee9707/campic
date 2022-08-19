@@ -27,7 +27,6 @@ function FindId() {
   const canFind = async () => {
     if (!phoneError) {
         const res = await findId(phoneRef.current.value);
-        console.log("비번찾기", res)
         dispatch(setEmail({ email: res.email }));
         navigate("/findid/finish");
     }
