@@ -10,12 +10,12 @@
 .detail {
   justify-content: center;
   flex-direction: column;
-  width: (720px);
+  width: (1150px);
   &_thumbnail {
-    width: (720px);
+    width: (1150px);
     height: (480px);
     overflow: hidden;
-    margin-top: (60px);
+    // margin-top: (60px);
     img {
       height: 100%;
       width: 100%;
@@ -150,28 +150,16 @@
     &_btns {
       margin-bottom: (50px);
       justify-content: end;
-      &_update {
-        color: $WHITE;
-        background-color: $GRAY-BF;
-        width: (106px);
-        height: (40px);
-        border-radius: (17px);
-        margin-right: (24px);
-      }
-      &_delete {
-        color: $WHITE;
-        background-color: $GRAY-BF;
-        width: (106px);
-        height: (40px);
-        border-radius: (17px);
-        margin-right: (24px);
-      }
+      &_update,
+      &_delete,
       &_home {
         color: $WHITE;
         background-color: $GRAY-BF;
-        width: (106px);
-        height: (40px);
+        // width: (106px);
+        // height: (40px);
+        padding: (12px) (24px);
         border-radius: (17px);
+        margin-right: (24px);
       }
     }
   }
@@ -186,9 +174,9 @@
   .detail {
     justify-content: center;
     flex-direction: column;
-    width: vw(720px);
+    width: vw(1150px);
     &_thumbnail {
-      width: vw(720px);
+      width: vw(1150px);
       height: vw(480px);
       overflow: hidden;
       margin-top: vw(60px);
@@ -326,28 +314,16 @@
       &_btns {
         margin-bottom: vw(50px);
         justify-content: end;
-        &_update {
-          color: $WHITE;
-          background-color: $GRAY-BF;
-          width: vw(106px);
-          height: vw(40px);
-          border-radius: vw(17px);
-          margin-right: vw(24px);
-        }
-        &_delete {
-          color: $WHITE;
-          background-color: $GRAY-BF;
-          width: vw(106px);
-          height: vw(40px);
-          border-radius: vw(17px);
-          margin-right: vw(24px);
-        }
+        &_update,
+        &_delete,
         &_home {
           color: $WHITE;
           background-color: $GRAY-BF;
-          width: vw(106px);
-          height: vw(40px);
+          // width: (106px);
+          // height: (40px);
+          padding: vw(12px) vw(24px);
           border-radius: vw(17px);
+          margin-right: vw(24px);
         }
       }
     }
@@ -363,9 +339,9 @@
   .detail {
     justify-content: center;
     flex-direction: column;
-    width: vw-t(720px);
+    width: vw-t(950px);
     &_thumbnail {
-      width: vw-t(720px);
+      width: vw-t(950px);
       height: vw-t(480px);
       overflow: hidden;
       margin-top: vw-t(60px);
@@ -503,28 +479,16 @@
       &_btns {
         margin-bottom: vw-t(50px);
         justify-content: end;
-        &_update {
-          color: $WHITE;
-          background-color: $GRAY-BF;
-          width: vw-t(106px);
-          height: vw-t(40px);
-          border-radius: vw-t(17px);
-          margin-right: vw-t(24px);
-        }
-        &_delete {
-          color: $WHITE;
-          background-color: $GRAY-BF;
-          width: vw-t(106px);
-          height: vw-t(40px);
-          border-radius: vw-t(17px);
-          margin-right: vw-t(24px);
-        }
+        &_update,
+        &_delete,
         &_home {
           color: $WHITE;
           background-color: $GRAY-BF;
-          width: vw-t(106px);
-          height: vw-t(40px);
+          // width: (106px);
+          // height: (40px);
+          padding: vw-t(12px) vw-t(24px);
           border-radius: vw-t(17px);
+          margin-right: vw-t(24px);
         }
       }
     }
@@ -533,16 +497,16 @@
 @media screen and (max-width: $PHONE-VW) {
   .divide {
     height: vw-p(1px);
-    width: vw-p(700px);
+    width: vw-p(570px);
     margin-bottom: vw-p(58px);
     background-color: $GRAY-679;
   }
   .detail {
     justify-content: center;
     flex-direction: column;
-    width: vw-p(530px);
+    width: vw-p(570px);
     &_thumbnail {
-      width: vw-p(530px);
+      width: vw-p(570px);
       height: vw-p(360px);
       overflow: hidden;
       margin-top: vw-p(60px);
@@ -681,28 +645,16 @@
       &_btns {
         margin-bottom: vw-p(50px);
         justify-content: end;
-        &_update {
-          color: $WHITE;
-          background-color: $GRAY-BF;
-          width: vw-p(106px);
-          height: vw-p(40px);
-          border-radius: vw-p(17px);
-          margin-right: vw-p(24px);
-        }
-        &_delete {
-          color: $WHITE;
-          background-color: $GRAY-BF;
-          width: vw-p(106px);
-          height: vw-p(40px);
-          border-radius: vw-p(17px);
-          margin-right: vw-p(24px);
-        }
+        &_update,
+        &_delete,
         &_home {
           color: $WHITE;
           background-color: $GRAY-BF;
-          width: vw-p(106px);
-          height: vw-p(40px);
+          // width: (106px);
+          // height: (40px);
+          padding: vw-p(12px) vw-p(24px);
           border-radius: vw-p(17px);
+          margin-right: vw-p(24px);
         }
       }
     }

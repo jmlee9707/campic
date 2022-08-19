@@ -10,9 +10,7 @@ function TalkHome() {
       <div className="talk flex align-center">
         <div className="talk_best">
           <p className="talk_best_title notoBold fs-32">WEEKLY BEST TALK</p>
-          <p className="talk_best_sub notoMid fs-22">
-            이번 주에 HOT한 감성 사진
-          </p>
+          <p className="talk_best_sub notoMid fs-22">이번 주에 HOT한 꿀팁</p>
           {/* <div className="talk_best_card flex"> */}
           <BestTalkList />
           {/* </div> */}

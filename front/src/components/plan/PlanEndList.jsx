@@ -5,9 +5,9 @@ import PlanCard from "@components/plan/PlanCard";
 import { getEndPlan } from "../../apis/plan";
 
 function PlanEndList() {
-  const userId = useSelector(state => state.user.email);
-  const [list, setList] = useState([]); 
-  const now = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0]; 
+  const userId = useSelector((state) => state.user.email);
+  const [list, setList] = useState([]);
+  const now = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0];
   useEffect(() => {
     async function getList() {
       const res = await getEndPlan(userId, now);
@@ -21,7 +21,7 @@ function PlanEndList() {
       <div className="plan_past_title notoBold fs-28">
         지난 캠핑 어떠셨나요?
       </div>
-      <div className="flex">
+      <div className="flex plan_end_order">
         {list.length !== 0 &&
           list.map(
             ({
@@ -30,14 +30,14 @@ function PlanEndList() {
               endDate,
               campId,
               saveId,
-              firstImageUrl
+              firstImageUrl,
             }) => (
               <PlanCard
                 className="past_img"
                 key={v4()}
                 savedTitle={savedTitle}
-                startDate={startDate.substr(0, 10)} 
-                endDate={endDate.substr(0, 10)} 
+                startDate={startDate.substr(0, 10)}
+                endDate={endDate.substr(0, 10)}
                 campId={campId}
                 saveId={saveId}
                 firstImageUrl={firstImageUrl}

@@ -1,10 +1,10 @@
 .card {
   margin: 0 (32px) (52px) 0;
-  width: (370px);
+  width: (350px);
   &_img {
     margin-bottom: (20px);
-    width: (370px);
-    height: (370px);
+    width: (350px);
+    height: (350px);
     img {
       width: 100%;
       height: 100%;
@@ -33,11 +33,11 @@
 @media screen and (max-width: $DESKTOP-VW) {
   .card {
     margin: 0 vw(32px) vw(52px) 0;
-    width: vw(370px);
+    width: vw(350px);
     &_img {
       margin-bottom: vw(20px);
-      width: vw(370px);
-      height: vw(370px);
+      width: vw(350px);
+      height: vw(350px);
       img {
         border-radius: vw(5px);
       }
@@ -49,6 +49,54 @@
       }
       &_name {
         margin-bottom: vw(12px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $TABLET-VW) {
+  .card {
+    margin: 0 vw-t(32px) vw-t(52px) 0;
+    width: vw-t(250px);
+    &_img {
+      margin-bottom: vw-t(20px);
+      width: vw-t(250px);
+      height: vw-t(250px);
+      img {
+        border-radius: vw-t(5px);
+      }
+    }
+
+    &_txt {
+      &_place {
+        margin-bottom: vw-t(4px);
+      }
+      &_name {
+        margin-bottom: vw-t(12px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $PHONE-VW) {
+  .card {
+    margin: 0 vw-p(32px) vw-p(52px) 0;
+    width: vw-p(500px);
+    &_img {
+      margin-bottom: vw-p(20px);
+      width: vw-p(500px);
+      height: vw-p(500px);
+      img {
+        border-radius: vw-p(5px);
+      }
+    }
+
+    &_txt {
+      &_place {
+        margin-bottom: vw-p(4px);
+      }
+      &_name {
+        margin-bottom: vw-p(12px);
       }
     }
   }

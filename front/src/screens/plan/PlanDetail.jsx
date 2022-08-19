@@ -12,8 +12,8 @@ function PlanDetail() {
   const [planInfo, setPlanInfo] = useState("");
   const { id: planId } = useParams();
   const navigate = useNavigate();
-  const userId = useSelector(state => state.user.email);
-  const isSocial = useSelector(state => state.user.isSocial);
+  const userId = useSelector((state) => state.user.email);
+  const isSocial = useSelector((state) => state.user.isSocial);
   const [modalVisible, setModalVisible] = useState(false);
 
   async function getPlanInfo() {
@@ -68,9 +68,9 @@ function PlanDetail() {
           imageUrl: `${planInfo.firstImageUrl}`,
           link: {
             mobileWebUrl: `${window.location.href}`,
-            webUrl: `${window.location.href}`
-          }
-        }
+            webUrl: `${window.location.href}`,
+          },
+        },
       });
     }
   };
@@ -130,13 +130,13 @@ function PlanDetail() {
             <button
               onClick={deletePlanInfo}
               type="button"
-              className="plan_detail_btn_delete fs-20 notoMid flex align-center justify-center"
+              className="plan_detail_btn_delete fs-20 notoBold flex align-center justify-center"
             >
               일정 삭제
             </button>
             <button
               type="button"
-              className="plan_detail_btn_modify fs-20 notoMid flex align-center justify-center"
+              className="plan_detail_btn_modify fs-20 notoBold flex align-center justify-center"
               onClick={openModify}
             >
               일정 수정
@@ -145,7 +145,7 @@ function PlanDetail() {
               <button
                 type="button"
                 onClick={shareKakao}
-                className="plan_detail_btn_kakao fs-20 notoMid flex align-center justify-center"
+                className="plan_detail_btn_kakao fs-20 notoBold flex align-center justify-center"
               >
                 카카오톡 공유하기
               </button>

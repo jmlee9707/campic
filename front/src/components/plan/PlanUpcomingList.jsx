@@ -5,10 +5,10 @@ import { getUpcomingPlan } from "../../apis/plan";
 import PlanCard from "./PlanCard";
 
 function PlanUpcomingList() {
-  const userId = useSelector(state => state.user.email);
+  const userId = useSelector((state) => state.user.email);
 
-  const [list, setList] = useState([]); 
-  const now = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0]; 
+  const [list, setList] = useState([]);
+  const now = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0];
   useEffect(() => {
     async function getList() {
       const res = await getUpcomingPlan(userId, now);
@@ -21,7 +21,7 @@ function PlanUpcomingList() {
       <div className="plan_coming_title notoBold fs-28">
         곧 다가올 캠핑이에요!
       </div>
-      <div className="flex">
+      <div className="flex plan_coming_order">
         {list.length !== 0 &&
           list.map(
             ({
@@ -30,13 +30,13 @@ function PlanUpcomingList() {
               endDate,
               campId,
               saveId,
-              firstImageUrl
+              firstImageUrl,
             }) => (
               <PlanCard
                 key={v4()}
                 savedTitle={savedTitle}
                 startDate={startDate.substr(0, 10)}
-                endDate={endDate.substr(0, 10)} 
+                endDate={endDate.substr(0, 10)}
                 campId={campId}
                 saveId={saveId}
                 firstImageUrl={firstImageUrl}

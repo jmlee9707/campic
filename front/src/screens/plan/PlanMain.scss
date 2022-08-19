@@ -15,6 +15,9 @@
   &_coming,
   &_past,
   &_ing {
+    &_order {
+      flex-wrap: wrap;
+    }
     &_title {
       margin: (40px) 0 (40px) 0;
     }

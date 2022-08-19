@@ -4,6 +4,7 @@
 
 .plan_detail {
   width: (1150px);
+  padding-bottom: 100px;
   .divide {
     margin-top: 100px;
     width: 100%;
@@ -97,22 +98,29 @@
     height: (720px);
   }
   &_btn {
-    margin-top: 80px;
-    &_kakao,
+    margin: 80px 0;
+
     &_delete,
     &_modify {
       border-radius: 20px;
       background-color: $GRAY-DB;
-      width: 180px;
-      height: 52px;
+      padding: 16px 24px;
       margin: 0 40px;
       color: $WHITE;
-      margin-bottom: 80px;
+
       &:hover {
         background-color: $MAIN;
         box-shadow: 0px 0px 5px $MAIN;
         color: $WHITE;
       }
+    }
+
+    &_kakao {
+      border-radius: 20px;
+      background-color: $KAKAO-YELLOW;
+      color: $KAKAO-BROWN;
+      padding: 16px 24px;
+      margin: 0 40px;
     }
   }
 }
@@ -245,10 +253,23 @@
       &_delete,
       &_modify {
         border-radius: vw(20px);
-        width: vw(180px);
-        height: vw(52px);
+        padding: vw(16px) vw(24px);
         margin: 0 vw(40px);
-        margin-bottom: vw(80px);
+        color: $WHITE;
+
+        &:hover {
+          background-color: $MAIN;
+          box-shadow: 0px 0px vw(5px) $MAIN;
+          color: $WHITE;
+        }
+      }
+
+      &_kakao {
+        border-radius: vw(20px);
+        background-color: $KAKAO-YELLOW;
+        color: $KAKAO-BROWN;
+        padding: vw(16px) vw(24px);
+        margin: 0 vw(40px);
       }
     }
   }
@@ -383,10 +404,23 @@
       &_delete,
       &_modify {
         border-radius: vw-t(20px);
-        width: vw-t(200px);
-        height: vw-t(52px);
+        padding: vw-t(16px) vw-t(24px);
         margin: 0 vw-t(40px);
-        margin-bottom: vw-t(80px);
+        color: $WHITE;
+
+        &:hover {
+          background-color: $MAIN;
+          box-shadow: 0px 0px vw-t(5px) $MAIN;
+          color: $WHITE;
+        }
+      }
+
+      &_kakao {
+        border-radius: vw-t(20px);
+        background-color: $KAKAO-YELLOW;
+        color: $KAKAO-BROWN;
+        padding: vw-t(16px) vw-t(24px);
+        margin: 0 vw-t(40px);
       }
     }
   }
@@ -522,14 +556,27 @@
       height: vw-p(500px);
     }
     &_btn {
-      margin-top: vw-p(50px);
+      margin: vw-p(80px) 0;
       &_delete,
       &_modify {
         border-radius: vw-p(20px);
-        width: vw-p(180px);
-        height: vw-p(52px);
-        margin: 0 vw-p(20px);
-        margin-bottom: vw-p(80px);
+        padding: vw-p(16px) vw-p(24px);
+        margin: 0 vw-p(8px);
+        color: $WHITE;
+
+        &:hover {
+          background-color: $MAIN;
+          box-shadow: 0px 0px vw-p(5px) $MAIN;
+          color: $WHITE;
+        }
+      }
+
+      &_kakao {
+        border-radius: vw-p(20px);
+        background-color: $KAKAO-YELLOW;
+        color: $KAKAO-BROWN;
+        padding: vw-p(16px) vw-p(24px);
+        margin: 0 vw-p(8px);
       }
     }
   }

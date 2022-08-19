@@ -17,7 +17,6 @@
     color: $GRAY-40;
     margin-bottom: (10px);
     width: (340px);
-    // height: (26px);
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -177,12 +176,11 @@
 }
 
 @media screen and (max-width: $PHONE-VW) {
-  
   .talkcard {
-    width: vw-p(240px);
+    width: vw-p(270px);
     margin-bottom: vw-p(50px);
     &_img {
-      width: vw-p(240px);
+      width: vw-p(270px);
       height: vw-p(180px);
       overflow: hidden;
       margin-bottom: vw-p(15px);
