@@ -116,7 +116,8 @@
 
 <br />
 
-![](https://velog.velcdn.com/images/jmlee9707/post/5236aebb-bfff-4445-8090-40243d4075ab/image.jpeg)
+![erd](https://velog.velcdn.com/images/jmlee9707/post/37780a60-148c-41fd-ab48-169b46c3f9fd/image.png)
+
 <br />
 <br />
 
@@ -171,14 +172,18 @@
 <br />
 <br />
 
-## 4. 📂 프로젝트 관련 문서
+## 4. 📂 프로젝트 소개 영상
+
+<br />
+
+[![](http://img.youtube.com/vi/798nNJ66RFU/0.jpg)](https://youtu.be/798nNJ66RFU)
+
+## 5. 📂 프로젝트 관련 문서
 
 <br />
 
 [🎨 프로토타입, 디자인 ](https://scratch-octopus-16f.notion.site/UI-3412085ccd92446eb123a0db28ba86d2)
 
 [📃 회의록 & 스크럼](https://scratch-octopus-16f.notion.site/09c08675b93242c28e174a6aba5261e4?v=dea8006efd4940c2a38a8c4de45d9768)
-
-[✅ 프로젝트 백로그]()
 
 [📡 요구사항 명세서](https://scratch-octopus-16f.notion.site/3bd0fbca4e6b4e5e92b4495b8826553d)
