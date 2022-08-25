@@ -148,7 +148,7 @@
 
 <br />
 
-![](blob:https://velog.io/e6cdaa17-ce17-4137-897b-a3649849eef6)
+![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_1.gif)
 
 - 캠픽 서비스 소개 페이지
 - 현재 위치에 따른 날씨 정보 받기
@@ -159,7 +159,7 @@
 
 <br />
 
-![](blob:https://velog.io/16dc84bf-5869-4d8c-a09b-1c97c3fe31ac)
+![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_2.gif)
 
 - 캠핑장 검색
 - 태그별 캠핑장 검색
@@ -179,7 +179,7 @@
 
 ![](https://velog.velcdn.com/images/jmlee9707/post/295d6324-6f9d-4a02-adbb-b9c99de7320e/image.png)
 
-![](blob:https://velog.io/b46dca05-7124-4b36-a2f2-4795240f699f)
+![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_4.gif)
 
 - 캠핑장 리스트에서 추가한 캠핑 계획 리스트
 - 지난 캠핑 계획 리스트
@@ -189,9 +189,9 @@
 
 ### 커뮤니티 메인
 
-<br />
+![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_6.gif)
 
-![](/uploads/205330432f4dd685e67c984920d25c78/gif_6.gif)
+<br />
 
 - 일정 기간 받은 좋아요 수를 기준으로 best talk 6개, best photo 8개를 나열
 
@@ -224,7 +224,7 @@
 
 <br />
 
-![](blob:https://velog.io/0d097684-b52c-4aca-8050-5784fe84b495)
+![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_5.gif)
 
 - 캠핑준비물 검색 페이지
 - 네이버 쇼핑api를 활용해서 원하는 키워드 입력 시 리스트 출력
