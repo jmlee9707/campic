@@ -1,11 +1,13 @@
 # 🌱 CAMPIC 🌱
 
 <div align="center">
+<br />
     <img src ="https://velog.velcdn.com/images/jmlee9707/post/2dd05c00-51f8-4fdb-9e2c-33f14f375c1f/image.png" width="300px" />
     <h3></h3>
+    <br />
     <h3> 캠핑 일정 정리와 캠핑장 검색을 한번에 </h3>
     <p align="center">
-
+<br />
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
 <img src="https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white">
@@ -21,13 +23,13 @@
 <img src="https://img.shields.io/badge/gitlab-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white">
 <img src="https://img.shields.io/badge/jirasoftware-0052CC?style=for-the-badge&logo=jirasoftware&logoColor=white">
 <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
+<br />
 
 </p>
 </div>
+<br />
 
 <!-- ## 🌱 배포 주소 -->
-
-<!-- > Click : -->
 
 <!-- ## 🌱 데모 영상 -->
 
@@ -112,61 +114,133 @@
 <br />
 <br />
 
-## 2. 📂 ERD 구조
+## 2. 📂 백엔드 구조
 
 <br />
+
+### ERD 구조
 
 ![erd](https://velog.velcdn.com/images/jmlee9707/post/37780a60-148c-41fd-ab48-169b46c3f9fd/image.png)
 
 <br />
+
+### 아키텍처 구조
+
 <br />
 
 ## 3. 📂 기능 구현
 
-- 회원가입/로그인
+### 회원가입/로그인
 
-  - 이메일 인증 회원가입
-  - 소셜 로그인/회원가입
-  - 아이디 찾기
-  - 비밀번호 초기화 후 등록
-  - 로그아웃
+<br />
 
-- 메인 페이지
-  - 현재 위치에 따른 날씨 정보 받기
-  - BEST TALK 5개 보여 주기
-  - BEST PHOTO 5개 보여 주기
-- 캠핑장 리스트
+![](https://velog.velcdn.com/images/jmlee9707/post/7680c5f8-f321-4d95-9729-dc52408d1ccc/image.png)
 
-  - 캠핑장 검색
-  - 태그별 캠핑장 검색
-  - 지역별 캠핑장 검색
-  - 가고 싶은 캠핑장을 계획에 추가 하기
-  - 선택한 캠핑장 상세 정보 보기
-  - 선택한 캠핑장 사이트로 가기
+- 이메일 인증 회원가입
+- 소셜 로그인/회원가입
+- 아이디 찾기
+- 비밀번호 초기화 후 등록
+- 로그아웃
 
-- 계획하기
+<br />
 
-  - 앞으로 가고 싶은 캠핑장 리스트
-  - 계획한 캠핑장 날씨 정보 받기
-  - 다녀왔던 캠핑장 리스트
+### 메인 페이지
 
-- PHOTO 게시판
-  - 사진 등록과 설명, 태그 작성 기능
-  - 좋아요 기능
-- TALK 게시판
+<br />
 
-  - 사진과 태그 등을 활용한 노하우 게시글 등록 기능
-  - 상세페이지 좋아요 기능
-  - 좋아요, 조회수, 최신 순으로 정렬 가능
-  - 댓글, 대댓글 기능
+![](blob:https://velog.io/e6cdaa17-ce17-4137-897b-a3649849eef6)
 
-- 마이페이지
-  - 위시리스트 페이지
-  - 내가 쓴 글 리스트
-  - 프로필 수정 기능
-  - 개인정보 수정 기능
-  - 비밀번호 변경 기능
-  - 회원 탈퇴 기능
+- 캠픽 서비스 소개 페이지
+- 현재 위치에 따른 날씨 정보 받기
+
+<br />
+
+### 캠핑장 리스트
+
+<br />
+
+![](blob:https://velog.io/16dc84bf-5869-4d8c-a09b-1c97c3fe31ac)
+
+- 캠핑장 검색
+- 태그별 캠핑장 검색
+- 지역별 캠핑장 검색
+
+![](https://velog.velcdn.com/images/jmlee9707/post/c892230c-53d8-4e81-8d39-11174a3c2edb/image.gif)
+
+- 가고 싶은 캠핑장을 계획에 추가 하기
+- 선택한 캠핑장 상세 정보 보기
+- 선택한 캠핑장 사이트로 가기
+
+<br />
+
+### 계획하기
+
+<br />
+
+![](https://velog.velcdn.com/images/jmlee9707/post/295d6324-6f9d-4a02-adbb-b9c99de7320e/image.png)
+
+![](blob:https://velog.io/b46dca05-7124-4b36-a2f2-4795240f699f)
+
+- 캠핑장 리스트에서 추가한 캠핑 계획 리스트
+- 지난 캠핑 계획 리스트
+- 상세 페이지에서 캠핑장 상세정보 확인 가능, To-do List 작성
+
+<br />
+
+### 커뮤니티 메인
+
+<br />
+
+- 일정 기간 받은 좋아요 수를 기준으로 best talk 6개, best photo 8개를 나열
+
+<br />
+
+### 커뮤니티 -> PHOTO 게시판
+
+![](blob:https://velog.io/03fa59d8-71e4-4ed5-a95a-987479e1f397)
+
+<br />
+
+- best photo 8개와 함께 최신순으로 photo 게시글 나열, 무한스크롤 구현
+- 사진 등록과 설명, 태그 작성 기능
+- CRUD 구현
+- 좋아요 기능
+
+<br />
+
+### 커뮤니티 -> TALK 게시판
+
+<br />
+
+- best talk 6개와 함께 최신순으로 photo 게시글 나열, 무한스크롤 구현
+- 사진과 태그 등을 활용한 노하우 게시글 등록 기능
+- CRUD 구현
+- 상세페이지 좋아요 기능
+- 댓글 작성 기능
+
+<br />
+
+### 준비물
+
+<br />
+
+![](blob:https://velog.io/0d097684-b52c-4aca-8050-5784fe84b495)
+
+- 캠핑준비물 검색 페이지
+- 네이버 쇼핑api를 활용해서 원하는 키워드 입력 시 리스트 출력
+- 검색어를 db에 저장하여 인기순 정렬 후 출력
+
+<br />
+
+### 마이페이지
+
+<br />
+
+- 내가 쓴 talk / photo 리스트
+- 프로필 수정 기능
+- 개인정보 수정 기능
+- 비밀번호 변경 기능
+- 회원 탈퇴 기능
 
 <br/>
 <br />
@@ -178,6 +252,8 @@
 
 [![](http://img.youtube.com/vi/798nNJ66RFU/0.jpg)](https://youtu.be/798nNJ66RFU)
 
+<br />
+
 ## 5. 📂 프로젝트 관련 문서
 
 <br />
@@ -187,3 +263,5 @@
 [📃 회의록 & 스크럼](https://scratch-octopus-16f.notion.site/09c08675b93242c28e174a6aba5261e4?v=dea8006efd4940c2a38a8c4de45d9768)
 
 [📡 요구사항 명세서](https://scratch-octopus-16f.notion.site/3bd0fbca4e6b4e5e92b4495b8826553d)
+
+[📋 API 명세서](https://scratch-octopus-16f.notion.site/API-fbee3ab9f0d046fbb18d67d84e961731)
