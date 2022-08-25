@@ -191,13 +191,13 @@
 
 <br />
 
+![](/uploads/205330432f4dd685e67c984920d25c78/gif_6.gif)
+
 - 일정 기간 받은 좋아요 수를 기준으로 best talk 6개, best photo 8개를 나열
 
 <br />
 
 ### 커뮤니티 -> PHOTO 게시판
-
-![](blob:https://velog.io/03fa59d8-71e4-4ed5-a95a-987479e1f397)
 
 <br />
 
