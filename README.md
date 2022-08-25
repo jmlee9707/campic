@@ -126,9 +126,22 @@
 
 ### 아키텍처 구조
 
+![](https://velog.velcdn.com/images/jmlee9707/post/f88736d6-3d29-44c5-8698-484a382afc58/image.png)
+
 <br />
 
 ## 3. 📂 기능 구현
+
+### 메인 페이지
+
+<br />
+
+![](https://velog.velcdn.com/images/jmlee9707/post/1f4c67e2-aec8-45eb-b1e1-30580ff96ff7/image.gif)
+
+- 캠픽 서비스 소개 페이지
+- 현재 위치에 따른 날씨 정보 받기
+
+<br />
 
 ### 회원가입/로그인
 
@@ -144,22 +157,11 @@
 
 <br />
 
-### 메인 페이지
+### 캠핑장 페이지
 
 <br />
 
-![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_1.gif)
-
-- 캠픽 서비스 소개 페이지
-- 현재 위치에 따른 날씨 정보 받기
-
-<br />
-
-### 캠핑장 리스트
-
-<br />
-
-![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_2.gif)
+![](https://velog.velcdn.com/images/jmlee9707/post/0d2152d6-f044-4656-a039-13a6e5c5b36a/image.gif)
 
 - 캠핑장 검색
 - 태그별 캠핑장 검색
@@ -179,7 +181,7 @@
 
 ![](https://velog.velcdn.com/images/jmlee9707/post/295d6324-6f9d-4a02-adbb-b9c99de7320e/image.png)
 
-![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_4.gif)
+![](https://velog.velcdn.com/images/jmlee9707/post/a799bb2b-8555-4224-be4d-68a42d8c631b/image.gif)
 
 - 캠핑장 리스트에서 추가한 캠핑 계획 리스트
 - 지난 캠핑 계획 리스트
@@ -189,8 +191,7 @@
 
 ### 커뮤니티 메인
 
-![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_6.gif)
-
+![](https://velog.velcdn.com/images/jmlee9707/post/6bec939f-0df8-4cb5-9418-5cac519b2754/image.gif)
 <br />
 
 - 일정 기간 받은 좋아요 수를 기준으로 best talk 6개, best photo 8개를 나열
@@ -224,7 +225,7 @@
 
 <br />
 
-![](https://lab.ssafy.com/s07-webmobile2-sub2/S07P12C109/-/blob/master/outputs/gif/gif_5.gif)
+![](https://velog.velcdn.com/images/jmlee9707/post/22bee5ca-cdfc-4999-8449-89356008347d/image.gif)
 
 - 캠핑준비물 검색 페이지
 - 네이버 쇼핑api를 활용해서 원하는 키워드 입력 시 리스트 출력
@@ -235,6 +236,10 @@
 ### 마이페이지
 
 <br />
+
+![](https://velog.velcdn.com/images/jmlee9707/post/474713f7-82bd-4bf8-9e5e-2354a2506f12/image.png)
+
+![](https://velog.velcdn.com/images/jmlee9707/post/d449b544-0547-4435-ab12-87b65aca434b/image.png)
 
 - 내가 쓴 talk / photo 리스트
 - 프로필 수정 기능
